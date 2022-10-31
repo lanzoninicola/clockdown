@@ -5,15 +5,14 @@ volumes:
     driver: local
 
 services:
-  frontend:
-    container_name: clockdown-remixrun
-    # represent the docker image (./frontend/Dockerfile)
-    # specifies the build configuration for creating container image from source
-    build: ./frontend
-    hostname: clockdown-remixrun
+  website-editor:
+    container_name: clockdown-website-editor
+    # specifies the build configuration for creating container image from source (Dockerfile)
+    build: ./website-editor
+    hostname: clockdown-website-editor
     #restart: always
     depends_on:
-      - restapi
+      - rest-api
     command: "npm start"
     working_dir: /myapp
     environment:
@@ -23,10 +22,10 @@ services:
     ports:
       - "3000:3000"
 
-  restapi:
-    container_name: clockdown-restapi
-    build: ./backend
-    hostname: clockdown-restapi
+  rest-api:
+    container_name: clockdown-rest-api
+    build: ./rest-api
+    hostname: clockdown-rest-api
     #restart: always
     depends_on:
       - postgres

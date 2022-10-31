@@ -25,8 +25,8 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v3
 
-      - name: Remove __test__ folder from backend project
-        working-directory: ./backend/__test__
+      - name: Remove __test__ folder from rest-api project
+        working-directory: ./rest-api/__test__
         run: |
           rm -rf __test__
 

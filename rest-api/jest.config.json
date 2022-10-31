@@ -1,0 +1,8 @@
+{
+    "coveragePathIgnorePatterns": [
+        "node_modules",
+        "./src/__test__",
+        "./src/database",
+        ".inmemory.js"
+    ]
+}

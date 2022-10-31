@@ -1,0 +1,16 @@
+{
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        // https://babeljs.io/docs/en/babel-preset-env#modules
+        "modules": false
+      }
+    ],
+    // added {"runtime": "automatic"} because on front-end side React is not recognized as a module
+    // https://stackoverflow.com/a/64994595/7245834
+    ["@babel/preset-react", { "runtime": "automatic" }],
+    "@babel/preset-typescript"
+  ],
+  "plugins": ["@babel/plugin-transform-runtime"]
+}

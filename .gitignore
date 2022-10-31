@@ -1,7 +1,7 @@
 node_modules
 package-lock.json
 
-/frontend/.cache
-/frontend/build
-/frontend/public/build
-/frontend.env
+/website-editor/.cache
+/website-editor/build
+/website-editor/public/build
+/website-editor.env
