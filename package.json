@@ -1,0 +1,12 @@
+{
+  "name": "clockdown",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/lanzoninicola/clockdown.git",
+  "author": "Nicola <lanzoni.nicola@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "docker:up": "docker compose -f docker-compose.yml up -d --build",
+    "docker:up:no-cache": "docker compose -f docker-compose.yml up -d --build --no-cache"
+  }
+}

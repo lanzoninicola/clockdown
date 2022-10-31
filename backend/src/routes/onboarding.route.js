@@ -9,7 +9,10 @@ router.get(
     // validateWithJoiMiddleware(pollingSchema),
     async (req, res, next) => {
         try {
-            return res.status(200).json("ok");
+            return res.status(200).json({
+                name: "nicola",
+                latname: "lanzoni"
+            });
         } catch (e) {
             return next(e);
         }

@@ -1,29 +1,21 @@
 version: "3"
+
+volumes:
+  pgdata:
+    driver: local
+
 services:
   frontend:
     container_name: clockdown-remixrun
     # represent the docker image (./frontend/Dockerfile)
-    build: frontend
-    restart: always
+    # specifies the build configuration for creating container image from source
+    build: ./frontend
+    hostname: clockdown-remixrun
+    #restart: always
     depends_on:
-      - backend
-    command: "npm run start"
-    working_dir: /home/node/app
-    environment:
-      - NODE_ENV=production
-    expose:
-      - "5000"
-    ports:
-      - "5000:3000"
-
-  backend:
-    container_name: clockdown-backend
-    build: backend
-    restart: always
-    depends_on:
-      - postgres
-    command: "npm run start"
-    working_dir: /home/node/server
+      - restapi
+    command: "npm start"
+    working_dir: /myapp
     environment:
       - NODE_ENV=production
     expose:
@@ -31,14 +23,30 @@ services:
     ports:
       - "3000:3000"
 
+  restapi:
+    container_name: clockdown-restapi
+    build: ./backend
+    hostname: clockdown-restapi
+    #restart: always
+    depends_on:
+      - postgres
+    command: "npm run start"
+    working_dir: /home/node/server
+    environment:
+      - NODE_ENV=production
+    expose:
+      - "5000"
+    ports:
+      - "5000:8090"
+
   # This is the configuration for our PostgreSQL database container
   # Note the `postgres` name is important, in out Node app when we refer
   # to  `host: "postgres"` that value is mapped on the network to the
   # address of this container.
   postgres:
-    container_name: clockdown-postgres
+    container_name: clockdown-db
     image: postgres:14.1-alpine
-    restart: always
+    hostname: clockdown-db
     environment:
       # You can set the value of environment variables
       # in your docker-compose.yml file
@@ -57,11 +65,12 @@ services:
       # - ./database-seed.sql:/docker-entrypoint-initdb.d/database-seed.sql
     volumes:
       #- ./data:/data/db
-      - postgres-dbdata:/data/db
+      - pgdata:/var/lib/postgresql/data
 
   # PostgreSQL pgAdmin panel accessible at http://localhost:16543/
-  pgadmin-compose:
+  pgadmin:
     image: dpage/pgadmin4
+    hostname: clockdown-pgadmin
     environment:
       PGADMIN_DEFAULT_EMAIL: "placeholder@example.com"
       PGADMIN_DEFAULT_PASSWORD: "fakepassword123!"
