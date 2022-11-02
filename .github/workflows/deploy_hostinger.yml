@@ -39,6 +39,5 @@ jobs:
             --exclude=".git" \
             --exclude=".github" \
             --exclude="deploy_key" \
-            --exclude="/client/frontend/countdown-widget" \
-            --exclude="/client/frontend/templates-editor" \
-            ./ root@191.101.234.115:~/domains/clockdown.xyz/public_html/wp-content/plugins/clockdown
+            --exclude="/widget" \
+            ./ root@{{secrets.TARGET_SERVER}}:~/domains/clockdown.xyz/public_html/wp-content/plugins/clockdown

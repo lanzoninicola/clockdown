@@ -5,3 +5,5 @@ package-lock.json
 /website-editor/build
 /website-editor/public/build
 /website-editor.env
+
+.env
