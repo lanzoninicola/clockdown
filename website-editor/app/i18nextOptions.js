@@ -1,5 +1,5 @@
 export default {
-  debug: process.env.NODE_ENV !== "production",
+  debug: false,
   fallbackLng: "en",
   supportedLngs: ["en", "es", "it", "pt"],
   defaultNS: "index",

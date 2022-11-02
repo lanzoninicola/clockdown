@@ -1,5 +1,5 @@
 import { ChakraProvider } from "@chakra-ui/react";
-import { theme } from "../client/chackra-ui/theme/theme";
+import { theme } from "../client/chackra-ui/theme/app/theme";
 import "../client/style/global.css";
 import { OnboardingProvider } from "../client/onboarding";
 import PremiumFeatureProvider from "../client/premium-features-provider/premium-features-provider";
@@ -9,6 +9,8 @@ import Header from "~/client/global/header/header";
 import EditorPage from "~/client/editor/editor-page";
 
 const ClockdownApp = () => (
+  <div>Hello World</div>
+  /**
   <ChakraProvider theme={theme}>
     <OnboardingProvider
       config={{
@@ -37,6 +39,7 @@ const ClockdownApp = () => (
       </PremiumFeatureProvider>
     </OnboardingProvider>
   </ChakraProvider>
+   */
 );
 
 export default ClockdownApp;

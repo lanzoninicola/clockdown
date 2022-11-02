@@ -1,5 +1,5 @@
 import { RemixBrowser } from "@remix-run/react";
-import { startTransition, StrictMode } from "react";
+import { startTransition, StrictMode, useState } from "react";
 import { hydrateRoot } from "react-dom/client";
 import i18next from "i18next";
 import { I18nextProvider, initReactI18next } from "react-i18next";
@@ -7,6 +7,27 @@ import LanguageDetector from "i18next-browser-languagedetector";
 import Backend from "i18next-http-backend";
 import { getInitialNamespaces } from "remix-i18next";
 import i18nextOptions from "./i18nextOptions";
+import { createEmotionCache } from "./client/chackra-ui/createEmotionCache";
+import { ClientStyleContext } from "./client/chackra-ui/context";
+import { CacheProvider } from "@emotion/react";
+
+interface ClientCacheProviderProps {
+  children: React.ReactNode;
+}
+
+function ClientCacheProvider({ children }: ClientCacheProviderProps) {
+  const [cache, setCache] = useState(createEmotionCache());
+
+  function reset() {
+    setCache(createEmotionCache());
+  }
+
+  return (
+    <ClientStyleContext.Provider value={{ reset }}>
+      <CacheProvider value={cache}>{children}</CacheProvider>
+    </ClientStyleContext.Provider>
+  );
+}
 
 function hydrate() {
   startTransition(() => {
@@ -39,7 +60,9 @@ function hydrate() {
             document,
             <I18nextProvider i18n={i18next}>
               <StrictMode>
-                <RemixBrowser />
+                <ClientCacheProvider>
+                  <RemixBrowser />
+                </ClientCacheProvider>
               </StrictMode>
             </I18nextProvider>
           );
