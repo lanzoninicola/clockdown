@@ -3,6 +3,18 @@ version: "3"
 volumes:
   pgdata:
     driver: local
+  nginxdata:
+    driver: local
+  letsencrypt:
+    driver: local
+
+networks:
+  frontend:
+    driver: bridge
+  backend:
+    driver: bridge
+  nginxproxymanager:
+    driver: bridge
 
 services:
   website-editor:
@@ -11,22 +23,30 @@ services:
     build: ./website-editor
     hostname: clockdown-website-editor
     #restart: always
+    networks:
+      - frontend
+      - backend
+      - nginxproxymanager
     depends_on:
       - rest-api
     command: "npm start"
     working_dir: /myapp
     environment:
       - NODE_ENV=production
+    # expose is a metadata, it has no effect on the container
     expose:
       - "3000"
-    ports:
-      - "3000:3000"
+    #ports:
+    #  - "80:3000"
 
   rest-api:
     container_name: clockdown-rest-api
     build: ./rest-api
     hostname: clockdown-rest-api
     #restart: always
+    networks:
+      - backend
+      - nginxproxymanager
     depends_on:
       - postgres
     command: "npm run start"
@@ -34,9 +54,9 @@ services:
     environment:
       - NODE_ENV=production
     expose:
-      - "5000"
-    ports:
-      - "5000:8090"
+      - "8090"
+    #ports:
+    # - "80:8090"
 
   # This is the configuration for our PostgreSQL database container
   # Note the `postgres` name is important, in out Node app when we refer
@@ -46,6 +66,8 @@ services:
     container_name: clockdown-db
     image: postgres:14.1-alpine
     hostname: clockdown-db
+    networks:
+      - backend
     environment:
       # You can set the value of environment variables
       # in your docker-compose.yml file
@@ -54,14 +76,14 @@ services:
       - POSTGRES_USER=root
       - POSTGRES_PASSWORD=root
       - POSTGRES_DB=root
-    ports:
-      # Standard port for PostgreSQL databases
-      - "3254:5432"
-      #   volumes:
-      # When the PostgresSQL container is started it will run any scripts
-      # provided in the `docker-entrypoint-initdb.d` directory, this connects
-      # our seed file to that directory so that it gets run
-      # - ./database-seed.sql:/docker-entrypoint-initdb.d/database-seed.sql
+    #ports:
+    # Standard port for PostgreSQL databases
+    # - "3254:5432"
+    #   volumes:
+    # When the PostgresSQL container is started it will run any scripts
+    # provided in the `docker-entrypoint-initdb.d` directory, this connects
+    # our seed file to that directory so that it gets run
+    # - ./database-seed.sql:/docker-entrypoint-initdb.d/database-seed.sql
     volumes:
       #- ./data:/data/db
       - pgdata:/var/lib/postgresql/data
@@ -70,10 +92,39 @@ services:
   pgadmin:
     image: dpage/pgadmin4
     hostname: clockdown-pgadmin
+    networks:
+      - nginxproxymanager
+      - backend
     environment:
       PGADMIN_DEFAULT_EMAIL: "placeholder@example.com"
       PGADMIN_DEFAULT_PASSWORD: "fakepassword123!"
-    ports:
-      - "16543:80"
+    #ports:
+    #  - "80:80"
     depends_on:
       - postgres
+
+  nginx:
+    image: "lanzoninicola/nginx-proxy-manager:1.0"
+    restart: unless-stopped
+    networks:
+      - nginxproxymanager
+    ports:
+      # These ports are in format <host-port>:<container-port>
+      - "80:80" # Public HTTP Port
+      - "443:443" # Public HTTPS Port
+      - "81:81" # Admin Web Port
+      # Add any other Stream port you want to expose
+      # - '21:21' # FTP
+
+    # Uncomment the next line if you uncomment anything in the section
+    # environment:
+    # Uncomment this if you want to change the location of
+    # the SQLite DB file within the container
+    # DB_SQLITE_FILE: "/data/database.sqlite"
+
+    # Uncomment this if IPv6 is not enabled on your host
+    # DISABLE_IPV6: 'true'
+
+    volumes:
+      - nginxdata:/data
+      - letsencrypt:/etc/letsencrypt
