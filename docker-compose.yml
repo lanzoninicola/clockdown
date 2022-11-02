@@ -76,6 +76,8 @@ services:
       - POSTGRES_USER=root
       - POSTGRES_PASSWORD=root
       - POSTGRES_DB=root
+    expose:
+      - "5432"
     #ports:
     # Standard port for PostgreSQL databases
     # - "3254:5432"
@@ -91,6 +93,7 @@ services:
   # PostgreSQL pgAdmin panel accessible at http://localhost:16543/
   pgadmin:
     image: dpage/pgadmin4
+    container_name: clockdown-pgadmin
     hostname: clockdown-pgadmin
     networks:
       - nginxproxymanager
@@ -105,14 +108,18 @@ services:
 
   nginx:
     image: "lanzoninicola/nginx-proxy-manager:1.1"
+    container_name: clockdown-nginx
+    hostname: clockdown-nginx
     restart: unless-stopped
     networks:
       - nginxproxymanager
+    expose:
+      - "443"
     ports:
       # These ports are in format <host-port>:<container-port>
-      - "80:80" # Public HTTP Port
+      # - "80:80" # Public HTTP Port
       - "443:443" # Public HTTPS Port
-      - "81:81" # Admin Web Port
+      # - "81:81" # Admin Web Port
       # Add any other Stream port you want to expose
       # - '21:21' # FTP
 
