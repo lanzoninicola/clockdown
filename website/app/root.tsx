@@ -8,10 +8,10 @@ import {
   ScrollRestoration,
 } from "@remix-run/react";
 
-import tailwind from "./tailwind.css";
+import styles from "./styles/app.css";
 
 export const links: LinksFunction = () => [
-  { rel: "stylesheet", href: tailwind },
+  { rel: "stylesheet", href: styles },
   {
     rel: "preconnect",
     href: "https://fonts.googleapis.com",

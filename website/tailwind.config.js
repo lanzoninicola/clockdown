@@ -8,6 +8,9 @@ module.exports = {
           sm: "#47A3FF",
           md: "#6AB2FE",
         },
+        tea: {
+          all: "#fffaea",
+        },
       },
       fontFamily: {
         body: ["Inter", "sans-serif"],
@@ -16,6 +19,8 @@ module.exports = {
       },
       backgroundImage: {
         "hero-bg": "url('/images/hero-bg.jpg')",
+        "why-bg": "url('/images/why-bg.jpg')",
+        "backdrop-blue": "url('/images/backdrop-blue.svg')",
       },
       maxWidth: {
         1440: "1440px",
