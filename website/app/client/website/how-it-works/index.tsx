@@ -1,15 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function HowItWorks() {
   return (
-    <section className="flex min-h-screen flex-col items-center gap-8 bg-tea-all md:py-32">
+    <section className="bg-tea-base flex min-h-[1500px] flex-col items-center gap-8 px-4 md:py-32">
       <div className="flex flex-col justify-center gap-8 md:max-w-1440">
         <h2 className="md:leading-1 text-md  font-accent font-bold uppercase tracking-wide md:text-4xl">
           Como funciona
         </h2>
       </div>
       <div>
-        <HowItWorksSteps steps={4} />
+        <HowItWorksSteps steps={4} startOnStep={1} />
       </div>
     </section>
   );
@@ -17,24 +17,79 @@ export default function HowItWorks() {
 
 interface HowItWorksStepsProps {
   steps: number;
-
-  children?: React.ReactNode;
+  startOnStep: number;
 }
 
-function HowItWorksSteps({
-  steps,
+function HowItWorksSteps({ steps, startOnStep }: HowItWorksStepsProps) {
+  const [currentActiveStep, setCurrentActiveStep] = useState<number>(
+    startOnStep - 1
+  );
 
-  children,
-}: HowItWorksStepsProps) {
-  const [currentActiveStep, setCurrentActiveStep] = useState<number>(1);
+  const stepComponents = [
+    {
+      title: "Escolha a data e o fuso horário para o seu contador regressivo",
+      subtitle:
+        "Seus clientes estão espalhados por todo o mundo? Não há problema com isso.",
+      body: "",
+    },
+    {
+      title: "Personalizar conforme a necessidade",
+      subtitle: "Não se preocupe, nós não julgamos ninguém!",
+      body: "",
+    },
+    {
+      title: "Gere e copia o código",
+      subtitle: "É aqui que a magia acontece",
+      body: "",
+    },
+    {
+      title: "Cola o código no seu site",
+      subtitle: "Colar, salvar e vender mais...",
+      body: "",
+    },
+  ];
+
+  useEffect(() => {
+    const timer = setInterval(
+      () => {
+        setCurrentActiveStep((prev) => {
+          if (prev === steps - 1) {
+            return 0;
+          }
+          return prev + 1;
+        });
+      },
+
+      5000
+    );
+
+    return () => clearInterval(timer);
+  }, [steps]);
 
   return (
-    <div className="flex flex-row items-center gap-16">
-      {Array.from({ length: steps }).map((_, index) => (
-        <StepButton key={index} isActive={currentActiveStep === index + 1}>
-          {index + 1}
-        </StepButton>
-      ))}
+    <div className="flex w-full flex-col items-center justify-center gap-16">
+      <div className="flex flex-row items-center gap-16">
+        {Array.from({ length: steps }).map((_, index) => (
+          <StepButton
+            key={index}
+            isActive={currentActiveStep === index}
+            onClick={() => setCurrentActiveStep(index)}
+          >
+            {index + 1}
+          </StepButton>
+        ))}
+      </div>
+      <div className="flex flex-col items-center justify-center gap-16">
+        <div className="flex flex-col gap-1">
+          <h3 className="font-titles text-3xl font-bold">
+            {stepComponents[currentActiveStep].title}
+          </h3>
+          <h4 className="text-center font-titles text-xl">
+            {stepComponents[currentActiveStep].subtitle}
+          </h4>
+        </div>
+        <StepBodyImage step={currentActiveStep + 1} />
+      </div>
     </div>
   );
 }
@@ -49,11 +104,16 @@ function StepButton({ isActive = false, children, onClick }: StepButtonProps) {
   return (
     <button
       type="button"
-      className="grid h-8 w-8 place-items-center rounded-full bg-blue-md disabled:opacity-25"
-      disabled={isActive === false}
-      onClick={() => alert("clicked")}
+      className={`grid h-8 w-8 place-items-center rounded-full bg-blue-md ${
+        !isActive && "opacity-25"
+      } `}
+      onClick={onClick}
     >
       <span className="font-accent font-bold text-black">{children}</span>
     </button>
   );
+}
+
+function StepBodyImage({ step }: { step: number }) {
+  return <img src={`/images/how-it-works/pt/${step}.png`} alt="" />;
 }

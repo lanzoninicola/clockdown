@@ -1,6 +1,7 @@
 import CustomizationSection from "~/client/website/customization-section";
 import HowItWorks from "~/client/website/how-it-works";
 import PlatformsSection from "~/client/website/platforms-section";
+import PricingSection from "~/client/website/pricing-table";
 
 export default function Index() {
   return (
@@ -73,7 +74,7 @@ export default function Index() {
           </article>
         </div>
       </section>
-      <section className="flex min-h-screen flex-col items-center bg-tea-all px-4 md:py-64">
+      <section className="bg-tea-base flex min-h-screen flex-col items-center px-4 md:py-64">
         <div className="flex flex-col items-center gap-4 md:my-16 md:w-full md:flex-row">
           <div className="flex h-1/2 flex-col gap-4 md:h-full md:max-h-750 md:w-1/2 md:pl-64">
             <h2 className="md:leading-1 text-md font-accent font-bold uppercase tracking-wide md:text-3xl">
@@ -120,6 +121,7 @@ export default function Index() {
       <CustomizationSection />
       <PlatformsSection />
       <HowItWorks />
+      <PricingSection />
     </>
   );
 }

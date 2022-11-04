@@ -9,7 +9,7 @@ module.exports = {
           md: "#6AB2FE",
         },
         tea: {
-          all: "#fffaea",
+          base: "#fffaea",
         },
       },
       fontFamily: {
