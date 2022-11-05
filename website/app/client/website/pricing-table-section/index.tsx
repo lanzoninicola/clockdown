@@ -1,3 +1,6 @@
+import Section from "../common/section";
+import TitleH2 from "../common/titles/title-h2";
+import TitleH3 from "../common/titles/title-h3";
 import PayPalButton from "../components/paypal-button";
 
 export default function PricingSection() {
@@ -19,42 +22,38 @@ export default function PricingSection() {
   ];
 
   return (
-    <section id="pricing-table">
-      <div className="mx-auto max-w-screen-xl py-16 px-4 md:py-32 md:px-6">
-        <div className="mx-auto mb-12 max-w-screen-md text-center">
-          <h2 className="md:leading-1 text-md mb-4 font-accent font-bold uppercase tracking-wide md:text-3xl">
-            Planos
-          </h2>
-          <p className="mb-5 font-body font-light  sm:text-xl">
-            Simplificamos tudo, independentemente do tamanho do seu negócio e do
-            tráfego para o seu site.
-          </p>
-        </div>
-        <PricingCards>
-          <PricingCard
-            title={"Starter"}
-            subtitle={"Comecemos aqui e vamos crescer juntos"}
-            currency={"R$"}
-            price={"0"}
-            priceDescription={"/por mês"}
-            commonFeatures={commonFeatures}
-            proFeatures={[]}
-          />
-          <PricingCard
-            title={"Pro"}
-            subtitle={"Mais poder mais diversão mais venda"}
-            currency={"R$"}
-            price={"10"}
-            priceDescription={"/por mês"}
-            priceAdditionalDescription={"*pagamento anual"}
-            commonFeatures={commonFeatures}
-            proFeatures={proFeatures}
-          >
-            {/* <PayPalButton /> */}
-          </PricingCard>
-        </PricingCards>
+    <Section id="pricing-table" className="py-16 md:py-32">
+      <div className="mx-auto mb-12 max-w-screen-md text-center">
+        <TitleH2>Planos</TitleH2>
+        <p className="mb-5 font-body font-light  sm:text-xl">
+          Simplificamos tudo, independentemente do tamanho do seu negócio e do
+          tráfego para o seu site.
+        </p>
       </div>
-    </section>
+      <PricingCards>
+        <PricingCard
+          title={"Starter"}
+          subtitle={"Comecemos aqui e vamos crescer juntos"}
+          currency={"R$"}
+          price={"0"}
+          priceDescription={"/por mês"}
+          commonFeatures={commonFeatures}
+          proFeatures={[]}
+        />
+        <PricingCard
+          title={"Pro"}
+          subtitle={"Mais poder mais diversão mais venda"}
+          currency={"R$"}
+          price={"10"}
+          priceDescription={"/por mês"}
+          priceAdditionalDescription={"*pagamento anual"}
+          commonFeatures={commonFeatures}
+          proFeatures={proFeatures}
+        >
+          {/* <PayPalButton /> */}
+        </PricingCard>
+      </PricingCards>
+    </Section>
   );
 }
 
@@ -64,7 +63,7 @@ interface PricingCardsProps {
 
 function PricingCards({ children }: PricingCardsProps) {
   return (
-    <div className="mx-auto w-max space-y-8 sm:gap-6 md:grid md:grid-cols-2 md:gap-8 md:space-y-0">
+    <div className="grid gap-4 md:mx-auto md:w-max md:grid-cols-2 md:gap-8">
       {children}
     </div>
   );
@@ -95,10 +94,8 @@ function PricingCard({
 }: PricingCardProps) {
   return (
     <div className="mx-auto flex max-w-lg flex-col rounded-xl bg-slate-50 p-6 text-center text-gray-900 shadow-xl xl:p-8">
-      <h3 className="mb-4 font-accent text-xl font-semibold uppercase text-blue-500">
-        {title}
-      </h3>
-      <p className="font-titles font-light text-gray-500 dark:text-gray-400 sm:text-lg ">
+      <TitleH3 className="tracking-widest text-blue-500">{title}</TitleH3>
+      <p className="text-md font-titles font-light text-gray-500 dark:text-gray-400 ">
         {subtitle}
       </p>
       <div className="my-8 flex flex-col">
@@ -115,7 +112,7 @@ function PricingCard({
       </div>
 
       {/* List {/*/}
-      <ul className="mb-8 space-y-4 text-left">
+      <ul className="mb-8 space-y-2 text-left md:space-y-4">
         {commonFeatures.map((f, idx) => (
           <PricingCardItem key={idx}>{f}</PricingCardItem>
         ))}

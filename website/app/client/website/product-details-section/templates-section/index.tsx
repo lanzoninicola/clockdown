@@ -1,48 +1,60 @@
+import Carousel from "../../common/carousel";
+import FadeIn from "../../common/fade-in/fade-in";
+import Section from "../../common/section";
+import TitleH2 from "../../common/titles/title-h2";
+
 export default function TemplatesSection() {
   return (
-    <section className="flex min-h-screen flex-col items-center bg-tea-base px-4 md:py-64">
-      <div className="flex flex-col items-center gap-4 md:my-16 md:w-full md:flex-row">
-        <div className="flex h-1/2 flex-col gap-4 md:h-full md:max-h-750 md:w-1/2 md:pl-64">
-          <h2 className="md:leading-1 text-md font-accent font-bold uppercase tracking-wide md:text-3xl">
-            Templates exclusivos <br />
-            que se adaptam <br />a qualquer tema
-          </h2>
-          <p className="text-md font-body md:w-[55ch] md:text-xl">
-            Há temas para todos os gostos, mas se você ainda não consegue
-            encontrar o seu, você pode sempre criá-lo do zero. É fácil e rápido,
-            basta escolher as cores e o estilo que você deseja.
-          </p>
+    <>
+      <Section className="bg-tea-base py-16 md:py-32">
+        <div className="flex flex-col gap-32">
+          <div className="grid-rows-auto grid gap-4 md:grid-cols-2 md:grid-rows-1  md:items-center ">
+            <div className="flex flex-col">
+              <TitleH2>
+                Templates exclusivos <br />
+                que se adaptam <br />a qualquer tema
+              </TitleH2>
+              <p className="text-md font-body md:w-[55ch] md:text-xl">
+                Há temas para todos os gostos, mas se você ainda não consegue
+                encontrar o seu, você pode sempre criá-lo do zero. É fácil e
+                rápido, basta escolher as cores e o estilo que você deseja.
+              </p>
+            </div>
+            <div className="grid place-items-center md:place-items-end">
+              <Carousel interval={4000}>
+                {Array.from({ length: 8 }).map((_, index) => (
+                  <FadeIn key={index}>
+                    <img
+                      src={`/images/templates/${index + 1}.png`}
+                      alt="Exemplo de template"
+                      className="h-[450px] md:h-[650px]"
+                    />
+                  </FadeIn>
+                ))}
+              </Carousel>
+            </div>
+          </div>
+          <div className="grid-rows-auto grid gap-16 md:grid-cols-2 md:grid-rows-1 md:items-center">
+            <div className="grid place-items-center md:place-items-start">
+              <img
+                src="/images/home-all-devices.png"
+                alt="Para todos os dispositivos"
+              />
+            </div>
+            <div className="flex flex-col">
+              <TitleH2>
+                Para qualquer <br />
+                dispositivo
+              </TitleH2>
+              <p className="text-md font-body md:w-[55ch] md:text-xl">
+                Modelos de contador responsivos para o seu site, blog, loja
+                virtual. Você pode usá-los em qualquer dispositivo, seja um
+                smartphone, tablet ou desktop.
+              </p>
+            </div>
+          </div>
         </div>
-
-        <div className="relative flex h-1/2 items-center justify-center bg-backdrop-blue bg-cover bg-center md:h-full md:w-1/2">
-          <img
-            src="/images/mobile-phone-bg.png"
-            alt="Exemplo de template"
-            className="h-[450px] md:h-[650px]"
-          />
-        </div>
-      </div>
-      <div className="flex flex-col items-center gap-4 md:my-16 md:w-full md:flex-row">
-        <div className="relative flex h-1/2 items-center justify-center bg-backdrop-blue bg-cover bg-center md:h-full md:w-1/2">
-          <img
-            src="/images/mobile-phone-bg.png"
-            alt="Exemplo de template"
-            className="h-[450px] md:h-[650px]"
-          />
-        </div>
-
-        <div className="flex h-1/2 flex-col gap-4 md:h-full md:max-h-750 md:w-1/2">
-          <h2 className="md:leading-1 text-md font-accent font-bold uppercase tracking-wide md:text-3xl">
-            Para qualquer <br />
-            dispositivo
-          </h2>
-          <p className="text-md font-body md:w-[45ch] md:text-xl">
-            Modelos de contador responsivos para o seu site, blog, loja virtual.
-            Você pode usá-los em qualquer dispositivo, seja um smartphone,
-            tablet ou desktop.
-          </p>
-        </div>
-      </div>
-    </section>
+      </Section>
+    </>
   );
 }

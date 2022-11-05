@@ -1,18 +1,16 @@
 import { useEffect, useState } from "react";
+import FadeIn from "../common/fade-in/fade-in";
+import Section from "../common/section";
+import TitleH2 from "../common/titles/title-h2";
 
 export default function HowItWorks() {
   return (
-    <section
-      id="how-it-works"
-      className="flex min-h-[1400px] flex-col justify-center gap-8 bg-tea-base px-4"
-    >
-      <h2 className="md:leading-1 text-md  text-center font-accent font-bold uppercase tracking-wide md:text-4xl">
-        Como funciona
-      </h2>
+    <Section id="how-it-works" className="bg-tea-base  py-32 md:min-h-[1400px]">
+      <TitleH2 className="mb-8 text-center">Como funciona</TitleH2>
       <div>
         <HowItWorksSteps steps={4} startOnStep={1} />
       </div>
-    </section>
+    </Section>
   );
 }
 
@@ -82,13 +80,14 @@ function HowItWorksSteps({ steps, startOnStep }: HowItWorksStepsProps) {
       </div>
       <div className="flex flex-col items-center justify-center gap-16">
         <div className="flex flex-col gap-1">
-          <h3 className="text-center font-titles text-3xl font-bold">
+          <h3 className="text-center font-titles text-xl font-bold md:text-3xl">
             {stepComponents[currentActiveStep].title}
           </h3>
-          <h4 className="text-center font-titles text-xl">
+          <h4 className="text-md text-center font-titles md:text-xl">
             {stepComponents[currentActiveStep].subtitle}
           </h4>
         </div>
+
         <StepBodyImage step={currentActiveStep + 1} />
       </div>
     </div>
@@ -116,5 +115,9 @@ function StepButton({ isActive = false, children, onClick }: StepButtonProps) {
 }
 
 function StepBodyImage({ step }: { step: number }) {
-  return <img src={`/images/how-it-works/pt/${step}.png`} alt="" />;
+  return (
+    <FadeIn key={step}>
+      <img src={`/images/how-it-works/pt/${step}.png`} alt="" />
+    </FadeIn>
+  );
 }

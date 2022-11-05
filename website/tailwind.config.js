@@ -11,6 +11,10 @@ module.exports = {
         tea: {
           base: "#fffaea",
         },
+        accent: {
+          base: "#73F8BA",
+          500: "#3DF59F",
+        },
       },
       fontFamily: {
         body: ["Inter", "sans-serif"],
@@ -46,9 +50,18 @@ module.exports = {
             transform: "translatey(0px)",
           },
         },
+        fadeIn: {
+          "0%": {
+            opacity: "0",
+          },
+          "100%": {
+            opacity: "1",
+          },
+        },
       },
       animation: {
         float: "float 6s ease-in-out infinite",
+        fadeIn: "fadeIn 1s ease-in-out",
       },
     },
   },

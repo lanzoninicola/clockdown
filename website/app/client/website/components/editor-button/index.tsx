@@ -2,25 +2,44 @@ import { Link } from "@remix-run/react";
 import ArrowRight from "../../common/arrow-right/arrow-right";
 
 interface EditorButtonProps {
-  variant?: "primary" | "secondary";
+  variant?: "primary" | "secondary" | "accent";
 }
 
 export default function EditorButton({
   variant = "primary",
 }: EditorButtonProps) {
+  const bgColor =
+    variant === "primary"
+      ? "bg-blue-400"
+      : variant === "secondary"
+      ? "bg-gray-400"
+      : "bg-accent-base";
+
+  const hoverColor =
+    variant === "primary"
+      ? "hover:bg-blue-500"
+      : variant === "secondary"
+      ? "hover:bg-gray-500"
+      : "hover:bg-accent-500";
+
+  const textColor =
+    variant === "primary"
+      ? "text-white"
+      : variant === "secondary"
+      ? "text-gray-800"
+      : "text-black";
+
   return (
     <Link to="/app">
       <button
-        className={`flex max-w-max flex-row gap-4 rounded-xl  ${
-          variant === "primary" ? "bg-blue-400" : "bg-gray-400"
-        } px-8 py-2 shadow-lg transition-colors ${
-          variant === "primary" ? "hover:bg-blue-500" : "hover:bg-gray-500"
-        }`}
+        className={`flex max-w-max flex-row gap-4 rounded-xl  ${bgColor} px-8 py-2 shadow-lg transition-colors ${hoverColor}`}
       >
-        <span className="font-body text-xl font-bold uppercase tracking-wider text-white">
+        <span
+          className={`text-md font-body font-bold uppercase tracking-wider md:text-xl ${textColor}`}
+        >
           Criar um contador
         </span>
-        <ArrowRight color="text-white" />
+        <ArrowRight color={`${textColor}`} />
       </button>
     </Link>
   );
