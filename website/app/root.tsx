@@ -28,8 +28,9 @@ export const links: LinksFunction = () => [
 
 export const meta: MetaFunction = () => ({
   charset: "utf-8",
-  title: "New Remix App",
+  title: "Clockdown",
   viewport: "width=device-width,initial-scale=1",
+  description: "O contador regressivo para a tua loja online",
 });
 
 export default function App() {

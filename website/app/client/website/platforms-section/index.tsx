@@ -1,6 +1,9 @@
 export default function PlatformsSection() {
   return (
-    <section className="flex flex-col gap-8  px-4 py-32  md:items-center md:justify-center ">
+    <section
+      id="platforms"
+      className="flex flex-col gap-8  px-4 py-32  md:items-center md:justify-center "
+    >
       <article className="flex flex-col justify-center gap-8 md:max-w-1440">
         <h2 className="md:leading-1 text-md  font-accent font-bold uppercase tracking-wide md:text-2xl">
           Clockdown suporta as principais plataformas

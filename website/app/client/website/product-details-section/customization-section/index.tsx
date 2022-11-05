@@ -1,7 +1,7 @@
 export default function CustomizationSection() {
   return (
     <section className="flex flex-col gap-8 bg-blue-sm px-4 py-32  md:items-center md:justify-center md:bg-blue-md">
-      <div className="flex flex-col gap-4 md:max-w-1440 md:flex-row">
+      <div className="mx-auto flex max-w-[1280px] flex-col gap-4 md:min-w-[768px] md:flex-row lg:min-w-[1024px] xl:min-w-[1280px]">
         <div className="flex h-1/2 flex-col gap-4 md:h-full md:max-h-750 md:w-1/2">
           <h2 className="md:leading-1 text-md  font-accent font-bold uppercase tracking-wide md:text-4xl">
             Customização para o seu negocio

@@ -19,9 +19,9 @@ export default function PricingSection() {
   ];
 
   return (
-    <section>
-      <div className="mx-auto max-w-screen-xl py-16 px-4 lg:py-16 lg:px-6">
-        <div className="mx-auto mb-8 max-w-screen-md text-center lg:mb-12">
+    <section id="pricing-table">
+      <div className="mx-auto max-w-screen-xl py-16 px-4 md:py-32 md:px-6">
+        <div className="mx-auto mb-12 max-w-screen-md text-center">
           <h2 className="md:leading-1 text-md mb-4 font-accent font-bold uppercase tracking-wide md:text-3xl">
             Planos
           </h2>
@@ -30,35 +30,49 @@ export default function PricingSection() {
             tráfego para o seu site.
           </p>
         </div>
-        <div className="space-y-8 sm:gap-6 lg:grid lg:grid-cols-2 lg:space-y-0">
-          {/* Pricing Card {/*/}
-          <PriceCard
+        <PricingCards>
+          <PricingCard
             title={"Starter"}
             subtitle={"Comecemos aqui e vamos crescer juntos"}
-            price={"R$0"}
+            currency={"R$"}
+            price={"0"}
             priceDescription={"/por ano"}
             commonFeatures={commonFeatures}
             proFeatures={[]}
           />
-          <PriceCard
+          <PricingCard
             title={"Pro"}
             subtitle={"Mais poder mais diversão mais venda"}
-            price={"R$120"}
+            currency={"R$"}
+            price={"120"}
             priceDescription={"/por ano"}
             commonFeatures={commonFeatures}
             proFeatures={proFeatures}
           >
             {/* <PayPalButton /> */}
-          </PriceCard>
-        </div>
+          </PricingCard>
+        </PricingCards>
       </div>
     </section>
   );
 }
 
-interface PriceCardProps {
+interface PricingCardsProps {
+  children?: React.ReactNode;
+}
+
+function PricingCards({ children }: PricingCardsProps) {
+  return (
+    <div className="mx-auto w-max space-y-8 sm:gap-6 md:grid md:grid-cols-2 md:gap-8 md:space-y-0">
+      {children}
+    </div>
+  );
+}
+
+interface PricingCardProps {
   title: string;
   subtitle: string;
+  currency: string;
   price: string;
   priceDescription: string;
   commonFeatures: string[];
@@ -66,17 +80,18 @@ interface PriceCardProps {
   children?: React.ReactNode;
 }
 
-function PriceCard({
+function PricingCard({
   title,
   subtitle,
+  currency,
   price,
   priceDescription,
   commonFeatures,
   proFeatures,
   children,
-}: PriceCardProps) {
+}: PricingCardProps) {
   return (
-    <div className="mx-auto flex max-w-lg flex-col rounded-xl p-6 text-center text-gray-900 shadow xl:p-8">
+    <div className="mx-auto flex max-w-lg flex-col rounded-xl bg-slate-50 p-6 text-center text-gray-900 shadow-xl xl:p-8">
       <h3 className="mb-4 font-accent text-xl font-semibold uppercase text-blue-500">
         {title}
       </h3>
@@ -84,18 +99,19 @@ function PriceCard({
         {subtitle}
       </p>
       <div className="my-8 flex items-baseline justify-center">
+        <span className="mr-1 font-titles text-xl font-bold ">{currency}</span>
         <span className="mr-2 font-titles text-5xl font-bold ">{price}</span>
         <span>{priceDescription}</span>
       </div>
       {/* List {/*/}
       <ul className="mb-8 space-y-4 text-left">
         {commonFeatures.map((f, idx) => (
-          <PriceCardItem key={idx}>{f}</PriceCardItem>
+          <PricingCardItem key={idx}>{f}</PricingCardItem>
         ))}
         {proFeatures.map((f, idx) => (
-          <PriceCardItem key={idx} bolded={true}>
+          <PricingCardItem key={idx} bolded={true}>
             {f}
-          </PriceCardItem>
+          </PricingCardItem>
         ))}
       </ul>
       {children}
@@ -103,12 +119,12 @@ function PriceCard({
   );
 }
 
-interface PriceCardItemProps {
+interface PricingCardItemProps {
   children: React.ReactNode;
   bolded?: boolean;
 }
 
-function PriceCardItem({ children, bolded }: PriceCardItemProps) {
+function PricingCardItem({ children, bolded }: PricingCardItemProps) {
   return (
     <li
       className={`flex items-center space-x-3 font-body ${
@@ -124,7 +140,7 @@ function PriceCardItem({ children, bolded }: PriceCardItemProps) {
 function TickIcon() {
   return (
     <svg
-      className="h-5 w-5 flex-shrink-0 text-green-500 dark:text-green-400"
+      className="h-5 w-5 flex-shrink-0 text-blue-500"
       fill="currentColor"
       viewBox="0 0 20 20"
       xmlns="http://www.w3.org/2000/svg"

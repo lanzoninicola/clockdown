@@ -2,12 +2,13 @@ import { useEffect, useState } from "react";
 
 export default function HowItWorks() {
   return (
-    <section className="bg-tea-base flex min-h-[1500px] flex-col items-center gap-8 px-4 md:py-32">
-      <div className="flex flex-col justify-center gap-8 md:max-w-1440">
-        <h2 className="md:leading-1 text-md  font-accent font-bold uppercase tracking-wide md:text-4xl">
-          Como funciona
-        </h2>
-      </div>
+    <section
+      id="how-it-works"
+      className="flex min-h-[1400px] flex-col justify-center gap-8 bg-tea-base px-4"
+    >
+      <h2 className="md:leading-1 text-md  text-center font-accent font-bold uppercase tracking-wide md:text-4xl">
+        Como funciona
+      </h2>
       <div>
         <HowItWorksSteps steps={4} startOnStep={1} />
       </div>
@@ -81,7 +82,7 @@ function HowItWorksSteps({ steps, startOnStep }: HowItWorksStepsProps) {
       </div>
       <div className="flex flex-col items-center justify-center gap-16">
         <div className="flex flex-col gap-1">
-          <h3 className="font-titles text-3xl font-bold">
+          <h3 className="text-center font-titles text-3xl font-bold">
             {stepComponents[currentActiveStep].title}
           </h3>
           <h4 className="text-center font-titles text-xl">
