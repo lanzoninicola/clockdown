@@ -1,23 +1,27 @@
-import Section from "../components/section";
+import Section from "../common/section";
+import EditorButton from "../components/editor-button";
 
 export default function WhySection() {
   return (
-    <Section id={"why"} className={"bg-blue-sm py-32 md:bg-blue-md"}>
+    <Section id={"why"} className={" py-32"}>
       <div className="grid gap-16 px-4 md:grid-cols-2 md:px-0">
-        <div className="flex flex-col items-center justify-center gap-4 ">
-          <h2 className="md:leading-1 text-md  font-accent font-bold uppercase tracking-wide md:text-3xl">
-            Porque preciso de um contador regressivo
-          </h2>
-          <p className="md:text-md font-body text-lg md:max-w-[55ch]">
-            Prepara-se para o lançamento de um novo produto, evento ou promoção
-            e use o contador para aumentar as vendas. Você pode usar o contador
-            para qualquer tipo de evento, seja um evento de marketing, um evento
-            de vendas ou um evento de lançamento.
-          </p>
+        <div className="flex flex-col justify-center gap-8 ">
+          <div className="flex flex-col justify-center gap-4">
+            <h2 className="md:leading-1 text-md  font-accent font-bold uppercase tracking-wide md:text-3xl">
+              Porque preciso de um contador regressivo
+            </h2>
+            <p className="md:text-md font-body text-lg md:max-w-[55ch]">
+              Prepara-se para o lançamento de um novo produto, evento ou
+              promoção e use o contador para aumentar as vendas. Você pode usar
+              o contador para qualquer tipo de evento, seja um evento de
+              marketing, um evento de vendas ou um evento de lançamento.
+            </p>
+          </div>
+          <EditorButton />
         </div>
         <div className="grid gap-16 md:grid-cols-2 md:grid-rows-2 ">
           <div>
-            <h3 className="md:leading-1 mb-4 font-accent font-bold uppercase tracking-wide text-tea-base">
+            <h3 className="md:leading-1 mb-4 font-accent font-bold uppercase tracking-wide text-blue-500">
               Motivar seus visitantes a agir
             </h3>
             <p className="md:text-md font-body">
@@ -27,7 +31,7 @@ export default function WhySection() {
             </p>
           </div>
           <div>
-            <h3 className="md:leading-1 mb-4 font-accent font-bold uppercase text-tea-base">
+            <h3 className="md:leading-1 mb-4 font-accent font-bold uppercase text-blue-500">
               Encoraje seus visitantes a comprar
             </h3>
             <p className="md:text-md font-body">
@@ -37,7 +41,7 @@ export default function WhySection() {
             </p>
           </div>
           <div>
-            <h3 className="md:leading-1 mb-4 font-accent font-bold uppercase text-tea-base">
+            <h3 className="md:leading-1 mb-4 font-accent font-bold uppercase text-blue-500">
               Desperta o Sentido de Urgência
             </h3>
             <p className="md:text-md font-body">
@@ -47,7 +51,7 @@ export default function WhySection() {
             </p>
           </div>
           <div>
-            <h3 className="md:leading-1 mb-4 font-accent font-bold uppercase text-tea-base">
+            <h3 className="md:leading-1 mb-4 font-accent font-bold uppercase text-blue-500">
               Decisão mais rápida é melhor
             </h3>
             <p className="md:text-md font-body">

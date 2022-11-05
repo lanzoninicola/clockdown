@@ -36,7 +36,7 @@ export default function PricingSection() {
             subtitle={"Comecemos aqui e vamos crescer juntos"}
             currency={"R$"}
             price={"0"}
-            priceDescription={"/por ano"}
+            priceDescription={"/por mês"}
             commonFeatures={commonFeatures}
             proFeatures={[]}
           />
@@ -44,8 +44,9 @@ export default function PricingSection() {
             title={"Pro"}
             subtitle={"Mais poder mais diversão mais venda"}
             currency={"R$"}
-            price={"120"}
-            priceDescription={"/por ano"}
+            price={"10"}
+            priceDescription={"/por mês"}
+            priceAdditionalDescription={"*pagamento anual"}
             commonFeatures={commonFeatures}
             proFeatures={proFeatures}
           >
@@ -75,6 +76,7 @@ interface PricingCardProps {
   currency: string;
   price: string;
   priceDescription: string;
+  priceAdditionalDescription?: string;
   commonFeatures: string[];
   proFeatures: string[];
   children?: React.ReactNode;
@@ -86,6 +88,7 @@ function PricingCard({
   currency,
   price,
   priceDescription,
+  priceAdditionalDescription,
   commonFeatures,
   proFeatures,
   children,
@@ -98,11 +101,19 @@ function PricingCard({
       <p className="font-titles font-light text-gray-500 dark:text-gray-400 sm:text-lg ">
         {subtitle}
       </p>
-      <div className="my-8 flex items-baseline justify-center">
-        <span className="mr-1 font-titles text-xl font-bold ">{currency}</span>
-        <span className="mr-2 font-titles text-5xl font-bold ">{price}</span>
-        <span>{priceDescription}</span>
+      <div className="my-8 flex flex-col">
+        <div className=" mb-4 flex items-baseline justify-center">
+          <span className="mr-1 font-titles text-xl font-bold ">
+            {currency}
+          </span>
+          <span className="mr-2 font-titles text-5xl font-bold ">{price}</span>
+          <span>{priceDescription}</span>
+        </div>
+        <span className="font-body text-sm text-gray-400">
+          {priceAdditionalDescription}
+        </span>
       </div>
+
       {/* List {/*/}
       <ul className="mb-8 space-y-4 text-left">
         {commonFeatures.map((f, idx) => (

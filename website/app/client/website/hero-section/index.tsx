@@ -1,3 +1,5 @@
+import EditorButton from "../components/editor-button";
+
 export default function HeroSection() {
   return (
     <section
@@ -14,18 +16,14 @@ export default function HeroSection() {
               Despertar o sentido de Urgência
             </h1>
           </div>
-          <button className="max-w-max rounded-md bg-blue-400 px-4 py-2">
-            <span className="tracki font-body font-bold uppercase text-white ">
-              Criar um novo contador
-            </span>
-          </button>
+          <EditorButton />
         </div>
 
         <div className="flex h-1/2 justify-center md:h-full md:w-1/2">
           <img
-            src="/images/mobile-phone-bg.png"
+            src="/images/hero.png"
             alt="hero"
-            className="h-450 md:h-full"
+            className="h-450 animate-float md:h-full "
           />
         </div>
       </div>
