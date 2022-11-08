@@ -207,7 +207,7 @@
   },
   "onboarding": {
     "title": "Bem vindo ao ClockDown!",
-    "body": "Você pode criar contadores regressivos e editá-los em qualquer momento. Cadastre-se abaixo para começar.",
+    "body": "Você pode criar contadores regressivos e editá-los em qualquer momento.\nCadastre-se abaixo para começar.",
     "buttonLabel": "Cadastrar",
     "namePlaceholder": "Nome completo",
     "emailPlaceholder": "Seu melhor email",
@@ -215,8 +215,7 @@
     "privacyAndTermsConsent": "Seus termos e condições são aceitáveis para mim. Eu li a política de privacidade. Estou ciente de que você se preocupa com minha privacidade e nunca compartilhará meus dados com ninguém.",
     "privacyPolicy": "Política de privacidade",
     "termsOfService": "Termos de serviço",
-    "consentStatement1": "Ao clicar em \"Cadastrar\", você concorda com nossos termos de serviço",
-    "consentStatement2": "e política de privacidade.",
+    "consentStatement": "Ao clicar em \"Cadastrar\", você concorda com nossos termos de serviço\ne política de privacidade.",
     "success": {
       "title": "Obrigado por se cadastrar!",
       "subtitle": "Agora você pode criar seu primeiro contador regressivo.",

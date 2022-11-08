@@ -206,7 +206,7 @@
   },
   "onboarding": {
     "title": "Benvenuto!",
-    "body": "Clockdown é uno strumento per creare e gestire i tuoi timer. Registra il tuo account per creare il tuo primo timer.",
+    "body": "Clockdown é uno strumento per creare e gestire i tuoi timer.\nRegistra il tuo account per creare il tuo primo timer.",
     "buttonLabel": "Registrati",
     "namePlaceholder": "Nome completo",
     "emailPlaceholder": "La tua migliore email",
@@ -214,8 +214,7 @@
     "privacyAndTermsConsent": "I vostri termini e condizioni sono accettabili per me. Ho letto l'informativa sulla privacy. Sono consapevole che avete a cuore la mia privacy e che non condividerete mai i miei dati con nessuno.",
     "privacyPolicy": "Informativa sulla privacy",
     "termsAndConditions": "Termini e condizioni",
-    "consentStatement1": "Procedendo, accetti i nostri Termini e Condizioni e",
-    "consentStatement2": "la nostra Informativa sulla Privacy.",
+    "consentStatement": "Procedendo, accetti i nostri Termini e Condizioni e\nla nostra Informativa sulla Privacy.",
     "success": {
       "title": "Benvenuto!",
       "subtitle": "Ora puoi creare il tuo primo timer.",

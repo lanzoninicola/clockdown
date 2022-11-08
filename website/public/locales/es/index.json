@@ -214,7 +214,7 @@
   },
   "onboarding": {
     "title": "Bienvenido a Clockdown!",
-    "subtitle": "Clockdown es una herramienta para crear contadores de tiempo. Registre su cuenta para comenzar.",
+    "subtitle": "Clockdown es una herramienta para crear contadores de tiempo.\nRegistre su cuenta para comenzar.",
     "buttonLabel": "Registrarme",
     "namePlaceholder": "Nombre completo",
     "emailPlaceholder": "Correo electrónico",
@@ -222,8 +222,7 @@
     "privacyAndTermsConsent": "Sus condiciones son aceptables para mí.He leído la política de privacidad. Soy consciente de que os preocupáis por mi privacidad y de que nunca compartiréis mis datos con nadie.",
     "privacyPolicy": "Política de privacidad",
     "termsOfService": "Términos de servicio",
-    "consentStatement1": "He leído y acepto los términos de servicio",
-    "consentStatement2": "e la política de privacidad.",
+    "consentStatement": "He leído y acepto los términos de servicio\ne la política de privacidad.",
     "success": {
       "title": "¡Bienvenido!",
       "subtitle": "Ahora puedes crear tu primer contador.",

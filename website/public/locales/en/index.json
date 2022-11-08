@@ -207,7 +207,7 @@
   },
   "onboarding": {
     "title": "Welcome to Clockdown!",
-    "subtitle": "This is the first time you are using Clockdown. Register your account to get started.",
+    "subtitle": "Clockdown will help you to create beautiful countdowns.\nRegister your account to get started.",
     "buttonLabel": "Register",
     "namePlaceholder": "Your name",
     "emailPlaceholder": "Your best email",
@@ -215,8 +215,7 @@
     "privacyAndTermsConsent": "Your terms and conditions are acceptable to me. I read the privacy policy, I am aware that you care about my privacy and will never share my data with anyone.",
     "privacyPolicy": "Privacy Policy",
     "termsAndConditions": "Terms and Conditions",
-    "consentStatement1": "By clicking, you are agreeing to our Terms of Service.",
-    "consentStatement2": "Read our Privacy Policy.",
+    "consentStatement": "By clicking, you are agreeing to our Terms of Service.\nRead our Privacy Policy.",
     "success": {
       "title": "Thank you!",
       "subtitle": "You are now registered. Now you can create your first countdown.",

@@ -64,7 +64,11 @@ export default function UserRegistrationPage() {
 
   return (
     <ChakraProvider theme={theme}>
-      <Grid gridTemplateColumns={"repeat(2, 1fr)"} minH={["100vh"]}>
+      <Grid
+        gridTemplateColumns={["1fr", "repeat(2, 1fr)"]}
+        gridTemplateRows={["120px, 1fr", "1fr"]}
+        minH={["100vh"]}
+      >
         <Grid placeItems={"center"} background={"blue.300"}>
           <Image
             src="/images/user-registration/stepping-up.png"
@@ -73,9 +77,26 @@ export default function UserRegistrationPage() {
             borderRadius={"md"}
           />
         </Grid>
-        <Grid placeItems={"center"}>
+        <Grid placeItems={"center"} paddingInline={["2rem", 0, 0]}>
           <Form method="post" ref={formRef}>
-            <VStack gap={16} alignItems="flex-start">
+            <VStack gap={[8, 16, 16]} alignItems="flex-start">
+              <VStack alignItems="flex-start">
+                <Text
+                  fontSize={"2xl"}
+                  fontWeight={"bold"}
+                  color={"blue.500"}
+                  whiteSpace={[null, "pre-line"]}
+                >
+                  {t("onboarding.title")}
+                </Text>
+                <Text
+                  fontSize={"sm"}
+                  color={"gray.500"}
+                  whiteSpace={[null, "pre-line"]}
+                >
+                  {t("onboarding.subtitle")}
+                </Text>
+              </VStack>
               <VStack gap={8} w="100%" alignItems={"flex-start"}>
                 <VStack>
                   <FormControl isRequired>
@@ -108,6 +129,7 @@ export default function UserRegistrationPage() {
                     <Input
                       id="email"
                       name="email"
+                      type={"email"}
                       disabled={formState === "submitting"}
                       placeholder={t("onboarding.emailPlaceholder")}
                       fontFamily={"Inter, sans-serif"}
@@ -128,27 +150,17 @@ export default function UserRegistrationPage() {
                   colorScheme="blue"
                   data-test="onboarding-form-submit"
                 >
-                  Submit
+                  {t("onboarding.buttonLabel")}
                 </Button>
-                <VStack alignItems={"flex-start"}>
-                  <Text
-                    as="span"
-                    fontSize={"smaller"}
-                    color={"gray.500"}
-                    lineHeight={1}
-                    fontFamily={"Inter, sans-serif"}
-                  >
-                    {t("onboarding.consentStatement1")}
-                  </Text>
-                  <Text
-                    as="span"
-                    fontSize={"small"}
-                    color={"gray.500"}
-                    lineHeight={1}
-                  >
-                    {t("onboarding.consentStatement2")}
-                  </Text>
-                </VStack>
+                <Text
+                  as="span"
+                  fontSize={"smaller"}
+                  color={"gray.500"}
+                  fontFamily={"Inter, sans-serif"}
+                  whiteSpace={[null, "pre-line"]}
+                >
+                  {t("onboarding.consentStatement")}
+                </Text>
               </VStack>
             </VStack>
           </Form>
