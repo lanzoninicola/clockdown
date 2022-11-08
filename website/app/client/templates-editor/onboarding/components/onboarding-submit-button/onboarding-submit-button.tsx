@@ -2,7 +2,7 @@ import { Button } from "@chakra-ui/react";
 import { t } from "i18next";
 import useOnboardingModalForm from "../../hooks/useOnboardingModalForm";
 
-interface OnboardingSubmitButton {
+interface OnboardingSubmitButtonProps {
   /** The button label */
   label?: string;
   /** The onClick event */
@@ -12,7 +12,7 @@ interface OnboardingSubmitButton {
 export default function OnboardingSubmitButton({
   label,
   onClick,
-}: OnboardingSubmitButton) {
+}: OnboardingSubmitButtonProps) {
   const { formState, handleSubmit } = useOnboardingModalForm();
   const { fullname, email, consent_terms_privacy } = formState;
 

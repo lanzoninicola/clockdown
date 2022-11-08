@@ -1,5 +1,4 @@
 import { Box, Tooltip } from "@chakra-ui/react";
-import Teext from "../../../../../../global/common/layout/teext/teext";
 
 import {
   TEMPLATES,
@@ -25,7 +24,7 @@ export default function TemplateView({ src, alt, name, id }: TemplateProps) {
         h={"100%"}
         cursor={"pointer"}
       >
-        <img src={`${TEMPLATES_BASE_ASSET_PATH}${src}.jpg`} alt={alt} />
+        <img src={`images/templates-thumb/${src}.jpg`} alt={alt} />
       </Box>
     </Tooltip>
   );

@@ -1,11 +1,7 @@
 import { client } from "../client/client";
-import { APIResponse, OnboardingRequestPayload } from "../types";
-import useOnboardingRestConfig from "./useOnboardingRestConfig";
+import type { APIResponse, OnboardingRequestPayload } from "../types";
 
 export default function useOnboardingRestApi() {
-  const { doOnboardingConfig, shouldOnboardingRequiredConfig } =
-    useOnboardingRestConfig();
-
   const doOnboarding = async (
     payload: OnboardingRequestPayload
   ): Promise<APIResponse> => {
@@ -16,14 +12,5 @@ export default function useOnboardingRestApi() {
     });
   };
 
-  const shouldOnboardingRequired = async (
-    email: string
-  ): Promise<APIResponse<boolean>> => {
-    return client(shouldOnboardingRequiredConfig.endpoint(email), {
-      method: "GET",
-      headers: shouldOnboardingRequiredConfig.headers,
-    });
-  };
-
-  return { doOnboarding, shouldOnboardingRequired };
+  return { doOnboarding };
 }

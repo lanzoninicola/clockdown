@@ -1,4 +1,5 @@
-import { Box, Flex, Grid, HStack } from "@chakra-ui/react";
+import { Box, Button, Flex, Grid, HStack } from "@chakra-ui/react";
+import { Link } from "@remix-run/react";
 import { useTranslation } from "react-i18next";
 
 import { ModalNewCountdown } from "../../countdowns/components";
@@ -11,6 +12,8 @@ import {
   PremiumFeatureGuard,
 } from "../../premium-features";
 import { LanguagesBar, Logo } from "../common";
+import Teext from "../common/layout/teext/teext";
+import { FiUser } from "@react-icons/all-files/fi/FiUser";
 
 //TODO: detect language from Wordpress
 const lngs: Languages = {
@@ -61,7 +64,12 @@ export default function Header() {
         <LanguagesBar languages={lngs} />
       </Grid>
       <BreakpointsBar />
-      <Flex justifySelf={"flex-end"} alignItems={"center"}>
+      <Flex justifySelf={"flex-end"} alignItems={"center"} gap={4}>
+        <Link to="/user-registration">
+          <Button colorScheme={"gray"} size={"sm"} leftIcon={<FiUser />}>
+            Login
+          </Button>
+        </Link>
         <PremiumButtonWithPopover />
       </Flex>
     </Grid>

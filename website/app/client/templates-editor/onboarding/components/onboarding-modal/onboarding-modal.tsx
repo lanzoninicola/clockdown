@@ -49,13 +49,13 @@ export default function OnboardingModal({
     onClose: onCloseModal,
   } = useDisclosure();
   const { status, formState, dispatch } = useOnboardingContext();
-  const { maxFailureCount } = useOnboardingConfig();
+  // const { maxFailureCount } = useOnboardingConfig();
 
-  useEffect(() => {
-    if (formState.failureCount >= maxFailureCount) {
-      dispatch({ type: "ONBOARDING_FORM_FAILURE_MAX" });
-    }
-  }, [formState.failureCount]);
+  // useEffect(() => {
+  //   if (formState.failureCount >= maxFailureCount) {
+  //     dispatch({ type: "ONBOARDING_FORM_FAILURE_MAX" });
+  //   }
+  // }, [formState.failureCount, maxFailureCount, dispatch]);
 
   const { t } = useTranslation();
 
@@ -84,10 +84,10 @@ export default function OnboardingModal({
     failure: {
       title: t("onboarding.failed.title"),
       subtitle: t("onboarding.failed.subtitle"),
-      image: error,
+      image: "null",
       body: (
         <Teext fontSize={"small"} color="red.600">
-          {formState.error}
+          {formState?.error}
         </Teext>
       ),
       footer: (
@@ -120,6 +120,7 @@ export default function OnboardingModal({
     return <>{children}</>;
   }
 
+  /**
   return (
     <>
       <div
@@ -176,4 +177,7 @@ export default function OnboardingModal({
       </Modal>
     </>
   );
+   */
+
+  return <div>Onboarding Modal</div>;
 }

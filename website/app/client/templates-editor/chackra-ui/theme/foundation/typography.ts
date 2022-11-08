@@ -8,8 +8,8 @@ const typography = {
   },
   fonts: {
     ...chakraTheme.fonts,
-    // heading: `Inter, ${chakraTheme.fonts.heading}`,
-    // body: `Inter, ${chakraTheme.fonts.body}`,
+    heading: `Inter, ${chakraTheme.fonts.heading}`,
+    body: `Inter, ${chakraTheme.fonts.body}`,
   },
   fontSizes: {
     ...chakraTheme.fontSizes,
