@@ -27,8 +27,6 @@ services:
       - frontend
       - backend
       - nginxproxymanager
-    depends_on:
-      - rest-api
     command: "npm start"
     working_dir: /myapp
     environment:
@@ -38,25 +36,6 @@ services:
       - "3000"
     #ports:
     #  - "80:3000"
-
-  rest-api:
-    container_name: clockdown-rest-api
-    build: ./rest-api
-    hostname: clockdown-rest-api
-    #restart: always
-    networks:
-      - backend
-      - nginxproxymanager
-    depends_on:
-      - postgres
-    command: "npm run start"
-    working_dir: /home/node/server
-    environment:
-      - NODE_ENV=production
-    expose:
-      - "8090"
-    #ports:
-    # - "80:8090"
 
   # This is the configuration for our PostgreSQL database container
   # Note the `postgres` name is important, in out Node app when we refer
