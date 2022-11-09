@@ -17,12 +17,14 @@ networks:
     driver: bridge
 
 services:
-  website-editor:
-    container_name: clockdown-website-editor
+  website:
+    container_name: clockdown-website
     # specifies the build configuration for creating container image from source (Dockerfile)
-    build: ./website-editor
-    hostname: clockdown-website-editor
+    build: ./website
+    hostname: clockdown-website
     #restart: always
+    depends_on:
+      - postgres
     networks:
       - frontend
       - backend

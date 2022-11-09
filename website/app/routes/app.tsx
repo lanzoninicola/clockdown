@@ -6,6 +6,16 @@ import { EditorProvider } from "~/client/templates-editor/countdown-state-manage
 import MainContent from "~/client/templates-editor/global/common/layout/main-content/main-content";
 import Header from "~/client/templates-editor/global/header/header";
 import EditorPage from "~/client/templates-editor/editor/editor-page";
+import { authenticator } from "~/server/auth/remix-auth/auth.server";
+import { json, LoaderFunction } from "@remix-run/node";
+
+export const loader: LoaderFunction = async ({ request }) => {
+  let user = await authenticator.isAuthenticated(request);
+
+  console.log("user", user);
+
+  return null;
+};
 
 const ClockdownApp = () => (
   <ChakraProvider theme={theme}>

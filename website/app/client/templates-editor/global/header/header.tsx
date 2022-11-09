@@ -65,7 +65,7 @@ export default function Header() {
       </Grid>
       <BreakpointsBar />
       <Flex justifySelf={"flex-end"} alignItems={"center"} gap={4}>
-        <Link to="/user-registration">
+        <Link to="/auth">
           <Button colorScheme={"gray"} size={"sm"} leftIcon={<FiUser />}>
             Login
           </Button>

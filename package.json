@@ -6,11 +6,12 @@
   "author": "Nicola <lanzoni.nicola@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev:widget:build": "cd widget && npm run build",
-    "dev:widget:pub": "copyfiles -f ./widget/public/* ./website-editor/public/widget",
-    "dev:widget": "npm run dev:widget:build && npm run dev:widget:pub",
-    "dev:docker:up": "npm run dev:widget && docker compose -f docker-compose.yml up -d --build",
-    "dev:docker:up:no-cache": "npm run dev:widget && docker compose -f docker-compose.yml up -d --build --no-cache",
-    "dev:stop": "docker compose -f docker-compose.yml down"
+    "widget:migrate": "copyfiles -f ./website/app/client/templates-editor/countdown* ./widget/src",
+    "widget:build": "cd widget && npm run build",
+    "widget:pub": "copyfiles -f ./widget/public/* ./website/public/widget",
+    "widget:deploy": "npm run widget:migrate && npm run widget:build && npm run widget:pub",
+    "docker:up": "npm run widget:deploy && docker compose -f docker-compose.yml up -d --build",
+    "docker:up:no-cache": "npm run widget:deploy && docker compose -f docker-compose.yml up -d --build --no-cache",
+    "stop": "docker compose -f docker-compose.yml down"
   }
 }
