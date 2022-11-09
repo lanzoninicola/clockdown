@@ -4,9 +4,12 @@
   "scripts": {
     "build": "npm run build:css && remix build",
     "build:css": "tailwindcss -m -i ./styles/app.css -o app/styles/app.css",
-    "dev": "concurrently \"npm run dev:css\" \"remix dev\"",
+    "dev": "dotenv -e .env.local -- concurrently \"npm run dev:css\" \"remix dev\"",
     "dev:css": "tailwindcss -w -i ./styles/app.css -o app/styles/app.css",
-    "start": "remix-serve build"
+    "start": "npm run prisma:migrate:prod && remix-serve build",
+    "prisma:introspect:local": "dotenv -e .env.local -- npx prisma db pull",
+    "prisma:migrate:local": "dotenv -e .env.local -- npx prisma migrate dev --name postgres-init",
+    "prisma:migrate:prod": "dotenv -e .env -- npx prisma migrate deploy --name deploy-prod"
   },
   "dependencies": {
     "@chakra-ui/react": "^1.8.9",
@@ -16,6 +19,7 @@
     "@emotion/styled": "^11.10.5",
     "@fontsource/inter": "^4.5.11",
     "@paypal/react-paypal-js": "^7.8.1",
+    "@prisma/client": "^4.6.0",
     "@react-icons/all-files": "^4.1.0",
     "@remix-run/node": "*",
     "@remix-run/react": "*",
@@ -46,11 +50,13 @@
     "@types/react-dom": "^17.0.13",
     "autoprefixer": "^10.4.13",
     "concurrently": "^7.5.0",
+    "dotenv-cli": "^6.0.0",
     "eslint": "^8.10.0",
     "husky": "^8.0.1",
     "npm-run-all": "^4.1.5",
     "postcss": "^8.4.18",
     "prettier-plugin-tailwindcss": "^0.1.8",
+    "prisma": "^4.6.0",
     "tailwindcss": "^3.2.1",
     "typescript": "^4.7.4"
   },
