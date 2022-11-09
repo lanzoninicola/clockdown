@@ -11,6 +11,7 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react";
+import { PrismaClient } from "@prisma/client";
 import { ActionFunction, LoaderFunction, redirect } from "@remix-run/node";
 import { fetch, json } from "@remix-run/node";
 import { Form, useActionData, useTransition } from "@remix-run/react";
@@ -27,6 +28,7 @@ export const loader: LoaderFunction = async () => {
 };
 
 export const action: ActionFunction = async ({ request }) => {
+  const prisma = new PrismaClient();
   const formData = await request.formData();
 
   const email = formData.get("email") as string;
@@ -36,19 +38,23 @@ export const action: ActionFunction = async ({ request }) => {
     return json({ error: "Missing email or fullname" }, { status: 400 });
   }
 
-  const response = await fetch("http://localhost:8090/api/auth/signup", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    // body: JSON.stringify({ email, fullname }),
-  });
+  try {
+    const user = await prisma.user.create({
+      data: {
+        email,
+        fullname,
+        password: "password",
+      },
+    });
 
-  if (response.status === 200) {
+    console.log(user);
+
     return redirect("/user-registration/success");
-  }
+  } catch (error) {
+    console.log(error);
 
-  return json({ error: response.body }, { status: response.status });
+    return json({ error }, { status: 500 });
+  }
 };
 
 export default function UserRegistrationPage() {
