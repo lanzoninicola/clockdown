@@ -1,0 +1,9 @@
+### USER REGISTRATION
+POST http://localhost:8090/api/auth/signup
+Content-Type: application/json
+
+{
+    "name": "nicola",
+    "email": "test@gmail.com",
+    "password": "test"
+}

@@ -11,7 +11,8 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react";
-import { ActionFunction, json, LoaderFunction } from "@remix-run/node";
+import { ActionFunction, LoaderFunction, redirect } from "@remix-run/node";
+import { fetch, json } from "@remix-run/node";
 import { Form, useActionData, useTransition } from "@remix-run/react";
 import { useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
@@ -31,13 +32,23 @@ export const action: ActionFunction = async ({ request }) => {
   const email = formData.get("email") as string;
   const fullname = formData.get("fullname") as string;
 
-  console.log({ email, fullname });
-
   if (!email || !fullname) {
     return json({ error: "Missing email or fullname" }, { status: 400 });
   }
 
-  return json({ email, fullname });
+  const response = await fetch("http://localhost:8090/api/auth/signup", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    // body: JSON.stringify({ email, fullname }),
+  });
+
+  if (response.status === 200) {
+    return redirect("/user-registration/success");
+  }
+
+  return json({ error: response.body }, { status: response.status });
 };
 
 export default function UserRegistrationPage() {
@@ -55,6 +66,8 @@ export default function UserRegistrationPage() {
     : "idle";
 
   const formRef = useRef<HTMLFormElement>(null);
+
+  console.log(actionData);
 
   useEffect(() => {
     if (formRef.current) {
