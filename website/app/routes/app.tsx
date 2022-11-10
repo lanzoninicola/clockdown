@@ -30,12 +30,7 @@ const App = () => {
 
   return (
     <ChakraProvider theme={theme}>
-      <ClockdownApp
-        onboardedUser={{
-          email: userAuth.email,
-          fullname: userAuth.fullname,
-        }}
-      />
+      <ClockdownApp onboardedUser={userAuth} />
     </ChakraProvider>
   );
 };

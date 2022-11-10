@@ -206,9 +206,17 @@
     }
   },
   "onboarding": {
-    "title": "Benvenuto!",
-    "body": "Clockdown é uno strumento per creare e gestire i tuoi timer.\nRegistra il tuo account per creare il tuo primo timer.",
-    "buttonLabel": "Registrati",
+    "firstTime": "Prima volta qui?",
+    "signup": {
+      "title": "Benvenuto!",
+      "body": "Clockdown é uno strumento per creare e gestire i tuoi timer.\nRegistra il tuo account per creare il tuo primo timer.",
+      "buttonLabel": "Registrati"
+    },
+    "login": {
+      "title": "Bentornato!",
+      "body": "Clockdown é uno strumento per creare e gestire i tuoi timer.\nRegistra il tuo account per creare il tuo primo timer.",
+      "buttonLabel": "Accedi"
+    },
     "namePlaceholder": "Nome completo",
     "emailPlaceholder": "La tua migliore email",
     "passwordPlaceholder": "La tua migliore password",

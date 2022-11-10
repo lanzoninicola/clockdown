@@ -14,7 +14,7 @@ export default function Editor() {
 
   return (
     <EditorWrapper>
-      <Box mt={"50px"}>
+      <Box mt={"70px"}>
         <VStack position="absolute" top={5} left={5} zIndex={40} spacing={24}>
           <EditorPropertiesBar />
         </VStack>

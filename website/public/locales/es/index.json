@@ -214,9 +214,17 @@
     }
   },
   "onboarding": {
-    "title": "Bienvenido a Clockdown!",
-    "subtitle": "Clockdown es una herramienta para crear contadores de tiempo.\nRegistre su cuenta para comenzar.",
-    "buttonLabel": "Registrarme",
+    "firstTime": "Primera vez?",
+    "signup": {
+      "title": "Bienvenido a Clockdown!",
+      "subtitle": "Clockdown es una herramienta para crear contadores de tiempo.\nRegistre su cuenta para comenzar.",
+      "buttonLabel": "Registrarme"
+    },
+    "login": {
+      "title": "Bienvenido de nuevo!",
+      "subtitle": "Clockdown es una herramienta para crear contadores de tiempo.\nRegistre su cuenta para comenzar.",
+      "buttonLabel": "Iniciar sesión"
+    },
     "namePlaceholder": "Nombre completo",
     "emailPlaceholder": "Correo electrónico",
     "passwordPlaceholder": "Contraseña",

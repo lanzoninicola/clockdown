@@ -207,9 +207,18 @@
     }
   },
   "onboarding": {
-    "title": "Bem vindo ao ClockDown!",
-    "body": "Você pode criar contadores regressivos e editá-los em qualquer momento.\nCadastre-se abaixo para começar.",
-    "buttonLabel": "Cadastrar",
+    "firstTime": "Primeira vez aqui?",
+    "signup": {
+      "title": "Bem vindo ao ClockDown!",
+      "body": "Você pode criar contadores regressivos e editá-los em qualquer momento.\nCadastre-se abaixo para começar.",
+      "buttonLabel": "Cadastrar"
+    },
+    "login": {
+      "title": "Bem vindo de volta!",
+      "body": "Você pode criar contadores regressivos e editá-los em qualquer momento.\nCadastre-se abaixo para começar.",
+      "buttonLabel": "Entrar"
+    },
+
     "namePlaceholder": "Nome completo",
     "emailPlaceholder": "Seu melhor email",
     "passwordPlaceholder": "Senha",

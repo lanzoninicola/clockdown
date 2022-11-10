@@ -59,7 +59,7 @@ export default function EditorPreview() {
         </Box>
       </Preview>
 
-      <HtmlEmbeddedCode />
+      {/* <HtmlEmbeddedCode /> */}
     </VStack>
   );
 }

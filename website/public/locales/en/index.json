@@ -207,9 +207,17 @@
     }
   },
   "onboarding": {
-    "title": "Welcome to Clockdown!",
-    "subtitle": "Clockdown will help you to create beautiful countdowns.\nRegister your account to get started.",
-    "buttonLabel": "Register",
+    "firstTime": "First time here?",
+    "signup": {
+      "title": "Welcome to Clockdown!",
+      "subtitle": "Clockdown will help you to create beautiful countdowns.\nRegister your account to get started.",
+      "buttonLabel": "Register"
+    },
+    "login": {
+      "title": "Welcome back!",
+      "subtitle": "Clockdown will help you to create beautiful countdowns.\nRegister your account to get started.",
+      "buttonLabel": "Login"
+    },
     "namePlaceholder": "Your name",
     "emailPlaceholder": "Your best email",
     "passwordPlaceholder": "Your password",

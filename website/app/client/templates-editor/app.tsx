@@ -43,7 +43,7 @@ const ClockdownApp = ({ onboardedUser }: ClockdownAppProps) => {
         }}
       >
         <MainContent>
-          <Header />
+          <Header onboardedUser={onboardedUser} />
           <EditorPage />
         </MainContent>
       </EditorProvider>

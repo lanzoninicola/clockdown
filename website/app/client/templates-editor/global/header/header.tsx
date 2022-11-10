@@ -1,4 +1,12 @@
-import { Box, Button, Flex, Grid, HStack } from "@chakra-ui/react";
+import {
+  Box,
+  Button,
+  Flex,
+  Grid,
+  HStack,
+  Text,
+  VStack,
+} from "@chakra-ui/react";
 import { Link } from "@remix-run/react";
 import { useTranslation } from "react-i18next";
 
@@ -14,6 +22,8 @@ import {
 import { LanguagesBar, Logo } from "../common";
 import Teext from "../common/layout/teext/teext";
 import { FiUser } from "@react-icons/all-files/fi/FiUser";
+import EditorButton from "~/client/website/components/editor-button";
+import HtmlEmbeddedCodeInput from "../../editor/html-embedded-code/components/html-embedded-code-input/html-embedded-code-input";
 
 //TODO: detect language from Wordpress
 const lngs: Languages = {
@@ -23,55 +33,87 @@ const lngs: Languages = {
   it: { nativeName: "Italiano" },
 };
 
-export default function Header() {
+export default function Header({
+  onboardedUser,
+}: {
+  onboardedUser: { email: string; fullname?: string } | null;
+}) {
   const { t } = useTranslation();
 
   return (
-    <Grid
-      gridTemplateColumns={"1fr 1fr 1fr"}
-      paddingInline="1rem"
-      alignItems={"center"}
-      justifyItems={"center"}
-      minH="50px"
-      w={"100%"}
-      columnGap={"1rem"}
+    <Flex
+      flexDirection={"column"}
       position="fixed"
       top={0}
       left={0}
       zIndex={100}
-      bg={"gray.200"}
     >
       <Grid
-        placeItems={"start"}
+        gridTemplateColumns={"1fr 1fr 1fr"}
+        paddingInline="1rem"
         alignItems={"center"}
-        gridTemplateColumns={"1fr 1fr 1fr 1fr"}
-        gap={"1rem"}
+        justifyItems={"center"}
+        minH="50px"
+        w={"100%"}
+        columnGap={"1rem"}
+        bg={"gray.200"}
       >
-        <Logo />
-        <PremiumFeatureGuard
-          variant="modal"
-          hide={true}
-          customText={t("premiumFeatures.modal.body.newCountdown", {
-            maxCountdowns: "one",
-          })}
-          ctaVariant={4}
+        <Grid
+          placeItems={"start"}
+          alignItems={"center"}
+          gridTemplateColumns={"1fr 1fr 1fr 1fr"}
+          gap={"1rem"}
         >
-          <ModalNewCountdown />
-        </PremiumFeatureGuard>
-        <PremiumFeatureGuard hide>
-          <EditorSave />
-        </PremiumFeatureGuard>
-        <LanguagesBar languages={lngs} />
+          <Logo />
+          <PremiumFeatureGuard
+            variant="modal"
+            hide={true}
+            customText={t("premiumFeatures.modal.body.newCountdown", {
+              maxCountdowns: "one",
+            })}
+            ctaVariant={4}
+          >
+            <ModalNewCountdown />
+          </PremiumFeatureGuard>
+          <PremiumFeatureGuard hide>
+            <EditorSave />
+          </PremiumFeatureGuard>
+          <LanguagesBar languages={lngs} />
+        </Grid>
+        <BreakpointsBar />
+        <Flex justifySelf={"flex-end"} alignItems={"center"} gap={4}>
+          {!onboardedUser && (
+            <Link to="/login">
+              <Button colorScheme={"gray"} size={"sm"} leftIcon={<FiUser />}>
+                Login
+              </Button>
+            </Link>
+          )}
+
+          <HtmlEmbeddedCodeInput inlineBlock={true} variant={"secondary"} />
+        </Flex>
       </Grid>
-      <BreakpointsBar />
-      <Flex justifySelf={"flex-end"} alignItems={"center"} gap={4}>
-        <Link to="/auth">
-          <Button colorScheme={"gray"} size={"sm"} leftIcon={<FiUser />}>
-            Login
-          </Button>
-        </Link>
-        <PremiumButtonWithPopover />
-      </Flex>
-    </Grid>
+      <Link to="/#pricing-table" target="_blank">
+        <VStack
+          bg={"yellow.300"}
+          _hover={{
+            bg: "yellow.400",
+          }}
+          w={"100%"}
+          cursor={"pointer"}
+        >
+          <Text
+            as="span"
+            fontWeight={600}
+            letterSpacing={1}
+            fontSize={"sm"}
+            color={"black"}
+            textTransform={"uppercase"}
+          >
+            {t(`premiumFeatures.upgradeCTA.variant1`)}
+          </Text>
+        </VStack>
+      </Link>
+    </Flex>
   );
 }
