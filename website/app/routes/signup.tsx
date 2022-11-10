@@ -1,19 +1,12 @@
 import { ChakraProvider, Grid, Image } from "@chakra-ui/react";
-import {
-  ActionFunction,
-  json,
-  LoaderFunction,
-  redirect,
-} from "@remix-run/node";
+import { User } from "@prisma/client";
+import type { ActionFunction, LoaderFunction } from "@remix-run/node";
+import { json } from "@remix-run/node";
 import { useActionData, useTransition } from "@remix-run/react";
 import { useTranslation } from "react-i18next";
 import { AuthForm } from "~/client/common/auth/components";
 import { theme } from "~/client/templates-editor/chackra-ui/theme/theme";
-import { authenticator } from "~/server/auth/remix-auth/auth.server";
-import {
-  commitSession,
-  getSession,
-} from "~/server/auth/remix-auth/session.server";
+import redirectWithPayload from "~/server/auth/remix-auth/utils/redirect-with-payload.server";
 
 export const loader: LoaderFunction = async () => {
   return json({
@@ -34,16 +27,9 @@ export const action: ActionFunction = async ({ request }) => {
     return json({ error: "Missing email or fullname" }, { status: 400 });
   }
 
-  let session = await getSession(request.headers.get("cookie"));
-
-  session.set(authenticator.sessionKey, { email, fullname });
-
-  return redirect("/app", {
-    headers: {
-      "Set-Cookie": await commitSession(session, {
-        maxAge: 60 * 60 * 24 * 30, // 1 month
-      }),
-    },
+  return redirectWithPayload<Omit<User | "id", "password">>(request, "/app", {
+    email,
+    fullname,
   });
 };
 
