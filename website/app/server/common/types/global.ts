@@ -7,8 +7,8 @@ export interface Validator<T> {
 
 export interface BaseRepository {
   create: (data: any) => Promise<any>;
-  findAll: (id: string) => Promise<any>;
-  findById: (id: string) => Promise<any>;
-  update: (id: string, data: any) => Promise<any>;
-  delete: (id: string) => Promise<any>;
+  findAll: (id: number) => Promise<any>;
+  findById: (id: number) => Promise<any>;
+  update: (id: number, data: any) => Promise<any>;
+  delete: (id: number) => Promise<any>;
 }

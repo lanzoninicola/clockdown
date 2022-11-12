@@ -43,28 +43,7 @@ export default function AuthForm({
   return (
     <VStack gap={8} alignItems="flex-start">
       <Form method="post" ref={formRef}>
-        <VStack gap={[8, 16, 16]} alignItems="flex-start">
-          <VStack alignItems="flex-start">
-            <Text
-              fontSize={"2xl"}
-              fontWeight={"bold"}
-              color={"blue.500"}
-              whiteSpace={[null, "pre-line"]}
-            >
-              {context === "signup"
-                ? t("onboarding.signup.title")
-                : t("onboarding.login.title")}
-            </Text>
-            {context === "signup" && (
-              <Text
-                fontSize={"sm"}
-                color={"gray.500"}
-                whiteSpace={[null, "pre-line"]}
-              >
-                {t("onboarding.signup.subtitle")}
-              </Text>
-            )}
-          </VStack>
+        <VStack gap={8} alignItems="flex-start">
           <VStack gap={8} w="100%" alignItems={"flex-start"}>
             <VStack gap={4}>
               {context === "signup" && (
@@ -127,6 +106,7 @@ export default function AuthForm({
                   fontFamily={"Inter, sans-serif"}
                   defaultValue={defaultValues?.email}
                   size={"lg"}
+                  minLength={8}
                 />
               </FormControl>
             </VStack>
@@ -141,21 +121,6 @@ export default function AuthForm({
           </VStack>
         </VStack>
       </Form>
-      {context === "login" && (
-        <>
-          <Divider />
-          <VStack>
-            <HStack gap={4}>
-              <Text>{t("onboarding.firstTime")}</Text>
-              <Link to="/signup">
-                <Button colorScheme={"gray"}>
-                  {t("onboarding.signup.buttonLabel")}
-                </Button>
-              </Link>
-            </HStack>
-          </VStack>
-        </>
-      )}
     </VStack>
   );
 }

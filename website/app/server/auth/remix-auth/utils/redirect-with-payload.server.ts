@@ -4,7 +4,7 @@ import { redirect } from "@remix-run/node";
 import { authenticator } from "../config/auth.server";
 import { commitSession, getSession } from "../config/session.server";
 
-async function redirectWithPayload<T>(
+async function authRedirectWithPayload<T>(
   request: Request,
   url: string,
   payload: T,
@@ -23,4 +23,4 @@ async function redirectWithPayload<T>(
   });
 }
 
-export default redirectWithPayload;
+export default authRedirectWithPayload;

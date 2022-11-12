@@ -4,12 +4,12 @@
   "scripts": {
     "build": "npm run build:css && remix build",
     "build:css": "tailwindcss -m -i ./styles/app.css -o app/styles/app.css",
-    "dev": "dotenv -e .env.local -- concurrently \"npm run dev:css\" \"remix dev\"",
+    "dev": "concurrently \"npm run dev:css\" \"remix dev\"",
     "dev:css": "tailwindcss -w -i ./styles/app.css -o app/styles/app.css",
     "start": "npm run prisma:migrate:prod && remix-serve build",
     "prisma:introspect:local": "dotenv -e .env.local -- npx prisma db pull",
     "prisma:migrate:local": "dotenv -e .env.local -- npx prisma migrate dev --name postgres-init",
-    "prisma:migrate:prod": "dotenv -e .env -- npx prisma migrate deploy --name deploy-prod"
+    "prisma:migrate:prod": "dotenv -e .env -- npx prisma migrate deploy"
   },
   "dependencies": {
     "@chakra-ui/react": "^1.8.9",
