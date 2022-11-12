@@ -4,4 +4,4 @@ export interface ApiError extends Error {
   errors?: any;
 }
 
-export interface ValidationError extends ApiError {}
+export type IValidationError = Omit<ApiError, "name">;

@@ -1,5 +1,4 @@
-import { ChakraProvider, Grid, Image, Text, VStack } from "@chakra-ui/react";
-import { User } from "@prisma/client";
+import { ChakraProvider } from "@chakra-ui/react";
 import type { ActionFunction, LoaderFunction } from "@remix-run/node";
 import { json } from "@remix-run/node";
 import { useActionData, useTransition } from "@remix-run/react";
@@ -10,6 +9,7 @@ import authRedirectWithPayload from "~/server/auth/remix-auth/utils/redirect-wit
 import UserSignupInteractor from "~/server/domain/interactors/user-signup.interactor.server";
 import UserSignupValidator from "~/server/domain/interactors/validators/user-signup.validator";
 import PrismaUsersRepository from "~/server/repositories/prisma-users.repository.server";
+import tryCatch from "~/server/utils/try-catch.server";
 
 export const action: ActionFunction = async ({ request }) => {
   const formData = await request.formData();
@@ -19,23 +19,27 @@ export const action: ActionFunction = async ({ request }) => {
   const password = formData.get("password") as string;
 
   if (!email || !password) {
-    return json({ error: "Missing email" }, { status: 400 });
+    return json({ error: "Missing email or password" }, { status: 400 });
   }
 
   const repository = new PrismaUsersRepository();
-  const validator = new UserSignupValidator();
+  const validator = new UserSignupValidator(repository);
   const interactor = new UserSignupInteractor(repository, validator);
 
-  await interactor.execute({ email, fullname, password });
+  return await tryCatch(async () => {
+    await interactor.execute({ email, fullname, password });
 
-  return authRedirectWithPayload<Omit<User | "id", "password">>(
-    request,
-    "/app",
-    {
-      email,
-      fullname,
-    }
-  );
+    // return authRedirectWithPayload<Omit<User | "id", "password">>(
+    //   request,
+    //   "/app",
+    //   {
+    //     email,
+    //     fullname,
+    //   }
+    // );
+
+    return null;
+  });
 };
 
 export default function SignUpPage() {
@@ -51,6 +55,8 @@ export default function SignUpPage() {
     : actionData?.error
     ? "error"
     : "idle";
+
+  console.log(actionData);
 
   return (
     <div className="flex flex-col gap-8">

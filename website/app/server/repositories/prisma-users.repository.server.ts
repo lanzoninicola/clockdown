@@ -1,12 +1,14 @@
-import type { User } from "@prisma/client";
-import { PrismaClient } from "@prisma/client";
+import type { PrismaClient, User } from "@prisma/client";
+
+import prismaClient from "prisma/client/prisma-client.server";
 import type { BaseRepository } from "../common/types/global";
+import tryCatch from "../utils/try-catch.server";
 
 export default class PrismaUsersRepository implements BaseRepository {
   private _prismaClient: PrismaClient;
 
   constructor() {
-    this._prismaClient = new PrismaClient();
+    this._prismaClient = prismaClient;
   }
 
   public async create(user: Omit<User, "id">): Promise<User> {
