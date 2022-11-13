@@ -1,5 +1,5 @@
 import { Outlet } from "@remix-run/react";
-import SimpleTimer from "~/common/simple-timer";
+import SimpleTimer from "~/client/common/simple-timer";
 
 export default function Welcome() {
   return (

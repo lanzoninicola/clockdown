@@ -1,3 +1,5 @@
+import ButtonAccentOutline from "~/client/common/button-accent-outline/button-accent-outline";
+import ButtonAccentSolid from "~/client/common/button-accent-solid/button-accent-solid";
 import Section from "../common/section";
 import TitleH2 from "../common/titles/title-h2";
 import TitleH3 from "../common/titles/title-h3";
@@ -39,7 +41,11 @@ export default function PricingSection() {
           priceDescription={"/por mês"}
           commonFeatures={commonFeatures}
           proFeatures={[]}
-        />
+        >
+          <ButtonAccentOutline clazzName="tracking-wider">
+            Vamos lá
+          </ButtonAccentOutline>
+        </PricingCard>
         <PricingCard
           title={"Pro"}
           subtitle={"Mais poder mais diversão mais venda"}
@@ -50,6 +56,7 @@ export default function PricingSection() {
           commonFeatures={commonFeatures}
           proFeatures={proFeatures}
         >
+          <ButtonAccentSolid>Vamos lá</ButtonAccentSolid>
           {/* <PayPalButton /> */}
         </PricingCard>
       </PricingCards>

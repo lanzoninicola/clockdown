@@ -1,9 +1,12 @@
 import { ChakraProvider } from "@chakra-ui/react";
 import { User } from "@prisma/client";
-import type { ActionFunction, LoaderFunction } from "@remix-run/node";
+import type {
+  ActionFunction,
+  LoaderArgs,
+  LoaderFunction,
+} from "@remix-run/node";
 import { json } from "@remix-run/node";
 import { useActionData, useTransition } from "@remix-run/react";
-import { ActionSubmission } from "@remix-run/react/dist/transition";
 import { useTranslation } from "react-i18next";
 import { AuthForm } from "~/client/common/auth/components";
 import Logo from "~/client/common/logo/logo";
@@ -13,6 +16,14 @@ import UserSignupInteractor from "~/server/domain/interactors/user-signup.intera
 import UserSignupValidator from "~/server/domain/interactors/validators/user-signup.validator";
 import PrismaUsersRepository from "~/server/repositories/prisma-users.repository.server";
 import tryCatch from "~/server/utils/try-catch.server";
+
+export const loader: LoaderFunction = async ({ request }: LoaderArgs) => {
+  const query = new URL(request.url).searchParams;
+
+  const queryObject = JSON.parse(JSON.stringify(Object.fromEntries(query)));
+
+  return null;
+};
 
 export const action: ActionFunction = async ({ request }) => {
   const formData = await request.formData();
