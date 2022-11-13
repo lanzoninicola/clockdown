@@ -50,76 +50,83 @@ export default function AuthForm({
             <VStack gap={4}>
               {context === "signup" && (
                 <FormControl isRequired>
-                  <FormLabel
+                  {/* <FormLabel
                     htmlFor="fullname"
                     fontFamily={"Inter, sans-serif"}
                     fontSize={"xs"}
                     mb={0}
                   >
                     {t("global.name")}
-                  </FormLabel>
+                  </FormLabel> */}
                   <Input
                     id="fullname"
                     name="fullname"
                     disabled={formState === "submitting"}
                     placeholder={t("onboarding.namePlaceholder")}
+                    _placeholder={{ color: "black" }}
                     fontFamily={"Inter, sans-serif"}
                     autoComplete="off"
                     defaultValue={defaultValues?.fullname}
                     size={"lg"}
+                    borderColor={"black"}
+                    width={["calc(100vw - 2rem)", "400px"]}
                   />
                 </FormControl>
               )}
               <FormControl isRequired>
-                <FormLabel
+                {/* <FormLabel
                   htmlFor="email"
                   fontSize={"xs"}
                   fontFamily={"Inter, sans-serif"}
                   mb={0}
                 >
                   {t("global.email")}
-                </FormLabel>
+                </FormLabel> */}
                 <Input
                   id="email"
                   name="email"
                   type={"email"}
                   disabled={formState === "submitting"}
                   placeholder={t("onboarding.emailPlaceholder")}
+                  _placeholder={{ color: "black" }}
                   fontFamily={"Inter, sans-serif"}
                   defaultValue={defaultValues?.email}
                   size={"lg"}
+                  borderColor={"black"}
                 />
               </FormControl>
               <FormControl isRequired>
-                <FormLabel
+                {/* <FormLabel
                   htmlFor="password"
                   fontSize={"xs"}
                   fontFamily={"Inter, sans-serif"}
                   mb={0}
                 >
                   {t("global.password")}
-                </FormLabel>
+                </FormLabel> */}
                 <Input
                   id="password"
                   name="password"
                   type={"password"}
                   disabled={formState === "submitting"}
                   placeholder={t("onboarding.passwordPlaceholder")}
+                  _placeholder={{ color: "black" }}
                   fontFamily={"Inter, sans-serif"}
                   defaultValue={defaultValues?.email}
                   size={"lg"}
                   minLength={8}
+                  borderColor={"black"}
                 />
               </FormControl>
             </VStack>
           </VStack>
-          {error && (
-            <div className="w-[300px] rounded-md bg-red-200 px-4 py-2">
+          {/* {error && (
+            <div className="w-full rounded-md bg-red-200 px-4 py-2 md:w-[400px]">
               <span className="font-body text-sm font-bold text-red-600">
                 {error}
               </span>
             </div>
-          )}
+          )} */}
           <VStack gap={1} alignItems={"flex-start"} w="100%">
             <SubmitAuthButton
               loadingText={t("global.saving")}

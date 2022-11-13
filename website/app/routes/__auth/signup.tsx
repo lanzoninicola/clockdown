@@ -6,6 +6,7 @@ import { useActionData, useTransition } from "@remix-run/react";
 import { ActionSubmission } from "@remix-run/react/dist/transition";
 import { useTranslation } from "react-i18next";
 import { AuthForm } from "~/client/common/auth/components";
+import Logo from "~/client/common/logo/logo";
 import { theme } from "~/client/templates-editor/chackra-ui/theme/theme";
 import authRedirectWithPayload from "~/server/auth/remix-auth/utils/redirect-with-payload.server";
 import UserSignupInteractor from "~/server/domain/interactors/user-signup.interactor.server";
@@ -59,14 +60,17 @@ export default function SignUpPage() {
   console.log(actionData);
 
   return (
-    <div className="flex flex-col gap-8">
-      <div className="flex flex-col gap-4">
-        <h2 className="font-titles text-2xl font-bold text-blue-500">
-          {t("onboarding.signup.title")}
-        </h2>
-        <h3 className="text-md font-body text-gray-500 md:w-[50ch]">
-          {t("onboarding.signup.subtitle")}
-        </h3>
+    <div className="z-20 flex flex-col gap-8">
+      <div className="flex flex-col items-center gap-8 md:max-w-[400px]">
+        <Logo />
+        <div className="flex flex-col items-center gap-4">
+          <h2 className="font-accent text-2xl font-bold uppercase tracking-wider">
+            {t("onboarding.signup.title")}
+          </h2>
+          <h3 className="text-md text-center font-body">
+            {t("onboarding.signup.subtitle")}
+          </h3>
+        </div>
       </div>
       <ChakraProvider theme={theme}>
         <AuthForm

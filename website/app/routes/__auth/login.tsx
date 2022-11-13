@@ -51,18 +51,15 @@ export default function LoginPage() {
 
   return (
     <ChakraProvider theme={theme}>
-      <VStack gap={8} alignItems="flex-start">
-        <Text
-          fontSize={"2xl"}
-          fontWeight={"bold"}
-          color={"blue.500"}
-          whiteSpace={[null, "pre-line"]}
-        >
+      <VStack gap={8} alignItems="center">
+        <h2 className="font-accent text-2xl font-bold uppercase tracking-wider">
           {t("onboarding.login.title")}
-        </Text>
+        </h2>
+
         <AuthForm
           context="login"
           formState={formState}
+          error={actionData?.error}
           defaultValues={{
             email: actionData?.email,
             fullname: actionData?.fullname,
@@ -71,8 +68,7 @@ export default function LoginPage() {
         />
         <Divider />
         <HStack
-          gap={4}
-          bg="gray.50"
+          gap={2}
           borderRadius={"md"}
           w="100%"
           justifyContent={"center"}
@@ -80,9 +76,9 @@ export default function LoginPage() {
         >
           <Text>{t("onboarding.firstTime")}</Text>
           <Link to="/signup">
-            <Button colorScheme={"blue"} variant={"outline"}>
+            <button className="rounded-lg border-2 border-accent-base bg-transparent px-6 py-2 font-body text-sm font-bold  uppercase text-black shadow-md hover:bg-accent-500">
               {t("onboarding.signup.buttonLabel")}
-            </Button>
+            </button>
           </Link>
         </HStack>
       </VStack>
