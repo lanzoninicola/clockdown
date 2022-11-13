@@ -1,6 +1,6 @@
 import { WidgetContext } from "../../countdown-state-management";
 import useThemeTimerUnitLabel from "../../countdown-state-management/common/hooks/theme/useThemeTimerUnitLabel";
-import TRANSLATIONS from "../constants/translations";
+import TRANSLATIONS from "../../../../common/i18n/translations/translations";
 import { WidgetTranslation } from "../types";
 
 interface UseWidgetTranslation {

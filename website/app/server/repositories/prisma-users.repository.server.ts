@@ -1,13 +1,13 @@
 import type { PrismaClient, User } from "@prisma/client";
-
+// @ts-ignore
 import prismaClient from "prisma/client/prisma-client.server";
 import type { BaseRepository } from "../common/types/global";
-import tryCatch from "../utils/try-catch.server";
 
 export default class PrismaUsersRepository implements BaseRepository {
   private _prismaClient: PrismaClient;
 
   constructor() {
+    // @ts-ignore
     this._prismaClient = prismaClient;
   }
 
@@ -47,7 +47,9 @@ export default class PrismaUsersRepository implements BaseRepository {
   }
 
   public async getUserByEmail(email: string): Promise<User | null> {
-    return await this._prismaClient.user.findUnique({
+    console.log("PrismaUsersRepository", email);
+
+    return await this._prismaClient.user.findFirst({
       where: {
         email,
       },

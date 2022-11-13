@@ -18,6 +18,7 @@ import SubmitAuthButton from "../submit-auth-button/submit-auth-button";
 interface AuthFormProps {
   context: "signup" | "login";
   formState: AuthFormState;
+  error: string;
   defaultValues?: {
     email?: string;
     fullname?: string;
@@ -29,6 +30,7 @@ export default function AuthForm({
   context,
   formState,
   defaultValues,
+  error = "",
 }: AuthFormProps) {
   const { t } = useTranslation();
 
@@ -111,8 +113,23 @@ export default function AuthForm({
               </FormControl>
             </VStack>
           </VStack>
+          {error && (
+            <div className="w-[300px] rounded-md bg-red-200 px-4 py-2">
+              <span className="font-body text-sm font-bold text-red-600">
+                {error}
+              </span>
+            </div>
+          )}
           <VStack gap={1} alignItems={"flex-start"} w="100%">
-            <SubmitAuthButton loadingText={t("global.saving")}>
+            <SubmitAuthButton
+              loadingText={t("global.saving")}
+              isLoading={formState === "submitting"}
+              isDisabled={
+                formState === "submitting" ||
+                formState === "success" ||
+                formState === "error"
+              }
+            >
               {context === "signup"
                 ? t("onboarding.signup.buttonLabel")
                 : t("onboarding.login.buttonLabel")}

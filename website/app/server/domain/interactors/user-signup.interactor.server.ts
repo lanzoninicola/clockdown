@@ -8,7 +8,18 @@ export default class UserSignupInteractor {
   ) {}
 
   public async execute(user: UserSignup): Promise<any> {
+    user.email = this.sanitizeEmail(user.email);
+    user.password = this.sanitizePassword(user.password);
+
     await this._userSignupValidator.validate(user);
     return await this._usersRepository.create(user);
+  }
+
+  public sanitizeEmail(email: string): string {
+    return email.toLowerCase().trim();
+  }
+
+  public sanitizePassword(password: string): string {
+    return password.trim();
   }
 }

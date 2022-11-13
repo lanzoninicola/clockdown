@@ -19,26 +19,18 @@ import {
   PremiumButtonWithPopover,
   PremiumFeatureGuard,
 } from "../../premium-features";
-import { LanguagesBar, Logo } from "../common";
+import { LanguagesMenu, Logo } from "../common";
 import Teext from "../common/layout/teext/teext";
 import { FiUser } from "@react-icons/all-files/fi/FiUser";
 import EditorButton from "~/client/website/components/editor-button";
 import HtmlEmbeddedCodeInput from "../../editor/html-embedded-code/components/html-embedded-code-input/html-embedded-code-input";
-
-//TODO: detect language from Wordpress
-const lngs: Languages = {
-  en: { nativeName: "English" },
-  pt: { nativeName: "Português" },
-  es: { nativeName: "Español" },
-  it: { nativeName: "Italiano" },
-};
 
 export default function Header({
   onboardedUser,
 }: {
   onboardedUser: { email: string; fullname?: string } | null;
 }) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   return (
     <Flex
@@ -78,7 +70,7 @@ export default function Header({
           <PremiumFeatureGuard hide>
             <EditorSave />
           </PremiumFeatureGuard>
-          <LanguagesBar languages={lngs} />
+          {/* <LanguagesMenu /> */}
         </Grid>
         <BreakpointsBar />
         <Flex justifySelf={"flex-end"} alignItems={"center"} gap={4}>

@@ -4,3 +4,5 @@ export let i18nCookie = createCookie("i18n", {
   sameSite: "lax",
   path: "/",
 });
+
+console.log(i18nCookie);

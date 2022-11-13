@@ -16,8 +16,8 @@ export default function Footer() {
             />
             <div className="flex flex-col gap-4">
               <q className="font-body text-sm italic">
-                "Melhor três horas cedo demais <br />
-                do que um minuto tarde demais."
+                Melhor três horas cedo demais <br />
+                do que um minuto tarde demais.
               </q>
               <span className="max-w-prose font-body text-xs italic">
                 Nesta citação de "The Merry Wives of Windsor", Shakespeare

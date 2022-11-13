@@ -2,7 +2,7 @@ import { RemixI18Next } from "remix-i18next";
 import Backend from "i18next-fs-backend";
 import { resolve } from "node:path";
 import i18nextOptions from "./i18nextOptions";
-import { i18nCookie } from "./cookie";
+import { i18nCookie } from "./common/i18n/server/i18n-session.server";
 
 export default new RemixI18Next({
   detection: {
@@ -18,6 +18,11 @@ export default new RemixI18Next({
   // side only
   i18next: {
     backend: { loadPath: resolve("./public/locales/{{lng}}/{{ns}}.json") },
+
+    detection: {
+      // persist language selection in cookie
+      cookie: i18nCookie,
+    },
   },
   // The backend you want to use to load the translations
   // Tip: You could pass `resources` to the `i18next` configuration and avoid

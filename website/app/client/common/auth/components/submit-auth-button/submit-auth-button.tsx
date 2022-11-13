@@ -14,13 +14,11 @@ export default function SubmitAuthButton({
   return (
     <Button
       type="submit"
-      // isDisabled={
-      //   fullname === "" || email === "" || consent_terms_privacy === false
-      // }
       loadingText={props?.loadingText || "Loading..."}
       className="theme-font"
       colorScheme="blue"
       data-test="onboarding-form-submit"
+      {...props}
     >
       {children}
     </Button>

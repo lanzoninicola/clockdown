@@ -225,6 +225,7 @@
     "privacyPolicy": "Informativa sulla privacy",
     "termsAndConditions": "Termini e condizioni",
     "consentStatement": "Procedendo, accetti i nostri Termini e Condizioni e\nla nostra Informativa sulla Privacy.",
+    "consentStatementReadMore": "Leggi di più",
     "success": {
       "title": "Benvenuto!",
       "subtitle": "Ora puoi creare il tuo primo timer.",

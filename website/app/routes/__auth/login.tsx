@@ -17,14 +17,6 @@ import { AuthForm } from "~/client/common/auth/components";
 import { theme } from "~/client/templates-editor/chackra-ui/theme/theme";
 import authRedirectWithPayload from "~/server/auth/remix-auth/utils/redirect-with-payload.server";
 
-export const loader: LoaderFunction = async () => {
-  return json({
-    termsAndConditionsURL: "https://clockdown.xyz/terms-and-conditions",
-    privacyPolicyURL: "https://clockdown.xyz/privacy-policy",
-    maxFailureCount: 3,
-  });
-};
-
 export const action: ActionFunction = async ({ request }) => {
   const formData = await request.formData();
 
@@ -39,10 +31,7 @@ export const action: ActionFunction = async ({ request }) => {
   return authRedirectWithPayload<Omit<User | "id", "password">>(
     request,
     "/app",
-    {
-      email,
-      fullname,
-    }
+    { email, fullname }
   );
 };
 

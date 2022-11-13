@@ -209,8 +209,8 @@
   "onboarding": {
     "firstTime": "Primeira vez aqui?",
     "signup": {
-      "title": "Bem vindo ao ClockDown!",
-      "body": "Você pode criar contadores regressivos e editá-los em qualquer momento.\nCadastre-se abaixo para começar.",
+      "title": "Bem vindo!",
+      "subtitle": "Cadastre-se abaixo para poder criar contadores regressivos e impulsionar suas vendas.",
       "buttonLabel": "Cadastrar"
     },
     "login": {
@@ -227,6 +227,7 @@
     "privacyPolicy": "Política de privacidade",
     "termsOfService": "Termos de serviço",
     "consentStatement": "Ao clicar em \"Cadastrar\", você concorda com nossos termos de serviço\ne política de privacidade.",
+    "consentStatementReadMore": "Leia mais",
     "success": {
       "title": "Obrigado por se cadastrar!",
       "subtitle": "Agora você pode criar seu primeiro contador regressivo.",
@@ -242,6 +243,13 @@
       "subtitle": "Algo deu errado. Mas não se preocupe, você já pode criar seu primeiro contador regressivo.",
       "text": "Vamos lá!",
       "submitButtonLabel": "Continuar"
+    }
+  },
+  "validation": {
+    "userSignup": {
+      "alreadyExists": "Este email já está cadastrado.",
+      "invalidEmail": "Por favor, insira um email válido.",
+      "invalidPassword": "A senha deve ter pelo menos 8 caracteres."
     }
   }
 }

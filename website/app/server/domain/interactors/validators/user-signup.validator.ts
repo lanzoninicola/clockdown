@@ -14,40 +14,40 @@ export default class UserSignupValidator implements Validator<UserSignup> {
     const userFound = await this._repository.getUserByEmail(email);
 
     if (userFound) {
-      throw new ValidationError("User already exists");
+      throw new ValidationError("Usuário já cadastrado");
     }
 
     if (!email) {
-      return new ValidationError("Email is required");
+      return new ValidationError("Email não informado");
     }
 
     if (!password) {
-      return new ValidationError("Password is required");
+      return new ValidationError("Senha não informada");
     }
 
     if (password.length < 8) {
-      return new ValidationError("Password must be at least 8 characters long");
+      return new ValidationError("Senha deve ter no mínimo 8 caracteres");
     }
 
     if (!/[A-Z]/.test(password)) {
       return new ValidationError(
-        "Password must contain at least one uppercase letter"
+        "Senha deve conter pelo menos uma letra maiúscula"
       );
     }
 
     if (!/[a-z]/.test(password)) {
       return new ValidationError(
-        "Password must contain at least one lowercase letter"
+        "Senha deve conter pelo menos uma letra minúscula"
       );
     }
 
     if (!/[0-9]/.test(password)) {
-      return new ValidationError("Password must contain at least one digit");
+      return new ValidationError("Senha deve conter pelo menos um número");
     }
 
     if (!/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(password)) {
       return new ValidationError(
-        "Password must contain at least one special character"
+        "Senha deve conter pelo menos um caractere especial"
       );
     }
 

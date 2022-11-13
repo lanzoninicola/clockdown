@@ -226,6 +226,7 @@
     "privacyPolicy": "Privacy Policy",
     "termsAndConditions": "Terms and Conditions",
     "consentStatement": "By clicking, you are agreeing to our Terms of Service.\nRead our Privacy Policy.",
+    "consentStatementReadMore": "Read more",
     "success": {
       "title": "Thank you!",
       "subtitle": "You are now registered. Now you can create your first countdown.",

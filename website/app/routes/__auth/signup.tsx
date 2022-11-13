@@ -1,7 +1,9 @@
 import { ChakraProvider } from "@chakra-ui/react";
+import { User } from "@prisma/client";
 import type { ActionFunction, LoaderFunction } from "@remix-run/node";
 import { json } from "@remix-run/node";
 import { useActionData, useTransition } from "@remix-run/react";
+import { ActionSubmission } from "@remix-run/react/dist/transition";
 import { useTranslation } from "react-i18next";
 import { AuthForm } from "~/client/common/auth/components";
 import { theme } from "~/client/templates-editor/chackra-ui/theme/theme";
@@ -29,16 +31,14 @@ export const action: ActionFunction = async ({ request }) => {
   return await tryCatch(async () => {
     await interactor.execute({ email, fullname, password });
 
-    // return authRedirectWithPayload<Omit<User | "id", "password">>(
-    //   request,
-    //   "/app",
-    //   {
-    //     email,
-    //     fullname,
-    //   }
-    // );
-
-    return null;
+    return authRedirectWithPayload<Omit<User | "id", "password">>(
+      request,
+      "/app",
+      {
+        email,
+        fullname,
+      }
+    );
   });
 };
 
@@ -64,7 +64,7 @@ export default function SignUpPage() {
         <h2 className="font-titles text-2xl font-bold text-blue-500">
           {t("onboarding.signup.title")}
         </h2>
-        <h3 className="font-body text-sm text-gray-400 md:whitespace-pre-line">
+        <h3 className="text-md font-body text-gray-500 md:w-[50ch]">
           {t("onboarding.signup.subtitle")}
         </h3>
       </div>
@@ -72,6 +72,8 @@ export default function SignUpPage() {
         <AuthForm
           context="signup"
           formState={formState}
+          error={"Usuario ya existe"}
+          // error={actionData?.status > 400 ? actionData.message : undefined}
           defaultValues={{
             email: actionData?.email,
             fullname: actionData?.fullname,

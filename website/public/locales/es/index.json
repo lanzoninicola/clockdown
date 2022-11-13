@@ -233,6 +233,7 @@
     "privacyPolicy": "Política de privacidad",
     "termsOfService": "Términos de servicio",
     "consentStatement": "He leído y acepto los términos de servicio\ne la política de privacidad.",
+    "consentStatementReadMore": "Leer más",
     "success": {
       "title": "¡Bienvenido!",
       "subtitle": "Ahora puedes crear tu primer contador.",
