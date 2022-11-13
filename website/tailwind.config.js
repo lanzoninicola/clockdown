@@ -58,10 +58,22 @@ module.exports = {
             opacity: "1",
           },
         },
+        pulse: {
+          "0%": {
+            transform: "scale(1)",
+          },
+          "50%": {
+            transform: "scale(1.1)",
+          },
+          "100%": {
+            transform: "scale(1)",
+          },
+        },
       },
       animation: {
         float: "float 6s ease-in-out infinite",
         fadeIn: "fadeIn 1s ease-in-out",
+        pulse: "pulse 1s ease-in-out infinite",
       },
     },
   },
