@@ -23,7 +23,7 @@ export default function ConsentStatement() {
 
 function ConsentText({ children }: { children: React.ReactNode }) {
   return (
-    <span className="font-body text-xs text-gray-600 md:whitespace-pre-line">
+    <span className="font-body text-xs text-gray-600 md:max-w-[300px]">
       {children}
     </span>
   );

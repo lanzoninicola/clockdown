@@ -10,7 +10,7 @@ import { authenticator } from "~/server/auth/remix-auth/config/auth.server";
  * @param request The request object
  * @returns
  */
-const isAuthenticated = async (
+const getUserAuthenticated = async (
   request: Request,
   options?: {
     successRedirect?: never;
@@ -20,4 +20,4 @@ const isAuthenticated = async (
   return await authenticator.isAuthenticated(request, options);
 };
 
-export default isAuthenticated;
+export default getUserAuthenticated;

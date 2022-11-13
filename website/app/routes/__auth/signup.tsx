@@ -6,7 +6,12 @@ import type {
   LoaderFunction,
 } from "@remix-run/node";
 import { json } from "@remix-run/node";
-import { useActionData, useTransition } from "@remix-run/react";
+import {
+  useActionData,
+  useLoaderData,
+  useOutletContext,
+  useTransition,
+} from "@remix-run/react";
 import { useTranslation } from "react-i18next";
 import { AuthForm } from "~/client/common/auth/components";
 import Logo from "~/client/common/logo/logo";
@@ -16,14 +21,7 @@ import UserSignupInteractor from "~/server/domain/interactors/user-signup.intera
 import UserSignupValidator from "~/server/domain/interactors/validators/user-signup.validator";
 import PrismaUsersRepository from "~/server/repositories/prisma-users.repository.server";
 import tryCatch from "~/server/utils/try-catch.server";
-
-export const loader: LoaderFunction = async ({ request }: LoaderArgs) => {
-  const query = new URL(request.url).searchParams;
-
-  const queryObject = JSON.parse(JSON.stringify(Object.fromEntries(query)));
-
-  return null;
-};
+import { LoginSignUpOutletContext } from "../__auth";
 
 export const action: ActionFunction = async ({ request }) => {
   const formData = await request.formData();
@@ -35,6 +33,15 @@ export const action: ActionFunction = async ({ request }) => {
   if (!email || !password) {
     return json({ error: "Missing email or password" }, { status: 400 });
   }
+  /** ====================================== */
+
+  const query = new URL(request.url).searchParams;
+
+  const checkoutParam = query.get("checkout");
+
+  console.log("checkoutParam", checkoutParam);
+
+  /** ====================================== */
 
   const repository = new PrismaUsersRepository();
   const validator = new UserSignupValidator(repository);
@@ -57,7 +64,9 @@ export const action: ActionFunction = async ({ request }) => {
 export default function SignUpPage() {
   const { t } = useTranslation();
 
-  //  const loaderData: LoaderData = useLoaderData();
+  const { checkout } = useOutletContext<LoginSignUpOutletContext>();
+
+  // const loaderData = useLoaderData();
   const actionData = useActionData();
   const transition = useTransition();
   const formState = transition.submission
@@ -67,8 +76,6 @@ export default function SignUpPage() {
     : actionData?.error
     ? "error"
     : "idle";
-
-  console.log(actionData);
 
   return (
     <div className="z-20 flex flex-col gap-8">

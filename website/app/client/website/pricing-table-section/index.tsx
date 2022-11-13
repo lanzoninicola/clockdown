@@ -1,9 +1,11 @@
-import ButtonAccentOutline from "~/client/common/button-accent-outline/button-accent-outline";
-import ButtonAccentSolid from "~/client/common/button-accent-solid/button-accent-solid";
+import { Links } from "@remix-run/react";
+import { Link } from "react-router-dom";
+import ButtonAccentOutline from "~/client/common/primitives/button-accent-outline/button-accent-outline";
+import ButtonAccentSolid from "~/client/common/primitives/button-accent-solid/button-accent-solid";
 import Section from "../common/section";
 import TitleH2 from "../common/titles/title-h2";
 import TitleH3 from "../common/titles/title-h3";
-import PayPalButton from "../components/paypal-button";
+import PayPalButton from "../../common/paypal";
 
 export default function PricingSection() {
   const commonFeatures = [
@@ -42,9 +44,11 @@ export default function PricingSection() {
           commonFeatures={commonFeatures}
           proFeatures={[]}
         >
-          <ButtonAccentOutline clazzName="tracking-wider">
-            Vamos lá
-          </ButtonAccentOutline>
+          <Link to="/app" className="w-full">
+            <ButtonAccentOutline clazzName="tracking-wider w-full">
+              Vamos lá
+            </ButtonAccentOutline>
+          </Link>
         </PricingCard>
         <PricingCard
           title={"Pro"}
@@ -56,8 +60,11 @@ export default function PricingSection() {
           commonFeatures={commonFeatures}
           proFeatures={proFeatures}
         >
-          <ButtonAccentSolid>Vamos lá</ButtonAccentSolid>
-          {/* <PayPalButton /> */}
+          <Link to={"/signup?checkout=pro"} className="w-full">
+            <ButtonAccentSolid clazzName="tracking-wider w-full">
+              Vamos lá
+            </ButtonAccentSolid>
+          </Link>
         </PricingCard>
       </PricingCards>
     </Section>
@@ -100,26 +107,32 @@ function PricingCard({
   children,
 }: PricingCardProps) {
   return (
-    <div className="mx-auto flex max-w-lg flex-col rounded-xl bg-slate-50 p-6 text-center text-gray-900 shadow-xl xl:p-8">
-      <TitleH3 className="tracking-widest text-blue-500">{title}</TitleH3>
-      <p className="text-md font-titles font-light text-gray-500 dark:text-gray-400 ">
-        {subtitle}
-      </p>
-      <div className="my-8 flex flex-col">
-        <div className=" mb-4 flex items-baseline justify-center">
-          <span className="mr-1 font-titles text-xl font-bold ">
-            {currency}
-          </span>
-          <span className="mr-2 font-titles text-5xl font-bold ">{price}</span>
-          <span>{priceDescription}</span>
+    <div className="mx-auto grid min-h-[800px] max-w-lg grid-rows-[200px_450px_auto] rounded-xl bg-slate-50 p-6 text-center text-gray-900 shadow-xl xl:p-8">
+      <div>
+        <div>
+          <TitleH3 className="tracking-widest text-blue-500">{title}</TitleH3>
+          <p className="text-md font-titles font-light text-gray-500 dark:text-gray-400 ">
+            {subtitle}
+          </p>
         </div>
-        <span className="font-body text-sm text-gray-400">
-          {priceAdditionalDescription}
-        </span>
+        <div className="my-8 flex flex-col">
+          <div className=" mb-4 flex items-baseline justify-center">
+            <span className="mr-1 font-titles text-xl font-bold ">
+              {currency}
+            </span>
+            <span className="mr-2 font-titles text-5xl font-bold ">
+              {price}
+            </span>
+            <span>{priceDescription}</span>
+          </div>
+          <span className="font-body text-sm text-gray-400">
+            {priceAdditionalDescription}
+          </span>
+        </div>
       </div>
 
       {/* List {/*/}
-      <ul className="mb-8 space-y-2 text-left md:space-y-4">
+      <ul className="space-y-2 text-left md:space-y-4">
         {commonFeatures.map((f, idx) => (
           <PricingCardItem key={idx}>{f}</PricingCardItem>
         ))}
@@ -129,7 +142,7 @@ function PricingCard({
           </PricingCardItem>
         ))}
       </ul>
-      {children}
+      <div className="grid place-items-center">{children}</div>
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import StepButton from "~/client/common/primitives/step-button/step-button";
 import FadeIn from "../common/fade-in/fade-in";
 import Section from "../common/section";
 import TitleH2 from "../common/titles/title-h2";
@@ -91,26 +92,6 @@ function HowItWorksSteps({ steps, startOnStep }: HowItWorksStepsProps) {
         <StepBodyImage step={currentActiveStep + 1} />
       </div>
     </div>
-  );
-}
-
-interface StepButtonProps {
-  isActive: boolean;
-  children?: React.ReactNode;
-  onClick?: () => void;
-}
-
-function StepButton({ isActive = false, children, onClick }: StepButtonProps) {
-  return (
-    <button
-      type="button"
-      className={`grid h-8 w-8 place-items-center rounded-full bg-blue-md ${
-        !isActive && "opacity-25"
-      } `}
-      onClick={onClick}
-    >
-      <span className="font-accent font-bold text-black">{children}</span>
-    </button>
   );
 }
 

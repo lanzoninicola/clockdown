@@ -16,7 +16,7 @@ import ConsentStatement from "../consent-statement/consent-statement";
 import SubmitAuthButton from "../submit-auth-button/submit-auth-button";
 
 interface AuthFormProps {
-  context: "signup" | "login";
+  context: "signup" | "login" | "checkout";
   formState: AuthFormState;
   error: string;
   defaultValues?: {
@@ -24,6 +24,7 @@ interface AuthFormProps {
     fullname?: string;
     password?: string;
   };
+  spacingX?: string;
 }
 
 export default function AuthForm({
@@ -31,6 +32,7 @@ export default function AuthForm({
   formState,
   defaultValues,
   error = "",
+  spacingX = "2rem",
 }: AuthFormProps) {
   const { t } = useTranslation();
 
@@ -43,21 +45,18 @@ export default function AuthForm({
   }, []);
 
   return (
-    <VStack gap={8} alignItems="flex-start">
+    <VStack
+      gap={8}
+      alignItems="flex-start"
+      data-element="auth-form"
+      paddingInline={spacingX}
+    >
       <Form method="post" ref={formRef}>
         <VStack gap={8} alignItems="flex-start">
-          <VStack gap={8} w="100%" alignItems={"flex-start"}>
-            <VStack gap={4}>
+          <VStack gap={8} w="100%">
+            <VStack gap={4} w="100%">
               {context === "signup" && (
                 <FormControl isRequired>
-                  {/* <FormLabel
-                    htmlFor="fullname"
-                    fontFamily={"Inter, sans-serif"}
-                    fontSize={"xs"}
-                    mb={0}
-                  >
-                    {t("global.name")}
-                  </FormLabel> */}
                   <Input
                     id="fullname"
                     name="fullname"
@@ -69,19 +68,10 @@ export default function AuthForm({
                     defaultValue={defaultValues?.fullname}
                     size={"lg"}
                     borderColor={"black"}
-                    width={["calc(100vw - 2rem)", "400px"]}
                   />
                 </FormControl>
               )}
               <FormControl isRequired>
-                {/* <FormLabel
-                  htmlFor="email"
-                  fontSize={"xs"}
-                  fontFamily={"Inter, sans-serif"}
-                  mb={0}
-                >
-                  {t("global.email")}
-                </FormLabel> */}
                 <Input
                   id="email"
                   name="email"
@@ -96,14 +86,6 @@ export default function AuthForm({
                 />
               </FormControl>
               <FormControl isRequired>
-                {/* <FormLabel
-                  htmlFor="password"
-                  fontSize={"xs"}
-                  fontFamily={"Inter, sans-serif"}
-                  mb={0}
-                >
-                  {t("global.password")}
-                </FormLabel> */}
                 <Input
                   id="password"
                   name="password"
@@ -127,7 +109,7 @@ export default function AuthForm({
               </span>
             </div>
           )} */}
-          <VStack gap={1} alignItems={"flex-start"} w="100%">
+          <VStack gap={1} w="100%">
             <SubmitAuthButton
               loadingText={t("global.saving")}
               isLoading={formState === "submitting"}
