@@ -4,6 +4,7 @@ import padWithZeros from "~/client/templates-editor/countdown-widget/utils/padWi
 const initialState = {
   minutes: 0,
   seconds: 59,
+  counterMode: false,
   itemClazzName: "",
 };
 
@@ -11,6 +12,7 @@ interface SimpleTimerContextProps {
   minutes?: number;
   seconds: number;
   itemClazzName?: string;
+  counterMode?: boolean;
 }
 
 const SimpleTimerContext = createContext<SimpleTimerContextProps>({
@@ -21,6 +23,7 @@ export default function SimpleTimer({
   itemClazzName,
   seconds,
   minutes,
+  counterMode,
 }: SimpleTimerContextProps) {
   return (
     <SimpleTimerContext.Provider
@@ -28,6 +31,7 @@ export default function SimpleTimer({
         minutes: minutes || initialState.minutes,
         itemClazzName: itemClazzName || initialState.itemClazzName,
         seconds: seconds || initialState.seconds,
+        counterMode: counterMode || initialState.counterMode,
       }}
     >
       <Timer />
@@ -37,13 +41,23 @@ export default function SimpleTimer({
 
 function Timer() {
   const seconds = useSeconds();
+  const { counterMode } = useContext(SimpleTimerContext);
 
   return (
-    <div className="grid w-max grid-cols-5 justify-items-center ">
-      <TimerItem value={"00"} />
-      <TimerItem value={":"} />
-      <TimerItem value={"00"} />
-      <TimerItem value={":"} />
+    <div
+      className={`grid w-max grid-cols-${
+        counterMode === true ? "1" : "5"
+      } justify-items-center`}
+    >
+      {counterMode === false && (
+        <>
+          <TimerItem value={"00"} />
+          <TimerItem value={":"} />
+          <TimerItem value={"00"} />
+          <TimerItem value={":"} />
+        </>
+      )}
+
       <TimerItem
         value={padWithZeros(seconds, 2)}
         isDanger={seconds <= 10 && seconds > 5}

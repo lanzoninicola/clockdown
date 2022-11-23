@@ -1,12 +1,8 @@
-import { ChakraProvider } from "@chakra-ui/react";
-import { User } from "@prisma/client";
-import type {
-  ActionFunction,
-  LoaderArgs,
-  LoaderFunction,
-} from "@remix-run/node";
+import { ChakraProvider, Divider, HStack, Text } from "@chakra-ui/react";
+import type { User } from "@prisma/client";
 import { json } from "@remix-run/node";
 import {
+  Link,
   useActionData,
   useLoaderData,
   useOutletContext,
@@ -21,7 +17,14 @@ import UserSignupInteractor from "~/server/domain/interactors/user-signup.intera
 import UserSignupValidator from "~/server/domain/interactors/validators/user-signup.validator";
 import PrismaUsersRepository from "~/server/repositories/prisma-users.repository.server";
 import tryCatch from "~/server/utils/try-catch.server";
+
 import { LoginSignUpOutletContext } from "../__auth";
+
+import type {
+  ActionFunction,
+  LoaderArgs,
+  LoaderFunction,
+} from "@remix-run/node";
 
 export const action: ActionFunction = async ({ request }) => {
   const formData = await request.formData();
@@ -33,19 +36,28 @@ export const action: ActionFunction = async ({ request }) => {
   if (!email || !password) {
     return json({ error: "Missing email or password" }, { status: 400 });
   }
-  /** ====================================== */
-
-  const query = new URL(request.url).searchParams;
-
-  const checkoutParam = query.get("checkout");
-
-  console.log("checkoutParam", checkoutParam);
-
-  /** ====================================== */
 
   const repository = new PrismaUsersRepository();
   const validator = new UserSignupValidator(repository);
   const interactor = new UserSignupInteractor(repository, validator);
+
+  /** ====================================== */
+
+  const query = new URL(request.url).searchParams;
+  const productPlan = query.get("checkout");
+
+  if (productPlan !== null && productPlan !== undefined) {
+    return authRedirectWithPayload<Omit<User | "id", "password">>(
+      request,
+      "/checkout/payment",
+      {
+        email,
+        fullname,
+      }
+    );
+  }
+
+  /** ====================================== */
 
   return await tryCatch(async () => {
     await interactor.execute({ email, fullname, password });
@@ -63,10 +75,8 @@ export const action: ActionFunction = async ({ request }) => {
 
 export default function SignUpPage() {
   const { t } = useTranslation();
-
   const { checkout } = useOutletContext<LoginSignUpOutletContext>();
 
-  // const loaderData = useLoaderData();
   const actionData = useActionData();
   const transition = useTransition();
   const formState = transition.submission
@@ -77,6 +87,8 @@ export default function SignUpPage() {
     ? "error"
     : "idle";
 
+  console.log("actionData", actionData);
+
   return (
     <div className="z-20 flex flex-col gap-8">
       <div className="flex flex-col items-center gap-8 md:max-w-[400px]">
@@ -86,7 +98,9 @@ export default function SignUpPage() {
             {t("onboarding.signup.title")}
           </h2>
           <h3 className="text-md text-center font-body">
-            {t("onboarding.signup.subtitle")}
+            {checkout
+              ? t("onboarding.checkout.signup.subtitle")
+              : t("onboarding.signup.subtitle")}
           </h3>
         </div>
       </div>
@@ -94,8 +108,7 @@ export default function SignUpPage() {
         <AuthForm
           context="signup"
           formState={formState}
-          error={"Usuario ya existe"}
-          // error={actionData?.status > 400 ? actionData.message : undefined}
+          error={actionData?.status >= 400 ? actionData.message : null}
           defaultValues={{
             email: actionData?.email,
             fullname: actionData?.fullname,
@@ -103,6 +116,17 @@ export default function SignUpPage() {
           }}
         />
       </ChakraProvider>
+
+      <div className="w-full border-b-2 border-b-gray-300"></div>
+
+      <div className="flex w-full items-center justify-center gap-4 rounded-md py-8">
+        <span className="font-body">{t("onboarding.alreadyRegistered")}</span>
+        <Link to="/login?checkout=pro">
+          <button className="rounded-lg border-2 border-accent-base bg-transparent px-6 py-2 font-body text-sm font-bold  uppercase text-black shadow-md hover:bg-accent-500">
+            {t("onboarding.login.buttonLabel")}
+          </button>
+        </Link>
+      </div>
     </div>
   );
 }

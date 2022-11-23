@@ -1,24 +1,16 @@
-import {
-  Input,
-  VStack,
-  Text,
-  FormControl,
-  FormLabel,
-  Button,
-  HStack,
-  Divider,
-} from "@chakra-ui/react";
-import { Form, Link } from "@remix-run/react";
+import { FormControl, Input, VStack } from "@chakra-ui/react";
+import { Form } from "@remix-run/react";
 import { useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
-import type { AuthFormState } from "../../types";
+
 import ConsentStatement from "../consent-statement/consent-statement";
 import SubmitAuthButton from "../submit-auth-button/submit-auth-button";
 
+import type { AuthFormState } from "../../types";
 interface AuthFormProps {
   context: "signup" | "login" | "checkout";
   formState: AuthFormState;
-  error: string;
+  error?: string | null;
   defaultValues?: {
     email?: string;
     fullname?: string;
@@ -31,7 +23,7 @@ export default function AuthForm({
   context,
   formState,
   defaultValues,
-  error = "",
+  error = null,
   spacingX = "2rem",
 }: AuthFormProps) {
   const { t } = useTranslation();
@@ -51,7 +43,7 @@ export default function AuthForm({
       data-element="auth-form"
       paddingInline={spacingX}
     >
-      <Form method="post" ref={formRef}>
+      <Form method="post" ref={formRef} replace>
         <VStack gap={8} alignItems="flex-start">
           <VStack gap={8} w="100%">
             <VStack gap={4} w="100%">
@@ -102,13 +94,13 @@ export default function AuthForm({
               </FormControl>
             </VStack>
           </VStack>
-          {/* {error && (
-            <div className="w-full rounded-md bg-red-200 px-4 py-2 md:w-[400px]">
+          {error && (
+            <div className="w-full rounded-md bg-red-200 px-4 py-2">
               <span className="font-body text-sm font-bold text-red-600">
                 {error}
               </span>
             </div>
-          )} */}
+          )}
           <VStack gap={1} w="100%">
             <SubmitAuthButton
               loadingText={t("global.saving")}

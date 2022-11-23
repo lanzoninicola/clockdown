@@ -16,21 +16,6 @@ interface ClockdownAppProps {
 }
 
 const ClockdownApp = ({ onboardedUser }: ClockdownAppProps) => {
-  const toast = useToast();
-
-  useEffect(() => {
-    if (onboardedUser) {
-      toast({
-        title: "Welcome back!",
-        position: "bottom-left",
-        description: "We've missed you",
-        status: "success",
-        duration: 9000,
-        isClosable: true,
-      });
-    }
-  }, [onboardedUser, toast]);
-
   return (
     <PremiumFeatureProvider
       config={{

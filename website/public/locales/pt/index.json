@@ -208,6 +208,7 @@
   },
   "onboarding": {
     "firstTime": "Primeira vez aqui?",
+    "alreadyRegistered": "Já tem uma conta?",
     "signup": {
       "title": "Bem vindo!",
       "subtitle": "Cadastre-se abaixo para poder criar contadores regressivos e impulsionar suas vendas.",
@@ -217,6 +218,18 @@
       "title": "Bem vindo!",
       "body": "Você pode criar contadores regressivos e editá-los em qualquer momento.\nCadastre-se abaixo para começar.",
       "buttonLabel": "Entrar"
+    },
+    "checkout": {
+      "login": {
+        "title": "Bem vindo!",
+        "subtitle": "Faça login para finalizar a compra.",
+        "buttonLabel": "Cadastrar"
+      },
+      "signup": {
+        "title": "Bem vindo!",
+        "subtitle": "Cria uma conta para finalizar a compra.",
+        "buttonLabel": "Entrar"
+      }
     },
 
     "namePlaceholder": "Nome completo",

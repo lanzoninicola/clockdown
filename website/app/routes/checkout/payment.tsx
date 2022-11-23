@@ -2,7 +2,7 @@ import { json, redirect } from "@remix-run/node";
 import type { LoaderFunction } from "@remix-run/node";
 import getUserAuthenticated from "~/server/auth/remix-auth/utils/get-user-authenticated.server";
 import { PayPalButton } from "~/client/common/paypal";
-import { useLoaderData } from "@remix-run/react";
+import { useFetcher, useLoaderData, useNavigate } from "@remix-run/react";
 
 export const loader: LoaderFunction = async ({ request }) => {
   // const query = new URL(request.url).searchParams;
@@ -19,12 +19,33 @@ export const loader: LoaderFunction = async ({ request }) => {
 
   return json({
     user: userAuthData,
-    checkoutConfig: { currency: "BRL", amount: 120 },
+    checkoutConfig: {
+      currency: "BRL",
+      amount: 120,
+      clientId:
+        "AZZ2rXm-Dum6G4oymThXeKokOu-V8hmnTFRPG4O874s7SEDeFcztBYkBPRER_MU1JqNHjCQSjbvyX_44",
+    },
   });
 };
 
 export default function Payment() {
   const loaderData = useLoaderData<typeof loader>();
+  const navigate = useNavigate();
+  const fetcher = useFetcher();
+
+  async function onOrderApproved(orderResponseBody) {
+    console.log("onOrderApproved", orderResponseBody);
+
+    await fetch("/api/checkout", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        orderResponseBody,
+      }),
+    });
+  }
 
   return (
     <div className="flex  flex-col gap-16">
@@ -39,6 +60,8 @@ export default function Payment() {
         <PayPalButton
           amount={loaderData?.checkoutConfig.amount}
           currency={loaderData.checkoutConfig.currency}
+          clientId={loaderData.checkoutConfig.clientId}
+          onApprove={onOrderApproved}
         />
       </div>
     </div>
@@ -57,7 +80,7 @@ function Cart() {
         </div>
         <div className="flex flex-col gap-2">
           <span className="font-body text-xs font-bold">Valor</span>
-          <span className="font-body font-body">
+          <span className="font-body">
             <strong> R$ 120</strong>
           </span>
         </div>
@@ -65,3 +88,79 @@ function Cart() {
     </div>
   );
 }
+
+/**
+ * {
+    "id": "3AU83308HK926041Y",
+    "intent": "CAPTURE",
+    "status": "COMPLETED",
+    "purchase_units": [
+        {
+            "reference_id": "default",
+            "amount": {
+                "currency_code": "BRL",
+                "value": "120.00"
+            },
+            "payee": {
+                "email_address": "sb-gkh5222041559@business.example.com",
+                "merchant_id": "KQMWWVCKWXRDS"
+            },
+            "soft_descriptor": "PAYPAL *TEST STORE",
+            "shipping": {
+                "name": {
+                    "full_name": "John Doe"
+                },
+                "address": {
+                    "address_line_1": "Sao Jorge Way",
+                    "admin_area_2": "Sacramento",
+                    "admin_area_1": "CA",
+                    "postal_code": "95831",
+                    "country_code": "US"
+                }
+            },
+            "payments": {
+                "captures": [
+                    {
+                        "id": "57V54121EG4066240",
+                        "status": "COMPLETED",
+                        "amount": {
+                            "currency_code": "BRL",
+                            "value": "120.00"
+                        },
+                        "final_capture": true,
+                        "seller_protection": {
+                            "status": "ELIGIBLE",
+                            "dispute_categories": [
+                                "ITEM_NOT_RECEIVED",
+                                "UNAUTHORIZED_TRANSACTION"
+                            ]
+                        },
+                        "create_time": "2022-11-23T00:42:27Z",
+                        "update_time": "2022-11-23T00:42:27Z"
+                    }
+                ]
+            }
+        }
+    ],
+    "payer": {
+        "name": {
+            "given_name": "John",
+            "surname": "Doe"
+        },
+        "email_address": "clockdown@paypal.com",
+        "payer_id": "E7C2GSSL3BEKS",
+        "address": {
+            "country_code": "US"
+        }
+    },
+    "create_time": "2022-11-23T00:42:14Z",
+    "update_time": "2022-11-23T00:42:27Z",
+    "links": [
+        {
+            "href": "https://api.sandbox.paypal.com/v2/checkout/orders/3AU83308HK926041Y",
+            "rel": "self",
+            "method": "GET"
+        }
+    ]
+}
+ */

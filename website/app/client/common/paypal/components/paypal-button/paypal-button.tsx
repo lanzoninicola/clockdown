@@ -7,6 +7,7 @@ import type { OrderResponseBody } from "@paypal/paypal-js/types/apis/orders";
 interface PayPalButtonProps {
   amount: string;
   currency: string | "BRL";
+  clientId: string;
   /* async fn */
   onApprove?: (orderResponseBody: OrderResponseBody) => void;
   /* async fn */
@@ -18,13 +19,13 @@ interface PayPalButtonProps {
 export default function PayPalButton({
   amount,
   currency,
+  clientId,
   onApprove,
   onError,
   onCancel,
 }: PayPalButtonProps) {
   const initialOptions = {
-    "client-id":
-      "AZZ2rXm-Dum6G4oymThXeKokOu-V8hmnTFRPG4O874s7SEDeFcztBYkBPRER_MU1JqNHjCQSjbvyX_44",
+    "client-id": clientId,
     currency,
     components: "buttons",
   };

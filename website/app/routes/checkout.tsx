@@ -3,12 +3,18 @@ import Logo from "~/client/common/logo/logo";
 import StepButton from "~/client/common/primitives/step-button/step-button";
 
 export default function Checkout() {
+  const location = useLocation();
+
+  console.log(location.pathname);
+
   return (
     <section className="relative grid min-h-screen place-items-center bg-gradient-to-r from-blue-50 to-blue-100 px-4">
       <div className="z-1 absolute top-1/2 left-0 w-full -translate-y-1/2 opacity-20">
         <div className="flex justify-center">
-          <span className="md:leading-2 text-center font-accent font-bold sm:invisible md:visible md:px-16 md:text-9xl">
-            Finalizar compra
+          <span className="md:leading-2 text-center font-accent font-bold sm:invisible md:visible md:px-16 md:text-9xl ">
+            {location.pathname === "/checkout/thank-you"
+              ? "Obrigado"
+              : "Finalizar Compra"}
           </span>
         </div>
       </div>
@@ -31,7 +37,7 @@ function CheckoutSteps() {
   const steps = [
     {
       number: 1,
-      to: "/checkout/login",
+      to: "/login?checkout=pro",
       label: "Entrar/Cadastrar",
     },
     {
@@ -39,10 +45,15 @@ function CheckoutSteps() {
       to: "/checkout/payment",
       label: "Pagamento",
     },
+    {
+      number: 3,
+      to: "/checkout/thank-you",
+      label: "Thank you",
+    },
   ];
 
   return (
-    <div className="flex justify-center gap-16">
+    <div className={`grid grid-cols-3`} data-element="checkout-steps">
       {steps.map((step, idx) => {
         return (
           <CheckoutStep
