@@ -3,6 +3,11 @@ import type { LoaderFunction } from "@remix-run/node";
 import getUserAuthenticated from "~/server/auth/remix-auth/utils/get-user-authenticated.server";
 import { PayPalButton } from "~/client/common/paypal";
 import { useFetcher, useLoaderData, useNavigate } from "@remix-run/react";
+import type { User } from "@prisma/client";
+
+interface LoaderData {
+  user: User;
+}
 
 export const loader: LoaderFunction = async ({ request }) => {
   // const query = new URL(request.url).searchParams;
@@ -29,12 +34,38 @@ export const loader: LoaderFunction = async ({ request }) => {
 };
 
 export default function Payment() {
-  const loaderData = useLoaderData<typeof loader>();
+  const loaderData: LoaderData = useLoaderData<typeof loader>();
   const navigate = useNavigate();
   const fetcher = useFetcher();
 
   async function onOrderApproved(orderResponseBody) {
     console.log("onOrderApproved", orderResponseBody);
+
+    const res = await fetch("/api/checkout", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        payload: {
+          paymentStatus: "approved",
+          orderResponseBody,
+          user: loaderData.user.email,
+        },
+      }),
+    });
+
+    if (res.status === 200) {
+      navigate("/checkout/thank-you");
+    }
+
+    if (res.status === 401) {
+      navigate("/checkout/login");
+    }
+  }
+
+  async function onPaymenteError(err) {
+    console.log("onPaymenteError", err);
 
     await fetch("/api/checkout", {
       method: "POST",
@@ -42,7 +73,25 @@ export default function Payment() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        orderResponseBody,
+        payload: { paymentStatus: "error", err, user: loaderData.user.email },
+      }),
+    });
+  }
+
+  async function onPaymenteCanceled(data) {
+    console.log("onPaymenteCanceled", data);
+
+    await fetch("/api/checkout", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        payload: {
+          paymentStatus: "canceled",
+          data,
+          user: loaderData.user.email,
+        },
       }),
     });
   }
@@ -62,7 +111,42 @@ export default function Payment() {
           currency={loaderData.checkoutConfig.currency}
           clientId={loaderData.checkoutConfig.clientId}
           onApprove={onOrderApproved}
+          onCancel={onPaymenteCanceled}
+          onError={onPaymenteError}
         />
+        <button
+          onClick={async () => {
+            const res = await fetch("/api/checkout", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                payload: {
+                  paymentStatus: "approved",
+
+                  user: loaderData.user.email,
+                },
+              }),
+            });
+
+            // const res = await fetch("/api/checkout", {
+            //   method: "POST",
+            //   headers: {
+            //     "Content-Type": "application/json",
+            //   },
+            //   body: JSON.stringify({
+            //     payload: {
+            //       paymentStatus: "approved",
+            //     },
+            //   }),
+            // });
+
+            console.log("res", res);
+          }}
+        >
+          press me
+        </button>
       </div>
     </div>
   );
