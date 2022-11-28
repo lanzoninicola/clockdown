@@ -9,12 +9,13 @@
     "build:css": "tailwindcss -m -i ./styles/app.css -o app/styles/app.css",
     "dev": "dotenv -e .env.local -- concurrently \"npm run dev:css\" \"remix dev\"",
     "dev:css": "tailwindcss -w -i ./styles/app.css -o app/styles/app.css",
-    "start": "npm run prisma:migrate:prod && remix-serve build",
-    "prisma:introspect:local": "dotenv -e .env.local -- npx prisma db pull",
-    "prisma:migrate:local": "dotenv -e .env.local -- npx prisma migrate dev && npm run prisma:generate:local",
-    "prisma:generate:local": "dotenv -e .env.local -- npx prisma generate",
-    "prisma:migrate:prod": "dotenv -e .env -- npx prisma migrate deploy",
-    "prisma:seed:local": "dotenv -e .env.local -- npx prisma db seed"
+    "prisma:local:introspect": "dotenv -e .env.local -- npx prisma db pull",
+    "prisma:local:migrate": "dotenv -e .env.local -- npx prisma migrate dev && npm run prisma:local:generate",
+    "prisma:local:generate": "dotenv -e .env.local -- npx prisma generate",
+    "prisma:local:seed": "dotenv -e .env.local -- npx prisma db seed",
+    "prisma:prod:migrate": "dotenv -e .env -- npx prisma migrate deploy",
+    "start": "npm run prisma:prod:migrate && remix-serve build",
+    "rm": "rm -rf /build"
   },
   "dependencies": {
     "@chakra-ui/react": "^1.8.9",

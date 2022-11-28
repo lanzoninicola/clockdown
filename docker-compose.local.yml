@@ -1,24 +1,20 @@
 version: "3"
 
 volumes:
-  pgdata:
+  local-pgdata:
     driver: local
-  nginxdata:
+  local-nginxdata:
     driver: local
-  letsencrypt:
+  local-letsencrypt:
     driver: local
 
 networks:
-  frontend:
-    driver: bridge
-  backend:
-    driver: bridge
-  nginxproxymanager:
+  flat:
     driver: bridge
 
 services:
   website:
-    container_name: clockdown-website
+    container_name: local-clockdown-website
     # specifies the build configuration for creating container image from source (Dockerfile)
     build: ./website
     hostname: clockdown-website
@@ -26,9 +22,7 @@ services:
     depends_on:
       - postgres
     networks:
-      - frontend
-      - backend
-      - nginxproxymanager
+      - flat
     command: "npm start"
     working_dir: /myapp
     environment:
@@ -36,19 +30,19 @@ services:
     # expose is a metadata, it has no effect on the container
     expose:
       - "3000"
-    #ports:
-    #  - "80:3000"
+    ports:
+      - "3000:3000"
 
   # This is the configuration for our PostgreSQL database container
   # Note the `postgres` name is important, in out Node app when we refer
   # to  `host: "postgres"` that value is mapped on the network to the
   # address of this container.
   postgres:
-    container_name: clockdown-db
+    container_name: local-clockdown-db
     image: postgres:14.1-alpine
     hostname: clockdown-db
     networks:
-      - backend
+      - flat
     environment:
       # You can set the value of environment variables
       # in your docker-compose.yml file
@@ -59,9 +53,9 @@ services:
       - POSTGRES_DB=root
     expose:
       - "5432"
-    #ports:
-    # Standard port for PostgreSQL databases
-    # - "3254:5432"
+    ports:
+      # Standard port for PostgreSQL databases
+      - "3254:5432"
     #   volumes:
     # When the PostgresSQL container is started it will run any scripts
     # provided in the `docker-entrypoint-initdb.d` directory, this connects
@@ -69,36 +63,35 @@ services:
     # - ./database-seed.sql:/docker-entrypoint-initdb.d/database-seed.sql
     volumes:
       #- ./data:/data/db
-      - pgdata:/var/lib/postgresql/data
+      - local-pgdata:/var/lib/postgresql/data
 
   # PostgreSQL pgAdmin panel accessible at http://localhost:16543/
   pgadmin:
     image: dpage/pgadmin4
-    container_name: clockdown-pgadmin
+    container_name: local-clockdown-pgadmin
     hostname: clockdown-pgadmin
     networks:
-      - nginxproxymanager
-      - backend
+      - flat
     environment:
       PGADMIN_DEFAULT_EMAIL: "placeholder@example.com"
       PGADMIN_DEFAULT_PASSWORD: "fakepassword123!"
-    #ports:
-    #  - "80:80"
+    ports:
+      - "8080:80"
     depends_on:
       - postgres
 
   nginx:
     image: "lanzoninicola/nginx-proxy-manager:1.1"
-    container_name: clockdown-nginx
+    container_name: local-clockdown-nginx
     hostname: clockdown-nginx
     restart: unless-stopped
     networks:
-      - nginxproxymanager
+      - flat
     expose:
       - "443"
     ports:
       # These ports are in format <host-port>:<container-port>
-      # - "80:80" # Public HTTP Port
+      - "80:80" # Public HTTP Port
       - "443:443" # Public HTTPS Port
       - "81:81" # Admin Web Port
       # Add any other Stream port you want to expose
@@ -114,5 +107,5 @@ services:
     # DISABLE_IPV6: 'true'
 
     volumes:
-      - nginxdata:/data
-      - letsencrypt:/etc/letsencrypt
+      - local-nginxdata:/data
+      - local-letsencrypt:/etc/letsencrypt
