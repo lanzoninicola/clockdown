@@ -8,10 +8,50 @@ datasource db {
 }
 
 model User {
-  id        Int     @id @default(autoincrement())
-  fullname  String?
-  email     String  @unique
-  password  String
+  id              Int     @id @default(autoincrement())
+  fullname        String?
+  email           String  @unique
+  password        String
+  paidClient      Boolean @default(false)
+  lastPaymentAt   DateTime?
+  subscriptionEnd DateTime?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt @default(now())
+
+  orders          Order[]
 
   @@map(name: "users")
+}
+
+model Product {
+  id          Int      @id @default(autoincrement())
+  name        String
+  description String?
+  unit        String
+  price       Float
+  currency    String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt @default(now())
+
+  orders      Order[]
+
+  @@map(name: "products")
+}
+
+
+model Order {
+  id            Int      @id @default(autoincrement())
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt @default(now())
+  productId     Int
+  product       Product @relation(fields: [productId], references: [id])
+  quantity      Int
+  price         Float
+  currency      String
+  total         Float
+  userId        Int
+  paymentMethod String
+  user          User     @relation(fields: [userId], references: [id])
+
+  @@map(name: "orders")
 }

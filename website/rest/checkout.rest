@@ -1,0 +1,20 @@
+### Send checkout data to the server
+POST http://localhost:3000/api/checkout
+Content-Type: "application/json"
+
+{
+    "payload": {
+        "paymentStatus": "approved",
+        "order": {
+           "purchase_units": [
+                {
+                     "amount": {
+                          "currency_code": "BRL",
+                          "value": "120"
+                     }
+                }
+              ]
+        },
+        "payer": "lanzoni.nicola@gmail.com"
+    }
+}

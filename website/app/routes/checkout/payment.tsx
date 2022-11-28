@@ -4,9 +4,14 @@ import getUserAuthenticated from "~/server/auth/remix-auth/utils/get-user-authen
 import { PayPalButton } from "~/client/common/paypal";
 import { useFetcher, useLoaderData, useNavigate } from "@remix-run/react";
 import type { User } from "@prisma/client";
+import type {
+  CheckoutFrontendConfig,
+  PaymentCancelledRequestData,
+} from "~/server/checkout/types";
 
 interface LoaderData {
   user: User;
+  checkoutConfig: CheckoutFrontendConfig;
 }
 
 export const loader: LoaderFunction = async ({ request }) => {
@@ -33,6 +38,8 @@ export const loader: LoaderFunction = async ({ request }) => {
   });
 };
 
+// TODO: make a class to handle fetch operations, maybe using in the frontend "fetcher" and send request into ActionFunction
+
 export default function Payment() {
   const loaderData: LoaderData = useLoaderData<typeof loader>();
   const navigate = useNavigate();
@@ -49,8 +56,8 @@ export default function Payment() {
       body: JSON.stringify({
         payload: {
           paymentStatus: "approved",
-          orderResponseBody,
-          user: loaderData.user.email,
+          order: orderResponseBody,
+          payer: loaderData.user.email,
         },
       }),
     });
@@ -73,26 +80,26 @@ export default function Payment() {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        payload: { paymentStatus: "error", err, user: loaderData.user.email },
+        payload: { paymentStatus: "error", err, payer: loaderData.user.email },
       }),
     });
   }
 
-  async function onPaymenteCanceled(data) {
-    console.log("onPaymenteCanceled", data);
+  async function onPaymenteCancelled(data) {
+    const requestPayload: PaymentCancelledRequestData = {
+      payload: {
+        paymentStatus: "cancelled",
+        data,
+        payer: loaderData.user.email,
+      },
+    };
 
     await fetch("/api/checkout", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        payload: {
-          paymentStatus: "canceled",
-          data,
-          user: loaderData.user.email,
-        },
-      }),
+      body: JSON.stringify(requestPayload),
     });
   }
 
@@ -111,7 +118,7 @@ export default function Payment() {
           currency={loaderData.checkoutConfig.currency}
           clientId={loaderData.checkoutConfig.clientId}
           onApprove={onOrderApproved}
-          onCancel={onPaymenteCanceled}
+          onCancel={onPaymenteCancelled}
           onError={onPaymenteError}
         />
         <button

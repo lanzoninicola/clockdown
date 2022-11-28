@@ -11,7 +11,7 @@ export default class UserSignupValidator implements Validator<UserSignup> {
   public async validate(user: UserSignup): Promise<ValidationError | void> {
     const { email, password } = user;
 
-    const userFound = await this._repository.getUserByEmail(email);
+    const userFound = await this._repository.findUserByEmail(email);
 
     if (userFound) {
       throw new ValidationError("Usuário já cadastrado");

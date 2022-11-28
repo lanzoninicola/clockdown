@@ -63,8 +63,6 @@ const PaymentButton = ({
             });
         }}
         onApprove={async (data, actions) => {
-          console.log("Order has been approved...", data);
-
           if (actions.order) {
             const order: OrderResponseBody = await actions.order.capture();
 

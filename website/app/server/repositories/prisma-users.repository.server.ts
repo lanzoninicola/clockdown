@@ -46,9 +46,7 @@ export default class PrismaUsersRepository implements BaseRepository {
     });
   }
 
-  public async getUserByEmail(email: string): Promise<User | null> {
-    console.log("PrismaUsersRepository", email);
-
+  public async findUserByEmail(email: string): Promise<User | null> {
     return await this._prismaClient.user.findFirst({
       where: {
         email,
@@ -56,7 +54,7 @@ export default class PrismaUsersRepository implements BaseRepository {
     });
   }
 
-  public async getUserByEmailAndPassword(
+  public async findUserByEmailAndPassword(
     email: string,
     password: string
   ): Promise<User | null> {

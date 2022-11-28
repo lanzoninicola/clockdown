@@ -10,6 +10,8 @@ export default async function tryCatch(
   try {
     return await fn(...args);
   } catch (error: Error | any) {
+    console.log(error);
+    // PrismaClientValidationError
     if (onError !== undefined) {
       return onError(error);
     }

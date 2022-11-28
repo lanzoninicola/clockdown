@@ -1,0 +1,40 @@
+-- AlterTable
+ALTER TABLE "users" ADD COLUMN     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+ADD COLUMN     "lastPaymentAt" TIMESTAMP(3),
+ADD COLUMN     "paidClient" BOOLEAN NOT NULL DEFAULT false,
+ADD COLUMN     "subscriptionEnd" TIMESTAMP(3),
+ADD COLUMN     "updatedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP;
+
+-- CreateTable
+CREATE TABLE "products" (
+    "id" SERIAL NOT NULL,
+    "name" TEXT NOT NULL,
+    "unit" TEXT NOT NULL,
+    "price" DOUBLE PRECISION NOT NULL,
+    "currency" TEXT NOT NULL,
+    "image" TEXT NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT "products_pkey" PRIMARY KEY ("id")
+);
+
+-- CreateTable
+CREATE TABLE "orders" (
+    "id" SERIAL NOT NULL,
+    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "updatedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    "productId" INTEGER NOT NULL,
+    "quantity" INTEGER NOT NULL,
+    "price" INTEGER NOT NULL,
+    "total" DOUBLE PRECISION NOT NULL,
+    "userId" INTEGER NOT NULL,
+
+    CONSTRAINT "orders_pkey" PRIMARY KEY ("id")
+);
+
+-- AddForeignKey
+ALTER TABLE "orders" ADD CONSTRAINT "orders_productId_fkey" FOREIGN KEY ("productId") REFERENCES "products"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE "orders" ADD CONSTRAINT "orders_userId_fkey" FOREIGN KEY ("userId") REFERENCES "users"("id") ON DELETE RESTRICT ON UPDATE CASCADE;

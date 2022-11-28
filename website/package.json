@@ -1,6 +1,9 @@
 {
   "private": true,
   "sideEffects": false,
+  "prisma": {
+    "seed": "ts-node prisma/seed.ts"
+  },
   "scripts": {
     "build": "npm run build:css && remix build",
     "build:css": "tailwindcss -m -i ./styles/app.css -o app/styles/app.css",
@@ -8,8 +11,10 @@
     "dev:css": "tailwindcss -w -i ./styles/app.css -o app/styles/app.css",
     "start": "npm run prisma:migrate:prod && remix-serve build",
     "prisma:introspect:local": "dotenv -e .env.local -- npx prisma db pull",
-    "prisma:migrate:local": "dotenv -e .env.local -- npx prisma migrate dev --name postgres-init",
-    "prisma:migrate:prod": "dotenv -e .env -- npx prisma migrate deploy"
+    "prisma:migrate:local": "dotenv -e .env.local -- npx prisma migrate dev && npm run prisma:generate:local",
+    "prisma:generate:local": "dotenv -e .env.local -- npx prisma generate",
+    "prisma:migrate:prod": "dotenv -e .env -- npx prisma migrate deploy",
+    "prisma:seed:local": "dotenv -e .env.local -- npx prisma db seed"
   },
   "dependencies": {
     "@chakra-ui/react": "^1.8.9",
@@ -48,6 +53,7 @@
     "@remix-run/dev": "*",
     "@remix-run/eslint-config": "*",
     "@types/crypto-js": "^4.1.1",
+    "@types/node": "^18.11.9",
     "@types/react": "^17.0.39",
     "@types/react-dom": "^17.0.13",
     "autoprefixer": "^10.4.13",
@@ -60,7 +66,8 @@
     "prettier-plugin-tailwindcss": "^0.1.8",
     "prisma": "^4.6.0",
     "tailwindcss": "^3.2.1",
-    "typescript": "^4.7.4"
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.3"
   },
   "engines": {
     "node": ">=14"

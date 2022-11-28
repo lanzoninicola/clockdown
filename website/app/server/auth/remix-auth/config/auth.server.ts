@@ -21,7 +21,7 @@ authenticator.use(
     }
 
     const repository = new PrismaUsersRepository();
-    let user = await repository.getUserByEmailAndPassword(email, password);
+    let user = await repository.findUserByEmailAndPassword(email, password);
 
     if (user) {
       return user;
