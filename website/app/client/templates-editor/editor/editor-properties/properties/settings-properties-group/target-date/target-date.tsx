@@ -1,5 +1,6 @@
 import { Input, ThemingProps } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
+import capitalize from "~/client/common/utils/capitalize";
 import { EditorContext } from "../../../../../countdown-state-management";
 import useTimerSettingsStateWithDispatcher from "../../../../../countdown-state-management/common/hooks/timer-settings/useTimerSettingsStateWithDispatcher";
 
@@ -17,7 +18,7 @@ export default function TargetDate({ size }: TargetDateProps) {
 
   return (
     <PropertyWrapper>
-      <Label size={size}>{t("editor.targetDate").capitalize()}</Label>
+      <Label size={size}>{capitalize(t("editor.targetDate"))}</Label>
       <Input
         size={size as ThemingProps<"Input">["size"]}
         type="datetime-local"

@@ -6,6 +6,8 @@ import FontColor from "../../components/common/font-color/font-color";
 import FontFamily from "../../components/common/font-family/font-family";
 import FontSize from "../../components/common/font-size/font-size";
 import CountdownTitleText from "./countdown-title-text/countdown-title-text";
+import debounce from "~/client/common/utils/debounce";
+import { useState } from "react";
 
 interface TitlePropertiesGroupProps {
   showGroupTitle?: boolean;
@@ -19,6 +21,7 @@ export default function TitlePropertiesGroup({
   const { t } = useTranslation();
   const { fontColor, fontFamily, fontSize, fontWeight, themeDispatcher } =
     useThemeTitleSelector();
+  const [color, setColor] = useState(fontColor);
 
   return (
     <PropertyGroupWrapper
@@ -59,12 +62,17 @@ export default function TitlePropertiesGroup({
       />
       <FontColor
         label={t("editor.propertiesGroup.title.textColor")}
-        colorSelected={fontColor}
+        colorSelected={color}
         onColorSelected={(colorSelected) => {
-          themeDispatcher({
-            type: "THEME_TITLE_ON_CHANGE_FONT_COLOR",
-            payload: colorSelected,
-          });
+          console.log("colorSelected", colorSelected);
+          // debounce(
+          //   themeDispatcher({
+          //     type: "THEME_TITLE_ON_CHANGE_FONT_COLOR",
+          //     payload: colorSelected,
+          //   }),
+          //   1000
+          // );
+          setColor(colorSelected);
         }}
       />
     </PropertyGroupWrapper>

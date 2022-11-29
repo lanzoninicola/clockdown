@@ -2,6 +2,7 @@ import { WidgetContext } from "../../countdown-state-management";
 import useThemeTimerUnitLabel from "../../countdown-state-management/common/hooks/theme/useThemeTimerUnitLabel";
 import TRANSLATIONS from "../../../../common/i18n/translations/translations";
 import { WidgetTranslation } from "../types";
+import capitalize from "~/client/common/utils/capitalize";
 
 interface UseWidgetTranslation {
   /** function that let you translate the label of countdown unit */
@@ -39,7 +40,7 @@ export default function useWidgetTranslation(): UseWidgetTranslation {
       throw new Error(`No translation found for locale ${unitLabelLanguage}`);
     }
 
-    return translation[slice].capitalize() || "";
+    return capitalize(translation[slice]) || "";
   }
 
   return { tw };

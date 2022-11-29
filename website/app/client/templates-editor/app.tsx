@@ -1,7 +1,5 @@
 import "~/client/templates-editor/styles/global.css";
 
-import { useToast } from "@chakra-ui/react";
-import { useEffect } from "react";
 import { EditorProvider } from "~/client/templates-editor/countdown-state-management/editor";
 import EditorPage from "~/client/templates-editor/editor/editor-page";
 import MainContent from "~/client/templates-editor/global/common/layout/main-content/main-content";
@@ -29,7 +27,7 @@ const ClockdownApp = ({ onboardedUser }: ClockdownAppProps) => {
       >
         <MainContent>
           <Header onboardedUser={onboardedUser} />
-          {/* <EditorPage /> */}
+          <EditorPage />
         </MainContent>
       </EditorProvider>
     </PremiumFeatureProvider>

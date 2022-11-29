@@ -1,5 +1,6 @@
 import { Button } from "@chakra-ui/react";
 import { t } from "i18next";
+import capitalize from "~/client/common/utils/capitalize";
 import useOnboardingModalForm from "../../hooks/useOnboardingModalForm";
 
 interface OnboardingSubmitButtonProps {
@@ -22,14 +23,14 @@ export default function OnboardingSubmitButton({
       isDisabled={
         fullname === "" || email === "" || consent_terms_privacy === false
       }
-      loadingText={t("global.saving").capitalize()}
+      loadingText={capitalize(t("global.saving"))}
       className="theme-font"
       colorScheme="blue"
       size={"sm"}
       onClick={onClick || handleSubmit}
       data-test="onboarding-form-submit"
     >
-      {label || t("onboarding.buttonLabel").capitalize()}
+      {label || capitalize(t("onboarding.buttonLabel"))}
     </Button>
   );
 }

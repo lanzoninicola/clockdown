@@ -1,4 +1,5 @@
 import { useTranslation } from "react-i18next";
+import capitalize from "~/client/common/utils/capitalize";
 import useSaveSettings from "../../../hooks/useSaveSettings";
 
 import ButtonSave from "../../../layout/button-save/button-save";
@@ -9,11 +10,11 @@ export default function EditorSaveButton() {
 
   return (
     <ButtonSave
-      label={t("editor.saveSettings").capitalize()}
+      label={capitalize(t("editor.saveSettings"))}
       colorScheme={"green"}
       onClick={currentCountdown ? onUpdate : () => onCreate()}
       isLoading={isLoading}
-      loadingText={t("global.saving").capitalize()}
+      loadingText={capitalize(t("global.saving"))}
     />
   );
 }

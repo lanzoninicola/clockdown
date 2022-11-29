@@ -17,6 +17,7 @@ import { useRef, useState } from "react";
 import { CountdownModel } from "../../../countdown-widget/types";
 import { useTranslation } from "react-i18next";
 import ButtonShortcode from "./button-shortcode/button-shortcode";
+import capitalize from "~/client/common/utils/capitalize";
 
 interface ModalShortcodeProps {
   countdownId: CountdownModel["id"];
@@ -83,8 +84,8 @@ export default function ShortcodePreview({ countdownId }: ModalShortcodeProps) {
               onClick={() => copyShortcode()}
             >
               {isCopied
-                ? t("global.copied").capitalize()
-                : t("global.copy").capitalize()}
+                ? capitalize(t("global.copied"))
+                : capitalize(t("global.copy"))}
             </Button>
           </ModalFooter>
         </ModalContent>

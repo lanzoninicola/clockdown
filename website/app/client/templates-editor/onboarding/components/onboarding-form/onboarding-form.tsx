@@ -8,6 +8,7 @@ import {
 } from "@chakra-ui/react";
 import { Form } from "@remix-run/react";
 import { useTranslation } from "react-i18next";
+import capitalize from "~/client/common/utils/capitalize";
 
 import useOnboardingModalForm from "../../hooks/useOnboardingModalForm";
 import ConsentGroup from "./consent-group/consent-group";
@@ -70,14 +71,14 @@ export default function OnboardingForm({
           type="submit"
           isLoading={formState.isLoading}
           isDisabled={fullname === "" || email === ""}
-          loadingText={t("global.saving").capitalize()}
+          loadingText={capitalize(t("global.saving"))}
           className="theme-font"
           colorScheme="blue"
           size={"sm"}
           onClick={handleSubmit}
           data-test="onboarding-form-submit"
         >
-          {label || t("onboarding.buttonLabel").capitalize()}
+          {label || capitalize(t("onboarding.buttonLabel"))}
         </Button>
       </Grid>
     </Form>

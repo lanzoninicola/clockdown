@@ -14,7 +14,8 @@
     "prisma:local:generate": "dotenv -e .env.local -- npx prisma generate",
     "prisma:local:seed": "dotenv -e .env.local -- npx prisma db seed",
     "prisma:prod:migrate": "dotenv -e .env -- npx prisma migrate deploy",
-    "start": "remix-serve build",
+    "start": "npm run prisma:prod:migrate && remix-serve build",
+    "start:local": "remix-serve build",
     "rm": "rm -rf ./build/*.* && rm -rf ./public/build/*.*"
   },
   "dependencies": {

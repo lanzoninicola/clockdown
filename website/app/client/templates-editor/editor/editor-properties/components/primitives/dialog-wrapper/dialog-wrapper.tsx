@@ -1,6 +1,7 @@
 import { Box, Button, Flex, FlexProps } from "@chakra-ui/react";
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
+import capitalize from "~/client/common/utils/capitalize";
 
 import useElementPosition from "../../../../../hooks/useElementPosition";
 
@@ -98,7 +99,7 @@ export default function DialogWrapper({
               mt={4}
               w="100%"
             >
-              {closeButtonLabel || t("global.close").capitalize()}
+              {closeButtonLabel || capitalize(t("global.close"))}
             </Button>
           )}
         </Box>

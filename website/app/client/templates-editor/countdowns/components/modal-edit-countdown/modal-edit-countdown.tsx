@@ -12,6 +12,7 @@ import {
 import { useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useSWRConfig } from "swr";
+import capitalize from "~/client/common/utils/capitalize";
 
 import { COUNTDOWNS_REST_API_ENDPOINTS } from "../../../countdown-rest-api/constants/countdowns/endpoints";
 import { update as updateCountdown } from "../../../countdown-rest-api/services/countdowns";
@@ -95,13 +96,13 @@ export default function ModalEditCountdown({
           <ModalFooter>
             <Button
               isLoading={isSuspense}
-              loadingText={t("global.updating").capitalize()}
+              loadingText={capitalize(t("global.updating"))}
               className="theme-font"
               colorScheme="blue"
               size={"sm"}
               onClick={() => updateData()}
             >
-              {t("global.update").capitalize()}
+              {capitalize(t("global.update"))}
             </Button>
           </ModalFooter>
         </ModalContent>

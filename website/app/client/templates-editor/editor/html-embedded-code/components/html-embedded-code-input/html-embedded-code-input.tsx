@@ -12,6 +12,7 @@ import { BiCode } from "@react-icons/all-files/bi/BiCode";
 import { Link, Links, useLoaderData } from "@remix-run/react";
 import { useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
+import capitalize from "~/client/common/utils/capitalize";
 
 import Teext from "../../../../global/common/layout/teext/teext";
 import { PremiumButtonWithPopover } from "../../../../premium-features";
@@ -123,7 +124,7 @@ function ButtonGenerateCode({
       }}
     >
       {isOpen
-        ? t("global.htmlEmbeddedCode.hideCode").capitalize()
+        ? capitalize(t("global.htmlEmbeddedCode.hideCode"))
         : t("global.htmlEmbeddedCode.buttonLabel")}
     </Button>
   );

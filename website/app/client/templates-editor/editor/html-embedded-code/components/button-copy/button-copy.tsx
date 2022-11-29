@@ -2,6 +2,7 @@ import { Button } from "@chakra-ui/react";
 import { BiCopy } from "@react-icons/all-files/bi/BiCopy";
 import { t } from "i18next";
 import { useState } from "react";
+import capitalize from "~/client/common/utils/capitalize";
 
 export default function ButtonCopy({ text }: { text: string }) {
   const [isCopied, setIsCopied] = useState(false);
@@ -24,9 +25,7 @@ export default function ButtonCopy({ text }: { text: string }) {
       leftIcon={<BiCopy />}
       onClick={() => copyShortcode()}
     >
-      {isCopied
-        ? t("global.copied").capitalize()
-        : t("global.copy").capitalize()}
+      {isCopied ? capitalize(t("global.copied")) : capitalize(t("global.copy"))}
     </Button>
   );
 }

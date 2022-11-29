@@ -1,3 +1,4 @@
+import capitalize from "~/client/common/utils/capitalize";
 
 
 
@@ -12,7 +13,7 @@ const tw = (translationDatabase:any, locale: string) => (slice: [key: string]: s
     throw new Error(`No translation found for locale ${locale}`);
   }
 
-  return translation[slice].capitalize() || "";
+  return capitalize(translation[slice]) || "";
 }
 
 export default tw

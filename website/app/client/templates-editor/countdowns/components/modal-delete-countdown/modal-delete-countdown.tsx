@@ -19,6 +19,7 @@ import { COUNTDOWNS_REST_API_ENDPOINTS } from "../../../countdown-rest-api/const
 import { remove as removeCountdownSettings } from "../../../countdown-rest-api/services/editor";
 import { useState } from "react";
 import { useNotifications } from "../../../notifications";
+import capitalize from "~/client/common/utils/capitalize";
 
 interface ModalDeleteCountdownProps {
   countdown: CountdownModel;
@@ -70,16 +71,16 @@ export default function ModalDeleteCountdown({
           </ModalBody>
           <ModalFooter>
             <Button mr={3} size={"sm"} onClick={onClose}>
-              {t("global.no").capitalize()}
+              {capitalize(t("global.no"))}
             </Button>
             <Button
               colorScheme="red"
               size={"sm"}
               onClick={() => deleteCountdown(countdown)}
               isLoading={isDeleteSuspense}
-              loadingText={t("global.removing").capitalize()}
+              loadingText={capitalize(t("global.removing"))}
             >
-              {t("global.yes").capitalize()}
+              {capitalize(t("global.yes"))}
             </Button>
           </ModalFooter>
         </ModalContent>

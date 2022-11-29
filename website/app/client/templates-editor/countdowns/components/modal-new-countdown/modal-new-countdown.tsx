@@ -12,6 +12,7 @@ import {
 import { useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import useSWR, { useSWRConfig } from "swr";
+import capitalize from "~/client/common/utils/capitalize";
 
 import { COUNTDOWNS_REST_API_ENDPOINTS } from "../../../countdown-rest-api/constants/countdowns/endpoints";
 import { create as createCountdownRecord } from "../../../countdown-rest-api/services/countdowns";
@@ -121,14 +122,14 @@ export default function ModalNewCountdown() {
           <ModalFooter>
             <Button
               isLoading={isSuspense}
-              loadingText={t("global.saving").capitalize()}
+              loadingText={capitalize(t("global.saving"))}
               className="theme-font"
               colorScheme="blue"
               size={"sm"}
               onClick={() => createCountdown()}
               data-test="create-countdown-button"
             >
-              {t("global.save").capitalize()}
+              {capitalize(t("global.save"))}
             </Button>
           </ModalFooter>
         </ModalContent>
