@@ -9,6 +9,8 @@ import CountdownTitleText from "./countdown-title-text/countdown-title-text";
 import debounce from "~/client/common/utils/debounce";
 import { useState } from "react";
 
+import { useDebouncyFn } from "use-debouncy";
+
 interface TitlePropertiesGroupProps {
   showGroupTitle?: boolean;
   [key: string]: any;
@@ -21,7 +23,18 @@ export default function TitlePropertiesGroup({
   const { t } = useTranslation();
   const { fontColor, fontFamily, fontSize, fontWeight, themeDispatcher } =
     useThemeTitleSelector();
-  const [color, setColor] = useState(fontColor);
+
+  // const onColorChange = useDebouncyFn(
+  //   (colorSelected) => {
+  //     console.log("colorSelected", colorSelected);
+
+  //     themeDispatcher({
+  //       type: "THEME_TITLE_ON_CHANGE_FONT_COLOR",
+  //       payload: colorSelected,
+  //     });
+  //   }, // function debounce
+  //   400 // number of milliseconds to delay
+  // );
 
   return (
     <PropertyGroupWrapper
@@ -62,18 +75,8 @@ export default function TitlePropertiesGroup({
       />
       <FontColor
         label={t("editor.propertiesGroup.title.textColor")}
-        colorSelected={color}
-        onColorSelected={(colorSelected) => {
-          console.log("colorSelected", colorSelected);
-          // debounce(
-          //   themeDispatcher({
-          //     type: "THEME_TITLE_ON_CHANGE_FONT_COLOR",
-          //     payload: colorSelected,
-          //   }),
-          //   1000
-          // );
-          setColor(colorSelected);
-        }}
+        colorSelected={fontColor}
+        onColorSelected={() => {}}
       />
     </PropertyGroupWrapper>
   );
