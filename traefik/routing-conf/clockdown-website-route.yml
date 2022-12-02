@@ -1,0 +1,37 @@
+# *** TRAEFIK ROUTE/DYNAMIC CONFIGURATION FILE ***
+# ---
+# In the YT video this is made via Docker labels (https://www.youtube.com/watch?v=wLrmmh1eI94)
+# https://doc.traefik.io/traefik/providers/file/
+#
+# This file is stored in /etc/traefik/conf directory (see traefik.yml providers@file)
+# and is mounted in the traefik container
+# ---
+http:
+  # Add the router
+  # https://doc.traefik.io/traefik/routing/routers/
+  # ---
+  routers:
+    website:
+      # 'entryPoints' => entrypoint section of traefik.yml (main config)
+      # ---
+      entryPoints:
+        - web # we can leave this config, in the static config add the redirections
+        - websecure
+      # 'service' => show below on 'services' section
+      # ---
+      service: website
+      rule: "Host(`clockdown.tech`)"
+      # https://doc.traefik.io/traefik/routing/routers/#certresolver
+      # ---
+      tls:
+        certResolver: staging
+
+  # Add the service
+  # https://doc.traefik.io/traefik/routing/services/
+  # ---
+  services:
+    website:
+      loadBalancer:
+        servers:
+          - url: http://clockdown-website:3000/
+        passHostHeader: false

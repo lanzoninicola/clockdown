@@ -1,0 +1,30 @@
+version: "3"
+
+volumes:
+  traefik-ssl-certs:
+    driver: local
+
+services:
+  traefik:
+    image: "traefik:v2.9.5"
+    container_name: "traefik"
+    ports:
+      - "80:80"
+      - "443:443"
+      # (Optional) Expose Dashboard
+      # row 20 - 22 traefik.yml file
+      # ---
+      - "8080:8080" # Don't do this in production!
+    volumes:
+      # /etc/traefik is the default path for the configuration file
+      # row 46 && 54 traefik.yml file - save the certificate in this path
+      # ---
+      - /etc/traefik:/etc/traefik
+      # needed when choose DOCKER provider for traefik
+      # ---
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      # Here, the volume where to store the certificates
+      # host path: "/var/lib/docker/volumes/traefik-ssl-certs/_data"
+      # "acme.json" is the file that will store the certificates
+      # ---
+      - traefik-ssl-certs:/ssl-certs
