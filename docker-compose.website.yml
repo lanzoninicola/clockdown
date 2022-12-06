@@ -1,0 +1,17 @@
+version: "3"
+
+services:
+  website:
+    container_name: clockdown-website
+    # specifies the build configuration for creating container image from source (Dockerfile)
+    build: ./website
+    hostname: clockdown-website
+    command: "npm start"
+    working_dir: /myapp
+    environment:
+      - NODE_ENV=production
+    # expose is a metadata, it has no effect on the container
+    expose:
+      - "3000"
+    #ports:
+    #  - "80:3000"

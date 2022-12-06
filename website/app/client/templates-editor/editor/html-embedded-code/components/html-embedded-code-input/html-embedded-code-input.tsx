@@ -9,8 +9,7 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import { BiCode } from "@react-icons/all-files/bi/BiCode";
-import { Link, Links, useLoaderData } from "@remix-run/react";
-import { useRef, useState } from "react";
+import { Link, useLoaderData } from "@remix-run/react";
 import { useTranslation } from "react-i18next";
 import capitalize from "~/client/common/utils/capitalize";
 

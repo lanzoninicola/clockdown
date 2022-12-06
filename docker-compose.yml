@@ -3,10 +3,6 @@ version: "3"
 volumes:
   pgdata:
     driver: local
-  nginxdata:
-    driver: local
-  letsencrypt:
-    driver: local
 
 networks:
   frontend:
@@ -23,12 +19,11 @@ services:
     build: ./website
     hostname: clockdown-website
     #restart: always
-    depends_on:
-      - postgres
+    #depends_on:
+    #- postgres
     networks:
       - frontend
       - backend
-      - nginxproxymanager
     command: "npm start"
     working_dir: /myapp
     environment:
@@ -87,31 +82,14 @@ services:
     depends_on:
       - postgres
 
-  nginx:
-    image: "lanzoninicola/nginx-proxy-manager:1.1"
-    container_name: clockdown-nginx
-    hostname: clockdown-nginx
-    restart: unless-stopped
-    networks:
-      - nginxproxymanager
-    expose:
-      - "443"
+  traefik:
+    image: "traefik:v2.5"
+    container_name: "traefik"
     ports:
-      # These ports are in format <host-port>:<container-port>
-      # - "80:80" # Public HTTP Port
-      - "443:443" # Public HTTPS Port
-      - "81:81" # Admin Web Port
-      # Add any other Stream port you want to expose
-      # - '21:21' # FTP
-
-    # Uncomment the next line if you uncomment anything in the section
-    # environment:
-    # Uncomment this if you want to change the location of
-    # the SQLite DB file within the container
-    # DB_SQLITE_FILE: "/data/database.sqlite"
-
-    # Uncomment this if IPv6 is not enabled on your host
-    # DISABLE_IPV6: 'true'
+      - "80:80"
+      - "443:443"
+      # (Optional) Expose Dashboard
+      - "8080:8080" # Don't do this in production!
     volumes:
-      - nginxdata:/data
-      - letsencrypt:/etc/letsencrypt
+      - /etc/traefik:/etc/traefik
+      - /var/run/docker.sock:/var/run/docker.sock:ro

@@ -22,7 +22,7 @@ const ClockdownApp = ({ onboardedUser }: ClockdownAppProps) => {
     >
       <EditorProvider
         config={{
-          productPublicWebsiteURL: "https://clockdown.tech/",
+          productPublicWebsiteURL: "https://clockdown.tech",
         }}
       >
         <MainContent>

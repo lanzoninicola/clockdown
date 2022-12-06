@@ -46,17 +46,17 @@ export default function useHtmlCode() {
   htmlCode += `data-config="${configEnc}"`;
   htmlCode += "></div>";
 
-  const BASE_ASSETS_URL = `${config.productPublicWebsiteURL}/wp-content/plugins/clockdown/client/frontend/public/clockdown-widget/assets`;
+  const BASE_ASSETS_URL = `${config.productPublicWebsiteURL}/widget`;
 
   // script tag
   htmlCode += `<script `;
-  htmlCode += `src="${BASE_ASSETS_URL}/index.js"`;
+  htmlCode += `src="${BASE_ASSETS_URL}/widget.js"`;
   htmlCode += ` defer `;
   htmlCode += `></script>`;
 
   // style tag
   htmlCode += `<link rel="stylesheet" `;
-  htmlCode += `href="${BASE_ASSETS_URL}/index.css"`;
+  htmlCode += `href="${BASE_ASSETS_URL}/widget.css"`;
   htmlCode += `/>`;
 
   htmlCode += "</div>";

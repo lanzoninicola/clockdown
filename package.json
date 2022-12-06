@@ -8,11 +8,19 @@
   "scripts": {
     "widget:migrate": "copyfiles -f ./website/app/client/templates-editor/countdown* ./widget/src",
     "widget:build": "cd widget && npm run build",
-    "widget:pub": "copyfiles -f ./widget/public/* ./website/public/widget",
-    "widget:deploy": "npm run widget:migrate && npm run widget:build && npm run widget:pub",
+    "widget:serve": "copyfiles -f ./widget/public/* ./website/public/widget",
+    "widget:deploy": "npm run widget:migrate && npm run widget:build && npm run widget:serve",
+    "==0==": "===============================",
+    "docker:website:build": "docker compose -f docker-compose.website.yml build --no-cache",
+    "docker:website:commit": "docker commit clockdown_website clockdown/website:latest",
+    "docker:website:push": "docker push clockdown/website:latest",
+    "docker:website:deploy": "npm run docker:website:build && npm run docker:website:commit && npm run docker:website:push",
+    "====": "===============================",
     "docker:local:up": "npm run widget:deploy && docker compose -p clockdown-local -f docker-compose.local.yml up -d --build",
+    "==/==": "===============================",
     "docker:prod:up": "npm run widget:deploy && docker compose -p clockdown-prod -f docker-compose.yml up -d --build",
     "docker:prod:up:no-cache": "npm run widget:deploy && docker compose -f docker-compose.yml up -d --build --no-cache",
+    "==//==": "===============================",
     "stop": "docker compose -f docker-compose.yml down"
   }
 }
