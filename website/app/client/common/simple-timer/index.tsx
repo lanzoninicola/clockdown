@@ -45,9 +45,9 @@ function Timer() {
 
   return (
     <div
-      className={`grid w-max grid-cols-${
-        counterMode === true ? "1" : "5"
-      } justify-items-center`}
+      className={`grid w-max ${
+        counterMode === true ? "grid-cols-1" : "grid-cols-5"
+      } grid-rows-1 justify-items-center`}
     >
       {counterMode === false && (
         <>

@@ -1,36 +1,21 @@
-import {
-  Box,
-  Button,
-  Flex,
-  Grid,
-  HStack,
-  Text,
-  VStack,
-} from "@chakra-ui/react";
+import { Button, Flex, Grid, Text, VStack } from "@chakra-ui/react";
+import { FiUser } from "@react-icons/all-files/fi/FiUser";
 import { Link } from "@remix-run/react";
 import { useTranslation } from "react-i18next";
 
 import { ModalNewCountdown } from "../../countdowns/components";
 import { EditorSave } from "../../editor/components";
 import BreakpointsBar from "../../editor/editor-preview/components/breakpoints-bar/breakpoints-bar";
-import HtmlEmbeddedCode from "../../editor/html-embedded-code/html-embedded-code";
-import { Languages } from "../../i18n/types";
-import {
-  PremiumButtonWithPopover,
-  PremiumFeatureGuard,
-} from "../../premium-features";
-import { LanguagesMenu, Logo } from "../common";
-import Teext from "../common/layout/teext/teext";
-import { FiUser } from "@react-icons/all-files/fi/FiUser";
-import EditorButton from "~/client/website/components/editor-button";
 import HtmlEmbeddedCodeInput from "../../editor/html-embedded-code/components/html-embedded-code-input/html-embedded-code-input";
+import { PremiumFeatureGuard } from "../../premium-features";
+import { Logo } from "../common";
 
 export default function Header({
   onboardedUser,
 }: {
   onboardedUser: { email: string; fullname?: string } | null;
 }) {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   return (
     <Flex
@@ -75,7 +60,7 @@ export default function Header({
         <BreakpointsBar />
         <Flex justifySelf={"flex-end"} alignItems={"center"} gap={4}>
           {!onboardedUser && (
-            <Link to="/login">
+            <Link to="/login?context=app">
               <Button colorScheme={"gray"} size={"sm"} leftIcon={<FiUser />}>
                 Login
               </Button>

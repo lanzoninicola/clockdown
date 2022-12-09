@@ -43,7 +43,7 @@ export default function HtmlEmbeddedCodeInput({
   return (
     <VStack gap={4} w={"100%"} {...position}>
       {loaderData.userAuth === null ? (
-        <Link to="/login">
+        <Link to="/login?context=app">
           <ButtonGenerateCode
             onOpen={onOpen}
             isPremium={isPremium}

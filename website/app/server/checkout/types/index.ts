@@ -4,7 +4,7 @@ export type supportedCurrency = "BRL";
 
 export interface CheckoutFrontendConfig {
   currency: supportedCurrency;
-  amount: number;
+  amount: string;
   clientId: string;
 }
 

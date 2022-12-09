@@ -1,10 +1,8 @@
-import { ChakraProvider, Divider, HStack, Text } from "@chakra-ui/react";
-import type { User } from "@prisma/client";
+import { ChakraProvider } from "@chakra-ui/react";
 import { json } from "@remix-run/node";
 import {
   Link,
   useActionData,
-  useLoaderData,
   useOutletContext,
   useTransition,
 } from "@remix-run/react";
@@ -20,11 +18,13 @@ import tryCatch from "~/server/utils/try-catch.server";
 
 import { LoginSignUpOutletContext } from "../__auth";
 
+import type { User } from "@prisma/client";
 import type {
   ActionFunction,
   LoaderArgs,
   LoaderFunction,
 } from "@remix-run/node";
+import SimpleTimer from "~/client/common/simple-timer";
 
 export const action: ActionFunction = async ({ request }) => {
   const formData = await request.formData();
@@ -75,7 +75,7 @@ export const action: ActionFunction = async ({ request }) => {
 
 export default function SignUpPage() {
   const { t } = useTranslation();
-  const { checkout } = useOutletContext<LoginSignUpOutletContext>();
+  const { authContext } = useOutletContext<LoginSignUpOutletContext>();
 
   const actionData = useActionData();
   const transition = useTransition();
@@ -98,10 +98,16 @@ export default function SignUpPage() {
             {t("onboarding.signup.title")}
           </h2>
           <h3 className="text-md text-center font-body">
-            {checkout
+            {authContext === "checkout"
               ? t("onboarding.checkout.signup.subtitle")
               : t("onboarding.signup.subtitle")}
           </h3>
+          <div className="flex flex-row justify-center px-8 opacity-20 ">
+            <SimpleTimer
+              seconds={59}
+              itemClazzName={`font-accent text-md font-bold md:text-xl`}
+            />
+          </div>
         </div>
       </div>
       <ChakraProvider theme={theme}>
@@ -121,7 +127,7 @@ export default function SignUpPage() {
 
       <div className="flex w-full items-center justify-center gap-4 rounded-md py-8">
         <span className="font-body">{t("onboarding.alreadyRegistered")}</span>
-        <Link to="/login?checkout=pro">
+        <Link to={`/login?context=${authContext}`}>
           <button className="rounded-lg border-2 border-accent-base bg-transparent px-6 py-2 font-body text-sm font-bold  uppercase text-black shadow-md hover:bg-accent-500">
             {t("onboarding.login.buttonLabel")}
           </button>

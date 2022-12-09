@@ -1,4 +1,5 @@
-import { json, LoaderArgs, redirect } from "@remix-run/node";
+import { json } from "@remix-run/node";
+import type { LoaderArgs } from "@remix-run/node";
 import { Outlet, useLoaderData, useNavigate, Link } from "@remix-run/react";
 import { useEffect } from "react";
 import SimpleTimer from "~/client/common/simple-timer";
@@ -6,21 +7,21 @@ import ArrowRight from "~/client/website/common/arrow-right/arrow-right";
 import getUserAuthenticated from "~/server/auth/remix-auth/utils/get-user-authenticated.server";
 
 export interface LoginSignUpOutletContext {
-  checkout: boolean;
+  authContext: "checkout" | "app";
 }
 
 export const loader = async ({ request }: LoaderArgs) => {
   const query = new URL(request.url).searchParams;
-  const productPlan = query.get("checkout");
+  const authContext = query.get("context");
 
   let userAuthData = await getUserAuthenticated(request);
 
-  if (productPlan && userAuthData) {
-    return json({ context: "checkout", isAuthed: true });
+  if (authContext && userAuthData) {
+    return json({ context: authContext, isAuthed: true });
   }
 
-  if (productPlan) {
-    return json({ context: "checkout", isAuthed: false });
+  if (authContext) {
+    return json({ context: authContext, isAuthed: false });
   }
 
   return json({ context: "auth", isAuthed: !!userAuthData });
@@ -42,6 +43,7 @@ export default function Welcome() {
     return () => clearTimeout(time);
   }, [loaderData, navigate]);
 
+  // if the authentication workflow is fired for the checkout process
   if (loaderData?.context === "checkout" && loaderData?.isAuthed) {
     return (
       <div className="max-w-screen grid min-h-screen place-items-center bg-hero-bg p-4">
@@ -75,19 +77,12 @@ export default function Welcome() {
     );
   }
 
+  // if the authentication workflow is fired for using the app
   return (
     <section className="relative min-h-screen bg-hero-bg ">
-      <div className="absolute top-8 flex w-screen justify-center px-8 opacity-10 md:top-1/2 md:-translate-y-1/2">
-        <SimpleTimer
-          seconds={59}
-          itemClazzName={`font-accent text-5xl font-bold md:text-9xl`}
-        />
-      </div>
       <div className="grid h-screen place-items-center pb-8 ">
         <div className="h-auto p-4 md:w-max md:rounded-xl md:p-16 md:shadow-xl md:backdrop-blur-sm">
-          <Outlet
-            context={{ checkout: loaderData?.context === "checkout" || false }}
-          />
+          <Outlet context={{ authContext: loaderData?.context }} />
         </div>
       </div>
     </section>

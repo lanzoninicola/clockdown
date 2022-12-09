@@ -20,7 +20,8 @@ import authRedirectWithPayload from "~/server/auth/remix-auth/utils/redirect-wit
 
 import type { ActionFunction, LoaderFunction } from "@remix-run/node";
 import Logo from "~/client/common/logo/logo";
-import { LoginSignUpOutletContext } from "../__auth";
+import type { LoginSignUpOutletContext } from "../__auth";
+import SimpleTimer from "~/client/common/simple-timer";
 
 export const action: ActionFunction = async ({ request }) => {
   const formData = await request.formData();
@@ -36,10 +37,9 @@ export const action: ActionFunction = async ({ request }) => {
   /** ====================================== */
 
   const query = new URL(request.url).searchParams;
+  const authContext = query.get("context");
 
-  const productPlan = query.get("checkout");
-
-  if (productPlan !== null && productPlan !== undefined) {
+  if (authContext === "checkout") {
     return authRedirectWithPayload<Omit<User | "id", "password">>(
       request,
       "/checkout/payment",
@@ -59,11 +59,14 @@ export const action: ActionFunction = async ({ request }) => {
   );
 };
 
+/**
+ * I can arrive here from the authentication workflow fired by the checkout process or by the app itself.
+ */
+
 export default function LoginPage() {
   const { t } = useTranslation();
-  const { checkout } = useOutletContext<LoginSignUpOutletContext>();
+  const { authContext } = useOutletContext<LoginSignUpOutletContext>();
 
-  //  const loaderData: LoaderData = useLoaderData();
   const actionData = useActionData();
   const transition = useTransition();
   const formState = transition.submission
@@ -82,11 +85,22 @@ export default function LoginPage() {
           <h2 className="font-accent text-2xl font-bold uppercase tracking-wider">
             {t("onboarding.login.title")}
           </h2>
-          {checkout && (
+          {authContext === "checkout" && (
             <h3 className="text-md text-center font-body">
               {t("onboarding.checkout.login.subtitle")}
             </h3>
           )}
+          {authContext === "app" && (
+            <h3 className="text-md text-center font-body">
+              Para finalizar, faça login na sua conta
+            </h3>
+          )}
+          <div className="flex flex-row justify-center px-8 opacity-20 ">
+            <SimpleTimer
+              seconds={59}
+              itemClazzName={`font-accent text-md font-bold md:text-xl`}
+            />
+          </div>
         </div>
       </div>
 
@@ -107,7 +121,7 @@ export default function LoginPage() {
 
       <div className="flex w-full items-center justify-center gap-4 rounded-md py-8">
         <span className="font-body">{t("onboarding.firstTime")}</span>
-        <Link to="/signup?checkout=pro">
+        <Link to={`/signup?context=${authContext}`}>
           <button className="rounded-lg border-2 border-accent-base bg-transparent px-6 py-2 font-body text-sm font-bold  uppercase text-black shadow-md hover:bg-accent-500">
             {t("onboarding.signup.buttonLabel")}
           </button>

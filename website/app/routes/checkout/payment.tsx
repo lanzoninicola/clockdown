@@ -2,7 +2,7 @@ import { json, redirect } from "@remix-run/node";
 import type { LoaderFunction } from "@remix-run/node";
 import getUserAuthenticated from "~/server/auth/remix-auth/utils/get-user-authenticated.server";
 import { PayPalButton } from "~/client/common/paypal";
-import { useFetcher, useLoaderData, useNavigate } from "@remix-run/react";
+import { useLoaderData, useNavigate } from "@remix-run/react";
 import type { User } from "@prisma/client";
 import type {
   CheckoutFrontendConfig,
@@ -15,13 +15,7 @@ interface LoaderData {
 }
 
 export const loader: LoaderFunction = async ({ request }) => {
-  // const query = new URL(request.url).searchParams;
-
-  // const plan = query.get("plan");
-
   let userAuthData = await getUserAuthenticated(request);
-
-  console.log("userAuthData", userAuthData);
 
   if (userAuthData === null) {
     return redirect("/checkout/login");
@@ -31,7 +25,7 @@ export const loader: LoaderFunction = async ({ request }) => {
     user: userAuthData,
     checkoutConfig: {
       currency: "BRL",
-      amount: 120,
+      amount: "120",
       clientId:
         "AZZ2rXm-Dum6G4oymThXeKokOu-V8hmnTFRPG4O874s7SEDeFcztBYkBPRER_MU1JqNHjCQSjbvyX_44",
     },
@@ -43,7 +37,6 @@ export const loader: LoaderFunction = async ({ request }) => {
 export default function Payment() {
   const loaderData: LoaderData = useLoaderData<typeof loader>();
   const navigate = useNavigate();
-  const fetcher = useFetcher();
 
   async function onOrderApproved(orderResponseBody) {
     console.log("onOrderApproved", orderResponseBody);
@@ -114,14 +107,14 @@ export default function Payment() {
           Clique no botão abaixo para proceder ao pagamento
         </h3>
         <PayPalButton
-          amount={loaderData?.checkoutConfig.amount}
+          amount={loaderData?.checkoutConfig.amount || "0"}
           currency={loaderData.checkoutConfig.currency}
           clientId={loaderData.checkoutConfig.clientId}
           onApprove={onOrderApproved}
           onCancel={onPaymenteCancelled}
           onError={onPaymenteError}
         />
-        <button
+        {/* <button
           onClick={async () => {
             const res = await fetch("/api/checkout", {
               method: "POST",
@@ -153,7 +146,7 @@ export default function Payment() {
           }}
         >
           press me
-        </button>
+        </button> */}
       </div>
     </div>
   );
