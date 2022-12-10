@@ -7,7 +7,7 @@
   "scripts": {
     "build:rm": "rm -rf ./build/*.* && rm -rf ./public/build/*.*",
     "build:css": "tailwindcss -m -i ./styles/app.css -o app/styles/app.css",
-    "build": "npm run build:rm && npm run build:css && remix build",
+    "build": "npm run build:css && remix build",
     "dev": "dotenv -e .env.local -- concurrently \"npm run dev:css\" \"remix dev\"",
     "dev:css": "tailwindcss -w -i ./styles/app.css -o app/styles/app.css",
     "prisma:local:introspect": "dotenv -e .env.local -- npx prisma db pull",
