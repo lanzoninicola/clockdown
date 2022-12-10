@@ -18,7 +18,7 @@ const THEME_INITIAL_STATE: ThemeStateData = {
     gap: 1,
     fitOnScreen: false,
     transparentBackground: false,
-    backgroundColor: "#ffffff",
+    backgroundColor: "",
   },
   title: {
     text: "Super promo! 50% off on all products until 31/12/2021 23:59:59. Don't miss out!!!  🎉 🎉 🎉",
