@@ -21,7 +21,7 @@ export default function TitlePropertiesGroup({
   const { t } = useTranslation();
   const { fontColor, fontFamily, fontSize, fontWeight, themeDispatcher } =
     useThemeTitleSelector();
-  const [color, setColor] = useState(fontColor);
+  const [color] = useState(fontColor);
 
   return (
     <PropertyGroupWrapper
@@ -64,15 +64,10 @@ export default function TitlePropertiesGroup({
         label={t("editor.propertiesGroup.title.textColor")}
         colorSelected={color}
         onColorSelected={(colorSelected) => {
-          console.log("colorSelected", colorSelected);
-          // debounce(
-          //   themeDispatcher({
-          //     type: "THEME_TITLE_ON_CHANGE_FONT_COLOR",
-          //     payload: colorSelected,
-          //   }),
-          //   1000
-          // );
-          setColor(colorSelected);
+          themeDispatcher({
+            type: "THEME_TITLE_ON_CHANGE_FONT_COLOR",
+            payload: colorSelected,
+          });
         }}
       />
     </PropertyGroupWrapper>

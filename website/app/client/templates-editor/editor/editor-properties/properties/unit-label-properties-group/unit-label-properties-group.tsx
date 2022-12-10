@@ -66,10 +66,11 @@ export default function UnitLabelPropertiesGroup({
         label={t("editor.propertiesGroup.unitLabel.labelColor")}
         colorSelected={unitLabelFontColor}
         onColorSelected={(color) => {
-          themeDispatcher({
-            type: "THEME_TIMER_ON_CHANGE_UNIT_LABEL_FONT_COLOR",
-            payload: color,
-          });
+          console.log(color);
+          // themeDispatcher({
+          //   type: "THEME_TIMER_ON_CHANGE_UNIT_LABEL_FONT_COLOR",
+          //   payload: color,
+          // });
         }}
       />
     </PropertyGroupWrapper>
