@@ -1,10 +1,16 @@
+# This file is use to generate the image and pull to the Docker hub (via package.json)
+# The image will be used by the docker-compose.yml file that I will run on the server
+# ---
+# If there is any update on the project, I will need to run the following command to update the image on the Docker hub
+# ---
 version: "3"
 
 services:
   website:
+    #image: lanzoninicola/clockdown-website:latest
+    build: ./website
     container_name: clockdown-website
     # specifies the build configuration for creating container image from source (Dockerfile)
-    build: ./website
     hostname: clockdown-website
     command: "npm start"
     working_dir: /myapp

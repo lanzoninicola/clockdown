@@ -1,3 +1,5 @@
+# I will use this file to create the infrastructure for the project via Portainer on the server
+# ---
 version: "3"
 
 volumes:
@@ -9,14 +11,13 @@ networks:
     driver: bridge
   backend:
     driver: bridge
-  nginxproxymanager:
+  proxy:
     driver: bridge
 
 services:
   website:
+    image: lanzoninicola/clockdown-website:latest
     container_name: clockdown-website
-    # specifies the build configuration for creating container image from source (Dockerfile)
-    build: ./website
     hostname: clockdown-website
     #restart: always
     #depends_on:
@@ -72,7 +73,7 @@ services:
     container_name: clockdown-pgadmin
     hostname: clockdown-pgadmin
     networks:
-      - nginxproxymanager
+      - frontend
       - backend
     environment:
       PGADMIN_DEFAULT_EMAIL: "placeholder@example.com"
@@ -83,8 +84,10 @@ services:
       - postgres
 
   traefik:
-    image: "traefik:v2.5"
+    image: lanzoninicola/traefik:latest
     container_name: "traefik"
+    networks:
+      - frontend
     ports:
       - "80:80"
       - "443:443"
