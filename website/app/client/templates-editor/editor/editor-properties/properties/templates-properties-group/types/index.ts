@@ -9,4 +9,6 @@ export interface Template {
   image: string;
   fontFamily?: string;
   orientation: LayoutOrientation;
+  disabled?: boolean;
+  editable?: boolean;
 }
