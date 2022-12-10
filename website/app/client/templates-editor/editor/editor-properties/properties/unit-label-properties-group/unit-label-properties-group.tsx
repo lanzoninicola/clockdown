@@ -6,6 +6,7 @@ import FontColor from "../../components/common/font-color/font-color";
 import FontFamily from "../../components/common/font-family/font-family";
 import FontSize from "../../components/common/font-size/font-size";
 import UnitLabelLanguagesSelector from "./unit-label-languages-selector/unit-label-languages-selector";
+import { useState } from "react";
 
 interface UnitLabelPropertiesGroupProps {
   showGroupTitle?: boolean;
@@ -24,6 +25,10 @@ export default function UnitLabelPropertiesGroup({
     unitLabelFontColor,
     themeDispatcher,
   } = useThemeTimerWithDispatcher();
+
+  // this fix the issue with the color picker that fired an error when changing the color
+  // DO NOT REMOVE WITHOUT TESTING
+  const [color] = useState(unitLabelFontColor);
 
   return (
     <PropertyGroupWrapper
@@ -64,13 +69,12 @@ export default function UnitLabelPropertiesGroup({
       />
       <FontColor
         label={t("editor.propertiesGroup.unitLabel.labelColor")}
-        colorSelected={unitLabelFontColor}
+        colorSelected={color}
         onColorSelected={(color) => {
-          console.log(color);
-          // themeDispatcher({
-          //   type: "THEME_TIMER_ON_CHANGE_UNIT_LABEL_FONT_COLOR",
-          //   payload: color,
-          // });
+          themeDispatcher({
+            type: "THEME_TIMER_ON_CHANGE_UNIT_LABEL_FONT_COLOR",
+            payload: color,
+          });
         }}
       />
     </PropertyGroupWrapper>

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useTranslation } from "react-i18next";
 
 import useThemeTimerWithDispatcher from "../../../../countdown-state-management/common/hooks/theme/useThemeTimerWithDispatcher";
@@ -29,6 +30,10 @@ export default function UnitNumberPropertiesGroup({
     padWithZero,
     themeDispatcher,
   } = useThemeTimerWithDispatcher();
+
+  // this fix the issue with the color picker that fired an error when changing the color
+  // DO NOT REMOVE WITHOUT TESTING
+  const [color] = useState(unitNumberFontColor);
 
   return (
     <PropertyGroupWrapper
@@ -68,7 +73,7 @@ export default function UnitNumberPropertiesGroup({
       />
       <FontColor
         label={t("editor.propertiesGroup.unitNumber.digitsColor")}
-        colorSelected={unitNumberFontColor}
+        colorSelected={color}
         onColorSelected={(color) => {
           themeDispatcher({
             type: "THEME_TIMER_ON_CHANGE_UNIT_NUMBER_FONT_COLOR",

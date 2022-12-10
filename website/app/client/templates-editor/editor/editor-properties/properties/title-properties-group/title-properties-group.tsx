@@ -21,6 +21,9 @@ export default function TitlePropertiesGroup({
   const { t } = useTranslation();
   const { fontColor, fontFamily, fontSize, fontWeight, themeDispatcher } =
     useThemeTitleSelector();
+
+  // this fix the issue with the color picker that fired an error when changing the color
+  // DO NOT REMOVE WITHOUT TESTING
   const [color] = useState(fontColor);
 
   return (
