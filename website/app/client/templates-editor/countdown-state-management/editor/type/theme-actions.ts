@@ -144,11 +144,6 @@ interface ThemeLayoutOnChangeGapAction {
   payload: number;
 }
 
-interface ThemeLayoutOnChangeFitOnScreenAction {
-  type: "THEME_LAYOUT_ON_CHANGE_FIT_ON_SCREEN";
-  payload: boolean;
-}
-
 interface ThemeLayoutOnChangeBackgroundTransparentAction {
   type: "THEME_LAYOUT_ON_CHANGE_BACKGROUND_TRANSPARENT";
   payload: boolean;
@@ -227,7 +222,6 @@ export type ThemeStateAction =
   | ThemeLayoutOnChangeContainerSizeAction
   | ThemeLayoutOnChangeOrientationAction
   | ThemeLayoutOnChangeGapAction
-  | ThemeLayoutOnChangeFitOnScreenAction
   | ThemeLayoutOnChangeBackgroundTransparentAction
   | ThemeLayoutOnChangeBackgroundColorAction
   | ThemeTemplateOnChangeTemplateAction

@@ -3,6 +3,11 @@ import { FontsizeUnit } from "../../../countdown-widget-typography/types";
 import { CountdownModel } from "../../../countdown-widget/types";
 import { ChakraToken } from "../../common/types/theme/responsive";
 
+export interface LoadingState<T> {
+  type: "LOAD_STATE";
+  payload: T;
+}
+
 interface EditorInitStateAction {
   type: "EDITOR_INIT_STATE";
   payload: EditorStateData;
@@ -24,6 +29,7 @@ interface EditorOnChangeFontSizeUnitUsedAction {
 }
 
 export type EditorStateAction =
+  | LoadingState<EditorStateData>
   | EditorInitStateAction
   | EditorSetCurrentCountdownAction
   | EditorOnChangeTokenLayoutResponsiveAction

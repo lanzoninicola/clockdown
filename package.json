@@ -6,7 +6,9 @@
   "author": "Nicola <lanzoni.nicola@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "widget:migrate": "copyfiles -f ./website/app/client/templates-editor/countdown* ./widget/src",
+    "widget:wipe": "rm -rf ./widget/src/countdown*",
+    "widget:copy": "copyfiles -f ./website/app/client/templates-editor/countdown* ./widget/src/",
+    "widget:migrate": "npm run widget:wipe && npm run widget:copy",
     "widget:build": "cd widget && npm run build",
     "widget:serve": "copyfiles -f ./widget/public/* ./website/public/widget",
     "widget:deploy": "npm run widget:migrate && npm run widget:build && npm run widget:serve",

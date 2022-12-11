@@ -5,17 +5,17 @@ import { EditorContext } from "../context/editor-context";
 import editorReducer from "../reducers/editorReducer";
 import timerSettingsReducer from "../reducers/timerSettingsReducer";
 import themeReducer from "../reducers/themeReducer";
-import { EditorStateData } from "../../common/types/editor";
-import { EditorStateAction } from "../type/editor-actions";
-import { TimerSettingsStateData } from "../../common/types/timer-settings";
-import { TimerSettingsStateAction } from "../type/timer-settings-actions";
-import { ThemeStateData } from "../../common/types/theme";
-import { ThemeStateAction } from "../type/theme-actions";
+import type { EditorStateData } from "../../common/types/editor";
+import type { EditorStateAction } from "../type/editor-actions";
+import type { TimerSettingsStateData } from "../../common/types/timer-settings";
+import type { TimerSettingsStateAction } from "../type/timer-settings-actions";
+import type { ThemeStateData } from "../../common/types/theme";
+import type { ThemeStateAction } from "../type/theme-actions";
 import useReducerLocalStorage from "../utils/useReducerLocalStorage";
 import CONFIG_INITIAL_STATE from "../../common/initial-states/config/initial-state";
 import configReducer from "../reducers/configReducer";
-import { ConfigStateData } from "../../common/types/config";
-import { ConfigStateAction } from "../type/config-actions";
+import type { ConfigStateData } from "../../common/types/config";
+import type { ConfigStateAction } from "../type/config-actions";
 
 interface EditorProviderProps {
   children: React.ReactNode;

@@ -4,7 +4,7 @@ import Label from "../../primitives/label/label";
 
 interface FontColorProps {
   label: string;
-  colorSelected: string;
+  colorSelected: string | null;
   onColorSelected: (colorSelected: string) => void;
 }
 
@@ -17,7 +17,7 @@ export default function FontColor({
     <PropertyWrapper>
       <Label>{label}</Label>
       <ColorPicker
-        colorSelected={colorSelected}
+        colorSelected={colorSelected || "#000000"}
         onColorSelected={onColorSelected}
       />
     </PropertyWrapper>

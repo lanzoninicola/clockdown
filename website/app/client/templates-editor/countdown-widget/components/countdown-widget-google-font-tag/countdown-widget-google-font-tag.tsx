@@ -18,14 +18,17 @@ export default function CountdownWidgetGoogleFontTag() {
     <GoogleFontsLinkTag
       googleFonts={[
         {
-          fontFamily: unitNumberFontFamily,
-          fontWeight: unitNumberFontWeight,
+          fontFamily: unitNumberFontFamily || "Inter",
+          fontWeight: unitNumberFontWeight || "400",
         },
         {
-          fontFamily: unitLabelFontFamily,
-          fontWeight: unitLabelFontWeight,
+          fontFamily: unitLabelFontFamily || "Inter",
+          fontWeight: unitLabelFontWeight || "400",
         },
-        { fontFamily: titleFontFamily, fontWeight: titleFontWeight },
+        {
+          fontFamily: titleFontFamily || "Inter",
+          fontWeight: titleFontWeight || "400",
+        },
       ]}
     />
   );

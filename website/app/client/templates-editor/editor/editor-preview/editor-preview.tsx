@@ -7,7 +7,7 @@ import useThemeState from "../../countdown-state-management/common/hooks/theme/u
 import useTimerSettingsState from "../../countdown-state-management/common/hooks/timer-settings/useTimerSettingsState";
 import { WidgetProvider } from "../../countdown-state-management/widget";
 import CountdownWidget from "../../countdown-widget";
-import Iframe from "../../global/common/iframe/iframe";
+import Iframe from "../../countdown-widget/components/iframe/iframe";
 import HtmlEmbeddedCode from "../html-embedded-code/html-embedded-code";
 import LaptopVector from "./components/laptop-vector/laptop-vector";
 import MobileVector from "./components/mobile-vector/mobile-vector";

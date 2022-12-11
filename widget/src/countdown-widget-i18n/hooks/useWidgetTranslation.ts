@@ -1,24 +1,18 @@
 import { WidgetContext } from "../../countdown-state-management";
 import useThemeTimerUnitLabel from "../../countdown-state-management/common/hooks/theme/useThemeTimerUnitLabel";
-import TRANSLATIONS from "../constants/translations";
-import { WidgetTranslation } from "../types";
+import TRANSLATIONS from "../translations/translations";
+import type { WidgetTranslation } from "../types";
 
 interface UseWidgetTranslation {
   /** function that let you translate the label of countdown unit */
   tw: (slice: keyof WidgetTranslation) => string;
 }
 
-declare global {
-  interface String {
-    capitalize(): string;
-  }
-}
-
-String.prototype.capitalize = function (): string {
-  return Object.values(this)
+function capitalize(value: string): string {
+  return Object.values(String(value))
     .map((char, i) => (i === 0 ? char.toUpperCase() : char))
     .join("");
-};
+}
 
 /**
  *
@@ -39,7 +33,7 @@ export default function useWidgetTranslation(): UseWidgetTranslation {
       throw new Error(`No translation found for locale ${unitLabelLanguage}`);
     }
 
-    return translation[slice].capitalize() || "";
+    return capitalize(translation[slice]) || "";
   }
 
   return { tw };

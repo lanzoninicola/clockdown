@@ -8,15 +8,13 @@ export interface ThemeLayoutContextData {
   orientation: LayoutOrientation;
   /** The space between the title and timer (1)space-evenly (2)space-around (3)space-between */
   gap: number;
-  /** Fit the width of page when the countdown layout is horizontal */
-  fitOnScreen: boolean;
   /** Make the background transparent */
   transparentBackground: boolean;
   /** The background color of the countdown */
-  backgroundColor: string;
+  backgroundColor: string | null;
 }
 
-export type LayoutOrientation = "vertical" | "horizontal";
+export type LayoutOrientation = "auto" | "vertical" | "horizontal";
 
 export interface ElementSize {
   width: number;

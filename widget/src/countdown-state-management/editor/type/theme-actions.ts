@@ -5,6 +5,11 @@ import {
   ElementSize,
 } from "../../common/types/theme/layout";
 
+export interface LoadingState<T> {
+  type: "LOAD_STATE";
+  payload: T;
+}
+
 interface ThemeInitStateAction {
   type: "THEME_INIT_STATE";
   payload: ThemeStateData;
@@ -200,6 +205,7 @@ interface ThemeTitleOnChangeFontColorAction {
 }
 
 export type ThemeStateAction =
+  | LoadingState<ThemeStateData>
   | ThemeInitStateAction
   | ThemeTimerOnChangeUnitNumberFontSizeAction
   | ThemeTimerOnChangeUnitLabelFontSizeAction

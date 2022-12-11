@@ -1,4 +1,4 @@
-import { ThemeStateData } from "../../types/theme";
+import type { ThemeStateData } from "../../types/theme";
 
 const THEME_INITIAL_STATE: ThemeStateData = {
   template: {
@@ -9,27 +9,22 @@ const THEME_INITIAL_STATE: ThemeStateData = {
   },
   layout: {
     removeLink: false,
-    linkTarget: "https://clockdown.xyz/",
+    linkTarget: "https://clockdown.tech/",
     containerSize: {
       width: 0,
       height: 0,
     },
-    orientation: "vertical",
+    orientation: "auto",
     gap: 1,
-    fitOnScreen: false,
     transparentBackground: false,
-    backgroundColor: "",
+    backgroundColor: null,
   },
   title: {
     text: "Super promo! 50% off on all products until 31/12/2021 23:59:59. Don't miss out!!!  🎉 🎉 🎉",
-    fontFamily: "Inter",
-    fontWeight: "400",
-    fontSize: {
-      sm: 14,
-      md: 16,
-      lg: 18,
-    },
-    fontColor: "#000000",
+    fontFamily: null,
+    fontWeight: null,
+    fontSize: null,
+    fontColor: null,
   },
   timer: {
     showSeparator: true,
@@ -38,24 +33,16 @@ const THEME_INITIAL_STATE: ThemeStateData = {
     hideHours: false,
     hideSeconds: false,
     padWithZero: false,
-    unitNumberFontFamily: "Inter",
-    unitNumberFontWeight: "400",
-    unitNumberFontSize: {
-      sm: 14,
-      md: 16,
-      lg: 18,
-    },
-    unitNumberFontColor: "#000000",
-    lastUnitColor: "#e10b0b",
-    unitLabelFontFamily: "Inter",
-    unitLabelFontWeight: "400",
-    unitLabelFontSize: {
-      sm: 14,
-      md: 16,
-      lg: 18,
-    },
+    unitNumberFontFamily: null,
+    unitNumberFontWeight: null,
+    unitNumberFontSize: null,
+    unitNumberFontColor: null,
+    lastUnitColor: null,
+    unitLabelFontFamily: null,
+    unitLabelFontWeight: null,
+    unitLabelFontSize: null,
     unitLabelLanguage: "en-US",
-    unitLabelFontColor: "#000000",
+    unitLabelFontColor: null,
   },
   actionDispatched: "",
 };

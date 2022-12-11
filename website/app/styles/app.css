@@ -627,10 +627,6 @@ video {
   margin-right: 0.5rem;
 }
 
-.inline-block {
-  display: inline-block;
-}
-
 .flex {
   display: flex;
 }

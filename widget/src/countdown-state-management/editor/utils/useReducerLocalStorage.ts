@@ -1,22 +1,7 @@
-import { useCallback, useReducer } from "react";
-
-const getInitialState =
-  (key: string, onError?: (error: any) => void) => (initialState: any) => {
-    try {
-      const item = window.localStorage.getItem(key);
-      return item ? JSON.parse(item) : initialState;
-    } catch (error) {
-      console.log(error);
-
-      onError?.(error);
-      return initialState;
-    }
-  };
+import { useCallback, useEffect, useReducer } from "react";
 
 /**
  * useReducer hook with localStorage persistence.
- *
- * By default dispatches an action with type "INIT_STATE" or type given as option parameter to initialize the state.
  *
  * @param key  The key to use for local storage
  * @param reducer  The reducer function
@@ -27,24 +12,63 @@ const getInitialState =
  */
 export default function useReducerLocalStorage<T, Action>(
   key: string,
-  reducer: (state: T, action: any) => T,
+  reducer: (state: T, action: Action) => T,
   initialState: T,
   onError?: (error: any) => void
-) {
-  const wrappedReducer = useCallback((state: T, action: Action) => {
-    const newState = reducer(state, action);
-    try {
-      window.localStorage.setItem(key, JSON.stringify(newState));
-    } catch (error) {
-      console.log(error);
+): [T, React.Dispatch<Action>] {
+  const [state, dispatch] = useReducer(reducer, initialState);
 
-      onError?.(error);
+  const loadState = useCallback(() => {
+    try {
+      const serializedState = localStorage.getItem(key);
+      if (serializedState === null) {
+        return null;
+      }
+      return JSON.parse(serializedState);
+    } catch (error) {
+      if (onError) {
+        onError(error);
+      } else {
+        console.error(error);
+      }
+      return null;
     }
-    return newState;
-  }, []);
-  return useReducer(
-    wrappedReducer,
-    initialState,
-    getInitialState(key, onError)
+  }, [key, onError]);
+
+  const saveState = useCallback(
+    (state: T) => {
+      try {
+        const serializedState = JSON.stringify(state);
+        localStorage.setItem(key, serializedState);
+      } catch (error) {
+        if (onError) {
+          onError(error);
+        } else {
+          console.error(error);
+        }
+      }
+    },
+    [key, onError]
   );
+
+  useEffect(() => {
+    try {
+      const loadedState = loadState();
+
+      if (loadedState) {
+        // @ts-ignore
+        dispatch({ type: "LOAD_STATE", payload: loadedState });
+      }
+
+      saveState(state);
+    } catch (error) {
+      if (onError) {
+        onError(error);
+      } else {
+        console.error(error);
+      }
+    }
+  }, [loadState, saveState, state, onError]);
+
+  return [state, dispatch];
 }

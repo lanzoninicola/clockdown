@@ -144,14 +144,19 @@
         "linkTarget": "Pagína de destino",
         "transparentProp": "Fundo transparente",
         "backgroundColorProp": "Cor de fundo",
+        "auto": {
+          "title": "Layout automático",
+          "description": "O layout é escolhido automaticamente dependendo do tamanho da tela. Ideal para telas de tamanho pequeno e médio.",
+          "label": "Automático"
+        },
         "vertical": {
           "title": "Layout vertical",
-          "description": "O titulo é posicionado acima do contador regressivo e os digitos abaixo. Ideal para telas de tamanho pequeno.",
+          "description": "O titulo é posicionado acima do contador regressivo e os digitos abaixo em qualquer tamanho de tela",
           "label": "Vertical"
         },
         "horizontal": {
           "title": "Horizontal layout",
-          "description": "O titulo é posicionado a esquerda do contador regressivo e os digitos a direita. Ideal para telas de tamanho médio e grande.",
+          "description": "O titulo é posicionado a esquerda do contador regressivo e os digitos a direita em qualquer tamanho de tela",
           "label": "Horizontal"
         }
       },

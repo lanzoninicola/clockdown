@@ -13,7 +13,7 @@ import FontSizePreview from "./font-size-preview/font-size-preview";
 
 interface FontSizeProps {
   label: string;
-  fontSizeChanged: ResponsiveValue;
+  fontSizeChanged: ResponsiveValue | null;
   onChangeFontSize: (token: ChakraToken, fontSizeChanged: number) => void;
 }
 
@@ -22,9 +22,15 @@ export default function FontSize({
   fontSizeChanged,
   onChangeFontSize,
 }: FontSizeProps) {
+  const defaultFontSize = {
+    sm: 16,
+    md: 16,
+    lg: 16,
+  };
+
   const { currentToken } = useEditorState();
   const [fontSize, setFontSize] = useState<number>(
-    fontSizeChanged[currentToken]
+    defaultFontSize[currentToken]
   );
 
   function onChangeSize(size: number) {
@@ -33,6 +39,11 @@ export default function FontSize({
   }
 
   useEffect(() => {
+    if (fontSizeChanged === null) {
+      setFontSize(defaultFontSize[currentToken]);
+      return;
+    }
+
     setFontSize(fontSizeChanged[currentToken]);
   }, [currentToken]);
 

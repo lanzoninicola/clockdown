@@ -143,14 +143,19 @@
         "linkTarget": "Pagina di destinazione",
         "transparentProp": "Fondo trasparente",
         "backgroundColorProp": "Colore di sfondo",
+        "auto": {
+          "title": "Layout automatico",
+          "description": "Il layout viene scelto automaticamente in base alla larghezza dello schermo",
+          "label": "Automatico"
+        },
         "vertical": {
           "title": "Layout verticale",
-          "description": "Il titolo é mostrato sopra il timer. Ideale per piccoli schermi.",
+          "description": "Il titolo sará mostrato sopra il timer, per qualsiasi dimensione dello schermo.",
           "label": "Verticale"
         },
         "horizontal": {
           "title": "Layout orrizontale",
-          "description": "Il titolo é mostrato a sinistra del timer. Ideale per schermi grandi.",
+          "description": "Il titolo sará mostrato a sinistra del timer, per qualsiasi dimensione dello schermo.",
           "label": "Orrizontale"
         }
       },

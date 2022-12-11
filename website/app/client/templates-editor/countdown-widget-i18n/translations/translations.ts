@@ -1,4 +1,4 @@
-import { Translation } from "../types";
+import { Translation } from "../../../../common/i18n/types";
 
 const TRANSLATIONS: Translation = {
   "en-US": {

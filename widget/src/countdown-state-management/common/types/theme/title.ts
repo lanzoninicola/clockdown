@@ -4,13 +4,13 @@ export interface ThemeTitleStateData {
   /** The text used for the countdown title */
   text: string;
   /** The font family of the title text */
-  fontFamily: string;
+  fontFamily: string | null;
   /** The font weight of the title text */
-  fontWeight: string;
+  fontWeight: string | null;
   /** The font size of the title text in pixel */
-  fontSize: ResponsiveValue;
+  fontSize: ResponsiveValue | null;
   /** The font color of the title text */
-  fontColor: string;
+  fontColor: string | null;
 }
 
 export interface ThemeTitleContextSetter {

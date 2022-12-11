@@ -15,32 +15,32 @@ export interface ThemeSeparatorStateData {
 
 export interface ThemeUnitNumberStateData {
   /** The font family of the digit text */
-  unitNumberFontFamily: string;
+  unitNumberFontFamily: string | null;
   /** The font weight of the digit text */
-  unitNumberFontWeight: string;
+  unitNumberFontWeight: string | null;
   /** The font size of the digit text */
-  unitNumberFontSize: ResponsiveValue;
+  unitNumberFontSize: ResponsiveValue | null;
   /** The font color of the digit text */
-  unitNumberFontColor: string;
+  unitNumberFontColor: string | null;
   /** The color of the last unit of timer text */
-  lastUnitColor: string;
+  lastUnitColor: string | null;
   /** Add a zero when the number has one digit */
   padWithZero: boolean;
 }
 
 export interface ThemeUnitLabelStateData {
   /** The font family of the digit label */
-  unitLabelFontFamily: string;
+  unitLabelFontFamily: string | null;
   /** The font weight of the digit label */
-  unitLabelFontWeight: string;
+  unitLabelFontWeight: string | null;
   /** The font size of the digit label */
-  unitLabelFontSize: ResponsiveValue;
+  unitLabelFontSize: ResponsiveValue | null;
   /** The font color of the digit label */
-  unitLabelFontColor: string;
+  unitLabelFontColor: string | null;
   /** The language of units labels */
   unitLabelLanguage: Language["locale"];
   /** The color of the last unit of timer text */
-  lastUnitColor: string;
+  lastUnitColor: string | null;
 }
 
 export interface ThemeUnitVisibilityContextData {

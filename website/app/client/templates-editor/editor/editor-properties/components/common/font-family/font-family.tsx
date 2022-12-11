@@ -8,8 +8,8 @@ import Label from "../../primitives/label/label";
 
 interface FontFamilyProps {
   label: string;
-  fontFamily: string;
-  fontWeight: string;
+  fontFamily: string | null;
+  fontWeight: string | null;
   onSelectFontFamily: (fontFamily: string) => void;
   onSelectFontWeight: (fontWeight: string) => void;
 }
@@ -21,8 +21,12 @@ export default function FontFamily({
   onSelectFontFamily,
 }: // onSelectFontWeight,
 FontFamilyProps) {
-  const [pickerFontFamily, setPickerFontFamily] = useState<string>(fontFamily);
-  const [pickerFontWeight, setPickerFontWeight] = useState<string>(fontWeight);
+  const [pickerFontFamily, setPickerFontFamily] = useState<string>(
+    fontFamily || "Inter"
+  );
+  const [pickerFontWeight, setPickerFontWeight] = useState<string>(
+    fontWeight || "400"
+  );
   const [showDialog, setShowDialog] = useState(false);
   const ref = useRef(null);
 

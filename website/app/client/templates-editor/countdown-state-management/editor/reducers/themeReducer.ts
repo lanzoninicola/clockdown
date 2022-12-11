@@ -1,5 +1,5 @@
-import { ThemeStateData } from "../../common/types/theme";
-import { ThemeStateAction } from "../type/theme-actions";
+import type { ThemeStateData } from "../../common/types/theme";
+import type { ThemeStateAction } from "../type/theme-actions";
 
 export default function themeReducer(
   state: ThemeStateData,
@@ -214,7 +214,6 @@ export default function themeReducer(
         layout: {
           ...state.layout,
           orientation: action.payload,
-          fitOnScreen: action.payload === "vertical" ? false : true,
         },
         actionDispatched: action.type,
       };
@@ -225,16 +224,6 @@ export default function themeReducer(
         layout: {
           ...state.layout,
           gap: action.payload,
-        },
-        actionDispatched: action.type,
-      };
-
-    case "THEME_LAYOUT_ON_CHANGE_FIT_ON_SCREEN":
-      return {
-        ...state,
-        layout: {
-          ...state.layout,
-          fitOnScreen: action.payload,
         },
         actionDispatched: action.type,
       };

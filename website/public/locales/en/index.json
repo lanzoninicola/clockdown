@@ -144,14 +144,19 @@
         "linkTarget": "Link target",
         "transparentProp": "Transparent background",
         "backgroundColorProp": "Background color",
+        "auto": {
+          "title": "Auto layout",
+          "description": "The layout is choosed automatically based on the screen size.",
+          "label": "Auto"
+        },
         "vertical": {
           "title": "Vertical layout",
-          "description": "The title is on top of the countdown. This is choosed for small screens.",
+          "description": "The title is on top of the countdown and the timer is on the bottom despite the screen size",
           "label": "Vertical"
         },
         "horizontal": {
           "title": "Horizontal layout",
-          "description": "The title is on the left of the countdown. This is choosed for large screens.",
+          "description": "The title is on the left of the countdown despite the screen size",
           "label": "Horizontal"
         }
       },

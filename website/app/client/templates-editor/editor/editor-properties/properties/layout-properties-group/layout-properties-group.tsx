@@ -23,7 +23,6 @@ export default function LayoutPropertiesGroup({
 }: LayoutPropertiesGroupProps) {
   const {
     orientation,
-    fitOnScreen,
     transparentBackground,
     backgroundColor,
     removeLink,
@@ -42,20 +41,8 @@ export default function LayoutPropertiesGroup({
       {currentToken !== "sm" && (
         <LayoutOrientation orientationSelected={orientation} />
       )}
-      {orientation === "horizontal" && currentToken !== "sm" && (
-        <CheckboxSingleOption
-          id="fit-on-screen-checker"
-          label={t("editor.propertiesGroup.layout.stretchProp")}
-          onChange={(checked) => {
-            themeDispatcher({
-              type: "THEME_LAYOUT_ON_CHANGE_FIT_ON_SCREEN",
-              payload: checked,
-            });
-          }}
-          value={fitOnScreen}
-        />
-      )}
-      {fitOnScreen && currentToken !== "sm" && <GapSelector />}
+
+      {currentToken !== "sm" && <GapSelector />}
       <CheckboxSingleOption
         id="transparent-background-checker"
         label={t("editor.propertiesGroup.layout.transparentProp")}

@@ -1,5 +1,10 @@
 import { TimerSettingsStateData } from "../../common/types/timer-settings";
 
+export interface LoadingState<T> {
+  type: "LOAD_STATE";
+  payload: T;
+}
+
 interface TimerSettingsInitStateAction {
   type: "TIMER_SETTINGS_ON_INIT";
   payload: TimerSettingsStateData;
@@ -21,6 +26,7 @@ interface TimerSettingsOnChangeIsTimerExpiredFlagAction {
 }
 
 export type TimerSettingsStateAction =
+  | LoadingState<TimerSettingsStateData>
   | TimerSettingsInitStateAction
   | TimerSettingsOnChangeTargetDateAction
   | TimerSettingsOnChangeIsTimerExpiredFlagAction

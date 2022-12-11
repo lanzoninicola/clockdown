@@ -17,10 +17,15 @@ export default function LayoutOrientation({
   const ref = useRef(null);
   const { t } = useTranslation();
 
-  const orientationBtnLabel =
-    orientationSelected === "vertical"
-      ? t("editor.propertiesGroup.layout.vertical.label")
-      : t("editor.propertiesGroup.layout.horizontal.label");
+  let orientationBtnLabel = t("editor.propertiesGroup.layout.auto.label");
+
+  if (orientationSelected === "vertical") {
+    orientationBtnLabel = t("editor.propertiesGroup.layout.vertical.label");
+  }
+
+  if (orientationSelected === "horizontal") {
+    orientationBtnLabel = t("editor.propertiesGroup.layout.horizontal.label");
+  }
 
   return (
     <PropertyWrapper>
