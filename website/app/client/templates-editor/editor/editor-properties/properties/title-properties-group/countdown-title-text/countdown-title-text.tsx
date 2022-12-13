@@ -1,4 +1,4 @@
-import { Input } from "@chakra-ui/react";
+import { Input, Textarea } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
 import useThemeTitleSelector from "../../../../../countdown-state-management/common/hooks/theme/useThemeTitleWithDispatcher";
 import PropertyWrapper from "../../../components/layout/property-wrapper/property-wrapper";
@@ -11,9 +11,8 @@ export default function CountdownTitleText() {
   return (
     <PropertyWrapper>
       <Label>{t("editor.propertiesGroup.title.text")}</Label>
-      <Input
+      <Textarea
         size={"sm"}
-        type="text"
         title="countdownName"
         name="countdownName"
         placeholder={t("editor.propertiesGroup.title.titlePlaceholder")}
@@ -26,6 +25,8 @@ export default function CountdownTitleText() {
           });
         }}
         className="theme-font"
+        h={"120px"}
+        maxH={"200px"}
       />
     </PropertyWrapper>
   );
