@@ -1,4 +1,5 @@
-import { Box, Grid, Tooltip, VStack } from "@chakra-ui/react";
+import { Grid, VStack } from "@chakra-ui/react";
+
 import {
   EditorContext,
   useThemeLayoutWithDispatcher,
@@ -62,10 +63,6 @@ export default function TemplatesSelector() {
                     themeDispatcher({
                       type: "THEME_TIMER_ON_CHANGE_UNIT_NUMBER_FONT_FAMILY",
                       payload: t.fontFamily,
-                    });
-                    themeDispatcher({
-                      type: "THEME_LAYOUT_ON_CHANGE_ORIENTATION",
-                      payload: t.orientation,
                     });
                   }
                 }}
