@@ -5,8 +5,8 @@ import { MdLabelOutline } from "@react-icons/all-files/md/MdLabelOutline";
 import { MdTimer10 } from "@react-icons/all-files/md/MdTimer10";
 import { MdTitle } from "@react-icons/all-files/md/MdTitle";
 import { SiCsswizardry } from "@react-icons/all-files/si/SiCsswizardry";
-import { useLoaderData } from "@remix-run/react";
-import { useEffect, useRef, useState } from "react";
+import { BsBucket } from "@react-icons/all-files/bs/BsBucket";
+import { useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import useGodMode from "~/client/common/utils/useGodMode";
 
@@ -16,6 +16,7 @@ import CssStylePropertiesGroup from "../properties/css-style-properties-group/cs
 import LayoutPropertiesGroup from "../properties/layout-properties-group/layout-properties-group";
 import SeparatorPropertiesGroup from "../properties/separator-properties-group/separator-properties-group";
 import SettingsPropertiesGroup from "../properties/settings-properties-group/settings-properties-group";
+import StatePropertiesGroup from "../properties/state-properties-group/state-properties-group";
 import TitlePropertiesGroup from "../properties/title-properties-group/title-properties-group";
 import UnitLabelPropertiesGroup from "../properties/unit-label-properties-group/unit-label-properties-group";
 import UnitNumberPropertiesGroup from "../properties/unit-number-properies-group/unit-number-properties-group";
@@ -100,6 +101,15 @@ export default function EditorPropertiesBar() {
       ref: useRef(null),
       title: t("editor.propertiesGroup.css.groupTitle"),
       component: <CssStylePropertiesGroup showGroupTitle={false} pb={5} />,
+      isPremium: false,
+      admin: true,
+    },
+    {
+      label: "Clockdown Customization State",
+      icon: <BsBucket />,
+      ref: useRef(null),
+      title: "Clockdown Customization State",
+      component: <StatePropertiesGroup showGroupTitle={false} pb={5} />,
       isPremium: false,
       admin: true,
     },
