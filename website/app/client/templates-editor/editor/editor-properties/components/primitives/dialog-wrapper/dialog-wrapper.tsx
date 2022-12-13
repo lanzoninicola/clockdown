@@ -1,9 +1,8 @@
-import { Box, Button, Flex, FlexProps } from "@chakra-ui/react";
-import { useEffect } from "react";
+import { Box, Button, Flex } from "@chakra-ui/react";
+import type { FlexProps } from "@chakra-ui/react";
+
 import { useTranslation } from "react-i18next";
 import capitalize from "~/client/common/utils/capitalize";
-
-import useElementPosition from "../../../../../hooks/useElementPosition";
 
 interface DialogWrapperProps {
   /** The element ref that requested the dialog */
@@ -43,17 +42,6 @@ export default function DialogWrapper({
   minW,
 }: DialogWrapperProps) {
   const { t } = useTranslation();
-  const callerPosition = useElementPosition(callerRef);
-
-  const { top, right, bottom, left } = callerPosition;
-
-  const topPosition = top !== "auto" ? (offset?.top ?? 0) + Number(top) : top;
-  const leftPosition =
-    left !== "auto" ? (offset?.left ?? 0) + Number(left) : left;
-  const bottomPosition =
-    bottom !== "auto" ? (offset?.bottom ?? 0) + Number(bottom) : bottom;
-  const rightPosition =
-    right !== "auto" ? (offset?.right ?? 0) + Number(right) : right;
 
   return (
     <>
@@ -76,11 +64,9 @@ export default function DialogWrapper({
         h="max-content"
         minW={minWidth || minW}
         bg="white"
-        position={"absolute"}
-        top={topPosition}
-        left={leftPosition}
-        bottom={bottomPosition}
-        right={rightPosition}
+        position={"fixed"}
+        top={callerRef?.current?.offsetTop || 0}
+        left={"80px"}
         zIndex={110}
         borderBottomLeftRadius={"lg"}
         borderBottomRightRadius={"lg"}

@@ -1,5 +1,6 @@
 import { VStack } from "@chakra-ui/react";
 import React from "react";
+import useGodMode from "~/client/common/utils/useGodMode";
 import { PremiumFeatureGuard } from "../../../../../premium-features";
 import { PropertyBarItem } from "../../types";
 import PropertyButton from "../property-button/property-button";

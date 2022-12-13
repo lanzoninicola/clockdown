@@ -7,4 +7,5 @@ export interface PropertyBarItem {
   title?: string;
   component: React.ReactElement;
   isPremium?: boolean;
+  admin?: boolean;
 }

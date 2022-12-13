@@ -1,30 +1,31 @@
-import { Box, Text, useDisclosure } from "@chakra-ui/react";
+import { Text } from "@chakra-ui/react";
 import { BsLayoutWtf } from "@react-icons/all-files/bs/BsLayoutWtf";
+import { GoSettings } from "@react-icons/all-files/go/GoSettings";
 import { MdLabelOutline } from "@react-icons/all-files/md/MdLabelOutline";
 import { MdTimer10 } from "@react-icons/all-files/md/MdTimer10";
 import { MdTitle } from "@react-icons/all-files/md/MdTitle";
-import { MdViewList } from "@react-icons/all-files/md/MdViewList";
-import { HiTemplate } from "@react-icons/all-files/hi/HiTemplate";
-import { GoSettings } from "@react-icons/all-files/go/GoSettings";
+import { SiCsswizardry } from "@react-icons/all-files/si/SiCsswizardry";
+import { useLoaderData } from "@remix-run/react";
 import { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
+import useGodMode from "~/client/common/utils/useGodMode";
 
-import Countdowns from "../../../countdowns/components/countdowns/countdowns";
 import DialogWrapper from "../components/primitives/dialog-wrapper/dialog-wrapper";
 import DialogWrapperHeader from "../components/primitives/dialog-wrapper/dialog-wrapper-header/dialog-wrapper-header";
-import UnitLabelPropertiesGroup from "../properties/unit-label-properties-group/unit-label-properties-group";
-import UnitNumberPropertiesGroup from "../properties/unit-number-properies-group/unit-number-properties-group";
+import CssStylePropertiesGroup from "../properties/css-style-properties-group/css-style-properties-group";
 import LayoutPropertiesGroup from "../properties/layout-properties-group/layout-properties-group";
 import SeparatorPropertiesGroup from "../properties/separator-properties-group/separator-properties-group";
-import TemplatesPropertiesGroup from "../properties/templates-properties-group/templates-properties-group";
+import SettingsPropertiesGroup from "../properties/settings-properties-group/settings-properties-group";
 import TitlePropertiesGroup from "../properties/title-properties-group/title-properties-group";
+import UnitLabelPropertiesGroup from "../properties/unit-label-properties-group/unit-label-properties-group";
+import UnitNumberPropertiesGroup from "../properties/unit-number-properies-group/unit-number-properties-group";
 import PropertiesBar from "./components/properties-bar/properties-bar";
 import VerticalSeparatorIcon from "./components/vertical-separator-icon/vertical-separator-icon";
-import { PropertyBarItem } from "./types";
-import SettingsPropertiesGroup from "../properties/settings-properties-group/settings-properties-group";
+import type { PropertyBarItem } from "./types";
 
 export default function EditorPropertiesBar() {
   const { t } = useTranslation();
+  const shouldUseGodMode = useGodMode();
   const [itemSelected, setItemSelected] = useState<PropertyBarItem | null>(
     null
   );
@@ -45,6 +46,7 @@ export default function EditorPropertiesBar() {
       title: t("editor.propertiesGroup.settings.groupTitle"),
       component: <SettingsPropertiesGroup showGroupTitle={false} pb={5} />,
       isPremium: false,
+      admin: false,
     },
     {
       label: t("editor.propertiesBar.layout"),
@@ -53,6 +55,7 @@ export default function EditorPropertiesBar() {
       title: t("editor.propertiesGroup.layout.groupTitle"),
       component: <LayoutPropertiesGroup showGroupTitle={false} pb={5} />,
       isPremium: false,
+      admin: false,
     },
 
     {
@@ -62,6 +65,7 @@ export default function EditorPropertiesBar() {
       title: t("editor.propertiesGroup.title.groupTitle"),
       component: <TitlePropertiesGroup showGroupTitle={false} pb={5} />,
       isPremium: false,
+      admin: false,
     },
     {
       label: t("editor.propertiesBar.timer"),
@@ -70,6 +74,7 @@ export default function EditorPropertiesBar() {
       title: t("editor.propertiesGroup.unitNumber.groupTitle"),
       component: <UnitNumberPropertiesGroup showGroupTitle={false} pb={5} />,
       isPremium: false,
+      admin: false,
     },
     {
       label: t("editor.propertiesBar.labels"),
@@ -78,6 +83,7 @@ export default function EditorPropertiesBar() {
       title: t("editor.propertiesGroup.unitLabel.groupTitle"),
       component: <UnitLabelPropertiesGroup showGroupTitle={false} pb={5} />,
       isPremium: false,
+      admin: false,
     },
     {
       label: t("editor.propertiesGroup.separator.groupTitle"),
@@ -86,13 +92,31 @@ export default function EditorPropertiesBar() {
       title: t("editor.propertiesGroup.separator.groupTitle"),
       component: <SeparatorPropertiesGroup showGroupTitle={false} pb={5} />,
       isPremium: false,
+      admin: false,
+    },
+    {
+      label: t("editor.propertiesBar.css"),
+      icon: <SiCsswizardry />,
+      ref: useRef(null),
+      title: t("editor.propertiesGroup.css.groupTitle"),
+      component: <CssStylePropertiesGroup showGroupTitle={false} pb={5} />,
+      isPremium: false,
+      admin: true,
     },
   ];
+
+  let itemsToRender = items;
+
+  if (shouldUseGodMode === false) {
+    itemsToRender = items.filter((item) => item.admin === false);
+  } else {
+    itemsToRender = items;
+  }
 
   return (
     <>
       <PropertiesBar
-        items={items}
+        items={itemsToRender}
         onItemSelected={setItemSelected}
         data-element="editor-properties-bar"
       />
@@ -100,10 +124,6 @@ export default function EditorPropertiesBar() {
         <DialogWrapper
           callerRef={itemSelected?.ref}
           showCloseButton={false}
-          offset={{
-            left: 70,
-            top: 15,
-          }}
           borderTopColor={"blue.500"}
           minW={"450px"}
           onCloseDialog={() => setItemSelected(null)}

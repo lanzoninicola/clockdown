@@ -118,9 +118,17 @@
       "title": "Customize Title",
       "timer": "Customize Timer Units",
       "labels": "Customize Labels",
-      "separator": "Customize Separator"
+      "separator": "Customize Separator",
+      "css": "Customize CSS"
     },
     "propertiesGroup": {
+      "css": {
+        "groupTitle": "Customize CSS",
+        "customCss": {
+          "label": "Custom CSS",
+          "placeholder": "Insert your custom CSS here"
+        }
+      },
       "list": {
         "groupTitle": "Countdowns List"
       },

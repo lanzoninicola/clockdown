@@ -18,6 +18,7 @@ const THEME_INITIAL_STATE: ThemeStateData = {
     gap: 1,
     transparentBackground: false,
     backgroundColor: null,
+    css: null,
   },
   title: {
     text: "Super promo! 50% off on all products until 31/12/2021 23:59:59. Don't miss out!!!  🎉 🎉 🎉",

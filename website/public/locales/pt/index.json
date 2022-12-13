@@ -118,9 +118,17 @@
       "title": "Personaliza o titulo",
       "timer": "Personaliza os digitos",
       "labels": "Personaliza as etiquetas",
-      "separator": "Personaliza o separador"
+      "separator": "Personaliza o separador",
+      "css": "Personaliza os estilos CSS"
     },
     "propertiesGroup": {
+      "css": {
+        "groupTitle": "Personaliza os estilos CSS",
+        "customCss": {
+          "label": "CSS personalizado",
+          "placeholder": "CSS personalizado"
+        }
+      },
       "list": {
         "groupTitle": "Lista de contadores regressivos"
       },

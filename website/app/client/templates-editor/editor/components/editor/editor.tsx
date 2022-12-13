@@ -18,9 +18,7 @@ export default function Editor() {
         <VStack position="absolute" top={5} left={5} zIndex={40} spacing={24}>
           <EditorPropertiesBar />
         </VStack>
-        <CenterContent>
-          <EditorPreview />
-        </CenterContent>
+        <CenterContent>{/* <EditorPreview /> */}</CenterContent>
         <Box position="absolute" top={5} right={5} zIndex={40}>
           <GroupTitle>Templates</GroupTitle>
           <Flex
@@ -32,7 +30,7 @@ export default function Editor() {
             justifyContent={"center"}
             css={scrollbar}
           >
-            <TemplatesSelector />
+            {/* <TemplatesSelector /> */}
           </Flex>
         </Box>
       </Box>

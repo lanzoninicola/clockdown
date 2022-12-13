@@ -12,6 +12,8 @@ export interface ThemeLayoutContextData {
   transparentBackground: boolean;
   /** The background color of the countdown */
   backgroundColor: string | null;
+  /** The css created with the css editor */
+  css: string | null;
 }
 
 export type LayoutOrientation = "auto" | "vertical" | "horizontal";

@@ -118,9 +118,17 @@
       "title": "Personalizar titulo",
       "timer": "Personalizar dígitos",
       "labels": "Personalizar etiquetas",
-      "separator": "Personalizar separador"
+      "separator": "Personalizar separador",
+      "css": "Personalizar CSS"
     },
     "propertiesGroup": {
+      "css": {
+        "groupTitle": "Personalizar CSS",
+        "customCss": {
+          "label": "CSS personalizado",
+          "placeholder": "CSS personalizado"
+        }
+      },
       "list": {
         "groupTitle": "Lista de contadores"
       },

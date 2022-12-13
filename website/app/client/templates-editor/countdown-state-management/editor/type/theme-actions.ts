@@ -154,6 +154,11 @@ interface ThemeLayoutOnChangeBackgroundColorAction {
   payload: string;
 }
 
+interface ThemeLayoutOnChangeCss {
+  type: "THEME_LAYOUT_ON_CHANGE_CSS_STYLE";
+  payload: string;
+}
+
 /** END LAYOUT ACTIONS */
 
 /** START TEMPLATE ACTIONS */
@@ -224,6 +229,7 @@ export type ThemeStateAction =
   | ThemeLayoutOnChangeGapAction
   | ThemeLayoutOnChangeBackgroundTransparentAction
   | ThemeLayoutOnChangeBackgroundColorAction
+  | ThemeLayoutOnChangeCss
   | ThemeTemplateOnChangeTemplateAction
   | ThemeTitleOnChangeTextAction
   | ThemeTitleOnChangeFontSizeAction

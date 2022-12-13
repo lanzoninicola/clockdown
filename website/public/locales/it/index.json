@@ -117,9 +117,17 @@
       "title": "Personalizza il titolo",
       "timer": "Personalizza le unità",
       "labels": "Personalizza le etichette",
-      "separator": "Personaliza il separatore"
+      "separator": "Personaliza il separatore",
+      "css": "Personalizza CSS"
     },
     "propertiesGroup": {
+      "css": {
+        "groupTitle": "Personalizza CSS",
+        "customCss": {
+          "label": "CSS personalizzato",
+          "placeholder": "Inserisci il tuo CSS personalizzato"
+        }
+      },
       "list": {
         "groupTitle": "Lista dei timer"
       },

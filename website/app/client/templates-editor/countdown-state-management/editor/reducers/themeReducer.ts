@@ -248,6 +248,16 @@ export default function themeReducer(
         actionDispatched: action.type,
       };
 
+    case "THEME_LAYOUT_ON_CHANGE_CSS_STYLE":
+      return {
+        ...state,
+        layout: {
+          ...state.layout,
+          css: action.payload,
+        },
+        actionDispatched: action.type,
+      };
+
     case "THEME_TEMPLATE_ON_CHANGE_TEMPLATE":
       return {
         ...state,
