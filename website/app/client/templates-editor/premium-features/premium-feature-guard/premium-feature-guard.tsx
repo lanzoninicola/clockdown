@@ -14,6 +14,7 @@ interface PremiumFeatureGuardProps {
   variant?: "watermark" | "modal" | "shade-gray";
   ctaVariant?: number;
   customText?: string | React.ReactNode;
+  iconPosition?: "left" | "right";
 }
 
 /**
@@ -33,6 +34,7 @@ export default function PremiumFeatureGuard({
   variant = "watermark",
   ctaVariant = 1,
   customText,
+  iconPosition = "right",
 }: PremiumFeatureGuardProps) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const isPremium = useIsPremiumInstallation();
@@ -64,10 +66,11 @@ export default function PremiumFeatureGuard({
         alignItems={"center"}
         gap={1}
       >
+        {iconPosition === "left" && <PremiumFeatureIcon />}
         {children}
         {variant === "watermark" && <Watermark customText={customText} />}
         {variant === "shade-gray" && <ShadeOfGray />}
-        <PremiumFeatureIcon />
+        {iconPosition === "right" && <PremiumFeatureIcon />}
       </Flex>
       {variant === "modal" && (
         <UpgradePremiumModal

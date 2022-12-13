@@ -1,5 +1,5 @@
 import useGoogleFontsUtils from "../../hooks/useGoogleFontsUtils";
-import { Typography } from "../../types";
+import type { Typography } from "../../types";
 
 /**
  * This renders the <link> tag for the Google Fonts API

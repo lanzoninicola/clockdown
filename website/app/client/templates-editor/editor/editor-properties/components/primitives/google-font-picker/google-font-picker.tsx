@@ -1,8 +1,9 @@
-import { GOOGLE_FONTS_LIST } from "../../../constants/typography";
-import GoogleFontsLinkTag from "../../../../../countdown-widget/components/google-fonts-link-tag/google-fonts-link-tag";
+import { GoogleFontsLinkTag } from "~/client/templates-editor/countdown-widget-typography/countdown-widget-typography";
+import googleWebFonts from "../../../constants/google-web-fonts";
+
 import FontList from "./font-list/font-list";
 
-interface GoogleFontPicker {
+interface GoogleFontPickerProps {
   /** Derived state from the FontFamily component */
   fontFamily: string;
   /** Derived state from the FontFamily component */
@@ -12,14 +13,12 @@ interface GoogleFontPicker {
 export default function GoogleFontPicker({
   fontFamily,
   onSelectFontFamily,
-}: GoogleFontPicker) {
-  const googleFontFamilies = GOOGLE_FONTS_LIST.map((font) => font.fontFamily);
-
+}: GoogleFontPickerProps) {
   return (
     <>
-      <GoogleFontsLinkTag googleFonts={GOOGLE_FONTS_LIST} />
+      <GoogleFontsLinkTag googleFonts={googleWebFonts} />
       <FontList
-        fontFamilies={googleFontFamilies}
+        fonts={googleWebFonts}
         fontFamilySelected={fontFamily}
         onSelectFontFamily={onSelectFontFamily}
       />

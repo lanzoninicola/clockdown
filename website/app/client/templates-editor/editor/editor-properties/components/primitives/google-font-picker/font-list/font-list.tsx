@@ -1,9 +1,11 @@
 import { Box, Text, VStack } from "@chakra-ui/react";
+import type { Typography } from "~/client/templates-editor/countdown-widget-typography/types";
+import { PremiumFeatureGuard } from "~/client/templates-editor/premium-features";
 import useCustomScrollbar from "../../../../../../hooks/useCustomScrollbar";
 
 export interface FontListProps {
   /** List of the font families to render */
-  fontFamilies: string[];
+  fonts: Typography[];
   /** Selected font family used to highlight the related box */
   fontFamilySelected: string;
   /** Set the state of the Font Family component (no global) */
@@ -11,7 +13,7 @@ export interface FontListProps {
 }
 
 export default function FontList({
-  fontFamilies,
+  fonts,
   fontFamilySelected,
   onSelectFontFamily,
 }: FontListProps) {
@@ -25,36 +27,56 @@ export default function FontList({
         alignItems={"flex-start"}
         overflowY={"scroll"}
         maxH={"calc(300px - 2rem)"}
-        w="120px"
+        w="150px"
         css={customScrollbar}
         p={1}
         marginInlineStart="0 !important"
       >
-        {fontFamilies.map((family, idx) => (
+        {fonts.map((font, idx) => (
           <Box
             key={idx}
             borderRadius={"md"}
-            onClick={() => onSelectFontFamily(family)}
+            onClick={() => onSelectFontFamily(font.fontFamily)}
             p={2}
             cursor={"pointer"}
             _hover={{
               background: "gray.100",
             }}
-            bg={family === fontFamilySelected ? "gray.100" : "transparent"}
+            bg={
+              font.fontFamily === fontFamilySelected
+                ? "gray.100"
+                : "transparent"
+            }
             width="100%"
           >
-            <Text
-              pl={1}
-              fontSize={"xs"}
-              style={{
-                fontFamily: family,
-              }}
-            >
-              {family}
-            </Text>
+            {font.pro === true ? (
+              <PremiumFeatureGuard
+                key={idx}
+                variant="modal"
+                iconPosition="left"
+              >
+                <FontItem font={font} />
+              </PremiumFeatureGuard>
+            ) : (
+              <FontItem font={font} />
+            )}
           </Box>
         ))}
       </VStack>
     </>
+  );
+}
+
+function FontItem({ font }: { font: Typography }) {
+  return (
+    <Text
+      pl={1}
+      fontSize={"xs"}
+      style={{
+        fontFamily: font.fontFamily,
+      }}
+    >
+      {font.fontFamily}
+    </Text>
   );
 }
