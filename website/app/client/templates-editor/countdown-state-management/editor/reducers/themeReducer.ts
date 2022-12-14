@@ -6,7 +6,7 @@ export default function themeReducer(
   action: ThemeStateAction
 ): ThemeStateData {
   switch (action.type) {
-    case "THEME_INIT_STATE":
+    case "LOAD_INITIAL_STATE":
       return {
         ...state,
         ...action.payload,

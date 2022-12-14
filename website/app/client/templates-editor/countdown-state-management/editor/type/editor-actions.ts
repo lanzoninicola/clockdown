@@ -1,16 +1,11 @@
-import { EditorStateData } from "../../common/types/editor";
-import { FontsizeUnit } from "../../../countdown-widget-typography/types";
-import { CountdownModel } from "../../../countdown-widget/types";
-import { ChakraToken } from "../../common/types/theme/responsive";
+import type { EditorStateData } from "../../common/types/editor";
+import type { FontsizeUnit } from "../../../countdown-widget-typography/types";
+import type { CountdownModel } from "../../../countdown-widget/types";
+import type { ChakraToken } from "../../common/types/theme/responsive";
 
 export interface LoadingState<T> {
-  type: "LOAD_STATE";
+  type: "LOAD_INITIAL_STATE";
   payload: T;
-}
-
-interface EditorInitStateAction {
-  type: "EDITOR_INIT_STATE";
-  payload: EditorStateData;
 }
 
 interface EditorSetCurrentCountdownAction {
@@ -30,7 +25,6 @@ interface EditorOnChangeFontSizeUnitUsedAction {
 
 export type EditorStateAction =
   | LoadingState<EditorStateData>
-  | EditorInitStateAction
   | EditorSetCurrentCountdownAction
   | EditorOnChangeTokenLayoutResponsiveAction
   | EditorOnChangeFontSizeUnitUsedAction;

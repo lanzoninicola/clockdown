@@ -1,18 +1,13 @@
-import { ThemeStateData } from "../../common/types/theme";
-import { Language } from "../../../countdown-widget-i18n/types";
-import {
+import type { ThemeStateData } from "../../common/types/theme";
+import type { Language } from "../../../countdown-widget-i18n/types";
+import type {
   LayoutOrientation,
   ElementSize,
 } from "../../common/types/theme/layout";
 
 export interface LoadingState<T> {
-  type: "LOAD_STATE";
+  type: "LOAD_INITIAL_STATE";
   payload: T;
-}
-
-interface ThemeInitStateAction {
-  type: "THEME_INIT_STATE";
-  payload: ThemeStateData;
 }
 
 /** START UNITS LABEL ACTIONS */
@@ -206,7 +201,6 @@ interface ThemeTitleOnChangeFontColorAction {
 
 export type ThemeStateAction =
   | LoadingState<ThemeStateData>
-  | ThemeInitStateAction
   | ThemeTimerOnChangeUnitNumberFontSizeAction
   | ThemeTimerOnChangeUnitLabelFontSizeAction
   | ThemeTimerOnChangeUnitLabelFontFamilyAction

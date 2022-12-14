@@ -1,12 +1,12 @@
-import { TimerSettingsStateData } from "../../common/types/timer-settings";
-import { TimerSettingsStateAction } from "../type/timer-settings-actions";
+import type { TimerSettingsStateData } from "../../common/types/timer-settings";
+import type { TimerSettingsStateAction } from "../type/timer-settings-actions";
 
 export default function timerSettingsReducer(
   state: TimerSettingsStateData,
   action: TimerSettingsStateAction
 ): TimerSettingsStateData {
   switch (action.type) {
-    case "TIMER_SETTINGS_INIT_STATE":
+    case "LOAD_INITIAL_STATE":
       return {
         ...state,
         ...action.payload,

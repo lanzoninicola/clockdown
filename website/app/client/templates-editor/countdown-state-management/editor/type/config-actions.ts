@@ -1,15 +1,8 @@
-import { ConfigStateData } from "../../common/types/config";
+import type { ConfigStateData } from "../../common/types/config";
 
 export interface LoadingState<T> {
-  type: "LOAD_STATE";
+  type: "LOAD_INITIAL_STATE";
   payload: T;
 }
 
-interface ConfigInitStateAction {
-  type: "CONFIG_INIT_STATE";
-  payload: ConfigStateData;
-}
-
-export type ConfigStateAction =
-  | LoadingState<ConfigStateData>
-  | ConfigInitStateAction;
+export type ConfigStateAction = LoadingState<ConfigStateData>;

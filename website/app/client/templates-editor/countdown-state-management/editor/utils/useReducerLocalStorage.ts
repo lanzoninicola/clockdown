@@ -57,10 +57,8 @@ export default function useReducerLocalStorage<T, Action>(
 
       if (loadedState) {
         // @ts-ignore
-        dispatch({ type: "LOAD_STATE", payload: loadedState });
+        dispatch({ type: "LOAD_INITIAL_STATE", payload: loadedState });
       }
-
-      saveState(state);
     } catch (error) {
       if (onError) {
         onError(error);
@@ -68,7 +66,11 @@ export default function useReducerLocalStorage<T, Action>(
         console.error(error);
       }
     }
-  }, [loadState, saveState, state, onError]);
+  }, [key, loadState, onError]);
+
+  useEffect(() => {
+    saveState(state);
+  }, [key, state, saveState]);
 
   return [state, dispatch];
 }

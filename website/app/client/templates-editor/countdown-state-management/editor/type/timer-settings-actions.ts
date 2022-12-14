@@ -1,7 +1,7 @@
-import { TimerSettingsStateData } from "../../common/types/timer-settings";
+import type { TimerSettingsStateData } from "../../common/types/timer-settings";
 
 export interface LoadingState<T> {
-  type: "LOAD_STATE";
+  type: "LOAD_INITIAL_STATE";
   payload: T;
 }
 
