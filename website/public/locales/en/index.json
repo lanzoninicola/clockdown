@@ -111,15 +111,42 @@
     "targetDate": "Target date",
     "countdownStyle": "Countdown style",
     "propertiesBar": {
-      "list": "Countdowns list",
-      "settings": "Target date and timezone",
-      "layout": "Choose layout",
-      "templates": "Choose template",
-      "title": "Customize Title",
-      "timer": "Customize Timer Units",
-      "labels": "Customize Labels",
-      "separator": "Customize Separator",
-      "css": "Customize CSS"
+      "list": {
+        "label": "Countdown list",
+        "shortLabel": "Countdowns"
+      },
+      "settings": {
+        "label": "Target date and timezone",
+        "shortLabel": "Dates"
+      },
+      "layout": {
+        "label": "Choose layout",
+        "shortLabel": "Layout"
+      },
+      "templates": {
+        "label": "Choose template",
+        "shortLabel": "Templates"
+      },
+      "title": {
+        "label": "Customize text",
+        "shortLabel": "Text"
+      },
+      "timer": {
+        "label": "Customize timer units",
+        "shortLabel": "Timer Units"
+      },
+      "labels": {
+        "label": "Customize labels",
+        "shortLabel": "Labels"
+      },
+      "separator": {
+        "label": "Customize separator",
+        "shortLabel": "Separator"
+      },
+      "css": {
+        "label": "Customize CSS",
+        "shortLabel": "CSS"
+      }
     },
     "propertiesGroup": {
       "css": {

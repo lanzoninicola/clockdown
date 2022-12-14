@@ -111,15 +111,42 @@
     "targetDate": "Data de término",
     "countdownStyle": "Estilo do contador regressivo",
     "propertiesBar": {
-      "list": "Lista de contadores regressivos",
-      "settings": "Data de término e fuso horário",
-      "layout": "Escolha o layout",
-      "templates": "Escolha um modelo",
-      "title": "Personaliza o titulo",
-      "timer": "Personaliza os digitos",
-      "labels": "Personaliza as etiquetas",
-      "separator": "Personaliza o separador",
-      "css": "Personaliza os estilos CSS"
+      "list": {
+        "label": "Lista de contadores regressivos",
+        "shortLabel": "Contadores"
+      },
+      "settings": {
+        "label": "Data de término e fuso horário",
+        "shortLabel": "Data"
+      },
+      "layout": {
+        "label": "Escolha o layout",
+        "shortLabel": "Layout"
+      },
+      "templates": {
+        "label": "Escolha o modelo",
+        "shortLabel": "Modelo"
+      },
+      "title": {
+        "label": "Personaliza o texto",
+        "shortLabel": "Texto"
+      },
+      "timer": {
+        "label": "Personaliza os digitos",
+        "shortLabel": "Digitos"
+      },
+      "labels": {
+        "label": "Personaliza as etiquetas",
+        "shortLabel": "Etiquetas"
+      },
+      "separator": {
+        "label": "Personaliza o separador",
+        "shortLabel": "Separador"
+      },
+      "css": {
+        "label": "Personaliza os estilos CSS",
+        "shortLabel": "CSS"
+      }
     },
     "propertiesGroup": {
       "css": {
@@ -136,6 +163,7 @@
         "groupTitle": "Data de término e fuso horário",
         "targetDate": {
           "label": "Data de término",
+
           "placeholder": "Data de término"
         },
         "timezone": {

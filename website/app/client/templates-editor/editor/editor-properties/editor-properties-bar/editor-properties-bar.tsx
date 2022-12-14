@@ -41,7 +41,8 @@ export default function EditorPropertiesBar() {
     //   isPremium: true,
     // },
     {
-      label: t("editor.propertiesBar.settings"),
+      label: t("editor.propertiesBar.settings.label"),
+      shortLabel: t("editor.propertiesBar.settings.shortLabel"),
       icon: <GoSettings />,
       ref: useRef(null),
       title: t("editor.propertiesGroup.settings.groupTitle"),
@@ -50,7 +51,8 @@ export default function EditorPropertiesBar() {
       admin: false,
     },
     {
-      label: t("editor.propertiesBar.layout"),
+      label: t("editor.propertiesBar.layout.label"),
+      shortLabel: t("editor.propertiesBar.layout.shortLabel"),
       icon: <BsLayoutWtf />,
       ref: useRef(null),
       title: t("editor.propertiesGroup.layout.groupTitle"),
@@ -60,7 +62,8 @@ export default function EditorPropertiesBar() {
     },
 
     {
-      label: t("editor.propertiesBar.title"),
+      label: t("editor.propertiesBar.title.label"),
+      shortLabel: t("editor.propertiesBar.title.shortLabel"),
       icon: <MdTitle />,
       ref: useRef(null),
       title: t("editor.propertiesGroup.title.groupTitle"),
@@ -69,7 +72,8 @@ export default function EditorPropertiesBar() {
       admin: false,
     },
     {
-      label: t("editor.propertiesBar.timer"),
+      label: t("editor.propertiesBar.timer.label"),
+      shortLabel: t("editor.propertiesBar.timer.shortLabel"),
       icon: <MdTimer10 />,
       ref: useRef(null),
       title: t("editor.propertiesGroup.unitNumber.groupTitle"),
@@ -78,7 +82,8 @@ export default function EditorPropertiesBar() {
       admin: false,
     },
     {
-      label: t("editor.propertiesBar.labels"),
+      label: t("editor.propertiesBar.labels.label"),
+      shortLabel: t("editor.propertiesBar.labels.shortLabel"),
       icon: <MdLabelOutline />,
       ref: useRef(null),
       title: t("editor.propertiesGroup.unitLabel.groupTitle"),
@@ -87,7 +92,8 @@ export default function EditorPropertiesBar() {
       admin: false,
     },
     {
-      label: t("editor.propertiesGroup.separator.groupTitle"),
+      label: t("editor.propertiesBar.separator.label"),
+      shortLabel: t("editor.propertiesBar.separator.shortLabel"),
       icon: <VerticalSeparatorIcon />,
       ref: useRef(null),
       title: t("editor.propertiesGroup.separator.groupTitle"),
@@ -96,7 +102,8 @@ export default function EditorPropertiesBar() {
       admin: false,
     },
     {
-      label: t("editor.propertiesBar.css"),
+      label: t("editor.propertiesBar.css.label"),
+      shortLabel: t("editor.propertiesBar.css.shortLabel"),
       icon: <SiCsswizardry />,
       ref: useRef(null),
       title: t("editor.propertiesGroup.css.groupTitle"),
@@ -106,6 +113,7 @@ export default function EditorPropertiesBar() {
     },
     {
       label: "Clockdown Customization State",
+      shortLabel: "State",
       icon: <BsBucket />,
       ref: useRef(null),
       title: "Clockdown Customization State",

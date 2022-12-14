@@ -1,8 +1,7 @@
-import { VStack } from "@chakra-ui/react";
 import React from "react";
-import useGodMode from "~/client/common/utils/useGodMode";
+
 import { PremiumFeatureGuard } from "../../../../../premium-features";
-import { PropertyBarItem } from "../../types";
+import type { PropertyBarItem } from "../../types";
 import PropertyButton from "../property-button/property-button";
 
 interface PropertyBarProps {
@@ -15,13 +14,17 @@ export default function PropertiesBar({
   onItemSelected,
 }: PropertyBarProps) {
   return (
-    <VStack alignItems={"flex-start"} gap={2} data-element="properties-bar">
+    <div
+      className="flex flex-col items-center justify-center gap-4"
+      data-element="properties-bar"
+    >
       {items.map((item, index) => {
         const button = (
           <PropertyButton
             key={index}
             ref={item.ref}
             label={item.label}
+            shortLabel={item.shortLabel}
             icon={item.icon}
             onClick={() => onItemSelected(item)}
             data-element="property-button"
@@ -38,6 +41,6 @@ export default function PropertiesBar({
 
         return button;
       })}
-    </VStack>
+    </div>
   );
 }

@@ -18,36 +18,36 @@ export default function CountdownWidgetStyleTag() {
   const unitLabelTheme = useThemeTimerUnitLabel(WidgetContext);
   const separatorTheme = useThemeTimerSeparator(WidgetContext);
 
-  console.log(titleTheme.fontFamily, titleTheme.fontSize, titleTheme.fontColor);
+  // console.log(titleTheme.fontFamily, titleTheme.fontSize, titleTheme.fontColor);
 
-  const { style: templateStyle, id: templateId } =
-    useThemeTemplate(WidgetContext);
+  // const { style: templateStyle, id: templateId } =
+  //   useThemeTemplate(WidgetContext);
 
-  let countdownWrapper = `
-  div[data-element="countdown-wrapper"] {
-      ${React.useMemo(
-        () =>
-          globalTheme.orientation === "vertical"
-            ? cssFlexColumn()
-            : cssFlexRow(),
-        [globalTheme.orientation]
-      )}
-      -webkit-justify-content: ${
-        globalTheme.gap === 1
-          ? "space-evenly"
-          : globalTheme.gap === 2
-          ? "space-around"
-          : "space-between"
-      };
-      justify-content: ${
-        globalTheme.gap === 1
-          ? "space-evenly"
-          : globalTheme.gap === 2
-          ? "space-around"
-          : "space-between"
-      };
-      width: 100%;
-  `;
+  let countdownWrapper = ``;
+  // div[data-element="countdown-wrapper"] {
+  //     ${React.useMemo(
+  //       () =>
+  //         globalTheme.orientation === "vertical"
+  //           ? cssFlexColumn()
+  //           : cssFlexRow(),
+  //       [globalTheme.orientation]
+  //     )}
+  //     -webkit-justify-content: ${
+  //       globalTheme.gap === 1
+  //         ? "space-evenly"
+  //         : globalTheme.gap === 2
+  //         ? "space-around"
+  //         : "space-between"
+  //     };
+  //     justify-content: ${
+  //       globalTheme.gap === 1
+  //         ? "space-evenly"
+  //         : globalTheme.gap === 2
+  //         ? "space-around"
+  //         : "space-between"
+  //     };
+  //     width: 100%;
+  // `;
 
   if (globalTheme.transparentBackground) {
     countdownWrapper += `
@@ -152,16 +152,15 @@ export default function CountdownWidgetStyleTag() {
     lastUnit,
   ].join(" ");
 
+  const baseStyle = `h2[data-element=countdown-title],span[data-element=countdown-unit-label],span[data-element=countdown-unit-number]{font-size:100%;font-weight:inherit;font-family:Inter}a[data-element=countdown-link-wrapper]{color:inherit;-webkit-text-decoration:none;text-decoration:none}div[data-element=countdown-wrapper]{display:grid;justify-items:center;align-items:center;gap:.85rem;margin:auto;padding-block:.5rem}h2[data-element=countdown-title]{margin:0;line-height:1.3;text-align:center}div[data-element=countdown-units]{display:grid;grid-template-columns:repeat(7,1fr);column-gap:.5rem;width:min-content}div[data-element=countdown-unit]{display:grid;grid-template-areas:"number" "label";-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;justify-items:center}div[data-element=countdown-unit]:not(div[data-element=countdown-unit][data-unit-type=separator]){min-width:70px}span[data-element=countdown-unit-number]{text-rendering:optimizeSpeed;grid-area:number}span[data-element=countdown-unit-label]{line-height:1.1;text-rendering:optimizeSpeed;grid-area:label}div[data-element=countdown-unit][data-unit-type=separator]{text-rendering:optimizeSpeed}@media (min-width:769px){div[data-element=countdown-wrapper]{grid-template-columns:repeat(2,1fr)}h2[data-element=countdown-title]{width:50ch;text-align:left}}`;
+
   return (
     <>
-      <style data-element="countdown-widget-style-tag" data-context="base">
-        {`div[data-element=countdown-units],div[data-element=countdown-widget],div[data-element=countdown-wrapper]{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox}h2[data-element=countdown-title],span[data-element=countdown-unit-label],span[data-element=countdown-unit-number]{font-size:16px;font-weight:400;font-family:Inter}a[data-element=countdown-link-wrapper]{color:inherit;-webkit-text-decoration:none;text-decoration:none}div[data-element=countdown-widget]{display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-justify-content:center;justify-content:center;width:100%}div[data-element=countdown-container]{width:100%}div[data-element=countdown-wrapper]{display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-justify-content:space-evenly;justify-content:space-evenly;gap:1.5rem;padding:1rem .5rem;background:#fff}h2[data-element=countdown-title]{margin:0;line-height:1.3;text-align:center}div[data-element=countdown-units]{display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row}div[data-element=countdown-unit]{display:grid;grid-template-areas:"number separator" "label empty";-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;justify-items:center}span[data-element=countdown-unit-number]{text-rendering:optimizeSpeed;grid-area:number}span[data-element=countdown-unit-label]{line-height:1.1;text-rendering:optimizeSpeed;grid-area:label}div[data-element=countdown-unit][data-unit-type=separator]{text-rendering:optimizeSpeed}@media (min-width:768px){div[data-element=countdown-container]{display:flex;justify-content:center}div[data-element=countdown-wrapper]{-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;padding:.5rem 0;width:100%;max-width:978px}h2[data-element=countdown-title]{max-width:370px;text-align:center}}`}
-      </style>
       <style
         data-element="countdown-widget-style-tag"
-        data-context="template-style"
+        data-context="base-style"
       >
-        {templateId !== "default" && templateId !== undefined && templateStyle}
+        {baseStyle}
       </style>
       <style
         data-element="countdown-widget-style-tag"

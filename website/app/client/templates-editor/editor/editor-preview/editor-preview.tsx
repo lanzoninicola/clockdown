@@ -45,8 +45,6 @@ export default function EditorPreview() {
               : "10rem"
           }
           width={DEFAULT_BREAKPOINTS[currentToken]}
-          justifyContent="center"
-          overflow={"hidden"}
         >
           <WidgetProvider
             isEditorMode={true}
