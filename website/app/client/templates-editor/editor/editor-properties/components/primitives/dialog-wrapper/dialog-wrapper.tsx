@@ -1,4 +1,4 @@
-import { Box, Button, Flex } from "@chakra-ui/react";
+import { Box, Button, Flex, VStack } from "@chakra-ui/react";
 import type { FlexProps } from "@chakra-ui/react";
 import { useRef } from "react";
 
@@ -99,7 +99,7 @@ export default function DialogWrapper({
         boxShadow={"lg"}
         transition="all 0.2s ease-in-out"
       >
-        <Box p={3}>
+        <Flex p={3} flexDirection={"column"}>
           {children}
           {showCloseButton && (
             <Button
@@ -112,7 +112,7 @@ export default function DialogWrapper({
               {closeButtonLabel || capitalize(t("global.close"))}
             </Button>
           )}
-        </Box>
+        </Flex>
       </Flex>
     </>
   );
