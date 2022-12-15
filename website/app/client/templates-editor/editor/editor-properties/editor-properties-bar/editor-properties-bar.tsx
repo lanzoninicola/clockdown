@@ -144,6 +144,9 @@ export default function EditorPropertiesBar() {
           showCloseButton={false}
           borderTopColor={"blue.500"}
           minW={"450px"}
+          offset={{
+            left: 85,
+          }}
           onCloseDialog={() => setItemSelected(null)}
         >
           <DialogWrapperHeader onClose={() => setItemSelected(null)}>

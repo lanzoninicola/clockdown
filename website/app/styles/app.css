@@ -1210,10 +1210,6 @@ video {
   line-height: 1.75rem;
 }
 
-.text-\[0\.65rem\] {
-  font-size: 0.65rem;
-}
-
 .font-bold {
   font-weight: 700;
 }
@@ -1311,21 +1307,6 @@ video {
 .text-gray-600 {
   --tw-text-opacity: 1;
   color: rgb(75 85 99 / var(--tw-text-opacity));
-}
-
-.text-gray-700 {
-  --tw-text-opacity: 1;
-  color: rgb(55 65 81 / var(--tw-text-opacity));
-}
-
-.text-accent-500 {
-  --tw-text-opacity: 1;
-  color: rgb(61 245 159 / var(--tw-text-opacity));
-}
-
-.text-accent-base {
-  --tw-text-opacity: 1;
-  color: rgb(115 248 186 / var(--tw-text-opacity));
 }
 
 .opacity-20 {

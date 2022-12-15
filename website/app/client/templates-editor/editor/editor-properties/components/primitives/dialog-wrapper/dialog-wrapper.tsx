@@ -1,8 +1,11 @@
 import { Box, Button, Flex } from "@chakra-ui/react";
 import type { FlexProps } from "@chakra-ui/react";
+import { useRef } from "react";
 
 import { useTranslation } from "react-i18next";
 import capitalize from "~/client/common/utils/capitalize";
+import useHtmlElementPosition from "~/client/templates-editor/hooks/useHTMLElementPosition";
+import useHtmlElementSize from "~/client/templates-editor/hooks/useHTMLElementSize";
 
 interface DialogWrapperProps {
   /** The element ref that requested the dialog */
@@ -42,6 +45,25 @@ export default function DialogWrapper({
   minW,
 }: DialogWrapperProps) {
   const { t } = useTranslation();
+  const dialogRef = useRef(null);
+
+  const callerOffsetPosition = useHtmlElementPosition(callerRef);
+  const dialogSize = useHtmlElementSize(dialogRef);
+
+  let dialogTopPosition: number | "auto" = "auto";
+
+  if (typeof callerOffsetPosition?.top === "number") {
+    dialogTopPosition = callerOffsetPosition?.top + (offset?.top || 0);
+
+    if (callerOffsetPosition?.top + dialogSize.height > window.innerHeight) {
+      dialogTopPosition = callerOffsetPosition?.top - dialogSize.height;
+    }
+  }
+
+  const dialogLeftPosition =
+    typeof callerOffsetPosition?.left === "number"
+      ? callerOffsetPosition?.left + (offset?.left || 0)
+      : "auto";
 
   return (
     <>
@@ -58,6 +80,8 @@ export default function DialogWrapper({
         data-element="dialog-overlay"
       ></Box>
       <Flex
+        ref={dialogRef}
+        marginTop={"0 !important"}
         role="dialog"
         data-element="dialog-wrapper"
         flexDirection={"column"}
@@ -65,8 +89,8 @@ export default function DialogWrapper({
         minW={minWidth || minW}
         bg="white"
         position={"fixed"}
-        top={callerRef?.current?.offsetTop || 0}
-        left={"80px"}
+        top={dialogTopPosition}
+        left={dialogLeftPosition}
         zIndex={110}
         borderBottomLeftRadius={"lg"}
         borderBottomRightRadius={"lg"}

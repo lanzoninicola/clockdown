@@ -51,6 +51,7 @@ export default function ColorPicker({
               onColorSelected(e.target.value);
             }}
             maxLength={7}
+            width="200px"
           ></Input>
         </DialogWrapper>
       )}
