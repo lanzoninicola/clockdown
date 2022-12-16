@@ -23,10 +23,6 @@ export default function LayoutOrientation({
     orientationBtnLabel = t("editor.propertiesGroup.layout.vertical.label");
   }
 
-  if (orientationSelected === "horizontal") {
-    orientationBtnLabel = t("editor.propertiesGroup.layout.horizontal.label");
-  }
-
   return (
     <PropertyWrapper>
       <Label>{t("editor.propertiesGroup.layout.orientationLabelProp")}</Label>

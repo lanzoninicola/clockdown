@@ -182,7 +182,7 @@
         "backgroundColorProp": "Cor de fundo",
         "auto": {
           "title": "Layout automático",
-          "description": "O layout é escolhido automaticamente dependendo do tamanho da tela. Ideal para telas de tamanho pequeno e médio.",
+          "description": "O layout é escolhido automaticamente dependendo do tamanho da tela.",
           "label": "Automático"
         },
         "vertical": {

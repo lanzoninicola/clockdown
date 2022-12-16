@@ -56,6 +56,7 @@ export default function LayoutPicker() {
           <img src={verticalLayout} alt="vertical layout" />
         </OptionContainer>
       </RingLight>
+      {/**
       <RingLight isVisible={orientation === "horizontal"}>
         <OptionContainer
           value="horizontal"
@@ -76,6 +77,7 @@ export default function LayoutPicker() {
           <img src={horizontalLayout} alt="horizontal layout" />
         </OptionContainer>
       </RingLight>
+       */}
     </VStack>
   );
 }

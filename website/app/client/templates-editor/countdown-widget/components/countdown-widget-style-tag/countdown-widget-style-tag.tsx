@@ -14,21 +14,30 @@ export default function CountdownWidgetStyleTag() {
   const unitLabelTheme = useThemeTimerUnitLabel(WidgetContext);
   const separatorTheme = useThemeTimerSeparator(WidgetContext);
 
+  /** ============================================ */
+
   let countdownWrapper = ``;
 
-  countdownWrapper += `h2[data-element="countdown-wrapper"] {`;
+  countdownWrapper += `div[data-element="countdown-wrapper"] {`;
 
   if (globalTheme.transparentBackground) {
-    countdownWrapper += `
-      background: transparent;
-    `;
+    countdownWrapper += `background: transparent;`;
   }
   if (globalTheme.backgroundColor !== null) {
-    countdownWrapper += `
-        background: ${globalTheme.backgroundColor};
-    `;
+    countdownWrapper += `background: ${globalTheme.backgroundColor};`;
   }
-  countdownWrapper += `}`;
+
+  countdownWrapper += `} `;
+
+  countdownWrapper += `@media (min-width:769px){div[data-element="countdown-wrapper"]{`;
+
+  if (globalTheme.orientation === "vertical") {
+    countdownWrapper += `grid-template-columns: repeat(1,1fr);`;
+  }
+  if (globalTheme.orientation === "auto") {
+    countdownWrapper += `grid-template-columns: repeat(2,1fr);`;
+  }
+  countdownWrapper += `}} `;
 
   /** ============================================ */
 
@@ -121,7 +130,7 @@ export default function CountdownWidgetStyleTag() {
     lastUnit,
   ].join(" ");
 
-  const baseStyle = `h2[data-element=countdown-title],span[data-element=countdown-unit-label],span[data-element=countdown-unit-number]{font-size:100%;font-weight:inherit;font-family:Inter}a[data-element=countdown-link-wrapper]{color:inherit;-webkit-text-decoration:none;text-decoration:none}div[data-element=countdown-wrapper]{display:grid;justify-items:center;align-items:center;gap:.85rem;margin:auto;padding-block:.5rem}h2[data-element=countdown-title]{margin:0;line-height:1.3;text-align:center}div[data-element=countdown-units]{display:grid;grid-template-columns:repeat(7,1fr);column-gap:.5rem;width:min-content}div[data-element=countdown-unit]{display:grid;grid-template-areas:"number" "label";-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;justify-items:center}div[data-element=countdown-unit]:not(div[data-element=countdown-unit][data-unit-type=separator]){min-width:70px}span[data-element=countdown-unit-number]{text-rendering:optimizeSpeed;grid-area:number}span[data-element=countdown-unit-label]{line-height:1.1;text-rendering:optimizeSpeed;grid-area:label}div[data-element=countdown-unit][data-unit-type=separator]{text-rendering:optimizeSpeed}@media (min-width:769px){div[data-element=countdown-wrapper]{grid-template-columns:repeat(2,1fr)}h2[data-element=countdown-title]{width:50ch;text-align:left}}`;
+  const baseStyle = `h2[data-element=countdown-title],span[data-element=countdown-unit-label],span[data-element=countdown-unit-number]{font-size:100%;font-weight:inherit;font-family:Inter}a[data-element=countdown-link-wrapper]{color:inherit;-webkit-text-decoration:none;text-decoration:none}div[data-element=countdown-wrapper]{display:grid;justify-items:center;align-items:center;gap:.85rem;margin:auto;padding-block:.5rem}h2[data-element=countdown-title]{margin:0;line-height:1.3;text-align:center}div[data-element=countdown-units]{display:grid;grid-template-columns:repeat(7,1fr);column-gap:.5rem;width:min-content}div[data-element=countdown-unit]{display:grid;grid-template-areas:"number" "label";-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;justify-items:center}div[data-element=countdown-unit]:not(div[data-element=countdown-unit][data-unit-type=separator]){min-width:70px}span[data-element=countdown-unit-number]{text-rendering:optimizeSpeed;grid-area:number}span[data-element=countdown-unit-label]{line-height:1.1;text-rendering:optimizeSpeed;grid-area:label}div[data-element=countdown-unit][data-unit-type=separator]{text-rendering:optimizeSpeed}@media (min-width:769px){div[data-element=countdown-wrapper]{grid-template-columns:repeat(2,1fr);padding-inline:2rem;}h2[data-element=countdown-title]{width:50ch;text-align:left}}`;
 
   return (
     <>
