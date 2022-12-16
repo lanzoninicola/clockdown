@@ -33,12 +33,6 @@ export default function FontSize({
     defaultFontSize[currentToken]
   );
 
-  console.log({
-    fontSize,
-    currentToken,
-    fontSizeChanged,
-  });
-
   function onChangeSize(size: number) {
     onChangeFontSize(currentToken, size);
     setFontSize(size);

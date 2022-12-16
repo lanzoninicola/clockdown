@@ -27,17 +27,29 @@ export default function CountdownWidgetStyleTag() {
     countdownWrapper += `background: ${globalTheme.backgroundColor};`;
   }
 
+  if (globalTheme.height !== null && globalTheme.height > 0) {
+    countdownWrapper += `padding-block: ${globalTheme.height}rem;`;
+  }
+
   countdownWrapper += `} `;
 
-  countdownWrapper += `@media (min-width:769px){div[data-element="countdown-wrapper"]{`;
-
   if (globalTheme.orientation === "vertical") {
+    countdownWrapper += `@media (min-width:769px){div[data-element="countdown-wrapper"]{`;
     countdownWrapper += `grid-template-columns: repeat(1,1fr);`;
+    countdownWrapper += `}} `;
   }
   if (globalTheme.orientation === "auto") {
+    countdownWrapper += `@media (min-width:769px){div[data-element="countdown-wrapper"]{`;
     countdownWrapper += `grid-template-columns: repeat(2,1fr);`;
+    countdownWrapper += `}} `;
   }
-  countdownWrapper += `}} `;
+
+  if (globalTheme.reverseOrderItems === true) {
+    countdownWrapper += `@media (max-width:768px){div[data-element="countdown-wrapper"]{`;
+    countdownWrapper += `display: flex;`;
+    countdownWrapper += `flex-direction: column-reverse;`;
+    countdownWrapper += `}} `;
+  }
 
   /** ============================================ */
 

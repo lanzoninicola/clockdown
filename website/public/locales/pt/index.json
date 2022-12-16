@@ -180,6 +180,8 @@
         "linkTarget": "Pagína de destino",
         "transparentProp": "Fundo transparente",
         "backgroundColorProp": "Cor de fundo",
+        "reverseOrder": "Inverter ordem dos elementos",
+        "heightProp": "Altura",
         "auto": {
           "title": "Layout automático",
           "description": "O layout é escolhido automaticamente dependendo do tamanho da tela.",

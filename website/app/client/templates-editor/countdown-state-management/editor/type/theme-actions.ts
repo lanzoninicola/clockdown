@@ -124,9 +124,9 @@ interface ThemeLayoutOnChangeContainerSizeAction {
   payload: ElementSize;
 }
 
-interface ThemeLayoutOnChangeContainerSizeAction {
-  type: "THEME_LAYOUT_ON_CHANGE_CONTAINER_SIZE";
-  payload: ElementSize;
+interface ThemeLayoutOnChangeHeightAction {
+  type: "THEME_LAYOUT_ON_CHANGE_HEIGHT";
+  payload: number;
 }
 
 interface ThemeLayoutOnChangeOrientationAction {
@@ -149,7 +149,12 @@ interface ThemeLayoutOnChangeBackgroundColorAction {
   payload: string;
 }
 
-interface ThemeLayoutOnChangeCss {
+interface ThemeLayoutOnChangeOrderItemReverseAction {
+  type: "THEME_LAYOUT_ON_CHANGE_ORDER_ITEM_REVERSE";
+  payload: boolean;
+}
+
+interface ThemeLayoutOnChangeCssAction {
   type: "THEME_LAYOUT_ON_CHANGE_CSS_STYLE";
   payload: string;
 }
@@ -219,11 +224,13 @@ export type ThemeStateAction =
   | ThemeLayoutOnChangeRemoveLinkAction
   | ThemeLayoutOnChangeLinkTargetAction
   | ThemeLayoutOnChangeContainerSizeAction
+  | ThemeLayoutOnChangeHeightAction
   | ThemeLayoutOnChangeOrientationAction
   | ThemeLayoutOnChangeGapAction
   | ThemeLayoutOnChangeBackgroundTransparentAction
   | ThemeLayoutOnChangeBackgroundColorAction
-  | ThemeLayoutOnChangeCss
+  | ThemeLayoutOnChangeOrderItemReverseAction
+  | ThemeLayoutOnChangeCssAction
   | ThemeTemplateOnChangeTemplateAction
   | ThemeTitleOnChangeTextAction
   | ThemeTitleOnChangeFontSizeAction

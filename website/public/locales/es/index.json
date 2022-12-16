@@ -152,6 +152,8 @@
         "linkTarget": "Enlace de destino",
         "transparentProp": "Fondo transparente",
         "backgroundColorProp": "Color de fondo",
+        "reverseOrder": "Invertir orden de elementos",
+        "heightProp": "Altura",
         "auto": {
           "title": "Diseño automático",
           "description": "El diseño se adapta automáticamente al tamaño de la pantalla.",

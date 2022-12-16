@@ -6,6 +6,7 @@ import { useEditorState } from "../../../../countdown-state-management";
 import useThemeLayoutWithDispatcher from "../../../../countdown-state-management/common/hooks/theme/useThemeLayoutWithDispatcher";
 import { PremiumFeatureGuard } from "../../../../premium-features";
 import BackgroundColor from "../../components/common/background-color/background-color";
+import HeightSelector from "../../components/common/height-selector/height-selector";
 import PropertyGroupWrapper from "../../components/layout/property-group-wrapper/property-group-wrapper";
 import CheckboxSingleOption from "../../components/primitives/checkbox-single-option/checkbox-single-option";
 import InputSingleOption from "../../components/primitives/input-single-option/input-single-option";
@@ -22,11 +23,13 @@ export default function LayoutPropertiesGroup({
   ...props
 }: LayoutPropertiesGroupProps) {
   const {
+    height,
     orientation,
     transparentBackground,
     backgroundColor,
     removeLink,
     linkTarget,
+    reverseOrderItems,
     themeDispatcher,
   } = useThemeLayoutWithDispatcher();
   const { currentToken } = useEditorState();
@@ -41,6 +44,19 @@ export default function LayoutPropertiesGroup({
       {currentToken !== "sm" && (
         <LayoutOrientation orientationSelected={orientation} />
       )}
+
+      <PremiumFeatureGuard variant="modal">
+        <HeightSelector
+          label={t("editor.propertiesGroup.layout.heightProp")}
+          heightSelected={height}
+          onHeightSelected={(height) => {
+            themeDispatcher({
+              type: "THEME_LAYOUT_ON_CHANGE_HEIGHT",
+              payload: height,
+            });
+          }}
+        />
+      </PremiumFeatureGuard>
 
       {currentToken !== "sm" && <GapSelector />}
       <CheckboxSingleOption
@@ -64,6 +80,21 @@ export default function LayoutPropertiesGroup({
         }}
         label={t("editor.propertiesGroup.layout.backgroundColorProp")}
       />
+      {currentToken === "sm" && (
+        <PremiumFeatureGuard variant="modal">
+          <CheckboxSingleOption
+            id="order-item-reverse"
+            label={t("editor.propertiesGroup.layout.reverseOrder")}
+            onChange={(checked) => {
+              themeDispatcher({
+                type: "THEME_LAYOUT_ON_CHANGE_ORDER_ITEM_REVERSE",
+                payload: checked,
+              });
+            }}
+            value={reverseOrderItems}
+          />
+        </PremiumFeatureGuard>
+      )}
       <PremiumFeatureGuard variant="modal">
         <CheckboxSingleOption
           id="remove-link"

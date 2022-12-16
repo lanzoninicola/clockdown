@@ -14,10 +14,12 @@ const THEME_INITIAL_STATE: ThemeStateData = {
       width: 0,
       height: 0,
     },
+    height: 0,
     orientation: "auto",
     gap: 1,
     transparentBackground: false,
     backgroundColor: null,
+    reverseOrderItems: false,
     css: null,
   },
   title: {

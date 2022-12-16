@@ -8,10 +8,14 @@ export interface ThemeLayoutContextData {
   orientation: LayoutOrientation;
   /** The space between the title and timer (1)space-evenly (2)space-around (3)space-between */
   gap: number;
+  /** The height of countdown wrapper */
+  height: number;
   /** Make the background transparent */
   transparentBackground: boolean;
   /** The background color of the countdown */
   backgroundColor: string | null;
+  /** The order of items (only for mobile perspective) */
+  reverseOrderItems: boolean;
   /** The css created with the css editor */
   css: string | null;
 }

@@ -179,6 +179,8 @@
         "linkTarget": "Link target",
         "transparentProp": "Transparent background",
         "backgroundColorProp": "Background color",
+        "reverseOrder": "Reverse order of elements",
+        "heightProp": "Height",
         "auto": {
           "title": "Auto layout",
           "description": "The layout is choosed automatically based on the screen size.",

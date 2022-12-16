@@ -208,6 +208,16 @@ export default function themeReducer(
         actionDispatched: action.type,
       };
 
+    case "THEME_LAYOUT_ON_CHANGE_HEIGHT":
+      return {
+        ...state,
+        layout: {
+          ...state.layout,
+          height: action.payload,
+        },
+        actionDispatched: action.type,
+      };
+
     case "THEME_LAYOUT_ON_CHANGE_ORIENTATION":
       return {
         ...state,
@@ -254,6 +264,16 @@ export default function themeReducer(
         layout: {
           ...state.layout,
           css: action.payload,
+        },
+        actionDispatched: action.type,
+      };
+
+    case "THEME_LAYOUT_ON_CHANGE_ORDER_ITEM_REVERSE":
+      return {
+        ...state,
+        layout: {
+          ...state.layout,
+          reverseOrderItems: action.payload,
         },
         actionDispatched: action.type,
       };
