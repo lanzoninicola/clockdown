@@ -32,7 +32,7 @@ export default function StatePropertiesGroup({
       <Editor
         height="280px"
         width={"100%"}
-        defaultLanguage="javascript"
+        defaultLanguage="json"
         options={{
           minimap: { enabled: false },
           lineNumbers: "off",

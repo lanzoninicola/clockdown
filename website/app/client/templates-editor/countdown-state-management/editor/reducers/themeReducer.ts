@@ -244,6 +244,7 @@ export default function themeReducer(
         layout: {
           ...state.layout,
           transparentBackground: action.payload,
+          backgroundColor: null,
         },
         actionDispatched: action.type,
       };
@@ -254,6 +255,7 @@ export default function themeReducer(
         layout: {
           ...state.layout,
           backgroundColor: action.payload,
+          transparentBackground: false,
         },
         actionDispatched: action.type,
       };
