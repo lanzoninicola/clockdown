@@ -33,19 +33,29 @@ export default function FontSize({
     defaultFontSize[currentToken]
   );
 
+  console.log({
+    fontSize,
+    currentToken,
+    fontSizeChanged,
+  });
+
   function onChangeSize(size: number) {
     onChangeFontSize(currentToken, size);
     setFontSize(size);
   }
 
   useEffect(() => {
-    if (fontSizeChanged === null) {
+    if (
+      fontSizeChanged === null ||
+      fontSizeChanged[currentToken] === undefined ||
+      !fontSizeChanged
+    ) {
       setFontSize(defaultFontSize[currentToken]);
       return;
     }
 
     setFontSize(fontSizeChanged[currentToken]);
-  }, [currentToken]);
+  }, [currentToken, fontSizeChanged]);
 
   return (
     <PropertyWrapper columns={4}>
