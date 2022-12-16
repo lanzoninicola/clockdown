@@ -30,6 +30,8 @@ export default function UnitLabelPropertiesGroup({
   // DO NOT REMOVE WITHOUT TESTING
   const [color] = useState(unitLabelFontColor);
 
+  console.log(unitLabelFontFamily);
+
   return (
     <PropertyGroupWrapper
       showGroupTitle={showGroupTitle}

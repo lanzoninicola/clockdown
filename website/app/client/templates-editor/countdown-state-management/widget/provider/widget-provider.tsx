@@ -73,6 +73,8 @@ export default function WidgetProvider({
     });
   }, [timerSettings, isEditorMode, maybeDecryptState]);
 
+  console.log(maybeDecryptState(theme, THEME_INITIAL_STATE));
+
   return (
     <WidgetContext.Provider
       value={{

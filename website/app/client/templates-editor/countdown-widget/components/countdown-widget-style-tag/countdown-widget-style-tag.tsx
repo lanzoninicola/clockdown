@@ -1,14 +1,10 @@
-import React from "react";
-
 import { WidgetContext } from "../../../countdown-state-management";
 import useThemeLayout from "../../../countdown-state-management/common/hooks/theme/useThemeLayout";
-import useThemeTemplate from "../../../countdown-state-management/common/hooks/theme/useThemeTemplate";
 import useThemeTimerSeparator from "../../../countdown-state-management/common/hooks/theme/useThemeTimerSeparator";
 import useThemeTimerUnitLabel from "../../../countdown-state-management/common/hooks/theme/useThemeTimerUnitLabel";
 import useThemeTimerUnitNumber from "../../../countdown-state-management/common/hooks/theme/useThemeTimerUnitNumber";
 import useThemeTitle from "../../../countdown-state-management/common/hooks/theme/useThemeTitle";
 import useChakraBreakpoint from "../../hooks/useChakraBreakpoint";
-import { cssFlexColumn, cssFlexRow } from "../../utils/css-style-text";
 
 export default function CountdownWidgetStyleTag() {
   const globalTheme = useThemeLayout(WidgetContext);
@@ -18,36 +14,9 @@ export default function CountdownWidgetStyleTag() {
   const unitLabelTheme = useThemeTimerUnitLabel(WidgetContext);
   const separatorTheme = useThemeTimerSeparator(WidgetContext);
 
-  // console.log(titleTheme.fontFamily, titleTheme.fontSize, titleTheme.fontColor);
-
-  // const { style: templateStyle, id: templateId } =
-  //   useThemeTemplate(WidgetContext);
-
   let countdownWrapper = ``;
-  // div[data-element="countdown-wrapper"] {
-  //     ${React.useMemo(
-  //       () =>
-  //         globalTheme.orientation === "vertical"
-  //           ? cssFlexColumn()
-  //           : cssFlexRow(),
-  //       [globalTheme.orientation]
-  //     )}
-  //     -webkit-justify-content: ${
-  //       globalTheme.gap === 1
-  //         ? "space-evenly"
-  //         : globalTheme.gap === 2
-  //         ? "space-around"
-  //         : "space-between"
-  //     };
-  //     justify-content: ${
-  //       globalTheme.gap === 1
-  //         ? "space-evenly"
-  //         : globalTheme.gap === 2
-  //         ? "space-around"
-  //         : "space-between"
-  //     };
-  //     width: 100%;
-  // `;
+
+  countdownWrapper += `h2[data-element="countdown-wrapper"] {`;
 
   if (globalTheme.transparentBackground) {
     countdownWrapper += `

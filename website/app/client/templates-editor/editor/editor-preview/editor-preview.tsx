@@ -1,14 +1,12 @@
-import { Box, Flex, VStack } from "@chakra-ui/react";
+import { Box, VStack } from "@chakra-ui/react";
+
 import { EditorContext } from "../../countdown-state-management";
 import useConfigState from "../../countdown-state-management/common/hooks/config/useConfigState";
-
 import useEditorStateWithDispatcher from "../../countdown-state-management/common/hooks/editor/useEditorStateWithDispatcher";
 import useThemeState from "../../countdown-state-management/common/hooks/theme/useThemeState";
 import useTimerSettingsState from "../../countdown-state-management/common/hooks/timer-settings/useTimerSettingsState";
 import { WidgetProvider } from "../../countdown-state-management/widget";
 import CountdownWidget from "../../countdown-widget";
-import Iframe from "../../countdown-widget/components/iframe/iframe";
-import HtmlEmbeddedCode from "../html-embedded-code/html-embedded-code";
 import LaptopVector from "./components/laptop-vector/laptop-vector";
 import MobileVector from "./components/mobile-vector/mobile-vector";
 import Preview from "./components/preview/preview";

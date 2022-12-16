@@ -17,7 +17,7 @@ export default function themeReducer(
         ...state,
         timer: {
           ...state.timer,
-          unitNumberFontFamily: action.payload,
+          unitLabelFontFamily: action.payload,
         },
         actionDispatched: action.type,
       };
@@ -27,7 +27,7 @@ export default function themeReducer(
         ...state,
         timer: {
           ...state.timer,
-          unitNumberFontWeight: action.payload,
+          unitLabelFontWeight: action.payload,
         },
         actionDispatched: action.type,
       };

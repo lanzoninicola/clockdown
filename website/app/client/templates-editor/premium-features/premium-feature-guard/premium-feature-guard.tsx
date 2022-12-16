@@ -6,6 +6,7 @@ import PremiumFeatureIcon from "../components/common/premium-feature-icon/premiu
 import ShadeOfGray from "../components/shade-of-gray/shade-of-gray";
 import UpgradePremiumModal from "../components/upgrade-premium-modal/upgrade-premium-modal";
 import Watermark from "../components/watermark/watermark";
+import useGodMode from "~/client/common/utils/useGodMode";
 
 interface PremiumFeatureGuardProps {
   children: React.ReactNode;
@@ -37,17 +38,18 @@ export default function PremiumFeatureGuard({
   iconPosition = "right",
 }: PremiumFeatureGuardProps) {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const isPremium = useIsPremiumInstallation();
+  const isPremiumUser = useIsPremiumInstallation();
+  const zeus = useGodMode();
 
   function mightOpenModal(e: React.SyntheticEvent) {
     e.stopPropagation();
 
-    if (!isPremium && variant === "modal") {
+    if (!isPremiumUser && variant === "modal") {
       onOpen();
     }
   }
 
-  if (isPremium) {
+  if (isPremiumUser || zeus) {
     return <>{children}</>;
   }
 

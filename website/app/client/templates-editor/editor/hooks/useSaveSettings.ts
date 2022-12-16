@@ -11,6 +11,7 @@ import {
   update,
 } from "../../countdown-rest-api/services/editor";
 import useNotifications from "../../notifications/hooks/useNotifications";
+import { EditorContext } from "../../countdown-state-management";
 
 interface UseSaveSettingsProps {
   showNotification?: boolean;
@@ -32,8 +33,8 @@ export default function useSaveSettings({
 
   const { t } = useTranslation();
 
-  const settings = useTimerSettingsState();
-  const theme = useThemeState();
+  const settings = useTimerSettingsState(EditorContext);
+  const theme = useThemeState(EditorContext);
   const savePayload: CountdownSettingsAndTheme = {
     ...settings,
     ...theme,
