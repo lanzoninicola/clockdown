@@ -3,11 +3,9 @@ import { FiUser } from "@react-icons/all-files/fi/FiUser";
 import { Link } from "@remix-run/react";
 import { useTranslation } from "react-i18next";
 
-import { ModalNewCountdown } from "../../countdowns/components";
-import { EditorSave } from "../../editor/components";
 import BreakpointsBar from "../../editor/editor-preview/components/breakpoints-bar/breakpoints-bar";
 import HtmlEmbeddedCodeInput from "../../editor/html-embedded-code/components/html-embedded-code-input/html-embedded-code-input";
-import { PremiumFeatureGuard } from "../../premium-features";
+import useIsPremiumInstallation from "../../premium-features/hooks/useIsPremiumInstallation";
 import { Logo } from "../common";
 
 export default function Header({
@@ -16,6 +14,7 @@ export default function Header({
   onboardedUser: { email: string; fullname?: string } | null;
 }) {
   const { t } = useTranslation();
+  const isPremiumUser = useIsPremiumInstallation();
 
   return (
     <Flex
@@ -42,7 +41,7 @@ export default function Header({
           gap={"1rem"}
         >
           <Logo />
-          <PremiumFeatureGuard
+          {/* <PremiumFeatureGuard
             variant="modal"
             hide={true}
             customText={t("premiumFeatures.modal.body.newCountdown", {
@@ -54,7 +53,7 @@ export default function Header({
           </PremiumFeatureGuard>
           <PremiumFeatureGuard hide>
             <EditorSave />
-          </PremiumFeatureGuard>
+          </PremiumFeatureGuard> */}
           {/* <LanguagesMenu /> */}
         </Grid>
         <BreakpointsBar />
@@ -70,27 +69,30 @@ export default function Header({
           <HtmlEmbeddedCodeInput inlineBlock={true} variant={"secondary"} />
         </Flex>
       </Grid>
-      <Link to="/#pricing-table" target="_blank">
-        <VStack
-          bg={"yellow.300"}
-          _hover={{
-            bg: "yellow.400",
-          }}
-          w={"100%"}
-          cursor={"pointer"}
-        >
-          <Text
-            as="span"
-            fontWeight={600}
-            letterSpacing={1}
-            fontSize={"sm"}
-            color={"black"}
-            textTransform={"uppercase"}
+
+      {isPremiumUser === false && (
+        <Link to="/#pricing-table" target="_blank">
+          <VStack
+            bg={"yellow.300"}
+            _hover={{
+              bg: "yellow.400",
+            }}
+            w={"100%"}
+            cursor={"pointer"}
           >
-            {t(`premiumFeatures.upgradeCTA.variant1`)}
-          </Text>
-        </VStack>
-      </Link>
+            <Text
+              as="span"
+              fontWeight={600}
+              letterSpacing={1}
+              fontSize={"sm"}
+              color={"black"}
+              textTransform={"uppercase"}
+            >
+              {t(`premiumFeatures.upgradeCTA.variant1`)}
+            </Text>
+          </VStack>
+        </Link>
+      )}
     </Flex>
   );
 }

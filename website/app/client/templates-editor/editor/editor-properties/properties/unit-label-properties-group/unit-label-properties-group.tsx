@@ -7,6 +7,7 @@ import FontFamily from "../../components/common/font-family/font-family";
 import FontSize from "../../components/common/font-size/font-size";
 import UnitLabelLanguagesSelector from "./unit-label-languages-selector/unit-label-languages-selector";
 import { useState } from "react";
+import CheckboxSingleOption from "../../components/primitives/checkbox-single-option/checkbox-single-option";
 
 interface UnitLabelPropertiesGroupProps {
   showGroupTitle?: boolean;
@@ -23,6 +24,7 @@ export default function UnitLabelPropertiesGroup({
     unitLabelFontWeight,
     unitLabelFontSize,
     unitLabelFontColor,
+    unitLabelTextTransform,
     themeDispatcher,
   } = useThemeTimerWithDispatcher();
 
@@ -56,6 +58,7 @@ export default function UnitLabelPropertiesGroup({
       />
       <FontSize
         label={t("editor.propertiesGroup.unitLabel.labelSize")}
+        maxValue={28}
         fontSizeChanged={unitLabelFontSize}
         onChangeFontSize={(token, fontSizeChanged) => {
           themeDispatcher({
@@ -76,6 +79,32 @@ export default function UnitLabelPropertiesGroup({
             payload: color,
           });
         }}
+      />
+      <CheckboxSingleOption
+        id="text-transform-uppercase-checker"
+        label={t(
+          "editor.propertiesGroup.unitLabel.labelTextTransformUppercase"
+        )}
+        onChange={(checked) => {
+          themeDispatcher({
+            type: "THEME_TIMER_ON_CHANGE_UNIT_LABEL_TEXT_TRANSFORM",
+            payload: checked ? "uppercase" : "capitalize",
+          });
+        }}
+        value={unitLabelTextTransform === "uppercase"}
+      />
+      <CheckboxSingleOption
+        id="text-transform-lowercase-checker"
+        label={t(
+          "editor.propertiesGroup.unitLabel.labelTextTransformLowercase"
+        )}
+        onChange={(checked) => {
+          themeDispatcher({
+            type: "THEME_TIMER_ON_CHANGE_UNIT_LABEL_TEXT_TRANSFORM",
+            payload: checked ? "lowercase" : "capitalize",
+          });
+        }}
+        value={unitLabelTextTransform === "lowercase"}
       />
     </PropertyGroupWrapper>
   );

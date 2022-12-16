@@ -49,6 +49,7 @@ const THEME_INITIAL_STATE: ThemeStateData = {
     unitLabelFontSize: null,
     unitLabelLanguage: "en-US",
     unitLabelFontColor: null,
+    unitLabelTextTransform: null,
   },
   actionDispatched: "",
 };

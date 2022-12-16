@@ -238,7 +238,9 @@
         "unitLabelLanguage": "Idioma",
         "labelFont": "Fonte",
         "labelSize": "Tamanho do texto",
-        "labelColor": "Cor do texto"
+        "labelColor": "Cor do texto",
+        "labelTextTransformUppercase": "Maiúsculas",
+        "labelTextTransformLowercase": "Minúsculas"
       }
     },
     "breakpointInfoMessage": {

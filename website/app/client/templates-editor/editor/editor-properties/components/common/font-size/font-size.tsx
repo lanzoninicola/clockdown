@@ -15,12 +15,16 @@ interface FontSizeProps {
   label: string;
   fontSizeChanged: ResponsiveValue | null;
   onChangeFontSize: (token: ChakraToken, fontSizeChanged: number) => void;
+  minValue?: number;
+  maxValue?: number;
 }
 
 export default function FontSize({
   label,
   fontSizeChanged,
   onChangeFontSize,
+  minValue = 12,
+  maxValue = 72,
 }: FontSizeProps) {
   const defaultFontSize = {
     sm: 16,
@@ -56,8 +60,8 @@ export default function FontSize({
       <Label>{label}</Label>
       <Box gridColumn={"2 / 4"}>
         <SliderMarkTemplate
-          min={12}
-          max={72}
+          min={minValue}
+          max={maxValue}
           step={1}
           onChangeSlider={onChangeSize}
           ariaLabel="Change font size"

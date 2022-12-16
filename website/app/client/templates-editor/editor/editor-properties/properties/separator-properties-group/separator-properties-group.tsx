@@ -31,7 +31,7 @@ export default function SeparatorPropertiesGroup({
           label={t("editor.propertiesGroup.separator.showSeparatorLabel")}
           onChange={(checked) => {
             themeDispatcher({
-              type: "THEME_TIMER_ON_CHANGE_VISIBILITY_SECONDS",
+              type: "THEME_TIMER_ON_CHANGE_SHOW_SEPARATOR",
               payload: checked,
             });
           }}

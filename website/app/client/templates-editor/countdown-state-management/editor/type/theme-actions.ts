@@ -39,6 +39,11 @@ interface ThemeTimerOnChangeUnitLabelLanguageAction {
   payload: Language["locale"];
 }
 
+interface ThemeTimerOnChangeUnitLabelTextTransformAction {
+  type: "THEME_TIMER_ON_CHANGE_UNIT_LABEL_TEXT_TRANSFORM";
+  payload: "uppercase" | "lowercase" | "capitalize";
+}
+
 /** END UNITS LABEL ACTIONS */
 
 /** START UNITS NUMBER ACTIONS */
@@ -227,6 +232,7 @@ export type ThemeStateAction =
   | ThemeTimerOnChangeUnitLabelFontWeightAction
   | ThemeTimerOnChangeUnitLabelFontColorAction
   | ThemeTimerOnChangeUnitLabelLanguageAction
+  | ThemeTimerOnChangeUnitLabelTextTransformAction
   | ThemeTimerOnChangeUnitNumberFontFamilyAction
   | ThemeTimerOnChangeUnitNumberFontWeightAction
   | ThemeTimerOnChangeUnitNumberFontColorAction

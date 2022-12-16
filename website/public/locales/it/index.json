@@ -209,7 +209,9 @@
         "unitLabelLanguage": "Lingua",
         "labelFont": "Font",
         "labelSize": "Dimensioni del testo",
-        "labelColor": "Colore del testo"
+        "labelColor": "Colore del testo",
+        "labelTextTransformUppercase": "Maiuscole",
+        "labelTextTransformLowercase": "Minuscole"
       }
     },
     "breakpointInfoMessage": {

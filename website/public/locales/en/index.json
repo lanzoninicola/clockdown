@@ -237,7 +237,9 @@
         "unitLabelLanguage": "Language",
         "labelFont": "Font family",
         "labelSize": "Text size",
-        "labelColor": "Text color"
+        "labelColor": "Text color",
+        "labelTextTransformUppercase": "Uppercase",
+        "labelTextTransformLowercase": "Lowercase"
       }
     },
     "breakpointInfoMessage": {

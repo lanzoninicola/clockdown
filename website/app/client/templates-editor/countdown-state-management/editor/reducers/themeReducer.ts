@@ -65,6 +65,16 @@ export default function themeReducer(
         actionDispatched: action.type,
       };
 
+    case "THEME_TIMER_ON_CHANGE_UNIT_LABEL_TEXT_TRANSFORM":
+      return {
+        ...state,
+        timer: {
+          ...state.timer,
+          unitLabelTextTransform: action.payload,
+        },
+        actionDispatched: action.type,
+      };
+
     case "THEME_TIMER_ON_CHANGE_UNIT_NUMBER_FONT_SIZE":
       return {
         ...state,

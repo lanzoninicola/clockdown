@@ -133,6 +133,12 @@ export default function CountdownWidgetStyleTag() {
   if (unitLabelTheme.unitLabelFontColor) {
     unitLabel += `color: ${unitLabelTheme.unitLabelFontColor};`;
   }
+  if (unitLabelTheme.unitLabelTextTransform === "uppercase") {
+    unitLabel += `text-transform: uppercase;`;
+  }
+  if (unitLabelTheme.unitLabelTextTransform === "lowercase") {
+    unitLabel += `text-transform: lowercase;`;
+  }
   unitLabel += `}`;
 
   let lastUnitLabel = ``;
@@ -161,11 +167,20 @@ export default function CountdownWidgetStyleTag() {
   /** ============================================ */
 
   let unitSeparator = ``;
-  unitSeparator += `div[data-element="countdown-unit"][data-unit-type="separator"] {`;
+
   if (separatorTheme.showSeparator === false) {
+    unitSeparator += `div[data-element="countdown-unit"][data-unit-type="separator"] {`;
     unitSeparator += `display: none;`;
+    unitSeparator += `}`;
+
+    unitSeparator += `div[data-element="countdown-units"] {`;
+    unitSeparator += `grid-template-columns: repeat(4, 1fr);`;
+    unitSeparator += `}`;
+
+    unitSeparator += `@media (max-width:420px){div[data-element="countdown-units"] {`;
+    unitSeparator += `width: 100%;`;
+    unitSeparator += `}}`;
   }
-  unitSeparator += `}`;
 
   /** ============================================ */
 
