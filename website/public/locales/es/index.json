@@ -152,6 +152,9 @@
         "linkTarget": "Enlace de destino",
         "transparentProp": "Fondo transparente",
         "backgroundColorProp": "Color de fondo",
+        "borderColorProp": "Color del borde",
+        "borderWidthProp": "Ancho del borde",
+        "borderRadiusProp": "Radio del borde",
         "reverseOrder": "Invertir orden de elementos",
         "heightProp": "Altura",
         "auto": {

@@ -31,6 +31,18 @@ export default function CountdownWidgetStyleTag() {
     countdownWrapper += `padding-block: ${globalTheme.height}rem;`;
   }
 
+  if (globalTheme.borderWidth !== null && globalTheme.borderWidth > 0) {
+    countdownWrapper += `border: ${globalTheme.borderWidth}px solid;`;
+  }
+
+  if (globalTheme.borderColor !== null) {
+    countdownWrapper += `border-color: ${globalTheme.borderColor};`;
+  }
+
+  if (globalTheme.borderRadius !== null && globalTheme.borderRadius > 0) {
+    countdownWrapper += `border-radius: ${globalTheme.borderRadius}px;`;
+  }
+
   countdownWrapper += `} `;
 
   if (globalTheme.orientation === "vertical") {

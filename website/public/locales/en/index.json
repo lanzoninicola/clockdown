@@ -179,6 +179,9 @@
         "linkTarget": "Link target",
         "transparentProp": "Transparent background",
         "backgroundColorProp": "Background color",
+        "borderWidthProp": "Border width",
+        "borderColorProp": "Border color",
+        "borderRadiusProp": "Border radius",
         "reverseOrder": "Reverse order of elements",
         "heightProp": "Height",
         "auto": {

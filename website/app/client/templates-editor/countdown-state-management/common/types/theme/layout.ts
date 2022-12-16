@@ -14,6 +14,12 @@ export interface ThemeLayoutContextData {
   transparentBackground: boolean;
   /** The background color of the countdown */
   backgroundColor: string | null;
+  /** The border widht */
+  borderWidth: number;
+  /** The border color */
+  borderColor: string | null;
+  /** The border radius */
+  borderRadius: number;
   /** The order of items (only for mobile perspective) */
   reverseOrderItems: boolean;
   /** The css created with the css editor */

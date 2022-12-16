@@ -258,6 +258,36 @@ export default function themeReducer(
         actionDispatched: action.type,
       };
 
+    case "THEME_LAYOUT_ON_CHANGE_BORDER_WIDTH":
+      return {
+        ...state,
+        layout: {
+          ...state.layout,
+          borderWidth: action.payload,
+        },
+        actionDispatched: action.type,
+      };
+
+    case "THEME_LAYOUT_ON_CHANGE_BORDER_COLOR":
+      return {
+        ...state,
+        layout: {
+          ...state.layout,
+          borderColor: action.payload,
+        },
+        actionDispatched: action.type,
+      };
+
+    case "THEME_LAYOUT_ON_CHANGE_BORDER_RADIUS":
+      return {
+        ...state,
+        layout: {
+          ...state.layout,
+          borderRadius: action.payload,
+        },
+        actionDispatched: action.type,
+      };
+
     case "THEME_LAYOUT_ON_CHANGE_CSS_STYLE":
       return {
         ...state,

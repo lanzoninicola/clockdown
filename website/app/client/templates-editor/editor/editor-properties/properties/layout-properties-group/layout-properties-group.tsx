@@ -6,6 +6,9 @@ import { useEditorState } from "../../../../countdown-state-management";
 import useThemeLayoutWithDispatcher from "../../../../countdown-state-management/common/hooks/theme/useThemeLayoutWithDispatcher";
 import { PremiumFeatureGuard } from "../../../../premium-features";
 import BackgroundColor from "../../components/common/background-color/background-color";
+import BorderColor from "../../components/common/border-color/border-color";
+import BorderRadiusSelector from "../../components/common/border-radius-selector/border-radius-selector";
+import BorderWidthSelector from "../../components/common/border-width-selector/border-width-selector";
 import HeightSelector from "../../components/common/height-selector/height-selector";
 import PropertyGroupWrapper from "../../components/layout/property-group-wrapper/property-group-wrapper";
 import CheckboxSingleOption from "../../components/primitives/checkbox-single-option/checkbox-single-option";
@@ -27,6 +30,9 @@ export default function LayoutPropertiesGroup({
     orientation,
     transparentBackground,
     backgroundColor,
+    borderWidth,
+    borderColor,
+    borderRadius,
     removeLink,
     linkTarget,
     reverseOrderItems,
@@ -80,6 +86,46 @@ export default function LayoutPropertiesGroup({
         }}
         label={t("editor.propertiesGroup.layout.backgroundColorProp")}
       />
+
+      <PremiumFeatureGuard variant="modal">
+        <BorderWidthSelector
+          label={t("editor.propertiesGroup.layout.borderWidthProp")}
+          borderWidthSelected={borderWidth}
+          onBorderWidthSelected={(borderWidth) => {
+            themeDispatcher({
+              type: "THEME_LAYOUT_ON_CHANGE_BORDER_WIDTH",
+              payload: borderWidth,
+            });
+          }}
+        />
+      </PremiumFeatureGuard>
+
+      <PremiumFeatureGuard variant="modal">
+        <BorderColor
+          label={t("editor.propertiesGroup.layout.borderColorProp")}
+          colorSelected={borderColor}
+          onColorSelected={(color) => {
+            themeDispatcher({
+              type: "THEME_LAYOUT_ON_CHANGE_BORDER_COLOR",
+              payload: color,
+            });
+          }}
+        />
+      </PremiumFeatureGuard>
+
+      <PremiumFeatureGuard variant="modal">
+        <BorderRadiusSelector
+          label={t("editor.propertiesGroup.layout.borderRadiusProp")}
+          borderRadiusSelected={borderRadius}
+          onBorderRadiusSelected={(borderRadius) => {
+            themeDispatcher({
+              type: "THEME_LAYOUT_ON_CHANGE_BORDER_RADIUS",
+              payload: borderRadius,
+            });
+          }}
+        />
+      </PremiumFeatureGuard>
+
       {currentToken === "sm" && (
         <PremiumFeatureGuard variant="modal">
           <CheckboxSingleOption

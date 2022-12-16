@@ -3,28 +3,28 @@ import PropertyWrapper from "../../layout/property-wrapper/property-wrapper";
 import Label from "../../primitives/label/label";
 import SliderMarkTemplate from "../../primitives/slider-mark-template/slider-mark-template";
 
-interface HeightSelectorProps {
+interface BorderWidthSelectorProps {
   label: string;
-  heightSelected: number;
-  onHeightSelected: (heightSelected: number) => void;
+  borderWidthSelected: number;
+  onBorderWidthSelected: (borderWidthSelected: number) => void;
 }
 
-export default function HeightSelector({
+export default function BorderWidthSelector({
   label,
-  heightSelected,
-  onHeightSelected,
-}: HeightSelectorProps) {
+  borderWidthSelected,
+  onBorderWidthSelected,
+}: BorderWidthSelectorProps) {
   return (
     <PropertyWrapper columns={4}>
       <Label>{label}</Label>
       <Box gridColumn={"2 / 5"}>
         <SliderMarkTemplate
-          min={1}
-          max={30}
+          min={0}
+          max={36}
           step={1}
-          onChangeSlider={onHeightSelected}
-          ariaLabel="Change height"
-          sliderValue={heightSelected}
+          onChangeSlider={onBorderWidthSelected}
+          ariaLabel="Change border width"
+          sliderValue={borderWidthSelected}
         />
       </Box>
     </PropertyWrapper>

@@ -149,6 +149,21 @@ interface ThemeLayoutOnChangeBackgroundColorAction {
   payload: string;
 }
 
+interface ThemeLayoutOnChangeBorderWidthAction {
+  type: "THEME_LAYOUT_ON_CHANGE_BORDER_WIDTH";
+  payload: number;
+}
+
+interface ThemeLayoutOnChangeBorderColorAction {
+  type: "THEME_LAYOUT_ON_CHANGE_BORDER_COLOR";
+  payload: string;
+}
+
+interface ThemeLayoutOnChangeBorderRadiusAction {
+  type: "THEME_LAYOUT_ON_CHANGE_BORDER_RADIUS";
+  payload: number;
+}
+
 interface ThemeLayoutOnChangeOrderItemReverseAction {
   type: "THEME_LAYOUT_ON_CHANGE_ORDER_ITEM_REVERSE";
   payload: boolean;
@@ -229,6 +244,9 @@ export type ThemeStateAction =
   | ThemeLayoutOnChangeGapAction
   | ThemeLayoutOnChangeBackgroundTransparentAction
   | ThemeLayoutOnChangeBackgroundColorAction
+  | ThemeLayoutOnChangeBorderWidthAction
+  | ThemeLayoutOnChangeBorderColorAction
+  | ThemeLayoutOnChangeBorderRadiusAction
   | ThemeLayoutOnChangeOrderItemReverseAction
   | ThemeLayoutOnChangeCssAction
   | ThemeTemplateOnChangeTemplateAction
