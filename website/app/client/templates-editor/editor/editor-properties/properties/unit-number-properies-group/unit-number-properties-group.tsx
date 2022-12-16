@@ -81,6 +81,7 @@ export default function UnitNumberPropertiesGroup({
           });
         }}
       />
+      {/*       
       <PremiumFeatureGuard variant="modal">
         <CheckboxSingleOption
           id="hide-days"
@@ -106,7 +107,7 @@ export default function UnitNumberPropertiesGroup({
           }}
           value={hideHours}
         />
-      </PremiumFeatureGuard>
+      </PremiumFeatureGuard> */}
       {/* <PremiumFeatureGuard variant="modal"> 
       <CheckboxSingleOption
         id="hide-seconds"

@@ -64,7 +64,8 @@ export default function LayoutPropertiesGroup({
         />
       </PremiumFeatureGuard>
 
-      {currentToken !== "sm" && <GapSelector />}
+      {/* {currentToken !== "sm" && } */}
+      <GapSelector />
       <CheckboxSingleOption
         id="transparent-background-checker"
         label={t("editor.propertiesGroup.layout.transparentProp")}

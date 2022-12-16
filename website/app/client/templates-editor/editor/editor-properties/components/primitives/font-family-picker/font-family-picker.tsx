@@ -1,13 +1,17 @@
 import { HStack, VStack } from "@chakra-ui/react";
+import type { Typography } from "~/client/templates-editor/countdown-widget-typography/types";
+import FontWeightSelector from "../font-weight-selector/font-weight-selector";
 
 import GoogleFontPicker from "../google-font-picker/google-font-picker";
 import TextPreview from "../google-font-picker/text-preview/text-preview";
 
-interface FontFamilyPicker {
+import googleWebFonts from "../../../constants/google-web-fonts";
+
+interface FontFamilyPickerProps {
   /** Derived state from the FontFamily component */
-  fontFamily: string;
+  fontFamily: Typography["fontFamily"];
   /** Derived state from the FontFamily component */
-  fontWeight: string;
+  fontWeight: Typography["fontWeight"];
   /** Derived state from the FontFamily component */
   onSelectFontFamily: (fontFamily: string) => void;
   /** Derived state from the FontFamily component */
@@ -21,18 +25,27 @@ export default function FontFamilyPicker({
   fontFamily,
   fontWeight,
   onSelectFontFamily,
-}: // onSelectFontWeight,
-FontFamilyPicker) {
+  onSelectFontWeight,
+}: FontFamilyPickerProps) {
+  const fontVarians = googleWebFonts.find(
+    (font) => font.fontFamily === fontFamily
+  )?.variants;
+
   return (
     <VStack gap="2">
       <HStack gap={1}>
         <GoogleFontPicker
-          fontFamily={fontFamily}
+          fonts={googleWebFonts}
+          fontFamilySelected={fontFamily}
           onSelectFontFamily={onSelectFontFamily}
         />
         <TextPreview fontSelected={{ fontFamily, fontWeight }} />
       </HStack>
       {/* TODO: here add the fontWeight picker. For google fonts the list of font weight depends on his families. */}
+      <FontWeightSelector
+        variants={fontVarians}
+        onSelectFontWeight={onSelectFontWeight}
+      />
     </VStack>
   );
 }

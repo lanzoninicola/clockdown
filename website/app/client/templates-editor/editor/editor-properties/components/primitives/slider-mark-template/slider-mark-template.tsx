@@ -7,6 +7,7 @@ import {
   SliderTrack,
   Text,
 } from "@chakra-ui/react";
+import { FaGripLinesVertical } from "@react-icons/all-files/fa/FaGripLinesVertical";
 
 interface SliderMarkTemplateProps {
   min: number;
@@ -57,10 +58,10 @@ export default function SliderMarkTemplate({
         </SliderMark>
       )}
       <SliderTrack>
-        <SliderFilledTrack />
+        <SliderFilledTrack bg={"blue.300"} />
       </SliderTrack>
       <SliderThumb boxSize={6}>
-        <Box color="blue.500">
+        <Box color="blue.500" as={FaGripLinesVertical}>
           <Text
             as="span"
             fontSize=".65rem"

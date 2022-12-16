@@ -67,18 +67,17 @@ export default function DialogWrapper({
 
   return (
     <>
-      {/* <Box
+      <Box
         position={"fixed"}
         top={0}
         left={0}
         w="100vw"
         h="100vh"
         zIndex={100}
-        bg={"blackAlpha.100"}
         overflow={"auto"}
         onClick={onCloseDialog}
         data-element="dialog-overlay"
-      ></Box> */}
+      ></Box>
       <Flex
         ref={dialogRef}
         marginTop={"0 !important"}

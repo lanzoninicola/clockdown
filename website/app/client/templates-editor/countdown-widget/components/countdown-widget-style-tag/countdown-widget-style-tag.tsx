@@ -43,6 +43,10 @@ export default function CountdownWidgetStyleTag() {
     countdownWrapper += `border-radius: ${globalTheme.borderRadius}px;`;
   }
 
+  if (globalTheme.gap !== null && globalTheme.gap > 0) {
+    countdownWrapper += `gap: ${globalTheme.gap}rem;`;
+  }
+
   countdownWrapper += `} `;
 
   if (globalTheme.orientation === "vertical") {
@@ -101,6 +105,16 @@ export default function CountdownWidgetStyleTag() {
   }
   unitNumber += `}`;
 
+  let lastUnitNumber = ``;
+
+  lastUnitNumber += `div[data-element="countdown-unit"]:last-child > span:first-child {`;
+
+  if (unitNumberTheme.lastUnitColor) {
+    lastUnitNumber += `color: ${unitNumberTheme.lastUnitColor};`;
+  }
+
+  lastUnitNumber += `}`;
+
   /** ============================================ */
 
   /** ============================================ */
@@ -120,6 +134,16 @@ export default function CountdownWidgetStyleTag() {
     unitLabel += `color: ${unitLabelTheme.unitLabelFontColor};`;
   }
   unitLabel += `}`;
+
+  let lastUnitLabel = ``;
+
+  lastUnitLabel += `div[data-element="countdown-unit"]:last-child > span:last-child {`;
+
+  if (unitLabelTheme.lastUnitColor) {
+    lastUnitLabel += `color: ${unitLabelTheme.lastUnitColor};`;
+  }
+
+  lastUnitLabel += `}`;
 
   /** ============================================ */
 
@@ -149,12 +173,14 @@ export default function CountdownWidgetStyleTag() {
     countdownWrapper,
     title,
     unitNumber,
+    lastUnitNumber,
     unitLabel,
+    lastUnitLabel,
     unitSeparator,
     lastUnit,
   ].join(" ");
 
-  const baseStyle = `h2[data-element=countdown-title],span[data-element=countdown-unit-label],span[data-element=countdown-unit-number]{font-size:100%;font-weight:inherit;font-family:Inter}a[data-element=countdown-link-wrapper]{color:inherit;-webkit-text-decoration:none;text-decoration:none}div[data-element=countdown-wrapper]{display:grid;justify-items:center;align-items:center;gap:.85rem;margin:auto;padding-block:.75rem}h2[data-element=countdown-title]{margin:0;line-height:1.3;text-align:center}div[data-element=countdown-units]{display:grid;grid-template-columns:repeat(7,1fr);column-gap:.5rem;width:min-content}div[data-element=countdown-unit]{display:grid;grid-template-areas:"number" "label";-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;justify-items:center}div[data-element=countdown-unit]:not(div[data-element=countdown-unit][data-unit-type=separator]){min-width:70px}span[data-element=countdown-unit-number]{text-rendering:optimizeSpeed;grid-area:number}span[data-element=countdown-unit-label]{line-height:1.1;text-rendering:optimizeSpeed;grid-area:label}div[data-element=countdown-unit][data-unit-type=separator]{text-rendering:optimizeSpeed}@media (min-width:769px){div[data-element=countdown-wrapper]{grid-template-columns:repeat(2,1fr);padding-inline:2rem;}h2[data-element=countdown-title]{width:50ch;text-align:left}}`;
+  const baseStyle = `h2[data-element=countdown-title],span[data-element=countdown-unit-label],span[data-element=countdown-unit-number]{font-size:100%;font-weight:inherit;font-family:Inter}a[data-element=countdown-link-wrapper]{color:inherit;-webkit-text-decoration:none;text-decoration:none}div[data-element=countdown-wrapper]{display:grid;justify-items:center;align-items:center;gap:.85rem;margin:auto;padding-block:.75rem}h2[data-element=countdown-title]{margin:0;line-height:1.3;text-align:center}div[data-element=countdown-units]{display:grid;grid-template-columns:repeat(7,1fr);column-gap:.5rem;width:min-content}div[data-element=countdown-unit]{display:grid;grid-template-areas:"number" "label";-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;justify-items:center}div[data-element=countdown-unit]:not(div[data-element=countdown-unit][data-unit-type=separator]){min-width:70px}span[data-element=countdown-unit-number]{text-rendering:optimizeSpeed;grid-area:number}span[data-element=countdown-unit-label]{line-height:1.1;text-rendering:optimizeSpeed;grid-area:label}div[data-element=countdown-unit][data-unit-type=separator]{text-rendering:optimizeSpeed}@media (min-width:769px){div[data-element=countdown-wrapper]{grid-template-columns:repeat(2,1fr);padding-inline:2rem;}h2[data-element=countdown-title]{max-width:50ch;text-align:left}}`;
 
   return (
     <>

@@ -19,8 +19,8 @@ export default function FontFamily({
   fontFamily,
   fontWeight,
   onSelectFontFamily,
-}: // onSelectFontWeight,
-FontFamilyProps) {
+  onSelectFontWeight,
+}: FontFamilyProps) {
   const [pickerFontFamily, setPickerFontFamily] = useState<string>(
     fontFamily || "Inter"
   );
@@ -35,7 +35,7 @@ FontFamilyProps) {
     onSelectFontFamily(pickerFontFamily);
 
     // if enable this the font family above will not update. Need to figure out why
-    // onSelectFontWeight(pickerFontWeight);
+    onSelectFontWeight(pickerFontWeight);
 
     setShowDialog(!showDialog);
   };

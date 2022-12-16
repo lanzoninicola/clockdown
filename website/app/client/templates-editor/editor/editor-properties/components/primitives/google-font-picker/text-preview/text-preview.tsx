@@ -34,6 +34,7 @@ export default function TextPreview({
           fontSize={"md"}
           style={{
             fontFamily: fontSelected.fontFamily,
+            fontWeight: fontSelected.fontWeight,
           }}
         >
           {text || "Love is in the air"}
