@@ -4,11 +4,13 @@ export default function TabletVector() {
   return (
     <Box
       position={"absolute"}
-      top={0}
+      top={"2rem"}
       data-element="tablet-vector"
       overflow={"hidden"}
       marginInline={"auto"}
       zIndex={0}
+      boxShadow={"rgba(0, 0, 0, 0.56) 0px 22px 70px 4px"}
+      borderRadius={"40px"}
     >
       <svg
         width="918"

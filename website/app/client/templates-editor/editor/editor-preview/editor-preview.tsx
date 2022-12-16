@@ -25,7 +25,6 @@ export default function EditorPreview() {
       w={"100%"}
       minH={"100vh"}
       data-element="editor-preview"
-      paddingBlock={"1rem"}
     >
       <Preview currentToken={currentToken}>
         {currentToken === "lg" && <LaptopVector />}

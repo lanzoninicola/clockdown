@@ -4,7 +4,7 @@ export default function LaptopVector() {
   return (
     <Box
       position={"absolute"}
-      top={0}
+      top={"2rem"}
       data-element="laptop-vector"
       overflow={"hidden"}
       marginInline={"auto"}

@@ -4,11 +4,13 @@ export default function MobileVector() {
   return (
     <Box
       position={"absolute"}
-      top={0}
+      top={"2rem"}
       data-element="mobile-vector"
       overflow={"hidden"}
       marginInline={"auto"}
       zIndex={0}
+      boxShadow={"rgba(0, 0, 0, 0.56) 0px 22px 70px 4px"}
+      borderRadius={"30px"}
     >
       <svg
         width="389"

@@ -67,7 +67,7 @@ export default function DialogWrapper({
 
   return (
     <>
-      <Box
+      {/* <Box
         position={"fixed"}
         top={0}
         left={0}
@@ -78,7 +78,7 @@ export default function DialogWrapper({
         overflow={"auto"}
         onClick={onCloseDialog}
         data-element="dialog-overlay"
-      ></Box>
+      ></Box> */}
       <Flex
         ref={dialogRef}
         marginTop={"0 !important"}
@@ -96,7 +96,7 @@ export default function DialogWrapper({
         borderBottomRightRadius={"lg"}
         borderTop={borderTopColor && "5px solid"}
         borderTopColor={borderTopColor && "blue.500"}
-        boxShadow={"lg"}
+        boxShadow={"rgba(0, 0, 0, 0.56) 0px 22px 70px 4px"}
         transition="all 0.2s ease-in-out"
       >
         <Flex p={3} flexDirection={"column"}>
