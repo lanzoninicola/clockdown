@@ -1,6 +1,6 @@
 import { json, redirect } from "@remix-run/node";
 import type { LoaderFunction } from "@remix-run/node";
-import getUserAuthenticated from "~/server/auth/remix-auth/utils/get-user-authenticated.server";
+import isUserAuthenticated from "~/server/auth/remix-auth/utils/is-user-authenticated.server";
 import { PayPalButton } from "~/client/common/paypal";
 import { useLoaderData, useNavigate } from "@remix-run/react";
 import type { User } from "@prisma/client";
@@ -15,7 +15,7 @@ interface LoaderData {
 }
 
 export const loader: LoaderFunction = async ({ request }) => {
-  let userAuthData = await getUserAuthenticated(request);
+  let userAuthData = await isUserAuthenticated(request);
 
   if (userAuthData === null) {
     return redirect("/checkout/login");

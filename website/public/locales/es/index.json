@@ -238,12 +238,14 @@
     "signup": {
       "title": "Bienvenido a Clockdown!",
       "subtitle": "Clockdown es una herramienta para crear contadores de tiempo.\nRegistre su cuenta para comenzar.",
-      "buttonLabel": "Registrarme"
+      "buttonLabel": "Registrarme",
+      "loadingLabel": "Registrando..."
     },
     "login": {
       "title": "Bienvenido de nuevo!",
       "subtitle": "Clockdown es una herramienta para crear contadores de tiempo.\nRegistre su cuenta para comenzar.",
-      "buttonLabel": "Iniciar sesión"
+      "buttonLabel": "Iniciar sesión",
+      "loadingLabel": "Iniciando sesión..."
     },
     "namePlaceholder": "Nombre completo",
     "emailPlaceholder": "Correo electrónico",

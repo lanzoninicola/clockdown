@@ -230,12 +230,14 @@
     "signup": {
       "title": "Benvenuto!",
       "body": "Clockdown é uno strumento per creare e gestire i tuoi timer.\nRegistra il tuo account per creare il tuo primo timer.",
-      "buttonLabel": "Registrati"
+      "buttonLabel": "Registrati",
+      "loadingLabel": "Registrazione in corso..."
     },
     "login": {
       "title": "Bentornato!",
       "body": "Clockdown é uno strumento per creare e gestire i tuoi timer.\nRegistra il tuo account per creare il tuo primo timer.",
-      "buttonLabel": "Accedi"
+      "buttonLabel": "Accedi",
+      "loadingLabel": "Accedendo..."
     },
     "namePlaceholder": "Nome completo",
     "emailPlaceholder": "La tua migliore email",

@@ -258,12 +258,14 @@
     "signup": {
       "title": "Welcome to Clockdown!",
       "subtitle": "Clockdown will help you to create beautiful countdowns.\nRegister your account to get started.",
-      "buttonLabel": "Register"
+      "buttonLabel": "Register",
+      "loadingLabel": "Registering..."
     },
     "login": {
       "title": "Welcome back!",
       "subtitle": "Clockdown will help you to create beautiful countdowns.\nRegister your account to get started.",
-      "buttonLabel": "Login"
+      "buttonLabel": "Login",
+      "loadingLabel": "Logging in..."
     },
     "namePlaceholder": "Your name",
     "emailPlaceholder": "Your best email",

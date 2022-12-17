@@ -1,9 +1,7 @@
-import { Button, ButtonOptions } from "@chakra-ui/react";
-
 interface SubmitAuthButtonProps {
   children: React.ReactNode;
-  loadingText?: ButtonOptions["loadingText"];
   isLoading?: boolean;
+  loadingText?: string;
   isDisabled?: boolean;
 }
 
@@ -11,15 +9,15 @@ export default function SubmitAuthButton({
   children,
   isDisabled,
   isLoading,
-  ...props
+  loadingText = "Loading",
 }: SubmitAuthButtonProps) {
   return (
     <>
       <button
-        className="text-md w-full rounded-xl bg-accent-base py-2 text-center font-body font-bold uppercase tracking-wide shadow-lg transition-colors hover:bg-accent-500"
+        className="text-md w-full cursor-pointer rounded-xl bg-accent-base py-2 text-center font-body font-bold uppercase tracking-wide shadow-lg transition-colors hover:bg-accent-500"
         disabled={isDisabled || isLoading}
       >
-        {children}
+        {isLoading ? loadingText : children}
       </button>
     </>
   );

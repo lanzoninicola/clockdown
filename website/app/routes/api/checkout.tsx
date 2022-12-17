@@ -1,6 +1,6 @@
 import { json } from "@remix-run/node";
 import type { ActionFunction } from "@remix-run/node";
-import getUserAuthenticated from "~/server/auth/remix-auth/utils/get-user-authenticated.server";
+import isUserAuthenticated from "~/server/auth/remix-auth/utils/is-user-authenticated.server";
 import { PaymentRequestData } from "~/server/checkout/types";
 import { Order } from "@prisma/client";
 import PrismaUsersRepository from "~/server/repositories/prisma-users.repository.server";
@@ -16,7 +16,7 @@ export const action: ActionFunction = async ({ request }) => {
     return json({ message: "Method not allowed" }, 405);
   }
 
-  // let userAuthData = await getUserAuthenticated(request);
+  // let userAuthData = await isUserAuthenticated(request);
 
   // if (userAuthData === null) {
   //   return json(

@@ -4,7 +4,7 @@ import { Outlet, useLoaderData, useNavigate, Link } from "@remix-run/react";
 import { useEffect } from "react";
 import SimpleTimer from "~/client/common/simple-timer";
 import ArrowRight from "~/client/website/common/arrow-right/arrow-right";
-import getUserAuthenticated from "~/server/auth/remix-auth/utils/get-user-authenticated.server";
+import isUserAuthenticated from "~/server/auth/remix-auth/utils/is-user-authenticated.server";
 
 export interface LoginSignUpOutletContext {
   authContext: "checkout" | "app";
@@ -14,7 +14,7 @@ export const loader = async ({ request }: LoaderArgs) => {
   const query = new URL(request.url).searchParams;
   const authContext = query.get("context");
 
-  let userAuthData = await getUserAuthenticated(request);
+  let userAuthData = await isUserAuthenticated(request);
 
   if (authContext && userAuthData) {
     return json({ context: authContext, isAuthed: true });

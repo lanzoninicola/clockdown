@@ -260,12 +260,14 @@
     "signup": {
       "title": "Bem vindo!",
       "subtitle": "Cadastre-se abaixo para poder criar contadores regressivos e impulsionar suas vendas.",
-      "buttonLabel": "Cadastrar"
+      "buttonLabel": "Cadastrar",
+      "loadingLabel": "Cadastrando"
     },
     "login": {
       "title": "Bem vindo!",
       "body": "Você pode criar contadores regressivos e editá-los em qualquer momento.\nCadastre-se abaixo para começar.",
-      "buttonLabel": "Entrar"
+      "buttonLabel": "Entrar",
+      "loadingLabel": "Entrando"
     },
     "checkout": {
       "login": {

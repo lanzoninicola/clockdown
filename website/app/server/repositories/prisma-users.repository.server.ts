@@ -1,4 +1,5 @@
 import type { PrismaClient, User } from "@prisma/client";
+import { PrismaClientInitializationError } from "@prisma/client/runtime";
 // @ts-ignore
 import prismaClient from "prisma/client/prisma-client.server";
 import type { BaseRepository } from "../common/types/global";

@@ -103,8 +103,12 @@ export default function AuthForm({
           )}
           <VStack gap={1} w="100%">
             <SubmitAuthButton
-              loadingText={t("global.saving")}
               isLoading={formState === "submitting"}
+              loadingText={
+                context === "signup"
+                  ? t("onboarding.signup.loadingLabel")
+                  : t("onboarding.login.loadingLabel")
+              }
               isDisabled={
                 formState === "submitting" ||
                 formState === "success" ||

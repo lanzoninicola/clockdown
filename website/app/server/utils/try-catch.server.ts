@@ -6,7 +6,7 @@ export default async function tryCatch(
   fn: (...args: any[]) => any,
   onError?: (error: any) => any,
   ...args: any[]
-): Promise<any> {
+): Promise<any | Response> {
   try {
     return await fn(...args);
   } catch (error: Error | any) {

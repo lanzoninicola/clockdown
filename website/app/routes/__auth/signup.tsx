@@ -27,7 +27,8 @@ import type {
 import SimpleTimer from "~/client/common/simple-timer";
 
 export const action: ActionFunction = async ({ request }) => {
-  const formData = await request.formData();
+  const clonedRequest = request.clone();
+  const formData = await clonedRequest.formData();
 
   const email = formData.get("email") as string;
   const fullname = formData.get("fullname") as string;
@@ -41,21 +42,29 @@ export const action: ActionFunction = async ({ request }) => {
   const validator = new UserSignupValidator(repository);
   const interactor = new UserSignupInteractor(repository, validator);
 
+  await interactor.execute({
+    fullname,
+    email,
+    password,
+  });
+
   /** ====================================== */
 
   const query = new URL(request.url).searchParams;
-  const productPlan = query.get("checkout");
+  const authContext = query.get("context");
 
-  if (productPlan !== null && productPlan !== undefined) {
-    return authenticateAndRedirectWithPayload(request, "/checkout/payment");
+  if (authContext === "checkout") {
+    return await authenticateAndRedirectWithPayload({
+      request,
+      successRedirectURL: "/checkout/payment",
+    });
   }
 
   /** ====================================== */
 
-  return await tryCatch(async () => {
-    await interactor.execute({ email, fullname, password });
-
-    return authenticateAndRedirectWithPayload(request, "/app");
+  return await authenticateAndRedirectWithPayload({
+    request,
+    successRedirectURL: "/app",
   });
 };
 
@@ -100,7 +109,11 @@ export default function SignUpPage() {
         <AuthForm
           context="signup"
           formState={formState}
-          error={actionData?.status >= 400 ? actionData.message : null}
+          error={
+            actionData?.status >= 400
+              ? actionData.message
+              : null || actionData?.error
+          }
           defaultValues={{
             email: actionData?.email,
             fullname: actionData?.fullname,

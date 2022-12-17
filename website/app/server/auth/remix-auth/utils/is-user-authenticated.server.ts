@@ -13,7 +13,7 @@ import { authenticator } from "~/server/auth/remix-auth/config/form-strategy.ser
  * @param request The request object
  * @returns Promise<User | null> The user data or null
  */
-const getUserAuthenticated = async (
+const isUserAuthenticated = async (
   request: Request,
   options?: {
     successRedirect?: never;
@@ -23,4 +23,4 @@ const getUserAuthenticated = async (
   return await authenticator.isAuthenticated(request, options);
 };
 
-export default getUserAuthenticated;
+export default isUserAuthenticated;
