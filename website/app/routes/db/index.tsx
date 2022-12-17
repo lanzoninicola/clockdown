@@ -1,9 +1,10 @@
 import { json } from "@remix-run/node";
 import type { LoaderFunction, ActionFunction } from "@remix-run/node";
 import isGodMode from "~/server/utils/is-god-mode";
-import { useLoaderData } from "@remix-run/react";
+import { useActionData, useLoaderData, useTransition } from "@remix-run/react";
 import Editor from "@monaco-editor/react";
 import getFormDataFromRequest from "~/server/utils/get-form-data-from-request.server";
+import prismaClient from "prisma/client/prisma-client.server";
 
 interface LoaderData {
   zeus: boolean;
@@ -20,22 +21,53 @@ export const loader: LoaderFunction = async ({ request }) => {
 export const action: ActionFunction = async ({ request }) => {
   const formData = await getFormDataFromRequest(request);
 
-  console.log(formData);
+  if (formData.get("test-db-connection") === true) {
+    async function testConnection() {
+      try {
+        await prismaClient.$queryRaw`SELECT 1`;
 
-  if (formData.get("test-db-connection")) {
-    console.log("test-db-connection");
+        return json(
+          { status: 200, message: "Connected to database" },
+          { status: 200 }
+        );
+      } catch (err) {
+        return json(
+          {
+            status: 500,
+            message: `Error connecting to database: ${err?.message}`,
+          },
+          { status: 500 }
+        );
+      } finally {
+        await prismaClient.$disconnect();
+      }
+    }
+
+    return await testConnection();
   }
 
   if (formData.get("sql-statement")) {
     console.log("sql-statement");
   }
 
-  return json({ message: "ok" }, { status: 200 });
+  return json({ message: "okdfskajçlsadkjflçaskdj" }, { status: 200 });
 };
 
 export default function DbIndex() {
   const loaderData: LoaderData = useLoaderData<LoaderData>();
   const { zeus } = loaderData;
+
+  const actionData = useActionData();
+  const transition = useTransition();
+  const formState = transition.submission
+    ? "submitting"
+    : actionData?.subscription
+    ? "success"
+    : actionData?.error
+    ? "error"
+    : "idle";
+
+  console.log({ actionData, transition });
 
   if (zeus === false) {
     return (
@@ -68,11 +100,16 @@ export default function DbIndex() {
             Checked state
           </label>
         </div>
+        <p>
+          <span className="text-sm text-gray-500 dark:text-gray-400">
+            Test database connection
+          </span>
+        </p>
         <button
           type="submit"
           className="mr-2 mb-2 rounded-lg bg-blue-700 px-5 py-2.5 text-sm font-medium text-white hover:bg-blue-800 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
         >
-          Test connection
+          {formState === "submitting" ? "Testing..." : "Test connection"}
         </button>
       </form>
       <form method="post">
