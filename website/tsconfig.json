@@ -3,8 +3,9 @@
     "remix.env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "app/client/website/common/titles/title.-h2tsx"
-, "google-web-fonts.js"  ],
+    "app/client/website/common/titles/title.-h2tsx",
+    "google-web-fonts.js"
+  ],
   "compilerOptions": {
     "lib": ["DOM", "DOM.Iterable", "ES2019"],
     "isolatedModules": true,

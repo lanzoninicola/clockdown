@@ -10,7 +10,7 @@ import { useTranslation } from "react-i18next";
 import { AuthForm } from "~/client/common/auth/components";
 import Logo from "~/client/common/logo/logo";
 import { theme } from "~/client/templates-editor/chackra-ui/theme/theme";
-import authRedirectWithPayload from "~/server/auth/remix-auth/utils/redirect-with-payload.server";
+import authenticateAndRedirectWithPayload from "~/server/auth/remix-auth/utils/authenticate-and-redirect-with-payload.server";
 import UserSignupInteractor from "~/server/domain/interactors/user-signup.interactor.server";
 import UserSignupValidator from "~/server/domain/interactors/validators/user-signup.validator";
 import PrismaUsersRepository from "~/server/repositories/prisma-users.repository.server";
@@ -47,14 +47,7 @@ export const action: ActionFunction = async ({ request }) => {
   const productPlan = query.get("checkout");
 
   if (productPlan !== null && productPlan !== undefined) {
-    return authRedirectWithPayload<Omit<User | "id", "password">>(
-      request,
-      "/checkout/payment",
-      {
-        email,
-        fullname,
-      }
-    );
+    return authenticateAndRedirectWithPayload(request, "/checkout/payment");
   }
 
   /** ====================================== */
@@ -62,14 +55,7 @@ export const action: ActionFunction = async ({ request }) => {
   return await tryCatch(async () => {
     await interactor.execute({ email, fullname, password });
 
-    return authRedirectWithPayload<Omit<User | "id", "password">>(
-      request,
-      "/app",
-      {
-        email,
-        fullname,
-      }
-    );
+    return authenticateAndRedirectWithPayload(request, "/app");
   });
 };
 

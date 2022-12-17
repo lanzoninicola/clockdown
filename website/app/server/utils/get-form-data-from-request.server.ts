@@ -1,3 +1,8 @@
+/**
+ *
+ * @param req the request object
+ * @returns a map of the form data
+ */
 export default async function getFormDataFromRequest(
   req: Request
 ): Promise<Map<string, any>> {

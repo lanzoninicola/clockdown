@@ -16,15 +16,18 @@ import {
 import { useTranslation } from "react-i18next";
 import { AuthForm } from "~/client/common/auth/components";
 import { theme } from "~/client/templates-editor/chackra-ui/theme/theme";
-import authRedirectWithPayload from "~/server/auth/remix-auth/utils/redirect-with-payload.server";
+import authenticateAndRedirectWithPayload from "~/server/auth/remix-auth/utils/authenticate-and-redirect-with-payload.server";
 
 import type { ActionFunction, LoaderFunction } from "@remix-run/node";
 import Logo from "~/client/common/logo/logo";
 import type { LoginSignUpOutletContext } from "../__auth";
 import SimpleTimer from "~/client/common/simple-timer";
+import tryCatch from "~/server/utils/try-catch.server";
+import { AuthorizationError } from "remix-auth";
 
 export const action: ActionFunction = async ({ request }) => {
-  const formData = await request.formData();
+  const clonedData = request.clone();
+  const formData = await clonedData.formData();
 
   const email = formData.get("email") as string;
   const fullname = formData.get("fullname") as string;
@@ -40,23 +43,18 @@ export const action: ActionFunction = async ({ request }) => {
   const authContext = query.get("context");
 
   if (authContext === "checkout") {
-    return authRedirectWithPayload<Omit<User | "id", "password">>(
+    return await authenticateAndRedirectWithPayload({
       request,
-      "/checkout/payment",
-      {
-        email,
-        fullname,
-      }
-    );
+      successRedirectURL: "/checkout/payment",
+    });
   }
 
   /** ====================================== */
 
-  return authRedirectWithPayload<Omit<User | "id", "password">>(
+  return await authenticateAndRedirectWithPayload({
     request,
-    "/app",
-    { email, fullname }
-  );
+    successRedirectURL: "/app",
+  });
 };
 
 /**
@@ -76,6 +74,8 @@ export default function LoginPage() {
     : actionData?.error
     ? "error"
     : "idle";
+
+  console.log({ actionData });
 
   return (
     <div className="flex flex-col items-center gap-8">
