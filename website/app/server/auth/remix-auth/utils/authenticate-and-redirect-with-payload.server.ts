@@ -32,8 +32,12 @@ interface AuthenticateAndRedirectWithPayloadProps<T> {
  * @param sessionOptions.expiresIn  the number of seconds the session should last
  * @param sessionOptions.payload (optional)  additional data to add to the payload to store in the session
  *
- * @returns  A redirect response if the authentication is successful, then the browser will redirect to the destination page,
- * or if the authentication is not successful returns a response with status 401 and the error message in the body
+ * @returns  if the authentication is successful the browser will redirect to the destination page.
+ * otherwise if the authentication is not successful returns a response with status 401 and the error message in the body
+ *
+ * *** Handling errors ***
+ * use the useActionData() hook into the component to handle the error
+ *
  *
  */
 async function authenticateAndRedirectWithPayload<T>({

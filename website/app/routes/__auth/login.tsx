@@ -75,8 +75,6 @@ export default function LoginPage() {
     ? "error"
     : "idle";
 
-  console.log({ actionData });
-
   return (
     <div className="flex flex-col items-center gap-8">
       <div className="flex flex-col items-center gap-8 md:max-w-[400px]">
