@@ -1,38 +1,28 @@
 /**
  *
  * @param req the request object
- * @returns a map of the form data
+ * @returns a map of the form data or an object depending on the options
  */
 export default async function getFormDataFromRequest(
   req: Request
-): Promise<Map<string, any>> {
+): Promise<{ [k: string]: FormDataEntryValue }> {
   const formData = await req.formData();
 
-  const ruleFormData = new Map<string, any>();
+  const data: { [k: string]: any } = {};
 
-  for (const pair of formData.entries()) {
-    if (pair[1] === "true") {
-      ruleFormData.set(pair[0], true);
+  for (const [key, value] of formData.entries()) {
+    if (value === "true") {
+      data[key] = true;
       continue;
     }
 
-    if (pair[1] === "false") {
-      ruleFormData.set(pair[0], false);
+    if (value === "false") {
+      data[key] = false;
       continue;
     }
 
-    if (pair[1] === "null") {
-      ruleFormData.set(pair[0], null);
-      continue;
-    }
-
-    if (pair[1] === "undefined") {
-      ruleFormData.set(pair[0], undefined);
-      continue;
-    }
-
-    ruleFormData.set(pair[0], pair[1]);
+    data[key] = value;
   }
 
-  return ruleFormData;
+  return data;
 }
