@@ -16,10 +16,14 @@ import { authenticator } from "~/server/auth/remix-auth/config/form-strategy.ser
 const isUserAuthenticated = async (
   request: Request,
   options?: {
-    successRedirect?: never;
-    failureRedirect?: never;
+    successRedirect: string;
+    failureRedirect: string;
   }
 ) => {
+  if (options === undefined) {
+    return await authenticator.isAuthenticated(request);
+  }
+
   return await authenticator.isAuthenticated(request, options);
 };
 

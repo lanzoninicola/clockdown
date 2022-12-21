@@ -71,7 +71,7 @@ export default function Header({
       </Grid>
 
       {isPremiumUser === false && (
-        <Link to="/#pricing-table" target="_blank">
+        <Link to="/checkout" target="_blank">
           <VStack
             bg={"yellow.300"}
             _hover={{
