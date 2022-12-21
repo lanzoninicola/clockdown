@@ -1,4 +1,5 @@
 import { Grid, VStack } from "@chakra-ui/react";
+import { THEME_INITIAL_STATE } from "~/client/templates-editor/countdown-state-management/common/initial-states";
 
 import {
   EditorContext,
@@ -47,22 +48,22 @@ export default function TemplatesSelector() {
                     payload: {
                       id: t.id,
                       name: t.name,
-                      style: t.style,
+                      theme: t.theme,
                     },
                   });
 
                   if (t?.fontFamily) {
                     themeDispatcher({
                       type: "THEME_TITLE_ON_CHANGE_FONT_FAMILY",
-                      payload: t.fontFamily,
+                      payload: t.theme.title.fontFamily || "Inter",
                     });
                     themeDispatcher({
                       type: "THEME_TIMER_ON_CHANGE_UNIT_LABEL_FONT_FAMILY",
-                      payload: t.fontFamily,
+                      payload: t.theme.timer.unitLabelFontFamily || "Inter",
                     });
                     themeDispatcher({
                       type: "THEME_TIMER_ON_CHANGE_UNIT_NUMBER_FONT_FAMILY",
-                      payload: t.fontFamily,
+                      payload: t.theme.timer.unitNumberFontFamily || "Inter",
                     });
                   }
                 }}

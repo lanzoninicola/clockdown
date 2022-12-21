@@ -327,7 +327,16 @@ export default function themeReducer(
           ...state.template,
           id: action.payload.id,
           name: action.payload.name,
-          style: action.payload.style,
+        },
+        layout: {
+          ...action.payload.theme.layout,
+        },
+        title: {
+          ...state.title,
+          ...action.payload.theme.title,
+        },
+        timer: {
+          ...action.payload.theme.timer,
         },
         actionDispatched: action.type,
       };

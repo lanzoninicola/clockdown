@@ -19,8 +19,6 @@ export default function StatePropertiesGroup({
   const { layout, title, timer } =
     useThemeState<EditorContextDataWithDispatch>(EditorContext);
 
-  const { orientation, gap, transparentBackground, backgroundColor, css } =
-    layout;
   const { fontFamily, fontWeight, fontSize, fontColor } = title;
 
   return (
@@ -40,13 +38,7 @@ export default function StatePropertiesGroup({
         }}
         value={JSON.stringify(
           {
-            layout: {
-              orientation,
-              gap,
-              transparentBackground,
-              backgroundColor,
-              css,
-            },
+            layout,
             title: {
               fontFamily,
               fontWeight,

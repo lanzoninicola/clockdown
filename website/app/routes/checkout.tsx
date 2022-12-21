@@ -2,11 +2,11 @@ import { Link, Outlet, useLocation } from "@remix-run/react";
 import type { LoaderFunction } from "@remix-run/node";
 import Logo from "~/client/common/logo/logo";
 import StepButton from "~/client/common/primitives/step-button/step-button";
-import authenticateAndRedirectWithPayload from "~/server/auth/remix-auth/utils/authenticate-and-redirect-with-payload.server";
 import isUserAuthenticated from "~/server/auth/remix-auth/utils/is-user-authenticated.server";
-import { json } from "stream/consumers";
 
 export const loader: LoaderFunction = async ({ request }) => {
+  //todo: fix this
+
   const url = new URL(request.url);
   const pathname = url.pathname;
 

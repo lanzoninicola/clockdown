@@ -3,7 +3,10 @@ import type { Language } from "../../../countdown-widget-i18n/types";
 import type {
   LayoutOrientation,
   ElementSize,
+  ThemeLayoutContextData,
 } from "../../common/types/theme/layout";
+import { ThemeTitleStateData } from "../../common/types/theme/title";
+import { ThemeTimerStateData } from "../../common/types/theme/timer";
 
 export interface LoadingState<T> {
   type: "LOAD_INITIAL_STATE";
@@ -188,7 +191,11 @@ interface ThemeTemplateOnChangeTemplateAction {
   payload: {
     id: string;
     name: string;
-    style: string;
+    theme: {
+      layout: Partial<ThemeLayoutContextData>;
+      title: Partial<ThemeTitleStateData>;
+      timer: ThemeTimerStateData;
+    };
   };
 }
 

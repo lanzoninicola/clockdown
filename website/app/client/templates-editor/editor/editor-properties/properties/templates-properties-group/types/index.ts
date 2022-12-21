@@ -1,47 +1,21 @@
-import type { LayoutOrientation } from "~/client/templates-editor/countdown-state-management/common/types/theme/layout";
+import type { ThemeStateData } from "~/client/templates-editor/countdown-state-management/common/types/theme";
+import { ThemeLayoutContextData } from "~/client/templates-editor/countdown-state-management/common/types/theme/layout";
+import { ThemeTimerStateData } from "~/client/templates-editor/countdown-state-management/common/types/theme/timer";
+import type { ThemeTitleStateData } from "~/client/templates-editor/countdown-state-management/common/types/theme/title";
 
 export type Templates = Record<string, Template>;
 
 export interface Template {
   id: string;
   name: string;
-  style: string;
+  style?: string;
   image: string;
   fontFamily?: string;
   disabled?: boolean;
   editable?: boolean;
-  theme?: {
-    layout: {
-      orientation?: LayoutOrientation;
-      backgroundColor: string;
-    };
-    title: {
-      fontFamily: string;
-      fontWeight: string;
-      fontSize: {
-        sm: number;
-        md: number;
-        lg: number;
-      };
-      fontColor: string;
-    };
-    timer: {
-      unitNumberFontFamily: string;
-      unitNumberFontWeight: string;
-      unitNumberFontSize: {
-        sm: number;
-        md: number;
-        lg: number;
-      };
-      unitNumberFontColor: string;
-      unitLabelFontFamily: string;
-      unitLabelFontWeight: string;
-      unitLabelFontSize: {
-        sm: number;
-        md: number;
-        lg: number;
-      };
-      unitLabelFontColor: string;
-    };
+  theme: {
+    layout: Partial<ThemeLayoutContextData>;
+    title: Partial<ThemeTitleStateData>;
+    timer: ThemeTimerStateData;
   };
 }
