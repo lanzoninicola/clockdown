@@ -38,34 +38,38 @@ export const action: ActionFunction = async ({ request }) => {
     return json({ error: "Missing email or password" }, { status: 400 });
   }
 
-  const repository = new PrismaUsersRepository();
-  const validator = new UserSignupValidator(repository);
-  const interactor = new UserSignupInteractor(repository, validator);
+  try {
+    const repository = new PrismaUsersRepository();
+    const validator = new UserSignupValidator(repository);
+    const interactor = new UserSignupInteractor(repository, validator);
 
-  await interactor.execute({
-    fullname,
-    email,
-    password,
-  });
+    await interactor.execute({
+      fullname,
+      email,
+      password,
+    });
 
-  /** ====================================== */
+    /** ====================================== */
 
-  const query = new URL(request.url).searchParams;
-  const authContext = query.get("context");
+    const query = new URL(request.url).searchParams;
+    const authContext = query.get("context");
 
-  if (authContext === "checkout") {
+    if (authContext === "checkout") {
+      return await authenticateAndRedirectWithPayload({
+        request,
+        successRedirectURL: "/checkout/payment",
+      });
+    }
+
+    /** ====================================== */
+
     return await authenticateAndRedirectWithPayload({
       request,
-      successRedirectURL: "/checkout/payment",
+      successRedirectURL: "/app",
     });
+  } catch (error) {
+    return json({ error: error.message }, { status: 400 });
   }
-
-  /** ====================================== */
-
-  return await authenticateAndRedirectWithPayload({
-    request,
-    successRedirectURL: "/app",
-  });
 };
 
 export default function SignUpPage() {

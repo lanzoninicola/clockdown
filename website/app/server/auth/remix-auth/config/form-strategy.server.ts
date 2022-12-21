@@ -1,8 +1,9 @@
 import type { User } from "@prisma/client";
-import { Authenticator } from "remix-auth";
+import { Authenticator, AuthorizationError } from "remix-auth";
 import { FormStrategy } from "remix-auth-form";
 import PrismaUsersRepository from "~/server/repositories/prisma-users.repository.server";
 import { sessionStorage } from "./session-storage.server";
+import bcrypt from "bcryptjs";
 
 // Create an instance of the authenticator, pass a generic with what
 // strategies will return and will store in the session
@@ -21,9 +22,29 @@ authenticator.use(
     }
 
     const repository = new PrismaUsersRepository();
-    let user = await repository.findUserByEmailAndPassword(email, password);
+
+    let user = await repository.findUserByEmail(email);
+
+    console.log("user: ", user);
+
+    if (user === null) {
+      throw new AuthorizationError(
+        "Não conseguimos achá-lo. Você tem certeza de ter uma conta? Como alternativa, por favor, cadastre-se."
+      );
+    }
 
     if (user) {
+      const isPasswordCorrect = await bcrypt.compareSync(
+        password,
+        user.password
+      );
+
+      console.log("isPasswordCorrect: ", isPasswordCorrect);
+
+      if (!isPasswordCorrect) {
+        return null;
+      }
+
       return user;
     }
 

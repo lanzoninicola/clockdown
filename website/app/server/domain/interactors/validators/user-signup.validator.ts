@@ -18,35 +18,35 @@ export default class UserSignupValidator implements Validator<UserSignup> {
     }
 
     if (!email) {
-      return new ValidationError("Email não informado");
+      throw new ValidationError("Email não informado");
     }
 
     if (!password) {
-      return new ValidationError("Senha não informada");
+      throw new ValidationError("Senha não informada");
     }
 
     if (password.length < 8) {
-      return new ValidationError("Senha deve ter no mínimo 8 caracteres");
+      throw new ValidationError("Senha deve ter no mínimo 8 caracteres");
     }
 
     if (!/[A-Z]/.test(password)) {
-      return new ValidationError(
+      throw new ValidationError(
         "Senha deve conter pelo menos uma letra maiúscula"
       );
     }
 
     if (!/[a-z]/.test(password)) {
-      return new ValidationError(
+      throw new ValidationError(
         "Senha deve conter pelo menos uma letra minúscula"
       );
     }
 
     if (!/[0-9]/.test(password)) {
-      return new ValidationError("Senha deve conter pelo menos um número");
+      throw new ValidationError("Senha deve conter pelo menos um número");
     }
 
     if (!/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(password)) {
-      return new ValidationError(
+      throw new ValidationError(
         "Senha deve conter pelo menos um caractere especial"
       );
     }

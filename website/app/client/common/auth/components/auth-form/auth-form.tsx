@@ -95,8 +95,8 @@ export default function AuthForm({
             </VStack>
           </VStack>
           {error && (
-            <div className="max-w-[300px] rounded-md bg-red-200 px-4 py-2">
-              <span className="font-body text-sm font-bold text-red-600">
+            <div className="w-[300px] rounded-md bg-red-200 px-4 py-2">
+              <span className="w-full font-body text-sm font-bold text-red-600">
                 {error}
               </span>
             </div>
