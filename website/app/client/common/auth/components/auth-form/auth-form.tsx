@@ -109,11 +109,7 @@ export default function AuthForm({
                   ? t("onboarding.signup.loadingLabel")
                   : t("onboarding.login.loadingLabel")
               }
-              isDisabled={
-                formState === "submitting" ||
-                formState === "success" ||
-                formState === "error"
-              }
+              isDisabled={formState === "submitting"}
             >
               {context === "signup"
                 ? t("onboarding.signup.buttonLabel")
