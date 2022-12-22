@@ -9,6 +9,7 @@ export interface Template {
   id: string;
   name: string;
   image: string;
+  pro: boolean;
   disabled?: boolean;
   editable?: boolean;
   theme: {

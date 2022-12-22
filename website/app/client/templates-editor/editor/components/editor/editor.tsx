@@ -21,20 +21,17 @@ export default function Editor() {
         <CenterContent>
           <EditorPreview />
         </CenterContent>
-        <Box position="absolute" top={5} right={5} zIndex={40}>
-          <GroupTitle>Templates</GroupTitle>
-          <Flex
-            bg={"gray.500"}
-            p={"1rem"}
-            h={"700px"}
-            overflow={"auto"}
-            borderRadius={"sm"}
-            justifyContent={"center"}
-            css={scrollbar}
+        <div
+          className="absolute top-4 right-4 z-40 h-[calc(100vh-80px)] overflow-auto pl-24 opacity-20 transition-opacity duration-300 ease-in-out hover:opacity-100"
+          data-element="templates-selector-wrapper"
+        >
+          <div
+            className="rounded-sm bg-gray-200 py-8"
+            data-element="templates-selector-inner-wrapper"
           >
             <TemplatesSelector />
-          </Flex>
-        </Box>
+          </div>
+        </div>
       </Box>
     </EditorWrapper>
   );

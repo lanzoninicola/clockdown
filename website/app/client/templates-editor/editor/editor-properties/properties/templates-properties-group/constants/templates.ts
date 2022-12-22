@@ -19,6 +19,7 @@ export const TEMPLATES: Templates = {
     name: "Orangi",
     editable: true,
     disabled: false,
+    pro: false,
     image: "orangi",
     theme: {
       layout: {
@@ -71,6 +72,7 @@ export const TEMPLATES: Templates = {
     name: "Disco",
     editable: true,
     disabled: false,
+    pro: false,
     image: "disco",
     theme: {
       layout: {
@@ -128,13 +130,14 @@ export const TEMPLATES: Templates = {
     name: "Lanche",
     editable: true,
     disabled: false,
+    pro: true,
     image: "lanche",
     theme: {
       layout: {
         orientation: "auto",
         gap: 1,
         transparentBackground: false,
-        backgroundColor: "#EA0D0D",
+        backgroundColor: "#DB0007",
         css: null,
         reverseOrderItems: true,
         height: 1,
@@ -145,8 +148,7 @@ export const TEMPLATES: Templates = {
         fontSize: {
           lg: 19,
         },
-        fontColor: null,
-        titleTextTransform: "uppercase",
+        fontColor: "#FFBC0D",
       },
       timer: {
         showSeparator: true,
@@ -154,7 +156,7 @@ export const TEMPLATES: Templates = {
         hideDays: false,
         hideHours: false,
         hideSeconds: false,
-        padWithZero: false,
+        padWithZero: true,
         unitNumberFontFamily: "Kanit",
         unitNumberFontWeight: "700",
         unitNumberFontSize: {
@@ -162,7 +164,7 @@ export const TEMPLATES: Templates = {
           sm: 33,
           md: 31,
         },
-        unitNumberFontColor: "#FFEF60",
+        unitNumberFontColor: "#FFBC0D",
         lastUnitColor: "#1B1B1B",
         unitLabelFontFamily: "Kanit",
         unitLabelFontWeight: "700",
@@ -171,7 +173,7 @@ export const TEMPLATES: Templates = {
           sm: 12,
         },
         unitLabelLanguage: "en-US",
-        unitLabelFontColor: "#FFEF60",
+        unitLabelFontColor: "#FFBC0D",
         unitLabelTextTransform: "uppercase",
       },
     },
@@ -182,6 +184,7 @@ export const TEMPLATES: Templates = {
     name: "Oldkool",
     editable: true,
     disabled: false,
+    pro: true,
     image: "oldskool",
     theme: {
       layout: {
@@ -237,6 +240,7 @@ export const TEMPLATES: Templates = {
     name: "Perfume",
     editable: true,
     disabled: false,
+    pro: true,
     image: "perfume",
     theme: {
       layout: {
@@ -293,6 +297,7 @@ export const TEMPLATES: Templates = {
     name: "Smart",
     editable: true,
     disabled: false,
+    pro: true,
     image: "smart",
     theme: {
       layout: {
@@ -349,6 +354,7 @@ export const TEMPLATES: Templates = {
     name: "Space",
     editable: true,
     disabled: false,
+    pro: true,
     image: "space",
     theme: {
       layout: {
@@ -404,6 +410,7 @@ export const TEMPLATES: Templates = {
     name: "Monospace",
     editable: true,
     disabled: false,
+    pro: true,
     image: "monospace",
     theme: {
       layout: {
@@ -460,6 +467,7 @@ export const TEMPLATES: Templates = {
     name: "Greeny",
     editable: true,
     disabled: false,
+    pro: true,
     image: "greeny",
     theme: {
       layout: {
@@ -515,6 +523,7 @@ export const TEMPLATES: Templates = {
     name: "Spicy",
     editable: true,
     disabled: false,
+    pro: true,
     image: "spicy",
     theme: {
       layout: {

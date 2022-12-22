@@ -1,25 +1,25 @@
 import { Box } from "@chakra-ui/react";
+import { HTMLAttributes } from "react";
 
 interface PropertyItemProps {
   children: React.ReactNode;
+  clazzName?: HTMLAttributes<HTMLDivElement>["className"];
   [key: string]: any;
 }
 
 export default function PropertyItem({
   children,
+  clazzName,
   ...props
 }: PropertyItemProps) {
   return (
-    <Box
-      pl={".35rem"}
-      cursor="pointer"
-      _hover={{ background: "blue.200" }}
-      data-element="property-wrapper"
-      {...props}
-    >
-      <Box bg={"white"} data-element="property-inner-wrapper">
-        {children}
-      </Box>
-    </Box>
+    <>
+      <div
+        className={`cursor-pointer rounded-sm pl-1 hover:bg-blue-200 ${clazzName}`}
+        data-element="property-item"
+      >
+        <div data-element="property-inner-wrapper">{children}</div>
+      </div>
+    </>
   );
 }

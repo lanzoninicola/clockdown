@@ -1,4 +1,4 @@
-import { Flex, useDisclosure } from "@chakra-ui/react";
+import { useDisclosure } from "@chakra-ui/react";
 import React from "react";
 
 import useIsPremiumInstallation from "../hooks/useIsPremiumInstallation";
@@ -10,7 +10,6 @@ import useGodMode from "~/client/common/utils/useGodMode";
 
 interface PremiumFeatureGuardProps {
   children: React.ReactNode;
-  flexDirection?: "column" | "row";
   hide?: boolean;
   variant?: "watermark" | "modal" | "shade-gray";
   ctaVariant?: number;
@@ -30,7 +29,6 @@ interface PremiumFeatureGuardProps {
  */
 export default function PremiumFeatureGuard({
   children,
-  flexDirection = "row",
   hide = false,
   variant = "watermark",
   ctaVariant = 1,
@@ -42,9 +40,12 @@ export default function PremiumFeatureGuard({
   const zeus = useGodMode();
 
   function mightOpenModal(e: React.SyntheticEvent) {
+    e.preventDefault();
     e.stopPropagation();
 
-    if (!isPremiumUser && variant === "modal") {
+    console.log(e);
+
+    if (isPremiumUser === false && variant === "modal") {
       onOpen();
     }
   }
@@ -59,21 +60,23 @@ export default function PremiumFeatureGuard({
 
   return (
     <>
-      <Flex
-        direction={flexDirection}
-        className="premium-feat-wrapper"
-        position={"relative"}
-        onClickCapture={(e) => mightOpenModal(e)}
-        onChangeCapture={(e) => mightOpenModal(e)}
-        alignItems={"center"}
-        gap={1}
+      <div
+        className={`relative flex h-full w-full items-center justify-center align-middle`}
+        data-element="pro-guard-wrapper"
       >
         {iconPosition === "left" && <PremiumFeatureIcon />}
         {children}
         {variant === "watermark" && <Watermark customText={customText} />}
         {variant === "shade-gray" && <ShadeOfGray />}
         {iconPosition === "right" && <PremiumFeatureIcon />}
-      </Flex>
+        <div
+          className={`absolute inset-0 z-50 cursor-pointer `}
+          data-element="pro-guard-overlay"
+          onClickCapture={(e) => mightOpenModal(e)}
+          onChangeCapture={(e) => mightOpenModal(e)}
+        ></div>
+      </div>
+
       {variant === "modal" && (
         <UpgradePremiumModal
           isOpen={isOpen}
