@@ -8,9 +8,7 @@ export type Templates = Record<string, Template>;
 export interface Template {
   id: string;
   name: string;
-  style?: string;
   image: string;
-  fontFamily?: string;
   disabled?: boolean;
   editable?: boolean;
   theme: {

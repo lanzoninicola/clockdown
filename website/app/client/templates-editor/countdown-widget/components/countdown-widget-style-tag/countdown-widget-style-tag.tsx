@@ -69,8 +69,6 @@ export default function CountdownWidgetStyleTag() {
 
   /** ============================================ */
 
-  console.log(titleTheme.titleTextTransform);
-
   let title = ``;
   title += `h2[data-element="countdown-title"] {`;
   if (titleTheme.fontFamily) {
