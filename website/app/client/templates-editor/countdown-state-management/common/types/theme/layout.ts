@@ -8,7 +8,7 @@ export interface ThemeLayoutContextData {
   orientation: LayoutOrientation;
   /** The space between the title and timer (1)space-evenly (2)space-around (3)space-between */
   gap: number;
-  /** The height of countdown wrapper */
+  /** The height of countdown wrapper in REM */
   height: number;
   /** Make the background transparent */
   transparentBackground: boolean;

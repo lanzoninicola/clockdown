@@ -17,7 +17,14 @@ export default function useThemeTitle<
 
   const { title } = theme;
 
-  const { fontFamily, fontWeight, fontSize, fontColor, text } = title;
+  const {
+    fontFamily,
+    fontWeight,
+    fontSize,
+    fontColor,
+    text,
+    titleTextTransform,
+  } = title;
 
   return {
     text,
@@ -25,5 +32,6 @@ export default function useThemeTitle<
     fontWeight,
     fontSize,
     fontColor,
+    titleTextTransform,
   };
 }

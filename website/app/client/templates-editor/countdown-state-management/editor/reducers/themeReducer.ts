@@ -394,6 +394,26 @@ export default function themeReducer(
         actionDispatched: action.type,
       };
 
+    case "THEME_TITLE_ON_CHANGE_UPPERCASE_TEXT":
+      return {
+        ...state,
+        title: {
+          ...state.title,
+          titleTextTransform: action.payload,
+        },
+        actionDispatched: action.type,
+      };
+
+    case "THEME_TITLE_ON_CHANGE_LOWERCASE_TEXT":
+      return {
+        ...state,
+        title: {
+          ...state.title,
+          titleTextTransform: action.payload,
+        },
+        actionDispatched: action.type,
+      };
+
     default:
       return state;
   }

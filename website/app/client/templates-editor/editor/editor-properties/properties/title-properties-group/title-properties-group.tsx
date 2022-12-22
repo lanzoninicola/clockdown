@@ -6,8 +6,9 @@ import FontColor from "../../components/common/font-color/font-color";
 import FontFamily from "../../components/common/font-family/font-family";
 import FontSize from "../../components/common/font-size/font-size";
 import CountdownTitleText from "./countdown-title-text/countdown-title-text";
-import debounce from "~/client/common/utils/debounce";
+
 import { useState } from "react";
+import CheckboxSingleOption from "../../components/primitives/checkbox-single-option/checkbox-single-option";
 
 interface TitlePropertiesGroupProps {
   showGroupTitle?: boolean;
@@ -19,8 +20,14 @@ export default function TitlePropertiesGroup({
   ...props
 }: TitlePropertiesGroupProps) {
   const { t } = useTranslation();
-  const { fontColor, fontFamily, fontSize, fontWeight, themeDispatcher } =
-    useThemeTitleSelector();
+  const {
+    fontColor,
+    fontFamily,
+    fontSize,
+    fontWeight,
+    titleTextTransform,
+    themeDispatcher,
+  } = useThemeTitleSelector();
 
   // this fix the issue with the color picker that fired an error when changing the color
   // DO NOT REMOVE WITHOUT TESTING
@@ -72,6 +79,32 @@ export default function TitlePropertiesGroup({
             payload: colorSelected,
           });
         }}
+      />
+      <CheckboxSingleOption
+        id="title-text-transform-uppercase-checker"
+        label={t(
+          "editor.propertiesGroup.unitLabel.labelTextTransformUppercase"
+        )}
+        onChange={(checked) => {
+          themeDispatcher({
+            type: "THEME_TITLE_ON_CHANGE_UPPERCASE_TEXT",
+            payload: checked ? "uppercase" : "capitalize",
+          });
+        }}
+        value={titleTextTransform === "uppercase"}
+      />
+      <CheckboxSingleOption
+        id="title-text-transform-lowercase-checker"
+        label={t(
+          "editor.propertiesGroup.unitLabel.labelTextTransformLowercase"
+        )}
+        onChange={(checked) => {
+          themeDispatcher({
+            type: "THEME_TITLE_ON_CHANGE_LOWERCASE_TEXT",
+            payload: checked ? "lowercase" : "capitalize",
+          });
+        }}
+        value={titleTextTransform === "lowercase"}
       />
     </PropertyGroupWrapper>
   );

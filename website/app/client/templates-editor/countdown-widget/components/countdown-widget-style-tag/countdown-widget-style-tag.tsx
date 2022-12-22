@@ -69,12 +69,14 @@ export default function CountdownWidgetStyleTag() {
 
   /** ============================================ */
 
+  console.log(titleTheme.titleTextTransform);
+
   let title = ``;
   title += `h2[data-element="countdown-title"] {`;
   if (titleTheme.fontFamily) {
     title += `font-family: ${titleTheme.fontFamily};`;
   }
-  if (titleTheme.fontSize) {
+  if (titleTheme.fontSize && titleTheme.fontSize[viewportToken]) {
     title += `font-size: ${titleTheme.fontSize[viewportToken]}px;`;
   }
   if (titleTheme.fontColor) {
@@ -82,6 +84,12 @@ export default function CountdownWidgetStyleTag() {
   }
   if (titleTheme.fontWeight) {
     title += `font-weight: ${titleTheme.fontWeight};`;
+  }
+  if (titleTheme.titleTextTransform === "uppercase") {
+    title += `text-transform: uppercase;`;
+  }
+  if (titleTheme.titleTextTransform === "lowercase") {
+    title += `text-transform: lowercase;`;
   }
   title += `}`;
 

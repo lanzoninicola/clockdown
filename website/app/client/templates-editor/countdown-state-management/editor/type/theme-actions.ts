@@ -231,6 +231,16 @@ interface ThemeTitleOnChangeFontColorAction {
   payload: string;
 }
 
+interface ThemeTitleOnChangeUppercaseText {
+  type: "THEME_TITLE_ON_CHANGE_UPPERCASE_TEXT";
+  payload: "uppercase" | "capitalize";
+}
+
+interface ThemeTitleOnChangeLowercaseText {
+  type: "THEME_TITLE_ON_CHANGE_LOWERCASE_TEXT";
+  payload: "lowercase" | "capitalize";
+}
+
 export type ThemeStateAction =
   | LoadingState<ThemeStateData>
   | ThemeTimerOnChangeUnitNumberFontSizeAction
@@ -268,4 +278,6 @@ export type ThemeStateAction =
   | ThemeTitleOnChangeFontFamilyAction
   | ThemeTitleOnChangeFontWeightAction
   | ThemeTitleOnChangeFontColorAction
+  | ThemeTitleOnChangeUppercaseText
+  | ThemeTitleOnChangeLowercaseText
   | ThemeTimerOnChangeLastUnitColorAction;

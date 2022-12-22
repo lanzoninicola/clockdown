@@ -1,4 +1,4 @@
-import { Templates } from "../types";
+import type { Templates } from "../types";
 
 export const TEMPLATES_BASE_ASSET_PATH =
   "/src/editor/editor-properties/properties/templates-properties-group/assets/";
@@ -28,6 +28,7 @@ export const TEMPLATES: Templates = {
         transparentBackground: false,
         backgroundColor: "#F4803E",
         css: null,
+        height: 1,
       },
       title: {
         fontFamily: "Oswald",
@@ -127,9 +128,52 @@ export const TEMPLATES: Templates = {
     name: "Lanche",
     editable: true,
     disabled: false,
-    style: `h2[data-element=countdown-title],span[data-element=countdown-unit-label],span[data-element=countdown-unit-number]{font-size:100%;font-weight:600;font-family:Oswald,sans-serif}a[data-element=countdown-link-wrapper]{color:inherit;-webkit-text-decoration:none;text-decoration:none}div[data-element=countdown-widget]{display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-justify-content:center;justify-content:center;width:100%}div[data-element=countdown-container]{width:100%}div[data-element=countdown-wrapper]{display:grid;justify-items:center;gap:.75rem;margin:auto;padding:1rem .5rem;background:#f4803e}h2[data-element=countdown-title]{margin:0;line-height:1.3;text-align:center;text-transform:uppercase}div[data-element=countdown-units]{display:grid;grid-template-columns:repeat(7,1fr);column-gap:.5rem;width:min-content}div[data-element=countdown-unit]{display:grid;grid-template-areas:"number" "label";-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;justify-items:center}div[data-element=countdown-unit]:not(div[data-element=countdown-unit][data-unit-type=separator]){min-width:70px}span[data-element=countdown-unit-number]{text-rendering:optimizeSpeed;grid-area:number;font-size:150%}span[data-element=countdown-unit-label]{line-height:1.1;text-rendering:optimizeSpeed;grid-area:label;font-size:75%;text-transform:lowercase}div[data-element=countdown-unit][data-unit-type=separator]{text-rendering:optimizeSpeed}@media (min-width:768px){div[data-element=countdown-wrapper]{grid-template-columns:repeat(2,1fr)}h2[data-element=countdown-title]{width:50ch;text-align:left}}`,
     image: "lanche",
-    fontFamily: "Kanit",
+    theme: {
+      layout: {
+        orientation: "auto",
+        gap: 1,
+        transparentBackground: false,
+        backgroundColor: "#EA0D0D",
+        css: null,
+        reverseOrderItems: true,
+        height: 1,
+      },
+      title: {
+        fontFamily: "Kanit",
+        fontWeight: "400",
+        fontSize: {
+          lg: 19,
+        },
+        fontColor: null,
+      },
+      timer: {
+        showSeparator: true,
+        separatorChar: ":",
+        hideDays: false,
+        hideHours: false,
+        hideSeconds: false,
+        padWithZero: false,
+        unitNumberFontFamily: "Kanit",
+        unitNumberFontWeight: "400",
+        unitNumberFontSize: {
+          lg: 30,
+          sm: 33,
+          md: 31,
+        },
+        unitNumberFontColor: "#FFEF60",
+        lastUnitColor: "#1B1B1B",
+        unitLabelFontFamily: "Kanit",
+        unitLabelFontWeight: "400",
+        unitLabelFontSize: {
+          lg: 15,
+          sm: 12,
+        },
+        unitLabelLanguage: "en-US",
+        unitLabelFontColor: null,
+        unitLabelTextTransform: "uppercase",
+      },
+    },
   },
 
   mopi: {
