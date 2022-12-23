@@ -22,7 +22,7 @@ const config = {
   plugins: [
     // new BundleAnalyzerPlugin(),
     new MiniCssExtractPlugin({
-      filename: "widget.css",
+      filename: "index.css",
     }),
     // let me help copy static files from a folder to the build out folder
     // new CopyWebpackPlugin({
@@ -63,7 +63,7 @@ const configPublic = Object.assign({}, config, {
     shortcode: "./src/main.tsx",
   },
   output: {
-    filename: "widget.js",
+    filename: "index.js",
     path: path.resolve(__dirname, "./public"),
   },
 });
