@@ -17,7 +17,7 @@ const ClockdownApp = ({ onboardedUser }: ClockdownAppProps) => {
   return (
     <PremiumFeatureProvider
       config={{
-        productPublicWebsiteURL: "https://clockdown.tech/",
+        productPublicWebsiteURL: "https://clockdown.tech/#pricing-table",
       }}
     >
       <EditorProvider

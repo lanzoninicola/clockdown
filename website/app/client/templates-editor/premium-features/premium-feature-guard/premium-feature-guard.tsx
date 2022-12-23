@@ -7,6 +7,7 @@ import ShadeOfGray from "../components/shade-of-gray/shade-of-gray";
 import UpgradePremiumModal from "../components/upgrade-premium-modal/upgrade-premium-modal";
 import Watermark from "../components/watermark/watermark";
 import useGodMode from "~/client/common/utils/useGodMode";
+import { exclude } from "isbot";
 
 interface PremiumFeatureGuardProps {
   children: React.ReactNode;
@@ -15,6 +16,8 @@ interface PremiumFeatureGuardProps {
   ctaVariant?: number;
   customText?: string | React.ReactNode;
   iconPosition?: "left" | "right";
+  /** children is not protected by the guard */
+  exclude?: boolean;
 }
 
 /**
@@ -34,6 +37,7 @@ export default function PremiumFeatureGuard({
   ctaVariant = 1,
   customText,
   iconPosition = "right",
+  exclude = false,
 }: PremiumFeatureGuardProps) {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const isPremiumUser = useIsPremiumInstallation();
@@ -50,7 +54,7 @@ export default function PremiumFeatureGuard({
     }
   }
 
-  if (isPremiumUser || zeus) {
+  if (isPremiumUser || zeus || exclude === true) {
     return <>{children}</>;
   }
 
