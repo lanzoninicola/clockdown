@@ -50,13 +50,13 @@ export default function useHtmlCode() {
 
   // script tag
   htmlCode += `<script `;
-  htmlCode += `src="${BASE_ASSETS_URL}/widget.js"`;
+  htmlCode += `src="${BASE_ASSETS_URL}/index.js"`;
   htmlCode += ` defer `;
   htmlCode += `></script>`;
 
   // style tag
   htmlCode += `<link rel="stylesheet" `;
-  htmlCode += `href="${BASE_ASSETS_URL}/widget.css"`;
+  htmlCode += `href="${BASE_ASSETS_URL}/index.css"`;
   htmlCode += `/>`;
 
   htmlCode += "</div>";

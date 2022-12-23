@@ -21,6 +21,8 @@ export default function CountdownWidgetLink({
   return (
     <a
       href={config?.productPublicWebsiteURL}
+      target="_blank"
+      rel="noopener noreferrer"
       data-element="countdown-link-wrapper"
       onClick={(e) => {
         if (isEditorMode) {

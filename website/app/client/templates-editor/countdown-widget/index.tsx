@@ -6,17 +6,17 @@ import CountdownWidgetStyleTag from "./components/countdown-widget-style-tag/cou
 
 export default function CountdownWidget() {
   return (
-    <CountdownWidgetLink>
-      <Iframe
-        style={{ width: "100%", height: "100%", border: "0px" }}
-        data-element="countdown-widget"
-      >
+    <Iframe
+      style={{ width: "100%", height: "100%", border: "0px" }}
+      data-element="countdown-widget"
+    >
+      <CountdownWidgetLink>
         <CountdownWidgetGoogleFontTag />
         <div data-element="countdown-container">
           <Countdown />
         </div>
         <CountdownWidgetStyleTag />
-      </Iframe>
-    </CountdownWidgetLink>
+      </CountdownWidgetLink>
+    </Iframe>
   );
 }
