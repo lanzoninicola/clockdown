@@ -5,7 +5,7 @@ import ButtonAccentSolid from "~/client/common/primitives/button-accent-solid/bu
 import Section from "../common/section";
 import TitleH2 from "../common/titles/title-h2";
 import TitleH3 from "../common/titles/title-h3";
-import PayPalButton from "../../common/paypal";
+import PayPalButton from "../../../modules/remix-paypal/client";
 
 export default function PricingSection() {
   const commonFeatures = [

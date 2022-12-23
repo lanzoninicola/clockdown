@@ -7,7 +7,7 @@ import {
   useTransition,
 } from "@remix-run/react";
 import { useTranslation } from "react-i18next";
-import { AuthForm } from "~/client/common/auth/components";
+import { AuthForm } from "~/modules/remix-auth/client/components";
 import Logo from "~/client/common/logo/logo";
 import { theme } from "~/client/templates-editor/chackra-ui/theme/theme";
 import authenticateAndRedirectWithPayload from "~/server/auth/remix-auth/utils/authenticate-and-redirect-with-payload.server";

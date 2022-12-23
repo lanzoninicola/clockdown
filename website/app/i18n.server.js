@@ -2,7 +2,7 @@ import { RemixI18Next } from "remix-i18next";
 import Backend from "i18next-fs-backend";
 import { resolve } from "node:path";
 import i18nextOptions from "./i18nextOptions";
-import { i18nCookie } from "./common/i18n/server/i18n-session.server";
+import { i18nCookie } from "./modules/remix-i18n/server/i18n-session.server";
 
 export default new RemixI18Next({
   detection: {

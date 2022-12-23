@@ -6,7 +6,7 @@ import { useTranslation } from "react-i18next";
 import ConsentStatement from "../consent-statement/consent-statement";
 import SubmitAuthButton from "../submit-auth-button/submit-auth-button";
 
-import type { AuthFormState } from "../../types";
+import type { AuthFormState } from "../../../types";
 interface AuthFormProps {
   context: "signup" | "login" | "checkout";
   formState: AuthFormState;

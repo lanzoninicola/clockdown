@@ -1,7 +1,7 @@
 import { json, redirect } from "@remix-run/node";
 import type { LoaderFunction } from "@remix-run/node";
 import isUserAuthenticated from "~/server/auth/remix-auth/utils/is-user-authenticated.server";
-import { PayPalButton } from "~/client/common/paypal";
+import { PayPalButton } from "~/modules/remix-paypal/client";
 import { useLoaderData, useNavigate } from "@remix-run/react";
 import type { User } from "@prisma/client";
 import type {

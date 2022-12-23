@@ -2,7 +2,7 @@ import { Select } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
 
 import useThemeTimerWithDispatcher from "../../../../../countdown-state-management/common/hooks/theme/useThemeTimerWithDispatcher";
-import LANGUAGES from "../../../../../../../common/i18n/languages/languages";
+import LANGUAGES from "../../../../../../../modules/remix-i18n/server/languages";
 import PropertyWrapper from "../../../components/layout/property-wrapper/property-wrapper";
 import Label from "../../../components/primitives/label/label";
 

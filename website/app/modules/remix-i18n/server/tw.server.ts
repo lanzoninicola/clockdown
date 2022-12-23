@@ -2,10 +2,6 @@ import capitalize from "~/client/common/utils/capitalize";
 
 
 
-
-
-
-
 const tw = (translationDatabase:any, locale: string) => (slice: [key: string]: string): string => {
   const translation = translationDatabase[locale];
 

@@ -3,7 +3,7 @@ import { ActionFunction, LoaderFunction } from "@remix-run/node";
 import { Form } from "@remix-run/react";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
-import type { Language } from "~/common/i18n/types";
+import type { Language } from "~/modules/remix-i18n/types";
 import LanguagesForm from "~/routes/resources/languages-form";
 
 import LanguageSelectorButton from "../language-selector-button/language-selector-button";

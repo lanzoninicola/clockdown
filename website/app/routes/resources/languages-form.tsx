@@ -4,12 +4,12 @@ import type { LoaderFunction, ActionFunction } from "@remix-run/node";
 import { useFetcher } from "@remix-run/react";
 import { useEffect, useState } from "react";
 import Teext from "~/client/templates-editor/global/common/layout/teext/teext";
-import LANGUAGES from "~/common/i18n/languages/languages";
-import { Language } from "~/common/i18n/types";
+import LANGUAGES from "~/modules/remix-i18n/server/languages";
+import { Language } from "~/modules/remix-i18n/types";
 import {
   commitSession,
   getSession,
-} from "~/common/i18n/server/i18n-session.server";
+} from "~/modules/remix-i18n/server/i18n-session.server";
 
 // www.epicweb.dev/full-stack-components#create-the-resource-route
 /**
