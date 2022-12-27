@@ -20,13 +20,15 @@ import useHtmlCode from "../../hooks/useHtmlCode";
 import HtmlEmbeddedCodeForm from "../html-embedded-code-form/html-embedded-code-form";
 import Platforms from "../platforms/platforms";
 
+interface HtmlEmbeddedCodeInputProps {
+  inlineBlock?: boolean;
+  variant?: "primary" | "secondary";
+}
+
 export default function HtmlEmbeddedCodeInput({
   inlineBlock = false,
   variant = "primary",
-}: {
-  inlineBlock?: boolean;
-  variant?: "primary" | "secondary";
-}) {
+}: HtmlEmbeddedCodeInputProps) {
   const loaderData = useLoaderData();
   const { t } = useTranslation();
   const { isOpen, onClose, onOpen } = useDisclosure();

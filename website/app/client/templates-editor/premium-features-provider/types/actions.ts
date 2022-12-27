@@ -1,28 +1,23 @@
-interface PremiumFeaturesInitLandingPageAction {
-  type: "PREMIUM_FEATURES_INIT_LANDING_PAGE";
-  /** the landing page URL */
-  payload: string;
-}
+import type { User } from "@prisma/client";
+import type { PremiumFeaturesContextData } from "./context";
 
-interface PremiumFeaturesCheckStatus {
-  type: "PREMIUM_FEATURES_CHECK_STATUS";
-}
-
-interface PremiumFeaturesCheckStatusResponseSuccess {
-  type: "PREMIUM_FEATURES_CHECK_STATUS_RESPONSE_SUCCESS";
-  /** the premium features status */
+interface PremiumFeaturesInitConfigAction {
+  type: "PREMIUM_FEATURES_INIT_CONFIG";
   payload: {
-    isPro: boolean;
-    isAgency: boolean;
+    /** The URL of product landing page */
+    productLandingPageURL: PremiumFeaturesContextData["productLandingPageURL"];
+    /** The premium features level available for the module */
+    premiumPlans: PremiumFeaturesContextData["premiumPlans"];
   };
 }
 
-interface PremiumFeaturesCheckStatusResponseFailed {
-  type: "PREMIUM_FEATURES_CHECK_STATUS_RESPONSE_FAILED";
+interface PremiumFeaturesEnabledAction {
+  type: "PREMIUM_FEATURES_ENABLED";
+  payload: {
+    role: User["role"];
+  };
 }
 
 export type PremiumFeaturesAction =
-  | PremiumFeaturesCheckStatus
-  | PremiumFeaturesCheckStatusResponseSuccess
-  | PremiumFeaturesCheckStatusResponseFailed
-  | PremiumFeaturesInitLandingPageAction;
+  | PremiumFeaturesInitConfigAction
+  | PremiumFeaturesEnabledAction;

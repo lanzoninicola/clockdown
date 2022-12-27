@@ -1,11 +1,9 @@
-import { Box, Grid, HStack, Tooltip, VStack } from "@chakra-ui/react";
 import { FaLaptop } from "@react-icons/all-files/fa/FaLaptop";
 import { FaMobileAlt } from "@react-icons/all-files/fa/FaMobileAlt";
 import { FaTabletAlt } from "@react-icons/all-files/fa/FaTabletAlt";
 import { useTranslation } from "react-i18next";
-import { useEditorStateWithDispatcher } from "../../../../countdown-state-management";
+import { useEditorStateWithDispatcher } from "~/client/templates-editor/countdown-state-management";
 
-import PropertyButton from "../../../editor-properties/editor-properties-bar/components/property-button/property-button";
 import TokenButton from "./components/token-button";
 
 export default function BreakpointsBar() {
@@ -13,7 +11,7 @@ export default function BreakpointsBar() {
   const { currentToken, editorDispatcher } = useEditorStateWithDispatcher();
 
   return (
-    <HStack gap={2} data-element="breakpoints-bar">
+    <div className="flex gap-4" data-element="breakpoints-bar">
       <TokenButton
         label={t("global.desktop")}
         icon={<FaLaptop />}
@@ -47,6 +45,6 @@ export default function BreakpointsBar() {
         }}
         isActive={currentToken === "sm"}
       />
-    </HStack>
+    </div>
   );
 }

@@ -2,10 +2,10 @@ import { useContextSelector } from "use-context-selector";
 import { PremiumFeaturesContext } from "../../premium-features-provider/context/premium-features-context";
 
 export default function useProductLandingPageURL() {
-  const landingPageURL = useContextSelector(
+  const productLandingPageURL = useContextSelector(
     PremiumFeaturesContext,
-    (ctx) => ctx.landingPageURL
+    (ctx) => ctx.productLandingPageURL
   );
 
-  return landingPageURL;
+  return productLandingPageURL;
 }

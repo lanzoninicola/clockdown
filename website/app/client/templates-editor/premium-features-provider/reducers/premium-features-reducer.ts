@@ -1,29 +1,29 @@
-import { PremiumFeaturesStateData } from "../types";
-import { PremiumFeaturesAction } from "../types/actions";
+import type { PremiumFeaturesStateData } from "../types";
+import type { PremiumFeaturesAction } from "../types/actions";
+import lowercase from "../utils/lowercase";
 
 export const premiumFeatureReducer = (
   state: PremiumFeaturesStateData,
   action: PremiumFeaturesAction
 ): PremiumFeaturesStateData => {
   switch (action.type) {
-    case "PREMIUM_FEATURES_INIT_LANDING_PAGE":
+    /** This action is used to setup the module */
+    case "PREMIUM_FEATURES_INIT_CONFIG":
       return {
         ...state,
-        landingPageURL: action.payload,
+        productLandingPageURL: action.payload.productLandingPageURL,
+        premiumPlans: action.payload.premiumPlans,
       };
-    case "PREMIUM_FEATURES_CHECK_STATUS":
+
+    case "PREMIUM_FEATURES_ENABLED":
       return {
         ...state,
-      };
-    case "PREMIUM_FEATURES_CHECK_STATUS_RESPONSE_SUCCESS":
-      return {
-        ...state,
-        isPro: action.payload.isPro,
-        isAgency: action.payload.isAgency,
-      };
-    case "PREMIUM_FEATURES_CHECK_STATUS_RESPONSE_FAILED":
-      return {
-        ...state,
+        isPremiumEnabled:
+          lowercase(action.payload.role) === "subscriber" ||
+          lowercase(action.payload.role) === "admin" ||
+          lowercase(action.payload.role) === "superadmin"
+            ? true
+            : false,
       };
 
     default:

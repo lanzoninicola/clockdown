@@ -10,27 +10,27 @@ import isUserAuthenticated from "~/server/auth/remix-auth/utils/is-user-authenti
 import isGodMode from "~/server/utils/is-god-mode";
 
 interface LoaderData {
-  userAuth: { email: string; fullname?: string };
+  loggedUser: { email: string; fullname?: string; role?: string };
   zeus: boolean;
 }
 
 export const loader: LoaderFunction = async ({ request }) => {
-  let userAuthData = await isUserAuthenticated(request);
+  let loggedUser = await isUserAuthenticated(request);
   const zeus = isGodMode(request);
 
   return json({
-    userAuth: userAuthData,
+    userAuth: loggedUser,
     zeus,
   });
 };
 
 const App = () => {
   const loaderData: LoaderData = useLoaderData();
-  const { userAuth } = loaderData;
+  const { loggedUser } = loaderData;
 
   return (
     <ChakraProvider theme={theme}>
-      <ClockdownApp onboardedUser={userAuth} />
+      <ClockdownApp loggedUser={loggedUser} />
     </ChakraProvider>
   );
 };

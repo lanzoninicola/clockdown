@@ -3,10 +3,6 @@ version: "3"
 volumes:
   local-pgdata:
     driver: local
-  local-nginxdata:
-    driver: local
-  local-letsencrypt:
-    driver: local
 
 networks:
   flat:
@@ -55,10 +51,10 @@ services:
       - "5432"
     ports:
       # Standard port for PostgreSQL databases
-      - "3254:5432"
+      - "5432:5432"
     #   volumes:
     # When the PostgresSQL container is started it will run any scripts
-    # provided in the `docker-entrypoint-initdb.d` directory, this connects 
+    # provided in the `docker-entrypoint-initdb.d` directory, this connects
     # our seed file to that directory so that it gets run
     # - ./database-seed.sql:/docker-entrypoint-initdb.d/database-seed.sql
     volumes:
@@ -79,33 +75,3 @@ services:
       - "8080:80"
     depends_on:
       - postgres
-
-  nginx:
-    image: "lanzoninicola/nginx-proxy-manager:1.1"
-    container_name: local-clockdown-nginx
-    hostname: clockdown-nginx
-    restart: unless-stopped
-    networks:
-      - flat
-    expose:
-      - "443"
-    ports:
-      # These ports are in format <host-port>:<container-port>
-      - "80:80" # Public HTTP Port
-      - "443:443" # Public HTTPS Port
-      - "81:81" # Admin Web Port
-      # Add any other Stream port you want to expose
-      # - '21:21' # FTP
-
-    # Uncomment the next line if you uncomment anything in the section
-    # environment:
-    # Uncomment this if you want to change the location of
-    # the SQLite DB file within the container
-    # DB_SQLITE_FILE: "/data/database.sqlite"
-
-    # Uncomment this if IPv6 is not enabled on your host
-    # DISABLE_IPV6: 'true'
-
-    volumes:
-      - local-nginxdata:/data
-      - local-letsencrypt:/etc/letsencrypt

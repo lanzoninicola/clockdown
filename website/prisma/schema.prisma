@@ -12,7 +12,7 @@ model User {
   fullname        String?
   email           String  @unique
   password        String
-  paidClient      Boolean @default(false)
+  role            Role    @default(USER)
   lastPaymentAt   DateTime?
   subscriptionEnd DateTime?
   createdAt       DateTime @default(now())
@@ -21,6 +21,13 @@ model User {
   orders          Order[]
 
   @@map(name: "users")
+}
+
+enum Role {
+  SUPERADMIN
+  ADMIN
+  SUBSCRIBER
+  USER
 }
 
 model Product {

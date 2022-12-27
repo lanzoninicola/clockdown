@@ -7,26 +7,29 @@ import Header from "~/client/templates-editor/global/header/header";
 import PremiumFeatureProvider from "~/client/templates-editor/premium-features-provider/premium-features-provider";
 
 interface ClockdownAppProps {
-  onboardedUser: {
+  loggedUser: {
     email: string;
     fullname?: string;
+    role?: string;
   };
 }
 
-const ClockdownApp = ({ onboardedUser }: ClockdownAppProps) => {
+const ClockdownApp = ({ loggedUser }: ClockdownAppProps) => {
   return (
     <PremiumFeatureProvider
       config={{
-        productPublicWebsiteURL: "https://clockdown.tech/#pricing-table",
+        productLandingPageURL: "https://clockdown.tech/#pricing-table",
+        premiumPlans: ["pro"],
       }}
+      userRole={loggedUser.role}
     >
       <EditorProvider
         config={{
-          productPublicWebsiteURL: "https://clockdown.tech",
+          produtLandingPageURL: "https://clockdown.tech",
         }}
       >
         <MainContent>
-          <Header onboardedUser={onboardedUser} />
+          <Header loggedUser={loggedUser} />
           <EditorPage />
         </MainContent>
       </EditorProvider>

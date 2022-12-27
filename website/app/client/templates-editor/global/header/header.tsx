@@ -1,45 +1,25 @@
-import { Button, Flex, Grid, Text, VStack } from "@chakra-ui/react";
 import { FiUser } from "@react-icons/all-files/fi/FiUser";
 import { Link } from "@remix-run/react";
 import { useTranslation } from "react-i18next";
+import { AvatarDropdown } from "~/modules/remix-account/client";
 
 import BreakpointsBar from "../../editor/editor-preview/components/breakpoints-bar/breakpoints-bar";
-import HtmlEmbeddedCodeInput from "../../editor/html-embedded-code/components/html-embedded-code-input/html-embedded-code-input";
+import HtmlEmbeddedCode from "../../editor/html-embedded-code/html-embedded-code";
 import useIsPremiumInstallation from "../../premium-features/hooks/useIsPremiumInstallation";
 import { Logo } from "../common";
 
 export default function Header({
-  onboardedUser,
+  loggedUser,
 }: {
-  onboardedUser: { email: string; fullname?: string } | null;
+  loggedUser: { email: string; fullname?: string } | null;
 }) {
   const { t } = useTranslation();
   const isPremiumUser = useIsPremiumInstallation();
 
   return (
-    <Flex
-      flexDirection={"column"}
-      position="fixed"
-      top={0}
-      left={0}
-      zIndex={100}
-    >
-      <Grid
-        gridTemplateColumns={"1fr 1fr 1fr"}
-        paddingInline="1rem"
-        alignItems={"center"}
-        justifyItems={"center"}
-        minH="50px"
-        w={"100%"}
-        columnGap={"1rem"}
-        bg={"gray.200"}
-      >
-        <Grid
-          placeItems={"start"}
-          alignItems={"center"}
-          gridTemplateColumns={"1fr 1fr 1fr 1fr"}
-          gap={"1rem"}
-        >
+    <div className="fixed top-0 left-0 z-[100] flex flex-col">
+      <div className="grid min-h-[50px] w-screen grid-cols-3 items-center justify-items-center gap-x-4 bg-gray-200 px-4">
+        <div className="grid grid-cols-4 place-items-center items-center gap-4">
           <Logo />
           {/* <PremiumFeatureGuard
             variant="modal"
@@ -55,44 +35,36 @@ export default function Header({
             <EditorSave />
           </PremiumFeatureGuard> */}
           {/* <LanguagesMenu /> */}
-        </Grid>
+        </div>
         <BreakpointsBar />
-        <Flex justifySelf={"flex-end"} alignItems={"center"} gap={4}>
-          {!onboardedUser && (
+        <div className="flex items-center gap-4 justify-self-end">
+          {loggedUser ? (
+            <AvatarDropdown user={loggedUser} />
+          ) : (
             <Link to="/login?context=app">
-              <Button colorScheme={"gray"} size={"sm"} leftIcon={<FiUser />}>
+              <button
+                type="button"
+                className="flex items-center justify-center gap-2 rounded-lg bg-gray-100 px-5 py-1.5 text-sm font-medium text-black hover:bg-blue-300 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+              >
+                <FiUser />
                 Login
-              </Button>
+              </button>
             </Link>
           )}
 
-          <HtmlEmbeddedCodeInput inlineBlock={true} variant={"secondary"} />
-        </Flex>
-      </Grid>
+          <HtmlEmbeddedCode inlineBlock={true} variant={"secondary"} />
+        </div>
+      </div>
 
       {isPremiumUser === false && (
         <Link to="/checkout" target="_blank">
-          <VStack
-            bg={"yellow.300"}
-            _hover={{
-              bg: "yellow.400",
-            }}
-            w={"100%"}
-            cursor={"pointer"}
-          >
-            <Text
-              as="span"
-              fontWeight={600}
-              letterSpacing={1}
-              fontSize={"sm"}
-              color={"black"}
-              textTransform={"uppercase"}
-            >
+          <div className="grid w-full cursor-pointer place-items-center bg-yellow-300 py-1 hover:bg-yellow-400">
+            <span className="font-body text-sm font-bold uppercase tracking-wider text-black">
               {t(`premiumFeatures.upgradeCTA.variant1`)}
-            </Text>
-          </VStack>
+            </span>
+          </div>
         </Link>
       )}
-    </Flex>
+    </div>
   );
 }

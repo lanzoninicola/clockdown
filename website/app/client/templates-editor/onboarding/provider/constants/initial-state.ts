@@ -2,7 +2,7 @@ import { OnboardingStateData } from "../types";
 
 const INITIAL_STATE: OnboardingStateData = {
   config: {
-    productPublicWebsiteURL: "",
+    produtLandingPageURL: "",
     commercerApiURL: "",
     termsAndConditionsURL: "",
     privacyPolicyURL: "",

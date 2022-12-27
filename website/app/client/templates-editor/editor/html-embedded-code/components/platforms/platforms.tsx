@@ -11,23 +11,23 @@ import wordpress from "../../assets/images/wordpress.png";
 import webflow from "../../assets/images/webflow.png";
 
 export default function Platforms() {
-  const { productPublicWebsiteURL } = useEditorState();
+  const { produtLandingPageURL } = useEditorState();
 
   const platforms = [
     {
       name: "WordPress",
       icon: wordpress,
-      setupPage: `${productPublicWebsiteURL}/setup/wordpress`,
+      setupPage: `${produtLandingPageURL}/setup/wordpress`,
     },
     {
       name: "Shopify",
       icon: shopify,
-      setupPage: `${productPublicWebsiteURL}/setup/shopify`,
+      setupPage: `${produtLandingPageURL}/setup/shopify`,
     },
     {
       name: "WooCommerce",
       icon: woocommerce,
-      setupPage: `${productPublicWebsiteURL}/setup/woocommerce`,
+      setupPage: `${produtLandingPageURL}/setup/woocommerce`,
     },
     // { name: "Magento", icon: "magento" },
     // { name: "PrestaShop", icon: "prestashop" },
@@ -36,18 +36,18 @@ export default function Platforms() {
     {
       name: "Squarespace",
       icon: squarespace,
-      setupPage: `${productPublicWebsiteURL}/setup/wordpress`,
+      setupPage: `${produtLandingPageURL}/setup/wordpress`,
     },
     // { name: "Weebly", icon: "weebly" },
     {
       name: "Wix",
       icon: wix,
-      setupPage: `${productPublicWebsiteURL}/setup/wix`,
+      setupPage: `${produtLandingPageURL}/setup/wix`,
     },
     {
       name: "Webflow",
       icon: webflow,
-      setupPage: `${productPublicWebsiteURL}/setup/webflow`,
+      setupPage: `${produtLandingPageURL}/setup/webflow`,
     },
     // { name: "Joomla", icon: "joomla" },
     // { name: "Drupal", icon: "drupal" },

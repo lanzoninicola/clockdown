@@ -2,6 +2,14 @@ import HtmlEmbeddedCodeInput from "./components/html-embedded-code-input/html-em
 
 // TODO: move to dedicated route
 
-export default function HtmlEmbeddedCode() {
-  return <HtmlEmbeddedCodeInput />;
+interface HtmlEmbeddedCodeProps {
+  inlineBlock?: boolean;
+  variant?: "primary" | "secondary";
+}
+
+export default function HtmlEmbeddedCode({
+  inlineBlock = false,
+  variant = "primary",
+}: HtmlEmbeddedCodeProps) {
+  return <HtmlEmbeddedCodeInput inlineBlock={inlineBlock} variant={variant} />;
 }

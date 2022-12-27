@@ -5,7 +5,7 @@ import useTimerSettingsState from "../../../countdown-state-management/common/ho
 import { encrypt } from "../../../countdown-state-management/utils/crypto";
 
 export default function useHtmlCode() {
-  const { layout, timer, title, template } = useThemeState(EditorContext);
+  const { layout, timer, title } = useThemeState(EditorContext);
   const { targetDate, targetTimezone } = useTimerSettingsState(EditorContext);
   const config = useConfigState(EditorContext);
 
@@ -16,20 +16,13 @@ export default function useHtmlCode() {
     })
   );
 
-  const themeEnc =
-    template.name.toLowerCase() !== "default"
-      ? encrypt(
-          JSON.stringify({
-            template,
-          })
-        )
-      : encrypt(
-          JSON.stringify({
-            layout,
-            timer,
-            title,
-          })
-        );
+  const themeEnc = encrypt(
+    JSON.stringify({
+      layout,
+      timer,
+      title,
+    })
+  );
 
   const configEnc = encrypt(
     JSON.stringify({
@@ -46,7 +39,7 @@ export default function useHtmlCode() {
   htmlCode += `data-config="${configEnc}"`;
   htmlCode += "></div>";
 
-  const BASE_ASSETS_URL = `${config.productPublicWebsiteURL}/widget`;
+  const BASE_ASSETS_URL = `${config.produtLandingPageURL}/widget`;
 
   // script tag
   htmlCode += `<script `;

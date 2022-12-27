@@ -19,7 +19,7 @@ export interface OnboardingStateData {
 
 export interface OnboardingModuleConfig {
   /** The public website URL of clockdown product */
-  productPublicWebsiteURL: string;
+  produtLandingPageURL: string;
   /** The URL of commerce REST-API */
   commercerApiURL: string;
   /** The URL of terms and conditions page */

@@ -1,9 +1,12 @@
-import { PremiumFeaturesAction } from "./actions";
+import type { PremiumFeaturesAction } from "./actions";
 
 export interface PremiumFeaturesStateData {
-  isPro: boolean;
-  isAgency: boolean;
-  landingPageURL: string;
+  /** The URL of product landing page */
+  productLandingPageURL: string;
+  /** The premium plans available for the product */
+  premiumPlans: string[];
+  /** The premium features is enabled */
+  isPremiumEnabled: boolean;
 }
 
 export interface PremiumFeaturesStateSetter {

@@ -20,7 +20,7 @@ export default function CountdownWidgetLink({
 
   return (
     <a
-      href={config?.productPublicWebsiteURL}
+      href={config?.produtLandingPageURL}
       target="_blank"
       rel="noopener noreferrer"
       data-element="countdown-link-wrapper"

@@ -3,5 +3,5 @@
  */
 export interface ConfigStateData {
   /** The product public website url */
-  productPublicWebsiteURL: string;
+  produtLandingPageURL: string;
 }

@@ -1,7 +1,7 @@
 import { ConfigStateData } from "../../types/config";
 
 const CONFIG_INITIAL_STATE: ConfigStateData = {
-  productPublicWebsiteURL: "",
+  produtLandingPageURL: "",
 };
 
 export default CONFIG_INITIAL_STATE;
