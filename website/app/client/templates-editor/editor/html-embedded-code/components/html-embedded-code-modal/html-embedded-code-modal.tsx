@@ -14,8 +14,8 @@ import {
 import { BiCode } from "@react-icons/all-files/bi/BiCode";
 import { useRef } from "react";
 import { useTranslation } from "react-i18next";
+import usePremiumFeaturesContext from "~/client/templates-editor/premium-features-provider/hooks/usePremiumFeaturesContext";
 
-import useIsPremiumInstallation from "../../../../premium-features/hooks/useIsPremiumInstallation";
 import useHtmlCode from "../../hooks/useHtmlCode";
 import ButtonCopy from "../button-copy/button-copy";
 import HtmlEmbeddedCodeForm from "../html-embedded-code-form/html-embedded-code-form";
@@ -23,7 +23,8 @@ import HtmlEmbeddedCodeForm from "../html-embedded-code-form/html-embedded-code-
 export default function HtmlEmbeddedCodeModal() {
   const { t } = useTranslation();
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const isPremium = useIsPremiumInstallation();
+  const { isPremiumUser } = usePremiumFeaturesContext();
+
   const initialRef = useRef() as React.MutableRefObject<HTMLInputElement>;
   const htmlCode = useHtmlCode();
 
@@ -32,7 +33,7 @@ export default function HtmlEmbeddedCodeModal() {
       <Button
         onClick={onOpen}
         leftIcon={<BiCode />}
-        variant={isPremium ? "outline" : "solid"}
+        variant={isPremiumUser ? "outline" : "solid"}
         className="theme-font"
         size={"lg"}
         colorScheme={"green"}

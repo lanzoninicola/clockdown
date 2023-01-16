@@ -12,8 +12,8 @@ import {
 import { forwardRef } from "react";
 import { useTranslation } from "react-i18next";
 import { BiLinkExternal } from "@react-icons/all-files/bi/BiLinkExternal";
-import useProductLandingPageURL from "../hooks/useProductLandingPageURL";
-import { IconBaseProps } from "@react-icons/all-files";
+import type { IconBaseProps } from "@react-icons/all-files";
+import usePremiumFeaturesContext from "../../premium-features-provider/hooks/usePremiumFeaturesContext";
 
 interface PremiumButtonProps {
   textVariant?: number;
@@ -58,7 +58,13 @@ const PremiumButton = forwardRef(
     ref: any
   ) => {
     const { t } = useTranslation();
-    const landingPageUrl = useProductLandingPageURL();
+
+    const { productLandingPageURL, premiumFeaturesModuleEnabled } =
+      usePremiumFeaturesContext();
+
+    if (premiumFeaturesModuleEnabled === false) {
+      return null;
+    }
 
     if (textVariant > 4) {
       textVariant = 1;
@@ -71,7 +77,7 @@ const PremiumButton = forwardRef(
 
     return (
       <Link
-        href={landingPageUrl}
+        href={productLandingPageURL}
         isExternal
         ref={ref}
         bg={bg || backgroundColor || "yellow.300"}

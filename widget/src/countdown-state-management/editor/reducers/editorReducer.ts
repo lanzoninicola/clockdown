@@ -1,12 +1,12 @@
-import { EditorStateData } from "../../common/types/editor";
-import { EditorStateAction } from "../type/editor-actions";
+import type { EditorStateData } from "../../common/types/editor";
+import type { EditorStateAction } from "../type/editor-actions";
 
 export default function editorReducer(
   state: EditorStateData,
   action: EditorStateAction
 ): EditorStateData {
   switch (action.type) {
-    case "EDITOR_INIT_STATE":
+    case "LOAD_INITIAL_STATE":
       return {
         ...state,
         ...action.payload,

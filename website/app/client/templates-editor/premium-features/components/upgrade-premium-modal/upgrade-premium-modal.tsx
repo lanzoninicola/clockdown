@@ -14,6 +14,7 @@ import { useTranslation } from "react-i18next";
 
 import PremiumButton from "../../premium-button/premium-button";
 import UpgradePremiumImage from "../common/upgrade-premium-image/upgrade-premium-image";
+import WaitlistLinkButton from "../waitlist-link-button/waitlist-link-button";
 
 interface PremiumFeatureProps {
   isOpen: boolean;
@@ -67,11 +68,12 @@ export default function UpgradePremiumModal({
           </ModalBody>
 
           <ModalFooter display={"flex"} justifyContent={"center"} pb={8}>
-            <PremiumButton
+            {/* <PremiumButton
               ref={initialRef}
               textVariant={ctaVariant}
               borderWidth={"inherit"}
-            />
+            /> */}
+            <WaitlistLinkButton />
           </ModalFooter>
         </ModalContent>
       </Modal>

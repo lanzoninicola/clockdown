@@ -73,6 +73,8 @@ export default function WidgetProvider({
     });
   }, [timerSettings, isEditorMode, maybeDecryptState]);
 
+  
+
   return (
     <WidgetContext.Provider
       value={{

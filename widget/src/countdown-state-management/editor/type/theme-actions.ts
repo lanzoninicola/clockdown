@@ -1,18 +1,16 @@
-import { ThemeStateData } from "../../common/types/theme";
-import { Language } from "../../../countdown-widget-i18n/types";
-import {
+import type { ThemeStateData } from "../../common/types/theme";
+import type { Language } from "../../../countdown-widget-i18n/types";
+import type {
   LayoutOrientation,
   ElementSize,
+  ThemeLayoutContextData,
 } from "../../common/types/theme/layout";
+import { ThemeTitleStateData } from "../../common/types/theme/title";
+import { ThemeTimerStateData } from "../../common/types/theme/timer";
 
 export interface LoadingState<T> {
-  type: "LOAD_STATE";
+  type: "LOAD_INITIAL_STATE";
   payload: T;
-}
-
-interface ThemeInitStateAction {
-  type: "THEME_INIT_STATE";
-  payload: ThemeStateData;
 }
 
 /** START UNITS LABEL ACTIONS */
@@ -42,6 +40,11 @@ interface ThemeTimerOnChangeUnitLabelFontColorAction {
 interface ThemeTimerOnChangeUnitLabelLanguageAction {
   type: "THEME_TIMER_ON_CHANGE_UNIT_LABEL_LANGUAGE";
   payload: Language["locale"];
+}
+
+interface ThemeTimerOnChangeUnitLabelTextTransformAction {
+  type: "THEME_TIMER_ON_CHANGE_UNIT_LABEL_TEXT_TRANSFORM";
+  payload: "uppercase" | "lowercase" | "capitalize";
 }
 
 /** END UNITS LABEL ACTIONS */
@@ -129,9 +132,9 @@ interface ThemeLayoutOnChangeContainerSizeAction {
   payload: ElementSize;
 }
 
-interface ThemeLayoutOnChangeContainerSizeAction {
-  type: "THEME_LAYOUT_ON_CHANGE_CONTAINER_SIZE";
-  payload: ElementSize;
+interface ThemeLayoutOnChangeHeightAction {
+  type: "THEME_LAYOUT_ON_CHANGE_HEIGHT";
+  payload: number;
 }
 
 interface ThemeLayoutOnChangeOrientationAction {
@@ -144,11 +147,6 @@ interface ThemeLayoutOnChangeGapAction {
   payload: number;
 }
 
-interface ThemeLayoutOnChangeFitOnScreenAction {
-  type: "THEME_LAYOUT_ON_CHANGE_FIT_ON_SCREEN";
-  payload: boolean;
-}
-
 interface ThemeLayoutOnChangeBackgroundTransparentAction {
   type: "THEME_LAYOUT_ON_CHANGE_BACKGROUND_TRANSPARENT";
   payload: boolean;
@@ -156,6 +154,31 @@ interface ThemeLayoutOnChangeBackgroundTransparentAction {
 
 interface ThemeLayoutOnChangeBackgroundColorAction {
   type: "THEME_LAYOUT_ON_CHANGE_BACKGROUND_COLOR";
+  payload: string;
+}
+
+interface ThemeLayoutOnChangeBorderWidthAction {
+  type: "THEME_LAYOUT_ON_CHANGE_BORDER_WIDTH";
+  payload: number;
+}
+
+interface ThemeLayoutOnChangeBorderColorAction {
+  type: "THEME_LAYOUT_ON_CHANGE_BORDER_COLOR";
+  payload: string;
+}
+
+interface ThemeLayoutOnChangeBorderRadiusAction {
+  type: "THEME_LAYOUT_ON_CHANGE_BORDER_RADIUS";
+  payload: number;
+}
+
+interface ThemeLayoutOnChangeOrderItemReverseAction {
+  type: "THEME_LAYOUT_ON_CHANGE_ORDER_ITEM_REVERSE";
+  payload: boolean;
+}
+
+interface ThemeLayoutOnChangeCssAction {
+  type: "THEME_LAYOUT_ON_CHANGE_CSS_STYLE";
   payload: string;
 }
 
@@ -168,7 +191,11 @@ interface ThemeTemplateOnChangeTemplateAction {
   payload: {
     id: string;
     name: string;
-    style: string;
+    theme: {
+      layout: Partial<ThemeLayoutContextData>;
+      title: Partial<ThemeTitleStateData>;
+      timer: ThemeTimerStateData;
+    };
   };
 }
 
@@ -204,15 +231,25 @@ interface ThemeTitleOnChangeFontColorAction {
   payload: string;
 }
 
+interface ThemeTitleOnChangeUppercaseText {
+  type: "THEME_TITLE_ON_CHANGE_UPPERCASE_TEXT";
+  payload: "uppercase" | "capitalize";
+}
+
+interface ThemeTitleOnChangeLowercaseText {
+  type: "THEME_TITLE_ON_CHANGE_LOWERCASE_TEXT";
+  payload: "lowercase" | "capitalize";
+}
+
 export type ThemeStateAction =
   | LoadingState<ThemeStateData>
-  | ThemeInitStateAction
   | ThemeTimerOnChangeUnitNumberFontSizeAction
   | ThemeTimerOnChangeUnitLabelFontSizeAction
   | ThemeTimerOnChangeUnitLabelFontFamilyAction
   | ThemeTimerOnChangeUnitLabelFontWeightAction
   | ThemeTimerOnChangeUnitLabelFontColorAction
   | ThemeTimerOnChangeUnitLabelLanguageAction
+  | ThemeTimerOnChangeUnitLabelTextTransformAction
   | ThemeTimerOnChangeUnitNumberFontFamilyAction
   | ThemeTimerOnChangeUnitNumberFontWeightAction
   | ThemeTimerOnChangeUnitNumberFontColorAction
@@ -225,15 +262,22 @@ export type ThemeStateAction =
   | ThemeLayoutOnChangeRemoveLinkAction
   | ThemeLayoutOnChangeLinkTargetAction
   | ThemeLayoutOnChangeContainerSizeAction
+  | ThemeLayoutOnChangeHeightAction
   | ThemeLayoutOnChangeOrientationAction
   | ThemeLayoutOnChangeGapAction
-  | ThemeLayoutOnChangeFitOnScreenAction
   | ThemeLayoutOnChangeBackgroundTransparentAction
   | ThemeLayoutOnChangeBackgroundColorAction
+  | ThemeLayoutOnChangeBorderWidthAction
+  | ThemeLayoutOnChangeBorderColorAction
+  | ThemeLayoutOnChangeBorderRadiusAction
+  | ThemeLayoutOnChangeOrderItemReverseAction
+  | ThemeLayoutOnChangeCssAction
   | ThemeTemplateOnChangeTemplateAction
   | ThemeTitleOnChangeTextAction
   | ThemeTitleOnChangeFontSizeAction
   | ThemeTitleOnChangeFontFamilyAction
   | ThemeTitleOnChangeFontWeightAction
   | ThemeTitleOnChangeFontColorAction
+  | ThemeTitleOnChangeUppercaseText
+  | ThemeTitleOnChangeLowercaseText
   | ThemeTimerOnChangeLastUnitColorAction;

@@ -93,14 +93,14 @@ export default function LanguagesForm() {
       name: "Português",
       locale: "pt",
     },
-    {
-      name: "Español",
-      locale: "es",
-    },
-    {
-      name: "Italiano",
-      locale: "it",
-    },
+    // {
+    //   name: "Español",
+    //   locale: "es",
+    // },
+    // {
+    //   name: "Italiano",
+    //   locale: "it",
+    // },
   ];
 
   return (

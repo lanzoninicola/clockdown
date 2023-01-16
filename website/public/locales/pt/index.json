@@ -49,7 +49,8 @@
   },
   "premiumFeatures": {
     "badgeText": "Função premium",
-    "additionalText": "Esta função só está disponível na versão premium. Conviértese em membro premium para acessá-la.",
+    "additionalText": "Esta função estará disponível na versão premium do produto no futuro.",
+    "additionalText.enabled": "Esta função só está disponível na versão premium. Torne-se um membro premium para acessá-la.",
     "upgradeCTA": {
       "variant1": "Atualizar para premium",
       "variant2": "Veja as funcionalidades",
@@ -57,13 +58,15 @@
       "variant4": "Aumente suas vendas",
       "popover": {
         "title": "Usuário premium",
-        "body": "Conviértese em usuário premium para personalizar e gerenciar seus contadores sem limitações."
-      }
+        "body": "Torne-se um usuário premium para personalizar e gerenciar seus contadores sem limitações."
+      },
+      "waitlistCTA": "Entrar na lista de espera"
     },
     "modal": {
       "title": "Vá além de seus limites",
       "body": {
-        "default": "Esta função só está disponível na versão premium. Conviértese em membro premium para acessá-la.",
+        "default": "Esta função estará disponível na versão premium do produto no futuro.",
+        "default.enabled": "Esta função só está disponível na versão premium. Torne-se um membro premium para acessá-la.",
         "newCountdown": "Desbloqueie a versão premium para criar um número ilimitado de temporizadores: defina um timer para cada campanha de desconto planejada ou personalize o visual do timer para suas diferentes páginas de desembarque."
       }
     }

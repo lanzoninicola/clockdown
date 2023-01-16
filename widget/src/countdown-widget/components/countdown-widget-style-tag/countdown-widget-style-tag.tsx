@@ -1,14 +1,10 @@
-import React from "react";
-
 import { WidgetContext } from "../../../countdown-state-management";
 import useThemeLayout from "../../../countdown-state-management/common/hooks/theme/useThemeLayout";
-import useThemeTemplate from "../../../countdown-state-management/common/hooks/theme/useThemeTemplate";
 import useThemeTimerSeparator from "../../../countdown-state-management/common/hooks/theme/useThemeTimerSeparator";
 import useThemeTimerUnitLabel from "../../../countdown-state-management/common/hooks/theme/useThemeTimerUnitLabel";
 import useThemeTimerUnitNumber from "../../../countdown-state-management/common/hooks/theme/useThemeTimerUnitNumber";
 import useThemeTitle from "../../../countdown-state-management/common/hooks/theme/useThemeTitle";
 import useChakraBreakpoint from "../../hooks/useChakraBreakpoint";
-import { cssFlexColumn, cssFlexRow } from "../../utils/css-style-text";
 
 export default function CountdownWidgetStyleTag() {
   const globalTheme = useThemeLayout(WidgetContext);
@@ -18,48 +14,58 @@ export default function CountdownWidgetStyleTag() {
   const unitLabelTheme = useThemeTimerUnitLabel(WidgetContext);
   const separatorTheme = useThemeTimerSeparator(WidgetContext);
 
-  console.log(titleTheme.fontFamily, titleTheme.fontSize, titleTheme.fontColor);
+  /** ============================================ */
 
-  const { style: templateStyle, id: templateId } =
-    useThemeTemplate(WidgetContext);
+  let countdownWrapper = ``;
 
-  let countdownWrapper = `
-  div[data-element="countdown-wrapper"] {
-      ${React.useMemo(
-        () =>
-          globalTheme.orientation === "vertical"
-            ? cssFlexColumn()
-            : cssFlexRow(),
-        [globalTheme.orientation]
-      )}
-      -webkit-justify-content: ${
-        globalTheme.gap === 1
-          ? "space-evenly"
-          : globalTheme.gap === 2
-          ? "space-around"
-          : "space-between"
-      };
-      justify-content: ${
-        globalTheme.gap === 1
-          ? "space-evenly"
-          : globalTheme.gap === 2
-          ? "space-around"
-          : "space-between"
-      };
-      width: 100%;
-  `;
+  countdownWrapper += `div[data-element="countdown-wrapper"] {`;
 
   if (globalTheme.transparentBackground) {
-    countdownWrapper += `
-      background: transparent;
-    `;
+    countdownWrapper += `background: transparent;`;
   }
   if (globalTheme.backgroundColor !== null) {
-    countdownWrapper += `
-        background: ${globalTheme.backgroundColor};
-    `;
+    countdownWrapper += `background: ${globalTheme.backgroundColor};`;
   }
-  countdownWrapper += `}`;
+
+  if (globalTheme.height !== null && globalTheme.height > 0) {
+    countdownWrapper += `padding-block: ${globalTheme.height}rem;`;
+  }
+
+  if (globalTheme.borderWidth !== null && globalTheme.borderWidth > 0) {
+    countdownWrapper += `border: ${globalTheme.borderWidth}px solid;`;
+  }
+
+  if (globalTheme.borderColor !== null) {
+    countdownWrapper += `border-color: ${globalTheme.borderColor};`;
+  }
+
+  if (globalTheme.borderRadius !== null && globalTheme.borderRadius > 0) {
+    countdownWrapper += `border-radius: ${globalTheme.borderRadius}px;`;
+  }
+
+  if (globalTheme.gap !== null && globalTheme.gap > 0) {
+    countdownWrapper += `gap: ${globalTheme.gap}rem;`;
+  }
+
+  countdownWrapper += `} `;
+
+  if (globalTheme.orientation === "vertical") {
+    countdownWrapper += `@media (min-width:769px){div[data-element="countdown-wrapper"]{`;
+    countdownWrapper += `grid-template-columns: repeat(1,1fr);`;
+    countdownWrapper += `}} `;
+  }
+  if (globalTheme.orientation === "auto") {
+    countdownWrapper += `@media (min-width:769px){div[data-element="countdown-wrapper"]{`;
+    countdownWrapper += `grid-template-columns: repeat(2,1fr);`;
+    countdownWrapper += `}} `;
+  }
+
+  if (globalTheme.reverseOrderItems === true) {
+    countdownWrapper += `@media (max-width:768px){div[data-element="countdown-wrapper"]{`;
+    countdownWrapper += `display: flex;`;
+    countdownWrapper += `flex-direction: column-reverse;`;
+    countdownWrapper += `}} `;
+  }
 
   /** ============================================ */
 
@@ -68,7 +74,7 @@ export default function CountdownWidgetStyleTag() {
   if (titleTheme.fontFamily) {
     title += `font-family: ${titleTheme.fontFamily};`;
   }
-  if (titleTheme.fontSize) {
+  if (titleTheme.fontSize && titleTheme.fontSize[viewportToken]) {
     title += `font-size: ${titleTheme.fontSize[viewportToken]}px;`;
   }
   if (titleTheme.fontColor) {
@@ -76,6 +82,12 @@ export default function CountdownWidgetStyleTag() {
   }
   if (titleTheme.fontWeight) {
     title += `font-weight: ${titleTheme.fontWeight};`;
+  }
+  if (titleTheme.titleTextTransform === "uppercase") {
+    title += `text-transform: uppercase;`;
+  }
+  if (titleTheme.titleTextTransform === "lowercase") {
+    title += `text-transform: lowercase;`;
   }
   title += `}`;
 
@@ -99,6 +111,16 @@ export default function CountdownWidgetStyleTag() {
   }
   unitNumber += `}`;
 
+  let lastUnitNumber = ``;
+
+  lastUnitNumber += `div[data-element="countdown-unit"]:last-child > span:first-child {`;
+
+  if (unitNumberTheme.lastUnitColor) {
+    lastUnitNumber += `color: ${unitNumberTheme.lastUnitColor};`;
+  }
+
+  lastUnitNumber += `}`;
+
   /** ============================================ */
 
   /** ============================================ */
@@ -117,7 +139,23 @@ export default function CountdownWidgetStyleTag() {
   if (unitLabelTheme.unitLabelFontColor) {
     unitLabel += `color: ${unitLabelTheme.unitLabelFontColor};`;
   }
+  if (unitLabelTheme.unitLabelTextTransform === "uppercase") {
+    unitLabel += `text-transform: uppercase;`;
+  }
+  if (unitLabelTheme.unitLabelTextTransform === "lowercase") {
+    unitLabel += `text-transform: lowercase;`;
+  }
   unitLabel += `}`;
+
+  let lastUnitLabel = ``;
+
+  lastUnitLabel += `div[data-element="countdown-unit"]:last-child > span:last-child {`;
+
+  if (unitLabelTheme.lastUnitColor) {
+    lastUnitLabel += `color: ${unitLabelTheme.lastUnitColor};`;
+  }
+
+  lastUnitLabel += `}`;
 
   /** ============================================ */
 
@@ -135,11 +173,20 @@ export default function CountdownWidgetStyleTag() {
   /** ============================================ */
 
   let unitSeparator = ``;
-  unitSeparator += `div[data-element="countdown-unit"][data-unit-type="separator"] {`;
+
   if (separatorTheme.showSeparator === false) {
+    unitSeparator += `div[data-element="countdown-unit"][data-unit-type="separator"] {`;
     unitSeparator += `display: none;`;
+    unitSeparator += `}`;
+
+    unitSeparator += `div[data-element="countdown-units"] {`;
+    unitSeparator += `grid-template-columns: repeat(4, 1fr);`;
+    unitSeparator += `}`;
+
+    unitSeparator += `@media (max-width:420px){div[data-element="countdown-units"] {`;
+    unitSeparator += `width: 100%;`;
+    unitSeparator += `}}`;
   }
-  unitSeparator += `}`;
 
   /** ============================================ */
 
@@ -147,21 +194,22 @@ export default function CountdownWidgetStyleTag() {
     countdownWrapper,
     title,
     unitNumber,
+    lastUnitNumber,
     unitLabel,
+    lastUnitLabel,
     unitSeparator,
     lastUnit,
   ].join(" ");
 
+  const baseStyle = `h2[data-element=countdown-title],span[data-element=countdown-unit-label],span[data-element=countdown-unit-number]{font-size:100%;font-weight:inherit;font-family:Inter}a[data-element=countdown-link-wrapper]{color:inherit;-webkit-text-decoration:none;text-decoration:none}div[data-element=countdown-wrapper]{display:grid;justify-items:center;align-items:center;gap:.85rem;margin:auto;padding-block:.75rem}h2[data-element=countdown-title]{margin:0;line-height:1.3;text-align:center}div[data-element=countdown-units]{display:grid;grid-template-columns:repeat(7,1fr);column-gap:.5rem;width:min-content}div[data-element=countdown-unit]{display:grid;grid-template-areas:"number" "label";-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;justify-items:center}div[data-element=countdown-unit]:not(div[data-element=countdown-unit][data-unit-type=separator]){min-width:70px}span[data-element=countdown-unit-number]{text-rendering:optimizeSpeed;grid-area:number}span[data-element=countdown-unit-label]{line-height:1.1;text-rendering:optimizeSpeed;grid-area:label}div[data-element=countdown-unit][data-unit-type=separator]{text-rendering:optimizeSpeed}@media (min-width:769px){div[data-element=countdown-wrapper]{grid-template-columns:repeat(2,1fr);padding-inline:2rem;}h2[data-element=countdown-title]{max-width:50ch;text-align:left}}`;
+
   return (
     <>
-      <style data-element="countdown-widget-style-tag" data-context="base">
-        {`div[data-element=countdown-units],div[data-element=countdown-widget],div[data-element=countdown-wrapper]{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox}h2[data-element=countdown-title],span[data-element=countdown-unit-label],span[data-element=countdown-unit-number]{font-size:16px;font-weight:400;font-family:Inter}a[data-element=countdown-link-wrapper]{color:inherit;-webkit-text-decoration:none;text-decoration:none}div[data-element=countdown-widget]{display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-justify-content:center;justify-content:center;width:100%}div[data-element=countdown-container]{width:100%}div[data-element=countdown-wrapper]{display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;-webkit-justify-content:space-evenly;justify-content:space-evenly;gap:1.5rem;padding:1rem .5rem;background:#fff}h2[data-element=countdown-title]{margin:0;line-height:1.3;text-align:center}div[data-element=countdown-units]{display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap;-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-flex-direction:row;-ms-flex-direction:row;flex-direction:row}div[data-element=countdown-unit]{display:grid;grid-template-areas:"number separator" "label empty";-webkit-align-items:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;justify-items:center}span[data-element=countdown-unit-number]{text-rendering:optimizeSpeed;grid-area:number}span[data-element=countdown-unit-label]{line-height:1.1;text-rendering:optimizeSpeed;grid-area:label}div[data-element=countdown-unit][data-unit-type=separator]{text-rendering:optimizeSpeed}@media (min-width:768px){div[data-element=countdown-container]{display:flex;justify-content:center}div[data-element=countdown-wrapper]{-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;padding:.5rem 0;width:100%;max-width:978px}h2[data-element=countdown-title]{max-width:370px;text-align:center}}`}
-      </style>
       <style
         data-element="countdown-widget-style-tag"
-        data-context="template-style"
+        data-context="base-style"
       >
-        {templateId !== "default" && templateId !== undefined && templateStyle}
+        {baseStyle}
       </style>
       <style
         data-element="countdown-widget-style-tag"

@@ -1,11 +1,4 @@
-import {
-  ChakraProvider,
-  Divider,
-  HStack,
-  Text,
-  VStack,
-} from "@chakra-ui/react";
-import type { User } from "@prisma/client";
+import { ChakraProvider } from "@chakra-ui/react";
 import { json } from "@remix-run/node";
 import {
   Link,
@@ -14,17 +7,15 @@ import {
   useTransition,
 } from "@remix-run/react";
 import { useTranslation } from "react-i18next";
-import { AuthForm } from "~/modules/remix-auth/client/components";
-import { theme } from "~/client/templates-editor/chackra-ui/theme/theme";
-import authenticateAndRedirectWithPayload from "~/server/auth/remix-auth/utils/authenticate-and-redirect-with-payload.server";
-
-import type { ActionFunction, LoaderFunction } from "@remix-run/node";
 import Logo from "~/client/common/logo/logo";
-import type { LoginSignUpOutletContext } from "../__auth";
 import SimpleTimer from "~/client/common/simple-timer";
-import tryCatch from "~/server/utils/try-catch.server";
-import { AuthorizationError } from "remix-auth";
+import { theme } from "~/client/templates-editor/chackra-ui/theme/theme";
+import { AuthForm } from "~/modules/remix-auth/client";
+import authenticateAndRedirectWithPayload from "~/modules/remix-auth/server/utils/authenticate-and-redirect-with-payload.server";
 
+import type { User } from "@prisma/client";
+import type { ActionFunction, LoaderFunction } from "@remix-run/node";
+import type { LoginSignUpOutletContext } from "../__auth";
 export const action: ActionFunction = async ({ request }) => {
   const clonedData = request.clone();
   const formData = await clonedData.formData();

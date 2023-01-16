@@ -4,7 +4,7 @@ import { Outlet, useLoaderData, useNavigate, Link } from "@remix-run/react";
 import { useEffect } from "react";
 import SimpleTimer from "~/client/common/simple-timer";
 import ArrowRight from "~/client/website/common/arrow-right/arrow-right";
-import isUserAuthenticated from "~/server/auth/remix-auth/utils/is-user-authenticated.server";
+import isUserAuthenticated from "~/modules/remix-auth/server/utils/is-user-authenticated.server";
 
 export interface LoginSignUpOutletContext {
   authContext: "checkout" | "app";

@@ -9,11 +9,19 @@ interface IframeProps {
 const Iframe = ({ children, ...props }: IframeProps) => {
   const [contentRef, setContentRef] = useState<HTMLIFrameElement | null>(null);
 
-  const mountNode = contentRef?.contentWindow?.document?.body;
+  const iframeBody = contentRef?.contentWindow?.document?.body;
+
+  if (iframeBody) {
+    iframeBody.style.margin = "0";
+    iframeBody.style.padding = "0";
+    iframeBody.style.overflow = "hidden";
+    iframeBody.style.boxSizing = "border-box";
+    iframeBody.style.position = "relative";
+  }
 
   return (
-    <iframe {...props} ref={setContentRef}>
-      {mountNode && createPortal(children, mountNode)}
+    <iframe {...props} ref={setContentRef} title="clockdown-widget-preview">
+      {iframeBody && createPortal(children, iframeBody)}
     </iframe>
   );
 };

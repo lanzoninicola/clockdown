@@ -6,7 +6,7 @@ import type { LoaderFunction } from "@remix-run/node";
 import { useLoaderData } from "@remix-run/react";
 import ClockdownApp from "~/client/templates-editor/app";
 import { theme } from "~/client/templates-editor/chackra-ui/theme/theme";
-import isUserAuthenticated from "~/server/auth/remix-auth/utils/is-user-authenticated.server";
+import isUserAuthenticated from "~/modules/remix-auth/server/utils/is-user-authenticated.server";
 import isGodMode from "~/server/utils/is-god-mode";
 
 interface LoaderData {
@@ -16,6 +16,9 @@ interface LoaderData {
 
 export const loader: LoaderFunction = async ({ request }) => {
   let loggedUser = await isUserAuthenticated(request);
+
+  console.log(loggedUser);
+
   const zeus = isGodMode(request);
 
   return json({

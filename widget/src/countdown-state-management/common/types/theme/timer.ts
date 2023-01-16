@@ -39,6 +39,8 @@ export interface ThemeUnitLabelStateData {
   unitLabelFontColor: string | null;
   /** The language of units labels */
   unitLabelLanguage: Language["locale"];
+  /** The text-transform of units labels */
+  unitLabelTextTransform: "uppercase" | "lowercase" | "capitalize" | null;
   /** The color of the last unit of timer text */
   lastUnitColor: string | null;
 }

@@ -18,7 +18,7 @@ export const premiumFeatureReducer = (
     case "PREMIUM_FEATURES_ENABLED":
       return {
         ...state,
-        isPremiumEnabled:
+        isPremiumUser:
           lowercase(action.payload.role) === "subscriber" ||
           lowercase(action.payload.role) === "admin" ||
           lowercase(action.payload.role) === "superadmin"

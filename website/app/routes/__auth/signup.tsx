@@ -7,10 +7,10 @@ import {
   useTransition,
 } from "@remix-run/react";
 import { useTranslation } from "react-i18next";
-import { AuthForm } from "~/modules/remix-auth/client/components";
+import { AuthForm } from "~/modules/remix-auth/client";
 import Logo from "~/client/common/logo/logo";
 import { theme } from "~/client/templates-editor/chackra-ui/theme/theme";
-import authenticateAndRedirectWithPayload from "~/server/auth/remix-auth/utils/authenticate-and-redirect-with-payload.server";
+import authenticateAndRedirectWithPayload from "~/modules/remix-auth/server/utils/authenticate-and-redirect-with-payload.server";
 import UserSignupInteractor from "~/server/domain/interactors/user-signup.interactor.server";
 import UserSignupValidator from "~/server/domain/interactors/validators/user-signup.validator";
 import PrismaUsersRepository from "~/server/repositories/prisma-users.repository.server";

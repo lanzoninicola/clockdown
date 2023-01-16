@@ -2,7 +2,7 @@ import { Link, Outlet, useLocation } from "@remix-run/react";
 import type { LoaderFunction } from "@remix-run/node";
 import Logo from "~/client/common/logo/logo";
 import StepButton from "~/client/common/primitives/step-button/step-button";
-import isUserAuthenticated from "~/server/auth/remix-auth/utils/is-user-authenticated.server";
+import isUserAuthenticated from "~/modules/remix-auth/server/utils/is-user-authenticated.server";
 
 export const loader: LoaderFunction = async ({ request }) => {
   //todo: fix this

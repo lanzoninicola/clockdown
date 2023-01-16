@@ -1,12 +1,12 @@
-import { ThemeStateData } from "../../common/types/theme";
-import { ThemeStateAction } from "../type/theme-actions";
+import type { ThemeStateData } from "../../common/types/theme";
+import type { ThemeStateAction } from "../type/theme-actions";
 
 export default function themeReducer(
   state: ThemeStateData,
   action: ThemeStateAction
 ): ThemeStateData {
   switch (action.type) {
-    case "THEME_INIT_STATE":
+    case "LOAD_INITIAL_STATE":
       return {
         ...state,
         ...action.payload,
@@ -17,7 +17,7 @@ export default function themeReducer(
         ...state,
         timer: {
           ...state.timer,
-          unitNumberFontFamily: action.payload,
+          unitLabelFontFamily: action.payload,
         },
         actionDispatched: action.type,
       };
@@ -27,7 +27,7 @@ export default function themeReducer(
         ...state,
         timer: {
           ...state.timer,
-          unitNumberFontWeight: action.payload,
+          unitLabelFontWeight: action.payload,
         },
         actionDispatched: action.type,
       };
@@ -61,6 +61,16 @@ export default function themeReducer(
         timer: {
           ...state.timer,
           unitLabelLanguage: action.payload,
+        },
+        actionDispatched: action.type,
+      };
+
+    case "THEME_TIMER_ON_CHANGE_UNIT_LABEL_TEXT_TRANSFORM":
+      return {
+        ...state,
+        timer: {
+          ...state.timer,
+          unitLabelTextTransform: action.payload,
         },
         actionDispatched: action.type,
       };
@@ -208,13 +218,22 @@ export default function themeReducer(
         actionDispatched: action.type,
       };
 
+    case "THEME_LAYOUT_ON_CHANGE_HEIGHT":
+      return {
+        ...state,
+        layout: {
+          ...state.layout,
+          height: action.payload,
+        },
+        actionDispatched: action.type,
+      };
+
     case "THEME_LAYOUT_ON_CHANGE_ORIENTATION":
       return {
         ...state,
         layout: {
           ...state.layout,
           orientation: action.payload,
-          fitOnScreen: action.payload === "vertical" ? false : true,
         },
         actionDispatched: action.type,
       };
@@ -229,22 +248,13 @@ export default function themeReducer(
         actionDispatched: action.type,
       };
 
-    case "THEME_LAYOUT_ON_CHANGE_FIT_ON_SCREEN":
-      return {
-        ...state,
-        layout: {
-          ...state.layout,
-          fitOnScreen: action.payload,
-        },
-        actionDispatched: action.type,
-      };
-
     case "THEME_LAYOUT_ON_CHANGE_BACKGROUND_TRANSPARENT":
       return {
         ...state,
         layout: {
           ...state.layout,
           transparentBackground: action.payload,
+          backgroundColor: null,
         },
         actionDispatched: action.type,
       };
@@ -255,6 +265,57 @@ export default function themeReducer(
         layout: {
           ...state.layout,
           backgroundColor: action.payload,
+          transparentBackground: false,
+        },
+        actionDispatched: action.type,
+      };
+
+    case "THEME_LAYOUT_ON_CHANGE_BORDER_WIDTH":
+      return {
+        ...state,
+        layout: {
+          ...state.layout,
+          borderWidth: action.payload,
+        },
+        actionDispatched: action.type,
+      };
+
+    case "THEME_LAYOUT_ON_CHANGE_BORDER_COLOR":
+      return {
+        ...state,
+        layout: {
+          ...state.layout,
+          borderColor: action.payload,
+        },
+        actionDispatched: action.type,
+      };
+
+    case "THEME_LAYOUT_ON_CHANGE_BORDER_RADIUS":
+      return {
+        ...state,
+        layout: {
+          ...state.layout,
+          borderRadius: action.payload,
+        },
+        actionDispatched: action.type,
+      };
+
+    case "THEME_LAYOUT_ON_CHANGE_CSS_STYLE":
+      return {
+        ...state,
+        layout: {
+          ...state.layout,
+          css: action.payload,
+        },
+        actionDispatched: action.type,
+      };
+
+    case "THEME_LAYOUT_ON_CHANGE_ORDER_ITEM_REVERSE":
+      return {
+        ...state,
+        layout: {
+          ...state.layout,
+          reverseOrderItems: action.payload,
         },
         actionDispatched: action.type,
       };
@@ -266,7 +327,16 @@ export default function themeReducer(
           ...state.template,
           id: action.payload.id,
           name: action.payload.name,
-          style: action.payload.style,
+        },
+        layout: {
+          ...action.payload.theme.layout,
+        },
+        title: {
+          ...state.title,
+          ...action.payload.theme.title,
+        },
+        timer: {
+          ...action.payload.theme.timer,
         },
         actionDispatched: action.type,
       };
@@ -320,6 +390,26 @@ export default function themeReducer(
         title: {
           ...state.title,
           fontWeight: action.payload,
+        },
+        actionDispatched: action.type,
+      };
+
+    case "THEME_TITLE_ON_CHANGE_UPPERCASE_TEXT":
+      return {
+        ...state,
+        title: {
+          ...state.title,
+          titleTextTransform: action.payload,
+        },
+        actionDispatched: action.type,
+      };
+
+    case "THEME_TITLE_ON_CHANGE_LOWERCASE_TEXT":
+      return {
+        ...state,
+        title: {
+          ...state.title,
+          titleTextTransform: action.payload,
         },
         actionDispatched: action.type,
       };

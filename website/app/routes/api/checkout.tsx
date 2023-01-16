@@ -1,6 +1,6 @@
 import { json } from "@remix-run/node";
 import type { ActionFunction } from "@remix-run/node";
-import isUserAuthenticated from "~/server/auth/remix-auth/utils/is-user-authenticated.server";
+import isUserAuthenticated from "~/modules/remix-auth/server/utils/is-user-authenticated.server";
 import { PaymentRequestData } from "~/server/checkout/types";
 import { Order } from "@prisma/client";
 import PrismaUsersRepository from "~/server/repositories/prisma-users.repository.server";

@@ -17,6 +17,7 @@ export default function useThemeTimerUnitLabel<
     unitLabelFontSize,
     unitLabelFontColor,
     unitLabelLanguage,
+    unitLabelTextTransform,
     lastUnitColor,
   } = timer;
 
@@ -25,6 +26,7 @@ export default function useThemeTimerUnitLabel<
     unitLabelFontWeight,
     unitLabelFontSize,
     unitLabelFontColor,
+    unitLabelTextTransform,
     unitLabelLanguage,
     lastUnitColor,
   };

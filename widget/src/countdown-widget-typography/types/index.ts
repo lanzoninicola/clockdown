@@ -1,6 +1,8 @@
 export interface Typography {
   fontFamily: string;
   fontWeight: string;
+  pro: boolean;
+  variants?: string[];
 }
 
 export type FontsizeUnit = "px" | "em" | "rem";

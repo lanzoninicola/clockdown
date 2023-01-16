@@ -1,3 +1,7 @@
 export type ChakraToken = "sm" | "md" | "lg";
 
-export type ResponsiveValue = { [token in ChakraToken]: number };
+export type ResponsiveValue =
+  | Record<"sm", number>
+  | Record<"md", number>
+  | Record<"lg", number>
+  | Record<"sm" | "md" | "lg", number>;

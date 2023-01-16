@@ -1,15 +1,18 @@
-import { User } from "@prisma/client";
+import type { User } from "@prisma/client";
 import { useEffect, useReducer } from "react";
 
 import INITIAL_STATE from "./constants/initial-state";
 import { PremiumFeaturesContext } from "./context/premium-features-context";
 import { premiumFeatureReducer } from "./reducers/premium-features-reducer";
-import type { PremiumFeaturesContextData } from "./types/context";
+import type {
+  PremiumFeaturesContextData,
+  PremiumFeaturesUserRoles,
+} from "./types/context";
 
 interface PremiumFeatureProviderProps {
   children: React.ReactNode;
   config: Partial<PremiumFeaturesContextData>;
-  userRole?: string;
+  userRole: PremiumFeaturesUserRoles;
 }
 
 export default function PremiumFeatureProvider({

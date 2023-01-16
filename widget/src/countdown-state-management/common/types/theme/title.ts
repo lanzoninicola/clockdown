@@ -11,6 +11,8 @@ export interface ThemeTitleStateData {
   fontSize: ResponsiveValue | null;
   /** The font color of the title text */
   fontColor: string | null;
+  /** The text transform of the title text */
+  titleTextTransform: "capitalize" | "uppercase" | "lowercase";
 }
 
 export interface ThemeTitleContextSetter {

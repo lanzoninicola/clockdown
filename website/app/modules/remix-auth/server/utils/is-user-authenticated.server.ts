@@ -1,4 +1,4 @@
-import { authenticator } from "~/server/auth/remix-auth/config/form-strategy.server";
+import { authenticator } from "~/modules/remix-auth/server/config/form-strategy.server";
 
 /**
  *

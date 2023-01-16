@@ -1,13 +1,13 @@
 import { useDisclosure } from "@chakra-ui/react";
 import React from "react";
 
-import useIsPremiumInstallation from "../hooks/useIsPremiumInstallation";
 import PremiumFeatureIcon from "../components/common/premium-feature-icon/premium-feature-icon";
 import ShadeOfGray from "../components/shade-of-gray/shade-of-gray";
 import UpgradePremiumModal from "../components/upgrade-premium-modal/upgrade-premium-modal";
 import Watermark from "../components/watermark/watermark";
 import useGodMode from "~/client/common/utils/useGodMode";
-import { exclude } from "isbot";
+
+import usePremiumFeaturesContext from "../../premium-features-provider/hooks/usePremiumFeaturesContext";
 
 interface PremiumFeatureGuardProps {
   children: React.ReactNode;
@@ -40,14 +40,12 @@ export default function PremiumFeatureGuard({
   exclude = false,
 }: PremiumFeatureGuardProps) {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const isPremiumUser = useIsPremiumInstallation();
+  const { isPremiumUser } = usePremiumFeaturesContext();
   const zeus = useGodMode();
 
   function mightOpenModal(e: React.SyntheticEvent) {
     e.preventDefault();
     e.stopPropagation();
-
-    console.log(e);
 
     if (isPremiumUser === false && variant === "modal") {
       onOpen();

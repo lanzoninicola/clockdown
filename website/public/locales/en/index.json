@@ -54,11 +54,13 @@
       "variant2": "Take a look at the features",
       "variant3": "Unlock all the features",
       "variant4": "Increase your sales",
+
       "popover": {
         "title": "Premium User",
         "body": "Becoming a premium user will let you customize and manage your countdowns without any limitations."
       }
     },
+    "waitlistCTA": "Join the waitlist",
     "modal": {
       "title": "Exceed your limits",
 

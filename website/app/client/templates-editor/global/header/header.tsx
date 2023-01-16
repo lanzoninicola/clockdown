@@ -5,8 +5,8 @@ import { AvatarDropdown } from "~/modules/remix-account/client";
 
 import BreakpointsBar from "../../editor/editor-preview/components/breakpoints-bar/breakpoints-bar";
 import HtmlEmbeddedCode from "../../editor/html-embedded-code/html-embedded-code";
-import useIsPremiumInstallation from "../../premium-features/hooks/useIsPremiumInstallation";
-import { Logo } from "../common";
+import usePremiumFeaturesContext from "../../premium-features-provider/hooks/usePremiumFeaturesContext";
+import { LanguagesMenu, Logo } from "../common";
 
 export default function Header({
   loggedUser,
@@ -14,7 +14,8 @@ export default function Header({
   loggedUser: { email: string; fullname?: string } | null;
 }) {
   const { t } = useTranslation();
-  const isPremiumUser = useIsPremiumInstallation();
+  const { premiumFeaturesModuleEnabled, userRole } =
+    usePremiumFeaturesContext();
 
   return (
     <div className="fixed top-0 left-0 z-[100] flex flex-col">
@@ -56,7 +57,7 @@ export default function Header({
         </div>
       </div>
 
-      {isPremiumUser === false && (
+      {premiumFeaturesModuleEnabled === true && userRole === "USER" && (
         <Link to="/checkout" target="_blank">
           <div className="grid w-full cursor-pointer place-items-center bg-yellow-300 py-1 hover:bg-yellow-400">
             <span className="font-body text-sm font-bold uppercase tracking-wider text-black">

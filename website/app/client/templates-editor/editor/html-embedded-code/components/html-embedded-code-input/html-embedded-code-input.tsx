@@ -12,10 +12,10 @@ import { BiCode } from "@react-icons/all-files/bi/BiCode";
 import { Link, useLoaderData } from "@remix-run/react";
 import { useTranslation } from "react-i18next";
 import capitalize from "~/client/common/utils/capitalize";
+import usePremiumFeaturesContext from "~/client/templates-editor/premium-features-provider/hooks/usePremiumFeaturesContext";
 
 import Teext from "../../../../global/common/layout/teext/teext";
 import { PremiumButtonWithPopover } from "../../../../premium-features";
-import useIsPremiumInstallation from "../../../../premium-features/hooks/useIsPremiumInstallation";
 import useHtmlCode from "../../hooks/useHtmlCode";
 import HtmlEmbeddedCodeForm from "../html-embedded-code-form/html-embedded-code-form";
 import Platforms from "../platforms/platforms";
@@ -32,7 +32,7 @@ export default function HtmlEmbeddedCodeInput({
   const loaderData = useLoaderData();
   const { t } = useTranslation();
   const { isOpen, onClose, onOpen } = useDisclosure();
-  const isPremium = useIsPremiumInstallation();
+  const { isPremiumUser } = usePremiumFeaturesContext();
   const htmlCode = useHtmlCode();
 
   const position = inlineBlock === false && {
@@ -48,7 +48,7 @@ export default function HtmlEmbeddedCodeInput({
         <Link to="/login?context=app">
           <ButtonGenerateCode
             onOpen={onOpen}
-            isPremium={isPremium}
+            isPremium={isPremiumUser}
             isOpen={isOpen}
             variant={variant}
           />
@@ -56,7 +56,7 @@ export default function HtmlEmbeddedCodeInput({
       ) : (
         <ButtonGenerateCode
           onOpen={onOpen}
-          isPremium={isPremium}
+          isPremium={isPremiumUser}
           isOpen={isOpen}
           variant={variant}
         />
@@ -105,9 +105,7 @@ function ButtonGenerateCode({
   variant,
 }: ButtonGenerateCodeProps) {
   const { t } = useTranslation();
-  {
-    /** base: "#73F8BA", 500: "#3DF59F", */
-  }
+
   return (
     <Button
       onClick={onOpen}
