@@ -1,4 +1,11 @@
 {
+  "seo": {
+    "website": {
+      "title": "Create a countdown timer for your website in minutes",
+      "description": "Create a countdown timer for your website in minutes. No coding required. Customize the timer to match your brand and embed it in your website in seconds.",
+      "keywords": "countdown timer, free countdown timer, easy countdown timer, online countdown timer, simple countdown timer, website countdown timer, wordpress countdown timer, online store countdown timer, e-commerce countdown timer, free e-commerce countdown timer, easy e-commerce countdown timer, online e-commerce countdown timer, simple e-commerce countdown timer, e-commerce countdown timer for website e-commerce countdown timer for wordpress, e-commerce countdown timer for woocommerce, e-commerce countdown timer for shopify, e-commerce countdown timer for squarespace, e-commerce countdown timer for webflow, e-commerce countdown timer for wix, e-commerce countdown timer for hotmart, e-commerce countdown timer for gutenberg countdown timer for elementor, countdown timer for divi, countdown timer for oxygen, countdown timer for bricks, countdown timer for beaver builder, countdown timer for visual composer, countdown timer for checkout, countdown timer for cart, countdown timer for checkout"
+    }
+  },
   "global": {
     "yes": "yes",
     "no": "no",

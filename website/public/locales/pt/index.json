@@ -1,4 +1,11 @@
 {
+  "seo": {
+    "website": {
+      "title": "Contador regressivo para seu site, fácil de usar",
+      "description": "Crie um contador regressivo gratuito e fácil de usar para seu site. Escolha um modelo, personalize-o e adicione-o ao seu site em poucos minutos.",
+      "keywords": "contador regressivo, contador regressivo gratuito, contador regressivo fácil, contador regressivo online, contador regressivo simples, contador regressivo para site, contador regressivo para wordpress, contador regressivo para loja virtual, contador regressivo para loja online, contador regressivo para loja, contador regressivo para e-commerce, contador regressivo para e-commerce gratuito, contador regressivo para e-commerce fácil, contador regressivo para e-commerce online, contador regressivo para e-commerce simples, contador regressivo para e-commerce para site, contador regressivo para e-commerce para wordpress, contador regressivo para woocommerce, contador regressivo para shopify, contador regressivo para squarespace, contador regressivo para webflow, contador regressivo para wix, contador regressivo para hotmart, contador regressivo para gutenberg, contador regressivo para elementor, contador regressivo para divi, contador regressivo para oxygen, contador regressivo para bricks, contador regressivo para beaver builder, contador regressivo para visual composer, contador regressivo para checkout, contador regressivo para carrinho, contador regressivo para finalizar compra"
+    }
+  },
   "global": {
     "yes": "sim",
     "no": "não",

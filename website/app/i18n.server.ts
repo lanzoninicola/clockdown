@@ -7,7 +7,7 @@ import i18nextOptions from "./i18n.config";
  * Remix-i18next configuration
  * @see https://github.com/sergiodxa/remix-i18next
  */
-export default new RemixI18Next({
+const i18next = new RemixI18Next({
   detection: {
     // ========================================
     // 2023-01-16 Disabled cookie for now, as it is not working as expected
@@ -31,3 +31,5 @@ export default new RemixI18Next({
   // a backend here
   backend: Backend,
 });
+
+export default i18next;

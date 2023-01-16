@@ -34,16 +34,27 @@ export const links: LinksFunction = () => [
   },
 ];
 
-export const meta: MetaFunction = () => ({
-  charset: "utf-8",
-  title: "Clockdown",
-  viewport: "width=device-width,initial-scale=1",
-  description: "O contador regressivo para a tua loja online",
-});
-
 export let loader = async ({ request }: LoaderArgs) => {
   let locale = await i18next.getLocale(request);
-  return json({ locale });
+
+  const t = await i18next.getFixedT(request);
+  const title = t("seo.website.title");
+  const description = t("seo.website.description");
+  const keywords = t("seo.website.keywords");
+
+  return json({ locale, seo: { title, description, keywords } });
+};
+
+export const meta: MetaFunction = ({ data }) => {
+  const { title, description, keywords } = data.seo;
+
+  return {
+    charset: "utf-8",
+    title: title,
+    viewport: "width=device-width,initial-scale=1",
+    description: description,
+    keywords: keywords,
+  };
 };
 
 export let handle = {

@@ -13,7 +13,7 @@ import Backend from "i18next-fs-backend";
 import { Response } from "@remix-run/node";
 import isbot from "isbot";
 import i18nextOptions from "./i18n.config";
-import i18n from "./i18n.server";
+import i18next from "./i18n.server";
 
 const ABORT_DELAY = 5000;
 
@@ -71,9 +71,9 @@ async function handleBrowserRequest(
   const instance = createInstance();
 
   // Then we could detect locale from the request
-  const lng = await i18n.getLocale(request);
+  const lng = await i18next.getLocale(request);
   // And here we detect what namespaces the routes about to render want to use
-  const ns = i18n.getRouteNamespaces(remixContext);
+  const ns = i18next.getRouteNamespaces(remixContext);
 
   // First, we create a new instance of i18next so every request will have a
   // completely unique instance and not share any state.
