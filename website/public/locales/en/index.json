@@ -1,9 +1,148 @@
 {
   "seo": {
     "website": {
-      "title": "Create a countdown timer for your website in minutes",
+      "title": "Create a countdown timer for your website in minutes. It'easy and free.",
       "description": "Create a countdown timer for your website in minutes. No coding required. Customize the timer to match your brand and embed it in your website in seconds.",
       "keywords": "countdown timer, free countdown timer, easy countdown timer, online countdown timer, simple countdown timer, website countdown timer, wordpress countdown timer, online store countdown timer, e-commerce countdown timer, free e-commerce countdown timer, easy e-commerce countdown timer, online e-commerce countdown timer, simple e-commerce countdown timer, e-commerce countdown timer for website e-commerce countdown timer for wordpress, e-commerce countdown timer for woocommerce, e-commerce countdown timer for shopify, e-commerce countdown timer for squarespace, e-commerce countdown timer for webflow, e-commerce countdown timer for wix, e-commerce countdown timer for hotmart, e-commerce countdown timer for gutenberg countdown timer for elementor, countdown timer for divi, countdown timer for oxygen, countdown timer for bricks, countdown timer for beaver builder, countdown timer for visual composer, countdown timer for checkout, countdown timer for cart, countdown timer for checkout"
+    }
+  },
+  "website": {
+    "hero": {
+      "headline": "Create a countdown timer for your website in minutes. It'easy and free.",
+      "subheadline": "Try our user-friendly editor now and see the difference it makes in your e-commerce store and website's conversions. No coding required. Customize the timer to match your brand and embed it in your website in seconds.",
+      "buttonCTA": "Create your countdown timer"
+    },
+    "useCases": {
+      "headline": "For all kinds of websites",
+      "0": {
+        "title": "Sales and special promotions",
+        "body": "A countdown timer can be used to create a sense of urgency and increase conversion rates during a sale or promotion event."
+      },
+      "1": {
+        "title": "Product launches",
+        "body": "A countdown timer can be used to build anticipation and interest before the launch of a new product."
+      },
+      "2": {
+        "title": "Events",
+        "body": "A countdown timer can be used to count down the days, hours, and minutes until an important event such as a concert, conference, or sporting event."
+      },
+      "3": {
+        "title": "Delivery deadlines",
+        "body": " A countdown timer can be used to show how much time is left for the delivery of an order or to inform customers about shipping deadlines."
+      },
+      "4": {
+        "title": "Special event countdown",
+        "body": "A countdown timer can be used to count down the days, hours and minutes until a special event such as Christmas, New Year's Eve or a holiday."
+      },
+      "5": {
+        "title": "Advertising campaigns",
+        "body": "A countdown timer can be used to create anticipation and interest before the deadline to sign up or purchase a product or service."
+      },
+      "6": {
+        "title": "Limited-time offers",
+        "body": "A countdown timer can be used to show how much time is left to take advantage of a limited-time offer."
+      }
+    },
+    "reasons": {
+      "headline": "Four reasons to use a countdown timer",
+      "cta": "Try it now",
+      "0": {
+        "title": "Motivate your visitors to take action",
+        "body": "Make your visitors afraid of losing too much and compel them to buy immediately. The time remaining until completion of the term will be displayed, creating a sense of urgency."
+      },
+      "1": {
+        "title": "Encourage your visitors to buy",
+        "body": "Don't allow your prospects too much time to consider; instead, display the Clockdown timer for each visitor to encourage them to buy before time expires."
+      },
+      "2": {
+        "title": "Awakens a sense of urgency",
+        "body": "One of the strongest senses for mental triggers is that of urgency, the fear of missing a good opportunity. Use the countdown timer and trigger this feeling in your customers."
+      },
+      "3": {
+        "title": "Faster buying decision",
+        "body": "Just choose when the Clockdown ends and provide a message that will appear next to the timer, with this simple trick you will motivate the customer to take action faster."
+      }
+    },
+    "productDetails": {
+      "0": {
+        "title": "Unique templates that adapt to any theme",
+        "body": "There are themes for all tastes, but if you still can't find yours, you can always create it from scratch. It's quick and easy, just choose the colors and style you want."
+      },
+      "1": {
+        "title": "For any device",
+        "body": "Responsive counter templates for your website, blog, online store. You can use them on any device, be it a smartphone, tablet or desktop."
+      },
+      "2": {
+        "title": "Customization for your business",
+        "body": "With a few clicks you create and edit your counter. Choose the colors, style and format you want, you can even change the background color. It's easy and fast."
+      }
+    },
+    "platforms": {
+      "headline": "Clockdown supports all major platforms"
+    },
+    "howItWorks": {
+      "headline": "How it works",
+      "0": {
+        "title": "Choose the date and time zone for your countdown timer",
+        "body": "Your customers are spread all over the world? No problem with that."
+      },
+      "1": {
+        "title": "Customize",
+        "body": "Customize the template with the colors and style you want."
+      },
+      "2": {
+        "title": "Generate and copy the code",
+        "body": "This is where the magic happens."
+      },
+      "3": {
+        "title": "Paste the code into your site and start using it",
+        "body": "Paste, save and convert more..."
+      }
+    },
+    "pricing": {
+      "headline": "Plans",
+      "subheadline": "We simplify everything, regardless of the size of your business and the traffic to your site.",
+      "starter": {
+        "headline": "Starter",
+        "subheadline": "Let's start here and grow together",
+        "price": {
+          "currency": "$",
+          "interval": null,
+          "note": null
+        },
+        "features": [
+          "No coding skills required",
+          "Customize title, tags",
+          "Choose a unique font",
+          "Choose fancy colors",
+          "Free ready-to-use templates",
+          "Born to be responsive"
+        ],
+        "cta": "Try it now"
+      },
+      "pro": {
+        "headline": "Pro",
+        "subheadline": "Let's start here and grow together",
+        "price": {
+          "currency": "$",
+          "interval": "per month",
+          "note": "annual payment"
+        },
+        "features": [
+          "No coding skills required",
+          "Customize title, tags",
+          "Choose a unique font",
+          "Choose fancy colors",
+          "Free ready-to-use templates",
+          "Born to be responsive",
+          "Custom call-to-action button",
+          "Add your custom link",
+          "No customization limits",
+          "Professional templates",
+          "Customer support"
+        ],
+        "cta": "Get Started"
+      }
     }
   },
   "global": {
@@ -137,8 +276,8 @@
         "shortLabel": "Templates"
       },
       "title": {
-        "label": "Customize text",
-        "shortLabel": "Text"
+        "label": "Customize message",
+        "shortLabel": "Message"
       },
       "timer": {
         "label": "Customize timer units",
@@ -213,9 +352,9 @@
         "groupTitle": "Templates"
       },
       "title": {
-        "groupTitle": "Title style",
+        "groupTitle": "Message style",
         "titlePlaceholder": "Countown to New Year",
-        "text": "Text",
+        "text": "Message",
         "textFont": "Text font",
         "textSize": "Text size",
         "textColor": "Text color"

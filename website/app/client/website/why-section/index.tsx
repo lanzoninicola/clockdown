@@ -1,27 +1,32 @@
+import { useLoaderData } from "@remix-run/react";
+import { type HomePageLoaderData } from "~/routes";
 import Section from "../common/section";
 import TitleH2 from "../common/titles/title-h2";
 import TitleH3 from "../common/titles/title-h3";
 import EditorButton from "../components/editor-button";
 
 export default function WhySection() {
+  const loaderData = useLoaderData<HomePageLoaderData>();
+
+  const sectionContent = loaderData.pageContent.reasons;
+
   return (
     <Section id="why" className="py-32 px-4 md:px-0">
       <div className="flex flex-col gap-16">
         <div className="flex flex-col justify-center gap-4">
           <div className="flex flex-col items-center justify-center gap-4">
-            <TitleH2 className="text-center">
-              <span className="text-blue-500">Quatros razões</span> para usar{" "}
-              <br />o Contador regressivo
+            <TitleH2 className="max-w-[20ch] text-center">
+              {sectionContent.headline}
             </TitleH2>
-            <p className="text-md text-center font-body md:max-w-[55ch] md:text-lg">
+            {/* <p className="text-md text-center font-body md:max-w-[55ch] md:text-lg">
               Prepara-se para o lançamento de um novo produto, evento ou
               promoção e use o contador para aumentar as vendas. Você pode usar
               o contador para qualquer tipo de evento, seja um evento de
               marketing, um evento de vendas ou um evento de lançamento.
-            </p>
+            </p> */}
           </div>
           <div className="grid place-items-center">
-            <EditorButton variant="accent" />
+            <EditorButton variant="accent" label={sectionContent.cta} />
           </div>
         </div>
         <div className="grid grid-rows-4 gap-8 md:grid-cols-2 md:grid-rows-2">
@@ -29,50 +34,41 @@ export default function WhySection() {
             <div className="grid grid-flow-col gap-4">
               <NumberRound number={1} />
               <TitleH3 className="md:text-md">
-                Motivar seus visitantes a agir
+                {sectionContent.list[0].title}
               </TitleH3>
             </div>
             <p className="md:text-md font-body">
-              Faça com que seus visitantes tenham medo de perder muito e
-              obrigue-os a comprar imediatamente. O tempo restante até a
-              conclusão do termo será exibido, criando um senso de urgência.
+              {sectionContent.list[0].body}
             </p>
           </Card>
           <Card>
             <div className="grid grid-flow-col gap-4">
               <NumberRound number={2} />
-              <TitleH3>Encoraje seus visitantes a comprar</TitleH3>
+              <TitleH3>{sectionContent.list[1].title}</TitleH3>
             </div>
 
             <p className="md:text-md font-body">
-              Não permita que seus clientes em potencial tenham muito tempo para
-              considerar; em vez disso, exiba o temporizador Clockdown para cada
-              visitante para encorajá-los a comprar antes que o tempo expire.
+              {sectionContent.list[1].body}
             </p>
           </Card>
           <Card>
             <div className="grid grid-flow-col gap-4">
               <NumberRound number={3} />
-              <TitleH3>Desperta o Sentido de Urgência</TitleH3>
+              <TitleH3>{sectionContent.list[2].title}</TitleH3>
             </div>
 
             <p className="md:text-md font-body">
-              Um dos sentidos mais fortes para gatilhos mentais é o de urgência,
-              o medo de perder uma boa oportunidade. Use o contador regressivo e
-              provoque esse sentimento em seus clientes.
+              {sectionContent.list[2].body}
             </p>
           </Card>
           <Card>
             <div className="grid grid-flow-col gap-4">
               <NumberRound number={4} />
-              <TitleH3>Decisão mais rápida é melhor</TitleH3>
+              <TitleH3>{sectionContent.list[3].title}</TitleH3>
             </div>
 
             <p className="md:text-md font-body">
-              Basta escolher quando o Clockdown deve começar e terminar, e então
-              selecionar a ação a ser executada quando o timer expirar. Você
-              também pode fornecer uma mensagem que aparecerá acima do timer e
-              os motivará a tomar medidas
+              {sectionContent.list[3].body}
             </p>
           </Card>
         </div>

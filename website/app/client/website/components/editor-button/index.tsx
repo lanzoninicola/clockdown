@@ -3,10 +3,12 @@ import ArrowRight from "../../common/arrow-right/arrow-right";
 
 interface EditorButtonProps {
   variant?: "primary" | "secondary" | "accent";
+  label?: string;
 }
 
 export default function EditorButton({
   variant = "primary",
+  label,
 }: EditorButtonProps) {
   const bgColor =
     variant === "primary"
@@ -37,7 +39,7 @@ export default function EditorButton({
         <span
           className={`text-md font-body font-bold uppercase tracking-wider md:text-xl ${textColor}`}
         >
-          Criar um contador
+          {label || "Get Started"}
         </span>
         <ArrowRight color={`${textColor}`} />
       </button>

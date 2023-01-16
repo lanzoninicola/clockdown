@@ -1,23 +1,24 @@
+import { useLoaderData } from "@remix-run/react";
+import { type HomePageLoaderData } from "~/routes";
 import Carousel from "../../common/carousel";
 import FadeIn from "../../common/fade-in/fade-in";
 import Section from "../../common/section";
 import TitleH2 from "../../common/titles/title-h2";
 
 export default function TemplatesSection() {
+  const loaderData = useLoaderData<HomePageLoaderData>();
+
+  const sectionContent = loaderData.pageContent.productDetails;
+
   return (
     <>
       <Section className="bg-tea-base py-16 md:py-32">
         <div className="flex flex-col gap-32">
           <div className="grid-rows-auto grid gap-4 md:grid-cols-2 md:grid-rows-1  md:items-center ">
             <div className="flex flex-col">
-              <TitleH2>
-                Templates exclusivos <br />
-                que se adaptam <br />a qualquer tema
-              </TitleH2>
+              <TitleH2>{sectionContent.list[0].title}</TitleH2>
               <p className="text-md font-body md:w-[55ch] md:text-xl">
-                Há temas para todos os gostos, mas se você ainda não consegue
-                encontrar o seu, você pode sempre criá-lo do zero. É fácil e
-                rápido, basta escolher as cores e o estilo que você deseja.
+                {sectionContent.list[0].body}
               </p>
             </div>
             <div className="grid place-items-center md:place-items-end">
@@ -42,14 +43,9 @@ export default function TemplatesSection() {
               />
             </div>
             <div className="flex flex-col">
-              <TitleH2>
-                Para qualquer <br />
-                dispositivo
-              </TitleH2>
+              <TitleH2>{sectionContent.list[1].title}</TitleH2>
               <p className="text-md font-body md:w-[55ch] md:text-xl">
-                Modelos de contador responsivos para o seu site, blog, loja
-                virtual. Você pode usá-los em qualquer dispositivo, seja um
-                smartphone, tablet ou desktop.
+                {sectionContent.list[1].body}
               </p>
             </div>
           </div>

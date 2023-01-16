@@ -6,6 +6,145 @@
       "keywords": "contador regressivo, contador regressivo gratuito, contador regressivo fácil, contador regressivo online, contador regressivo simples, contador regressivo para site, contador regressivo para wordpress, contador regressivo para loja virtual, contador regressivo para loja online, contador regressivo para loja, contador regressivo para e-commerce, contador regressivo para e-commerce gratuito, contador regressivo para e-commerce fácil, contador regressivo para e-commerce online, contador regressivo para e-commerce simples, contador regressivo para e-commerce para site, contador regressivo para e-commerce para wordpress, contador regressivo para woocommerce, contador regressivo para shopify, contador regressivo para squarespace, contador regressivo para webflow, contador regressivo para wix, contador regressivo para hotmart, contador regressivo para gutenberg, contador regressivo para elementor, contador regressivo para divi, contador regressivo para oxygen, contador regressivo para bricks, contador regressivo para beaver builder, contador regressivo para visual composer, contador regressivo para checkout, contador regressivo para carrinho, contador regressivo para finalizar compra"
     }
   },
+  "website": {
+    "hero": {
+      "headline": "Crie um contador regressivo para seu site em minutos. É fácil e gratuito.",
+      "subheadline": "Experimente nosso editor agora e veja a diferença que ele faz nas conversões de sua loja virtuale e de seu website. Não é necessário programar. Personalize o temporizador para combinar com sua marca e incorpore-o em seu site em segundos.",
+      "buttonCTA": "Cria o teu contador"
+    },
+    "useCases": {
+      "headline": "Para todos os tipos de negócios",
+      "0": {
+        "title": "Promoções e vendas especiais",
+        "body": "Um contador regressivo pode ser usado para construir expectativa e interesse antes do lançamento de um novo produto."
+      },
+      "1": {
+        "title": "Lançamentos de produtos",
+        "body": "Crie um contador regressivo para seu site e aumente as conversões. Mostre aos seus visitantes que o tempo está se esgotando e que eles devem agir agora para não perder a oferta."
+      },
+      "2": {
+        "title": "Eventos",
+        "body": "Um contador regressivo pode ser usado para contar os dias, horas e minutos até um evento importante, como um show, conferência ou competição esportiva."
+      },
+      "3": {
+        "title": "Prazos de entrega",
+        "body": "Um contador regressivo pode ser usado para mostrar quanto tempo falta para a entrega de um pedido ou para informar os clientes sobre o prazo de envio."
+      },
+      "4": {
+        "title": "Contagem regressiva para eventos especiais",
+        "body": "Um contador regressivo pode ser usado para contar os dias, horas e minutos até um evento especial, como o Natal, o Ano Novo ou um feriado."
+      },
+      "5": {
+        "title": "Campanhas publicitárias",
+        "body": "Um contador regressivo pode ser usado para criar expectativa e interesse antes da data limite para se inscrever ou adquirir um produto ou serviço."
+      },
+      "6": {
+        "title": "Ofertas limitadas",
+        "body": "Um contador regressivo pode ser usado para mostrar quanto tempo resta para aproveitar uma oferta limitada de tempo."
+      }
+    },
+    "reasons": {
+      "headline": "Quatro razões para usar um contador regressivo",
+      "cta": "Experimente agora",
+      "0": {
+        "title": "Motivar seus visitantes a agir",
+        "body": "Faça com que seus visitantes tenham medo de perder muito e obrigue-os a comprar imediatamente. O tempo restante até a conclusão do termo será exibido, criando um senso de urgência."
+      },
+      "1": {
+        "title": "Encoraje seus visitantes a comprar",
+        "body": "Não permita que seus clientes em potencial tenham muito tempo para considerar; em vez disso, exiba o temporizador Clockdown para cada visitante para encorajá-los a comprar antes que o tempo expire."
+      },
+      "2": {
+        "title": "Desperta o sentido de urgência",
+        "body": "Um dos sentidos mais fortes para gatilhos mentais é o de urgência, o medo de perder uma boa oportunidade. Use o contador regressivo e provoque esse sentimento em seus clientes."
+      },
+      "3": {
+        "title": "Decisão de compra mais rápida",
+        "body": "Basta escolher quando o Clockdown terminar e fornecer uma mensagem que aparecerá junto ao timer, com este truque simples motivará o cliente a tomar medidas mais rápida."
+      }
+    },
+    "productDetails": {
+      "0": {
+        "title": "Templates exclusivos que se adaptam a qualquer tema",
+        "body": "Há temas para todos os gostos, mas se você ainda não consegue encontrar o seu, você pode sempre criá-lo do zero. É fácil e rápido, basta escolher as cores e o estilo que você deseja."
+      },
+      "1": {
+        "title": "Para qualquer dispositivo",
+        "body": "Modelos de contador responsivos para o seu site, blog, loja virtual. Você pode usá-los em qualquer dispositivo, seja um smartphone, tablet ou desktop."
+      },
+      "2": {
+        "title": "Customização para o seu negócio",
+        "body": "Com poucos cliques você cria e edita o seu contador. Escolha as cores, o estilo e o formato que você deseja, pode até alterar o cor de fundo. É fácil e rápido."
+      }
+    },
+    "platforms": {
+      "headline": "Clockdown suporta as principais plataformas"
+    },
+    "howItWorks": {
+      "headline": "Como funciona",
+      "0": {
+        "title": "Escolha a data e o fuso horário para o seu contador regressivo",
+        "body": "Seus clientes estão espalhados por todo o mundo? Não há problema com isso."
+      },
+      "1": {
+        "title": "Personalize",
+        "body": "Personalize o modelo com as cores e o estilo que você deseja."
+      },
+      "2": {
+        "title": "Gere e copia o código",
+        "body": "É aqui que a magia acontece."
+      },
+      "3": {
+        "title": "Cola o código no seu site e comece a usar",
+        "body": "Colar, salvar e converter mais..."
+      }
+    },
+    "pricing": {
+      "headline": "Planos",
+      "subheadline": "Simplificamos tudo, independentemente do tamanho do seu negócio e do tráfego para o seu site.",
+      "starter": {
+        "headline": "Starter",
+        "subheadline": "Comecemos aqui e vamos crescer juntos",
+        "price": {
+          "currency": "R$",
+          "interval": null,
+          "note": null
+        },
+        "features": [
+          "Nenhuma habilidade de código necessária",
+          "Personaliza o título, as etiquetas",
+          "Escolha uma fonte exclusiva",
+          "Escolha cores extravagantes",
+          "Modelos gratuitos prontos para uso",
+          "Nascido para ser responsivo"
+        ],
+        "cta": "Experimente agora"
+      },
+      "pro": {
+        "headline": "Pro",
+        "subheadline": "Comecemos aqui e vamos crescer juntos",
+        "price": {
+          "currency": "R$",
+          "interval": "por mês",
+          "note": "pagamento anual"
+        },
+        "features": [
+          "Nenhuma habilidade de código necessária",
+          "Personaliza o título, as etiquetas",
+          "Escolha uma fonte exclusiva",
+          "Escolha cores extravagantes",
+          "Modelos gratuitos prontos para uso",
+          "Nascido para ser responsivo",
+          "Botão de chamada à ação personalizado",
+          "Adicionar seu link personalizado",
+          "Nenhum limite de customização",
+          "Modelos profissionais",
+          "Suporte ao cliente"
+        ],
+        "cta": "Get Started"
+      }
+    }
+  },
   "global": {
     "yes": "sim",
     "no": "não",
