@@ -11,10 +11,10 @@ import {
 } from "@chakra-ui/react";
 import { useRef } from "react";
 import { useTranslation } from "react-i18next";
+import { WaitlistLinkButton } from "~/client/common/waitlist-link-button/waitlist-link-button";
 
 import PremiumButton from "../../premium-button/premium-button";
 import UpgradePremiumImage from "../common/upgrade-premium-image/upgrade-premium-image";
-import WaitlistLinkButton from "../waitlist-link-button/waitlist-link-button";
 
 interface PremiumFeatureProps {
   isOpen: boolean;

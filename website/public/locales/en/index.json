@@ -100,7 +100,7 @@
       }
     },
     "pricing": {
-      "headline": "Plans",
+      "headline": "Pricing",
       "subheadline": "We simplify everything, regardless of the size of your business and the traffic to your site.",
       "starter": {
         "headline": "Starter",
@@ -122,19 +122,13 @@
       },
       "pro": {
         "headline": "Pro",
-        "subheadline": "Let's start here and grow together",
+        "subheadline": "More power, more results",
         "price": {
           "currency": "$",
           "interval": "per month",
           "note": "annual payment"
         },
         "features": [
-          "No coding skills required",
-          "Customize title, tags",
-          "Choose a unique font",
-          "Choose fancy colors",
-          "Free ready-to-use templates",
-          "Born to be responsive",
           "Custom call-to-action button",
           "Add your custom link",
           "No customization limits",
@@ -143,7 +137,35 @@
         ],
         "cta": "Get Started"
       }
+    },
+    "footer": {
+      "quote": {
+        "text": "Better three hours too early than one minute too late.",
+        "explanation": "In this quote from 'The Merry Wives of Windsor,' Shakespeare alluded to the benefits of doing something early rather than missing an opportunity. Fight your procrastination, even if it means doing something long before the deadline."
+      },
+      "menus": {
+        "home": {
+          "title": "Clockdown",
+          "links": {
+            "home": "Home",
+            "why": "Reasons",
+            "productDetails": "Product details",
+            "howItWorks": "How it works",
+            "pricing": "Pricing"
+          }
+        },
+        "legal": {
+          "title": "Terms and policies",
+          "links": {
+            "terms": "Terms of Use",
+            "privacy": "Privacy Policy"
+          }
+        }
+      }
     }
+  },
+  "waitlist": {
+    "cta": "Join the waitlist"
   },
   "global": {
     "yes": "yes",

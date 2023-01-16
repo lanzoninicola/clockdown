@@ -122,28 +122,50 @@
       },
       "pro": {
         "headline": "Pro",
-        "subheadline": "Comecemos aqui e vamos crescer juntos",
+        "subheadline": "Mais poder, mais resultados",
         "price": {
           "currency": "R$",
           "interval": "por mês",
           "note": "pagamento anual"
         },
         "features": [
-          "Nenhuma habilidade de código necessária",
-          "Personaliza o título, as etiquetas",
-          "Escolha uma fonte exclusiva",
-          "Escolha cores extravagantes",
-          "Modelos gratuitos prontos para uso",
-          "Nascido para ser responsivo",
           "Botão de chamada à ação personalizado",
           "Adicionar seu link personalizado",
           "Nenhum limite de customização",
           "Modelos profissionais",
           "Suporte ao cliente"
         ],
-        "cta": "Get Started"
+        "cta": "Comece agora"
+      }
+    },
+    "footer": {
+      "quote": {
+        "text": "Melhor três horas cedo demais do que um minuto tarde demais",
+        "explanation": "Nesta citação de 'The Merry Wives of Windsor', Shakespeare aludiu aos benefícios de fazer algo mais cedo em vez de perder uma oportunidade. Combata sua procrastinação, mesmo que isso signifique fazer algo muito antes do prazo."
+      },
+      "menus": {
+        "home": {
+          "title": "Clockdown",
+          "links": {
+            "home": "Início",
+            "why": "Por que usar",
+            "productDetails": "Detalhes do produto",
+            "howItWorks": "Como funciona",
+            "pricing": "Planos"
+          }
+        },
+        "legal": {
+          "title": "Termos e politicas",
+          "links": {
+            "terms": "Termos de uso",
+            "privacy": "Politica de privacidade"
+          }
+        }
       }
     }
+  },
+  "waitlist": {
+    "cta": "Entre na lista de espera"
   },
   "global": {
     "yes": "sim",

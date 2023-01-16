@@ -14,7 +14,7 @@ export default function HowItWorks() {
 
   return (
     <Section id="how-it-works" className="bg-tea-base  py-32 md:min-h-[1400px]">
-      <TitleH2 className="mb-8 text-center">Como funciona</TitleH2>
+      <TitleH2 className="mb-8 text-center">{sectionContent.headline}</TitleH2>
       <div>
         <HowItWorksSteps
           steps={steps}

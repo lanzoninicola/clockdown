@@ -1,9 +1,14 @@
+import { useLoaderData } from "@remix-run/react";
+import { type HomePageLoaderData } from "~/routes";
 import HorizontalLine from "../common/horizontal-line/horizontal-line";
 import NavListHomePage from "./components/nav-list-home-page";
-import NavListHome from "./components/nav-list-home-page";
 import NavListLegal from "./components/nav-list-legal";
 
 export default function Footer() {
+  const loaderData = useLoaderData<HomePageLoaderData>();
+
+  const sectionContent = loaderData.pageContent.footer;
+
   return (
     <footer className="flex flex-col justify-center bg-blue-md px-4 pt-32 pb-16 ">
       <div className="mx-auto max-w-[1280px] md:min-w-[768px] lg:min-w-[1024px] xl:min-w-[1280px]">
@@ -16,14 +21,10 @@ export default function Footer() {
             />
             <div className="flex flex-col gap-4">
               <q className="font-body text-sm italic">
-                Melhor três horas cedo demais <br />
-                do que um minuto tarde demais.
+                {sectionContent.quote.text}
               </q>
               <span className="max-w-prose font-body text-xs italic">
-                Nesta citação de "The Merry Wives of Windsor", Shakespeare
-                aludiu aos benefícios de fazer algo mais cedo em vez de perder
-                uma oportunidade. Combata sua procrastinação, mesmo que isso
-                signifique fazer algo muito antes do prazo.
+                {sectionContent.quote.explanation}
               </span>
             </div>
           </div>
@@ -34,7 +35,7 @@ export default function Footer() {
             </div>
             <div className="">
               <h4 className="mb-2 font-titles text-xl font-bold">
-                Termos e politicas
+                {sectionContent.menus.legal.title}
               </h4>
               <NavListLegal />
             </div>

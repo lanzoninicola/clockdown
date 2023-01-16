@@ -25,7 +25,7 @@ export default function UseCasesSection() {
         data-element="steps-content"
       >
         <div className="container mx-auto flex h-full items-center justify-center font-accent">
-          <h1 className="font-accents text-4xl text-white md:leading-tight">
+          <h1 className="font-accents mb-8 text-4xl text-white md:mb-0 md:leading-tight">
             {sectionContent.headline}
           </h1>
         </div>

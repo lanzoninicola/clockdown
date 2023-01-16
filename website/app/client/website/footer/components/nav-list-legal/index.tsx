@@ -1,13 +1,18 @@
+import { useLoaderData } from "@remix-run/react";
 import NavList from "~/client/website/common/nav-list/nav-list";
+import { type HomePageLoaderData } from "~/routes";
 
 function NavListLegal() {
+  const loaderData = useLoaderData<HomePageLoaderData>();
+
+  const content = loaderData.pageContent.footer.menus.legal;
+
   const items = [
-    { to: "/terms-and-policies#terms-of-service", text: "Termos do serviço" },
+    { to: "/terms-and-policies#terms-of-service", text: content.links.terms },
     {
       to: "/terms-and-policies#privacy-policy",
-      text: "Politica de privacidade",
+      text: content.links.privacy,
     },
-    { to: "/terms-and-policies#cookie-policy", text: "Politica do cookie" },
   ];
 
   return <NavList items={items} direction="col" spacing={4} />;
