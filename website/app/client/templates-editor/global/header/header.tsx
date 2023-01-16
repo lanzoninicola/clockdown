@@ -35,7 +35,6 @@ export default function Header({
           <PremiumFeatureGuard hide>
             <EditorSave />
           </PremiumFeatureGuard> */}
-          {/* <LanguagesMenu /> */}
         </div>
         <BreakpointsBar />
         <div className="flex items-center gap-4 justify-self-end">

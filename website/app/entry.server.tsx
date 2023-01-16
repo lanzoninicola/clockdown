@@ -12,7 +12,7 @@ import { I18nextProvider, initReactI18next } from "react-i18next";
 import Backend from "i18next-fs-backend";
 import { Response } from "@remix-run/node";
 import isbot from "isbot";
-import i18nextOptions from "./i18nextOptions";
+import i18nextOptions from "./i18n.config";
 import i18n from "./i18n.server";
 
 const ABORT_DELAY = 5000;
@@ -77,7 +77,7 @@ async function handleBrowserRequest(
 
   // First, we create a new instance of i18next so every request will have a
   // completely unique instance and not share any state.
-  instance
+  await instance
     .use(initReactI18next) // Tell our instance to use react-i18next
     .use(Backend) // Setup our backend.init({
     .init({

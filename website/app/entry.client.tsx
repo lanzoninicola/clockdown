@@ -6,7 +6,7 @@ import { I18nextProvider, initReactI18next } from "react-i18next";
 import LanguageDetector from "i18next-browser-languagedetector";
 import Backend from "i18next-http-backend";
 import { getInitialNamespaces } from "remix-i18next";
-import i18nextOptions from "./i18nextOptions";
+import i18nextOptions from "./i18n.config";
 import { createEmotionCache } from "./client/templates-editor/chackra-ui/createEmotionCache";
 import { ClientStyleContext } from "./client/templates-editor/chackra-ui/context";
 import { CacheProvider } from "@emotion/react";
