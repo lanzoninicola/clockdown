@@ -49,7 +49,9 @@ export default function UseCasesSection() {
                 key={index}
                 className={`cursor-pointer rounded-full border-2 border-white ${
                   currentActiveStep === index ? "bg-white" : ""
-                } ${currentActiveStep === index ? "h-4 w-4" : "h-2 w-2"}`}
+                } ${
+                  currentActiveStep === index ? "h-4 w-4" : "h-2 w-2"
+                } hover:scale-75`}
                 onClick={() => selectStep(index)}
               ></div>
             ))}

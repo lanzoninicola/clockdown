@@ -1,3 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .button-animate {
+    /* @apply transition-transform duration-300 ease-in-out hover:-translate-y-1; */
+    @apply transition-colors;
+    transition: transform 250ms ease-in-out 0s;
+  }
+
+  .button-animate:hover {
+    transform: translateY(-1px);
+  }
+}

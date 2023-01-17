@@ -18,7 +18,7 @@ export default function StepButton({
   return (
     <button
       type="button"
-      className={`grid h-8 w-8 place-items-center rounded-full ${buttonClazzName} ${
+      className={`button-animate grid h-8 w-8 place-items-center rounded-full ${buttonClazzName} ${
         !isActive && "opacity-25"
       } `}
       onClick={onClick}

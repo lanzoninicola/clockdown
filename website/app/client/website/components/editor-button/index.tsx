@@ -34,7 +34,7 @@ export default function EditorButton({
   return (
     <Link to="/app">
       <button
-        className={`flex max-w-max flex-row gap-4 rounded-xl  ${bgColor} px-8 py-2 shadow-lg transition-colors ${hoverColor}`}
+        className={`flex max-w-max flex-row gap-4 rounded-xl  ${bgColor} px-8 py-2 shadow-lg ${hoverColor} button-animate`}
       >
         <span
           className={`text-md font-body font-bold uppercase tracking-wider md:text-xl ${textColor}`}
