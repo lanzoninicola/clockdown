@@ -8,9 +8,10 @@
   },
   "website": {
     "hero": {
-      "headline": "Crie um contador regressivo para seu site em minutos. É fácil e gratuito.",
-      "subheadline": "Experimente nosso editor agora e veja a diferença que ele faz nas conversões de sua loja virtuale e de seu website. Não é necessário programar. Personalize o temporizador para combinar com sua marca e incorpore-o em seu site em segundos.",
-      "buttonCTA": "Cria o teu contador"
+      "headline": "Crie um contador regressivo para seu site em minutos. ",
+      "subheadline": "É fácil e gratuito.",
+      "subsubheadline": "Experimente nosso editor agora e veja a diferença que ele faz nas conversões de sua loja virtuale e de seu website. Não é necessário programar. Personalize o contador regressivo para combinar com sua marca e incorpore-o em seu site em segundos.",
+      "cta": "Cria o teu contador"
     },
     "useCases": {
       "headline": "Para todos os tipos de negócios",

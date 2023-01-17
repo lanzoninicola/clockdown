@@ -24,7 +24,7 @@ export default function UseCasesSection() {
         className="relative grid h-full grid-rows-[.25fr_1fr] gap-4 md:grid-cols-2 md:grid-rows-1"
         data-element="steps-content"
       >
-        <div className="container mx-auto flex h-full items-center justify-center font-accent">
+        <div className="container mx-auto flex h-full items-center  font-accent">
           <h1 className="font-accents mb-8 text-4xl text-white md:mb-0 md:leading-tight">
             {sectionContent.headline}
           </h1>

@@ -13,6 +13,7 @@ export interface HomePageContent {
   hero: {
     headline: string;
     subheadline: string;
+    subsubheadline: string;
     cta: string;
   };
   useCases: {
@@ -119,6 +120,7 @@ export let loader = async ({ request }: LoaderArgs) => {
     hero: {
       headline: t("website.hero.headline"),
       subheadline: t("website.hero.subheadline"),
+      subsubheadline: t("website.hero.subsubheadline"),
       cta: t("website.hero.cta"),
     },
     useCases: {

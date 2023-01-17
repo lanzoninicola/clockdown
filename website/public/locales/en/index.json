@@ -8,9 +8,10 @@
   },
   "website": {
     "hero": {
-      "headline": "Create a countdown timer for your website in minutes. It'easy and free.",
-      "subheadline": "Try our user-friendly editor now and see the difference it makes in your e-commerce store and website's conversions. No coding required. Customize the timer to match your brand and embed it in your website in seconds.",
-      "buttonCTA": "Create your countdown timer"
+      "headline": "Create a countdown timer for your website in minutes.",
+      "subheadline": "It's easy and free.",
+      "subsubheadline": "Try our user-friendly editor now and see the difference it makes in your store and website's conversions. No coding required. Customize the timer to match your brand and embed it in your website in seconds.",
+      "cta": "Create your countdown timer"
     },
     "useCases": {
       "headline": "For all kinds of websites",
